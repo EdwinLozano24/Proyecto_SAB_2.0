@@ -93,4 +93,67 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
         document.getElementById("error").innerText = "Hubo un error en la solicitud: " + error.message;
     }
 });
-
+///////////////HISTORIAL
+document.addEventListener("DOMContentLoaded", () => {
+    const tabs = document.querySelectorAll(".tab");
+    const panel = document.querySelector(".panel-historial");
+    const inputSintoma = document.getElementById("sintoma");
+    const textareaNotas = document.getElementById("notas");
+  
+    // Crear contenedor extra para el contenido de tabs
+    const infoExtra = document.createElement("div");
+    infoExtra.className = "info-tab";
+    panel.appendChild(infoExtra);
+  
+    const contenidoTabs = {
+      "Resumen del paciente": "<p>Información general del paciente.</p>",
+      "Condición del paciente": "<p>Diagnóstico actual y condiciones médicas.</p>",
+      "Observaciones Médicas": "<p>Observaciones escritas por el médico.</p>",
+      "Motivos del paciente": "<p>Razones de la consulta actual.</p>",
+      "Ordenes Médicas": "<p>Medicamentos, exámenes u órdenes asignadas.</p>"
+    };
+  
+    tabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        const titulo = tab.textContent;
+        infoExtra.innerHTML = `
+          <h2>${titulo}</h2>
+          ${contenidoTabs[titulo] || "<p>Sin contenido disponible.</p>"}
+        `;
+      });
+    });
+  
+    // Validación
+    function validarCampos() {
+      if (inputSintoma.value.trim() === "" || textareaNotas.value.trim() === "") {
+        alert("Por favor, complete todos los campos.");
+        return false;
+      }
+      return true;
+    }
+  
+    // Guardado automático en localStorage
+    inputSintoma.addEventListener("input", () => {
+      localStorage.setItem("sintoma", inputSintoma.value);
+    });
+  
+    textareaNotas.addEventListener("input", () => {
+      localStorage.setItem("notas", textareaNotas.value);
+    });
+  
+    inputSintoma.value = localStorage.getItem("sintoma") || "";
+    textareaNotas.value = localStorage.getItem("notas") || "";
+  
+    // Manejo del envío del formulario
+    const form = document.getElementById("form-historial");
+  
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      if (validarCampos()) {
+        alert("¡Formulario enviado correctamente!");
+        form.reset();
+        localStorage.removeItem("sintoma");
+        localStorage.removeItem("notas");
+      }
+    });
+  });

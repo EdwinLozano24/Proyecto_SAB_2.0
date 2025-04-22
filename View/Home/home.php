@@ -20,9 +20,9 @@
 
     <div class="buttons">
       <a href="enviar_pqr.php" class="btn">Consultar Citas</a>
-      <a href="ver_solicitudes.php" class="btn">Ver Catalogo</a>
-      <a href="ingresar_paciente.php" class="btn">Enviar PQR</a>
-      <a href="informacion_solicitud.php" class="btn">Historial Odontológico</a>
+      <a href="index.php?c=Catalogo&a=home" class="btn">Ver Catalogo</a>
+      <a href="index.php?c=Pqrs&a=home" class="btn">Enviar PQR</a>
+      <a href="index.php?c=Historial&a=home" class="btn">Historial Odontológico</a>
       <a href="index.php?c=login&a=logout" class="btn logout">Cerrar Sesión</a>
     </div>
   </div>
