@@ -42,12 +42,12 @@
                 </form>
 
                 <!--Register-->
-                <form action="" class="formulario__register">
+                <form id="registerForm" action="index.php?c=Login&a=register" method="POST" class="formulario__register">
                     <h2>Registrarse</h2>
                     <input type="text" placeholder="Nombre" name="nombre" id="nombre">
+                    <input type="text"  placeholder="Numero de documento" name="documento" id="documentoR">
                     <input type="email" placeholder="Correo Electronico" name="email" id="email">
-                    <input type="password" placeholder="Contraseña" name="password" id="password1">
-                    <input type="password" placeholder="Confirmar Contraseña" name="password" id="password2">
+                    <input type="password" placeholder="Contraseña" name="password" id="passwordR">
                     <button>Registrarse</button>
                 </form>
             </div>
