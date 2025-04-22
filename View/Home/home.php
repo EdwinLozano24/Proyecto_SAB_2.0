@@ -23,7 +23,7 @@
       <a href="ver_solicitudes.php" class="btn">Ver Catalogo</a>
       <a href="ingresar_paciente.php" class="btn">Enviar PQR</a>
       <a href="informacion_solicitud.php" class="btn">Historial Odontológico</a>
-      <a href="logout.php" class="btn logout">Cerrar Sesión</a>
+      <a href="index.php?c=login&a=logout" class="btn logout">Cerrar Sesión</a>
     </div>
   </div>
 </body>

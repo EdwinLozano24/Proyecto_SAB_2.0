@@ -20,11 +20,15 @@ class LoginController
         $UserModel = new User();
         $ValidUser = $UserModel->VerifyCredentials($NumDocumento, $Password);
 
+        header('Content-Type: application/json');
         if ($ValidUser) {
             echo json_encode(["success" => true]);
+            session_start();  // Iniciar sesión
+            $_SESSION['documento'] = $ValidUser['documento'];
         } else {
             echo json_encode(["success" => false, "message" => "Usuario o contraseña incorrectos"]);
         }
+
     }
 
     public function register() {
@@ -56,6 +60,17 @@ class LoginController
                 exit;
             }
         }
+    }
+    public function logout() {
+        // Destruir todas las variables de sesión
+        session_unset();
+
+        // Destruir la sesión
+        session_destroy();
+
+        // Redirigir al usuario a la página de login
+        header('Location: index.php?c=login&a=loginView');
+        exit;  // Termina la ejecución del script
     }
 }    
     

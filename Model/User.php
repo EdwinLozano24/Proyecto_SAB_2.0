@@ -13,7 +13,7 @@ class User
     public function VerifyCredentials($NumDocumento, $Password)
     {
         $stmt = $this->pdo->prepare("SELECT * FROM tbl_pacientes WHERE paci_num_documento = ? AND paci_contraseña = ?");
-        $stmt->execute([$NumDocumento, $Password]);
+        $stmt->execute([$NumDocumento,$Password]);
         return $stmt->fetch() !== false;
     }
     public function create($nombre, $documento, $email, $password)
