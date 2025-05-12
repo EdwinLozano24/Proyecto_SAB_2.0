@@ -15,7 +15,7 @@
 
   <div class="container">
     <div class="image">
-      <img src="Assets/img/odontologia.jpg" alt="Odontología" />
+      <img src="../../Assets/img/odontologia.jpg" alt="Odontología" />
     </div>
 
     <div class="buttons">
