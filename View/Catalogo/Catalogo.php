@@ -48,7 +48,7 @@
                     <img src="../../Assets/img/tratamiento2.jpg" class="d-block w-100" alt="Tratamiento 2">
                 </div>
                 <div class="carousel-item">
-                    <img src="../../Assets/img/tratamiento3.jpg" class="d-block w-100" alt="Tratamiento 3">
+                    <img src="..Assets/img/tratamiento3.jpg" class="d-block w-100" alt="Tratamiento 3">
                 </div>
             </div>
             <!-- Controles del carrusel -->

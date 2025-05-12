@@ -3,7 +3,7 @@
 class CatalogoController{
 
     public function home(){
-        require_once "View/Catalogo/Catalogo.html";
+        require_once "View/Catalogo/Catalogo.php";
     }
 
 }
