@@ -21,6 +21,7 @@
 </div>
 <!--<a href="../controllers/AuthController.php?action=indexPaciente">Ver pacientes</a>
     //<h1>Hola mundo</h1>
+    pruebita
 -->
 </body>
 </html>
