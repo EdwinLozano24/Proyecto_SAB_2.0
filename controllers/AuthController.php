@@ -21,7 +21,7 @@ if (isset($_POST['registrar'])) {
         'paci_tipo_documento' => $_POST['paci_tipo_documento'],
     ];
     $usuario->createPaciente($data);
-    header('Location: ../views/usuario/login.php');
+    header('Location: ../views/usuario/loginPaciente.php');
     exit;
 }
 
