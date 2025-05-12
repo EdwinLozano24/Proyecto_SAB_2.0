@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Gestión PQR</title>
-    <link rel="stylesheet" href="Assets/css/pqrs.css">
+    <link rel="stylesheet" href="../../Assets/css/pqrs.css">
 </head>
 <body>
     <header>
-        <img src="Assets/img/logo.png" alt="Logo del Proyecto" class="logo">
+        <img src="../../Assets/img/logo.png" alt="Logo del Proyecto" class="logo">
     </header>
     <div class="container">
         <h1>Bienvenido al Módulo de PQR</h1>

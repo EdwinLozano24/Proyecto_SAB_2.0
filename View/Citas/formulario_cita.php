@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Assets/css/CitasHome.css">
+    <link rel="stylesheet" href="../../Assets/css/CitasHome.css">
     <title>Solicitud Cita</title>
 </head>
 
@@ -12,7 +12,7 @@
     <nav>
         <!-- Esta es la pagina del formulario para agendar la cita-->
 
-        <img id="nav--logo-imagen" src="Assets/img/logo.png" alt="Imagen del logo de SAB">
+        <img id="nav--logo-imagen" src="../../Assets/img/logo.png" alt="Imagen del logo de SAB">
         <h1>Salud Benefit</h1>
 
         <li class="items--nav">

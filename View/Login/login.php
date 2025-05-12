@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="assets/css/estilos.css">
+    <link rel="stylesheet" href="../../assets/css/estilos.css">
 </head>
 
 <body>
@@ -53,7 +53,7 @@
             </div>
         </div>
     </main>
-    <script src="Assets/js/script.js"></script>
+    <script src="../../Assets/js/script.js"></script>
 </body>
 
 </html>

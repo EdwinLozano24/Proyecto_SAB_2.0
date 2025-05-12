@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title>Inicio - Sistema Odontológico</title>
-  <link rel="stylesheet" href="Assets/css/home.css">
+  <link rel="stylesheet" href="../../Assets/css/home.css">
 </head>
 <body>
   <div class="header">
     <div class="logo">
-      <img src="Assets/img/logo.png" alt="Logo" />
+      <img src="../../Assets/img/logo.png" alt="Logo" />
     </div>
     <h1>Bienvenido al Sistema de Gestión Odontológica</h1>
   </div>

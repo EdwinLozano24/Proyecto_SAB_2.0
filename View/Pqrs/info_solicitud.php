@@ -7,7 +7,7 @@
 </head>
 <body>
     <header>
-        <img src="Assets/img/logo.png" alt="Logo del Proyecto" class="logo">
+        <img src="../../Assets/img/logo.png" alt="Logo del Proyecto" class="logo">
     </header>
     <div class="container">
         <h2>Motivo de la Solicitud</h2>
