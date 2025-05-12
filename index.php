@@ -30,3 +30,5 @@ if (file_exists($controllerFile)) {
 } else {
     die("El archivo del controlador '$controllerFile' no existe.");
 }
+
+// hola mi amor lindo
