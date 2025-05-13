@@ -2,7 +2,7 @@
 
 //definimos variables locales para la conexion 
 $host = 'localhost';
-$db = 'db_sab_final';
+$db = 'prueba_sab';
 $user = 'root';
 $pass = '';
 $charset = 'utf8mb4';

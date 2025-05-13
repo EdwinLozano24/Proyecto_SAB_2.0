@@ -8,8 +8,4 @@ if (isset($_GET['logout']))
 }
 
 //Vista por defecto del usuario (Login)
-<<<<<<< HEAD
-header('location: views/usuario/login.php');
-=======
 header('location: views/usuario/loginPaciente.php');
->>>>>>> d557cec7b510a167ad337177493a34bb5edbeda5
