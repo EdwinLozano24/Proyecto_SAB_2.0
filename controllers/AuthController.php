@@ -36,13 +36,12 @@ if (isset($_POST['login'])) {
     }
 }
 
-
 if ($_SERVER['REQUEST_METHOD'] == 'GET' && !isset($_GET['paci_num_documento'])) {
-    $usuarios = $usuario->indexPaciente();
-    include '../views/usuario/indexPaciente.php';
+    $usuarios = $usuario->indexPaciente(); 
+    include '../views/usuario/indexPaciente.php'; 
 
-    // Acción para ver los detalles de un usuario (read)
+// Acción para ver los detalles de un usuario (read)
 } elseif (isset($_GET['paci_num_documento'])) {
-    $usuarioDetalle = $usuario->readPaciente($_GET['paci_num_documento']);
-    include '../views/usuario/readPaciente.php';
+    $usuarioDetalle = $usuario->readPaciente($_GET['paci_num_documento']); 
+    include '../views/usuario/readPaciente.php'; 
 }
