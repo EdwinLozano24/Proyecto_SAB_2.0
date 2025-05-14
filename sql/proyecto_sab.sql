@@ -11,27 +11,30 @@ CREATE TABLE IF NOT EXISTS tbl_especialidades (
 CREATE TABLE IF NOT EXISTS tbl_usuarios (
 	id_usuario INT AUTO_INCREMENT PRIMARY KEY,
 	usua_documento INT(11) NOT NULL,
-    usua_tipo_documento ENUM ('CC (Cédula de ciudadanía)','TI (Tarjeta de identidad)','CE (Cédula de extrangería)','PED (Permiso especial de 		permanencia)','PAS (Pasaporte)','NIT (úmero de identificación triburaria)','Otro'),
+    usua_tipo_documento ENUM ('CC (Cédula de ciudadanía)','TI (Tarjeta de identidad)','CE (Cédula de extrangería)','PED (Permiso especial de permanencia)','PAS (Pasaporte)','NIT (úmero de identificación triburaria)','Otro'),
     usua_direccion VARCHAR(100) NOT NULL,
-    usua_num_contacto INT(11) NOT NULL,
-    usua_num_secundario INT(11) NOT NULL,
+    usua_num_contacto VARCHAR(15) NOT NULL,
+    usua_num_secundario VARCHAR(15) NOT NULL,
     usua_fecha_nacimiento DATE NOT NULL,
     usua_sexo ENUM ('Masculino','Femenino'),
     usua_rh ENUM('O+', 'O-', 'A+', 'A-', 'B+', 'B-', 'AB+', 'AB-'),
     usua_eps VARCHAR(100) NOT NULL,
-    usua_tipo INT NOT NULL
+    usua_tipo ENUM ('Paciente','Empleado','Especialista')
 );
 
 CREATE TABLE IF NOT EXISTS tbl_pacientes (
-	id_paciente INT AUTO_INCREMENT PRIMARY KEY
+	id_paciente INT AUTO_INCREMENT PRIMARY KEY,
+    id_usuario INT NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS tbl_empleados (
-	id_empleado INT AUTO_INCREMENT PRIMARY KEY
+	id_empleado INT AUTO_INCREMENT PRIMARY KEY,
+    id_usuario INT NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS tbl_especialistas (
 	id_especialista INT AUTO_INCREMENT PRIMARY KEY,
+    id_usuario INT NOT NULL,
     espe_especialidad INT NOT NULL
 );
 
@@ -52,20 +55,20 @@ CREATE TABLE IF NOT EXISTS tbl_consultorios(
     cons_numero VARCHAR(10) NOT NULL
 );
 
-ALTER TABLE tbl_usuarios
+ALTER TABLE tbl_pacientes
 ADD CONSTRAINT fk_usuario_paciente
-FOREIGN KEY (usua_tipo)
-REFERENCES tbl_pacientes(id_paciente);
+FOREIGN KEY (id_usuario)
+REFERENCES tbl_usuarios(id_usuario);
 
-ALTER TABLE tbl_usuarios
+ALTER TABLE tbl_empleados
 ADD CONSTRAINT fk_usuario_empleado
-FOREIGN KEY (usua_tipo)
-REFERENCES tbl_empleados(id_empleado);
+FOREIGN KEY (id_usuario)
+REFERENCES tbl_usuarios(id_usuario);
 
-ALTER TABLE tbl_usuarios
+ALTER TABLE tbl_especialistas
 ADD CONSTRAINT fk_usuario_especialista
-FOREIGN KEY (usua_tipo)
-REFERENCES tbl_especialistas(id_especialista);
+FOREIGN KEY (id_usuario)
+REFERENCES tbl_usuarios(id_usuario);
 
 ALTER TABLE tbl_especialistas
 ADD CONSTRAINT fk_especialista_especialidad
