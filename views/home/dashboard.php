@@ -15,7 +15,7 @@
 
   <div class="container">
     <div class="image">
-      <img src="../../Assets/img/dashboard/odontologia.jpg" alt="Odontología" />
+      <img src="../../Assets/img/dashboard/fondoDashboard.jpg" alt="Odontología" />
     </div>
 
     <div class="buttons">
