@@ -59,6 +59,46 @@ CREATE TABLE IF NOT EXISTS tbl_consultorios(
     cons_numero VARCHAR(10) NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS tbl_tratamientos (
+    id_tratamiento INT AUTO_INCREMENT PRIMARY KEY,
+    trat_nombre VARCHAR (100) NOT NULL,
+    trat_duracion VARCHAR (100) NOT NULL,
+    trat_descripcion VARCHAR (255) NOT NULL,
+    trat_estado ENUM ('Activo', 'Inactivo')
+);
+
+CREATE TABLE IF NOT EXISTS tbl_historialClinico (
+    id_historiaClinica INT AUTO_INCREMENT PRIMARY KEY,
+    hist_fecha DATE NOT NULL,
+    hist_antecedentes VARCHAR (255) NOT NULL,
+    hist_diagnostico VARCHAR (255) NOT NULL,
+);
+
+ALTER TABLE tbl_historialClinico
+ADD CONSTRAINT fk_historialClinico_paciente
+FOREIGN KEY (id_historiaClinica)
+REFERENCES tbl_pacientes(id_paciente);
+
+ALTER TABLE tbl_historialClinico
+ADD CONSTRAINT fk_historialClinico_especialista
+FOREIGN KEY (id_historiaClinica)
+REFERENCES tbl_especialistas(id_especialista);
+
+ALTER TABLE tbl_tratamientos
+ADD CONSTRAINT fk_tratamiento_historialClinico
+FOREIGN KEY (id_tratamiento)
+REFERENCES tbl_historialClinico(id_historiaClinica);
+
+ALTER TABLE tbl_tratamientos
+ADD CONSTRAINT fk_tratamiento_citas
+FOREIGN KEY (id_tratamiento)
+REFERENCES tbl_citas(id_cita);
+
+ALTER TABLE tbl_tratamientos
+ADD CONSTRAINT fk_tratamiento_pacientes
+FOREIGN KEY (id_tratamiento)
+REFERENCES tbl_pacientes(id_paciente);
+
 ALTER TABLE tbl_pacientes
 ADD CONSTRAINT fk_usuario_paciente
 FOREIGN KEY (id_usuario)
@@ -78,16 +118,6 @@ ALTER TABLE tbl_especialistas
 ADD CONSTRAINT fk_especialista_especialidad
 FOREIGN KEY (espe_especialidad)
 REFERENCES tbl_especialidades(id_especialidad);
-
-ALTER TABLE tbl_tratamientos
-ADD CONSTRAINT fk_tratamiento_citas
-FOREIGN KEY (id_tratamiento)
-REFERENCES tbl_citas(id_cita);
-
-ALTER TABLE tbl_tratamientos
-ADD CONSTRAINT fk_tratamiento_historialClinico
-FOREIGN KEY ()
-REFERENCES ();
 
 ALTER TABLE tbl_citas
 ADD CONSTRAINT fk_cita_usuario
