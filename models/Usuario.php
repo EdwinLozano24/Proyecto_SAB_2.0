@@ -10,16 +10,17 @@ class Usuario
         $this->pdo = $pdo;
     }
 
-    public function loginPaciente($paci_num_documento, $paci_password)
+    public function loginUsuario($usua_documento, $usua_password)
     {
-        $stmt = $this->pdo->prepare("SELECT * FROM tbl_pacientes WHERE paci_num_documento = :paci_num_documento");
-        $stmt->execute(['paci_num_documento' => $paci_num_documento]);
+        $stmt = $this->pdo->prepare("SELECT * FROM tbl_usuarios WHERE usua_documento = :usua_documento");
+        $stmt->execute(['usua_documento' => $usua_documento]);
         $user = $stmt->fetch();
-        if ($user && isset($user['paci_password']) && password_verify($paci_password, $user['paci_password'])) {
+        if ($user && password_verify($usua_password, $user['usua_password'])) {
             return $user;
         }
         return false;
     }
+    
 
     public function createUsuario($data)
     {

@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS tbl_usuarios (
     usua_sexo ENUM ('Masculino','Femenino'),
     usua_rh ENUM('O+', 'O-', 'A+', 'A-', 'B+', 'B-', 'AB+', 'AB-'),
     usua_eps VARCHAR(100) NOT NULL,
-    usua_password VARCHAR(50) NOT NULL,
+    usua_password VARCHAR(255) NOT NULL,
     usua_tipo ENUM ('Paciente','Empleado','Especialista') DEFAULT 'Paciente',
     usua_estado ENUM ('Activo','Inactivo') DEFAULT 'Activo'
 );

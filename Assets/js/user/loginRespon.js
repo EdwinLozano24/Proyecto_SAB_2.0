@@ -61,38 +61,7 @@ function register() {
     }
 }
 //////////////////////////////////////////////////////////////////////////////////////////
-document.getElementById("loginForm").addEventListener("submit", async function(e) {
-    e.preventDefault(); // Evita envío tradicional
-
-    const documento = document.getElementById("documento").value;
-    const password = document.getElementById("password").value;
-
-    const formData = new FormData();
-    formData.append("documento", documento);
-    formData.append("password", password);
-
-    try {
-        const response = await fetch("index.php?c=Login&a=LoginValidar", {
-            method: "POST",
-            body: formData
-        });
-
-        // Verifica si la respuesta fue exitosa
-        if (!response.ok) {
-            throw new Error('Error en la conexión al servidor');
-        }
-
-        const result = await response.json();
-
-        if (result.success) {
-            window.location.href = "index.php?c=Home&a=Home";
-        } else {
-            document.getElementById("error").innerText = result.message;
-        }
-    } catch (error) {
-        document.getElementById("error").innerText = "Hubo un error en la solicitud: " + error.message;
-    }
-});
+// d}}}
 ///////////////HISTORIAL
 document.addEventListener("DOMContentLoaded", () => {
     const tabs = document.querySelectorAll(".tab");

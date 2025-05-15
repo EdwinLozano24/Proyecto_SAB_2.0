@@ -26,8 +26,8 @@ if (isset($_POST['registrarUsuario'])) {
 }
 
 //Login paciente
-if (isset($_POST['login'])) {
-    $user = $usuario->loginPaciente($_POST['paci_num_documento'], $_POST['paci_password']);
+if (isset($_POST['loginUsuario'])) {
+    $user = $usuario->loginUsuario($_POST['usua_documento'], $_POST['usua_password']);
     if ($user) {
         $_SESSION['usuario'] = $user;
         header('Location: ../views/dashboard.php');

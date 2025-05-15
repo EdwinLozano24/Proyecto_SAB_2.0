@@ -29,12 +29,12 @@
             <!--Formulario de Login y registro-->
             <div class="contenedor__login-register">
                 <!--Login-->
-                <form id="loginForm" action="../../controllers/authController" method="POST" class="formulario__login">
+                <form id="loginForm" action="../../controllers/authController.php" method="POST" class="formulario__login">
                     <h2>Iniciar Sesión</h2>
                     <input type="text" id="documento" name="usua_documento" placeholder="Número De Documento" required>
                     <input type="password" id="password" name="usua_password" placeholder="Contraseña" required>
                     <div id="error" style="color: blue;"></div>
-                    <button type="submit">Entrar</button>
+                    <button type="submit" name="loginUsuario">Entrar</button>
                 </form>
 
                 <!--Register-->
