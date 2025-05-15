@@ -29,16 +29,16 @@
             <!--Formulario de Login y registro-->
             <div class="contenedor__login-register">
                 <!--Login-->
-                <form id="loginForm" action="/login" method="POST" class="formulario__login">
+                <form id="loginForm" action="../../controllers/authController" method="POST" class="formulario__login">
                     <h2>Iniciar Sesión</h2>
-                    <input type="text" id="documento" name="documento" placeholder="Número De Documento" required>
-                    <input type="password" id="password" name="password" placeholder="Contraseña" required>
+                    <input type="text" id="documento" name="usua_documento" placeholder="Número De Documento" required>
+                    <input type="password" id="password" name="usua_password" placeholder="Contraseña" required>
                     <div id="error" style="color: blue;"></div>
                     <button type="submit">Entrar</button>
                 </form>
 
                 <!--Register-->
-                <form id="registerForm" action="../../controllers/authController" method="POST" class="formulario__register">
+                <form id="registerForm" action="../../controllers/authController.php" method="POST" class="formulario__register">
                     <h2>Registrarse</h2>
 
                     <!-- Contenedor con scroll -->
@@ -78,7 +78,7 @@
                         </select>
 
                         <input type="text" placeholder="EPS" name="usua_eps" id="eps">
-                        <input type="password" placeholder="Contraseña" name="paci_password" id="contrasena" required>
+                        <input type="password" placeholder="Contraseña" name="usua_password" id="contrasena" required>
                     </div>
 
                     <button type="submit" name="registrarUsuario">Registrarse</button>

@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Eliminar PQR</title>
-    <link rel="stylesheet" href="Assets/css/pqr/pqrs.css">
+    <link rel="stylesheet" href="../../Assets/css/pqr/pqrs.css">
 </head>
 <body>
     <header>
-        <img src="Assets/img/logo.png" alt="Logo del Proyecto" class="logo">
+        <img src="../../Assets/img/logoSab/logo.jpg" alt="Logo del Proyecto" class="logo">
     </header>
     <div class="container">
         <h2>Eliminar PQR</h2>

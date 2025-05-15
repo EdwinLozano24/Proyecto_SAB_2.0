@@ -4,24 +4,24 @@ require_once '../config/database.php';
 
 $usuario = new Usuario($pdo);
 
-//Registro paciente
+//Registro usuario
 if (isset($_POST['registrarUsuario'])) {
     $data = [
-        'usua_documento' => $_POST['paci_num_documento'],
-        'usua_nombre' => $_POST['paci_nombre'],
-        'usua_correo_electronico' => $_POST['paci_correo_electronico'],
-        'usua_password' => $_POST['paci_password'],
-        'usua_direccion' => $_POST['paci_direccion'],
-        'usua_fecha_nacimiento' => $_POST['paci_fecha_nacimiento'],
-        'usua_num_contacto' => $_POST['paci_num_contacto'],
-        'usua_num_secundario' => $_POST['paci_num_acudiente'],
-        'usua_eps' => $_POST['paci_eps'],
-        'usua_sexo' => $_POST['paci_sexo'],
-        'usua_rh' => $_POST['paci_rh'],
-        'usua_tipo_documento' => $_POST['paci_tipo_documento'],
+        'usua_documento' => $_POST['usua_documento'],
+        'usua_nombre' => $_POST['usua_nombre'],
+        'usua_correo_electronico' => $_POST['usua_correo_electronico'],
+        'usua_password' => $_POST['usua_password'],
+        'usua_direccion' => $_POST['usua_direccion'],
+        'usua_fecha_nacimiento' => $_POST['usua_fecha_nacimiento'],
+        'usua_num_contacto' => $_POST['usua_num_contacto'],
+        'usua_num_secundario' => $_POST['usua_num_secundario'],
+        'usua_eps' => $_POST['usua_eps'],
+        'usua_sexo' => $_POST['usua_sexo'],
+        'usua_rh' => $_POST['usua_rh'],
+        'usua_tipo_documento' => $_POST['usua_tipo_documento'],
     ];
-    $usuario->createPaciente($data);
-    header('Location: ../views/usuario/loginPaciente.php');
+    $usuario->createUsuario($data);
+    header('Location: ../views/user/loginRegister.php');
     exit;
 }
 

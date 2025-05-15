@@ -21,8 +21,9 @@ CREATE TABLE IF NOT EXISTS tbl_usuarios (
     usua_sexo ENUM ('Masculino','Femenino'),
     usua_rh ENUM('O+', 'O-', 'A+', 'A-', 'B+', 'B-', 'AB+', 'AB-'),
     usua_eps VARCHAR(100) NOT NULL,
-    usua_tipo ENUM ('Paciente','Empleado','Especialista'),
-    usua_estado ENUM ('Activo','Inactivo')
+    usua_password VARCHAR(50) NOT NULL,
+    usua_tipo ENUM ('Paciente','Empleado','Especialista') DEFAULT 'Paciente',
+    usua_estado ENUM ('Activo','Inactivo') DEFAULT 'Activo'
 );
 
 CREATE TABLE IF NOT EXISTS tbl_pacientes (
@@ -39,22 +40,6 @@ CREATE TABLE IF NOT EXISTS tbl_especialistas (
 	id_especialista INT AUTO_INCREMENT PRIMARY KEY,
     id_usuario INT NOT NULL,
     espe_especialidad INT NOT NULL
-);
-
-CREATE TABLE IF NOT EXISTS tbl_tratamientos (
-	id_tratamiento INT AUTO_INCREMENT PRIMARY KEY,
-    trat_nombre VARCHAR (60) NOT NULL,
-    trat_duracion VARCHAR (100) NOT NULL,
-    trat_descripcion VARCHAR (255) NOT NULL,
-    trat_estado ENUM ('Activo', 'Inactivo'),
-);
-
-CREATE TABLE IF NOT EXISTS tbl_historialClinico (
-	id_historialClinico INT AUTO_INCREMENT PRIMARY KEY,
-    hist_fecha DATE NOT NULL,
-    hist_notas_clinicas VARCHAR (255) NOT NULL,
-    hist_radiografias VARCHAR (255) NOT NULL,
-    hist_diagnostico VARCHAR (255) NOT NULL,
 );
 
 CREATE TABLE IF NOT EXISTS tbl_citas (
