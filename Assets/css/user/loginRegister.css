@@ -126,6 +126,34 @@ main{
     color: #fff;
     outline: none;
 }
+#doc_tipo{
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    border: none;
+    background: #f2f2f2;
+    font-size: 16px;
+    outline: none;
+}
+#sexo {
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    border: none;
+    background: #f2f2f2;
+    font-size: 16px;
+    outline: none;
+}
+
+#rh {
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    border: none;
+    background: #f2f2f2;
+    font-size: 16px;
+    outline: none;
+}
 
 .formulario__login{
     opacity: 1;
@@ -148,7 +176,7 @@ main{
 }
 
 .formulario__register .form-scroll-inner::-webkit-scrollbar-thumb {
-    background-color: #888; /* Color de la barra de scroll */
+    background-color: #329FAB; /* Color de la barra de scroll */
     border-radius: 4px;
 }
 

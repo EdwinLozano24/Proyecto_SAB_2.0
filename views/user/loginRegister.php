@@ -52,7 +52,7 @@
                             <option value="3">Pasaporte</option>
                         </select>
 
-                        <input type="number" placeholder="Número de Documento" name="usua_documento" id="num_documento" required>
+                        <input type="int" placeholder="Número de Documento" name="usua_documento" id="num_documento" required>
                         <input type="email" placeholder="Correo Electrónico" name="usua_correo_electronico" id="correo" required>
                         <input type="tel" placeholder="Número de Contacto" name="usua_num_contacto" id="contacto">
                         <input type="tel" placeholder="Número Secundario / Acudiente" name="usua_num_secundario" id="acudiente">
@@ -60,13 +60,13 @@
                         <input type="date" placeholder="Fecha de Nacimiento" name="usua_fecha_nacimiento" id="nacimiento">
 
                         <select name="usua_sexo" id="sexo" required>
-                            <option value="">Sexo</option>
+                            <option value=""disabled selected>Sexo</option>
                             <option value="1">Masculino</option>
                             <option value="2">Femenino</option>
                         </select>
 
                         <select name="usua_rh" id="rh" required>
-                            <option value="">Tipo de Sangre (RH)</option>
+                            <option value=""disabled selected>Tipo de Sangre (RH)</option>
                             <option value="1">A+</option>
                             <option value="2">A-</option>
                             <option value="3">B+</option>
