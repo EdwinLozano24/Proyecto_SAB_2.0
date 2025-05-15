@@ -52,7 +52,7 @@
                             <option value="3">Pasaporte</option>
                         </select>
 
-                        <input type="number" placeholder="Número de Documento" name="usua_documento" id="num_documento" required>
+                        <input type="int" placeholder="Número de Documento" name="usua_documento" id="num_documento" required>
                         <input type="email" placeholder="Correo Electrónico" name="usua_correo_electronico" id="correo" required>
                         <input type="tel" placeholder="Número de Contacto" name="usua_num_contacto" id="contacto">
                         <input type="tel" placeholder="Número Secundario / Acudiente" name="usua_num_secundario" id="acudiente">
