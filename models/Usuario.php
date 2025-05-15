@@ -21,12 +21,12 @@ class Usuario
         return false;
     }
 
-    public function createPaciente($data)
+    public function createUsuario($data)
     {
-        $sql = "INSERT INTO tbl_pacientes (paci_num_documento, paci_nombre, paci_correo_electronico, paci_password, paci_num_contacto, paci_direccion, paci_fecha_nacimiento, paci_num_acudiente, paci_eps, paci_sexo, paci_rh, paci_tipo_documento)
-                VALUES (:paci_num_documento, :paci_nombre, :paci_correo_electronico, :paci_password, :paci_num_contacto, :paci_direccion, :paci_fecha_nacimiento, :paci_num_acudiente, :paci_eps, :paci_sexo, :paci_rh, :paci_tipo_documento)";
+        $sql = "INSERT INTO tbl_usuarios (usua_nombre, usua_documento, usua_tipo_documento, usua_correo_electronico, usua_direccion, usua_num_contacto, usua_num_secundario, usua_fecha_nacimiento, usua_sexo, usua_rh, usua_eps, usua_password)
+                VALUES (:usua_nombre, :usua_documento, :usua_tipo_documento, :usua_correo_electronico, :usua_direccion, :usua_num_contacto, :usua_num_secundario, :usua_fecha_nacimiento, :usua_sexo, :usua_rh, :usua_eps, :usua_password)";
         $stmt = $this->pdo->prepare($sql);
-        $data['paci_password'] = password_hash($data['paci_password'], PASSWORD_DEFAULT);
+        $data['usua_password'] = password_hash($data['usua_password'], PASSWORD_DEFAULT);
         return $stmt->execute($data);
     }
 
