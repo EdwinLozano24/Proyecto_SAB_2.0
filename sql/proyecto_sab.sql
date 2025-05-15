@@ -10,8 +10,10 @@ CREATE TABLE IF NOT EXISTS tbl_especialidades (
 
 CREATE TABLE IF NOT EXISTS tbl_usuarios (
 	id_usuario INT AUTO_INCREMENT PRIMARY KEY,
+    usua_nombre VARCHAR(100) NOT NULL,
 	usua_documento INT(11) NOT NULL,
     usua_tipo_documento ENUM ('CC (Cédula de ciudadanía)','TI (Tarjeta de identidad)','CE (Cédula de extrangería)','PED (Permiso especial de permanencia)','PAS (Pasaporte)','NIT (úmero de identificación triburaria)','Otro'),
+    usua_correo_electronico VARCHAR(255) NOT NULL,
     usua_direccion VARCHAR(100) NOT NULL,
     usua_num_contacto VARCHAR(15) NOT NULL,
     usua_num_secundario VARCHAR(15) NOT NULL,
@@ -19,7 +21,8 @@ CREATE TABLE IF NOT EXISTS tbl_usuarios (
     usua_sexo ENUM ('Masculino','Femenino'),
     usua_rh ENUM('O+', 'O-', 'A+', 'A-', 'B+', 'B-', 'AB+', 'AB-'),
     usua_eps VARCHAR(100) NOT NULL,
-    usua_tipo ENUM ('Paciente','Empleado','Especialista')
+    usua_tipo ENUM ('Paciente','Empleado','Especialista'),
+    usua_estado ENUM ('Activo','Inactivo')
 );
 
 CREATE TABLE IF NOT EXISTS tbl_pacientes (
