@@ -3,18 +3,65 @@
 body {
   background-color: #329fab;
   margin: 0;
-  font-family: "Open Sans";
+  font-family: sans-serif;
 }
 
-.encabezado {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #90e0f2;
-  color: #001858;
-  padding: 10px 20px;
+
+
+/* Encabezado */
+header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 25px 30px;
+    background-color: #90E0F2;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2); /* Sombras */
 }
 
+#logo {
+    display: flex;
+    align-items: center;
+}
+
+#logo img {
+    height: 60px; 
+    margin-right: 10px;
+}
+
+#logo p {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000000;
+}
+
+/* Menú de navegación */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px; /* Espaciado entre elementos */
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: black !important;
+    padding: 8px 16px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+   background-color: #329FAB;
+  color: white !important;
+  transform: scale(1.10);
+}
+
+main {
+  
+  height: 100vh;
+}
 .logo img {
   height: 60px;
   border-radius: 20px;
@@ -135,40 +182,30 @@ h1 {
   border-bottom: 2px solid #0077aa;
 }
 
-.footer {
-  background-color: #90e0f2;
-  padding: 20px 0;
-  border-top: 2px solid #0077aa;
-}
 
-.footer-contenedor {
+/* Pie de página */
+footer {
+
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  margin: auto;
-  padding: 0 20px;
-  flex-wrap: wrap; /* En caso de pantallas pequeñas */
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+  padding: 15px;
+  background-color: #90E0F2;
+  color: #333333;
+  font-size: 20px;
+    font-family: bold;
+  box-shadow: 0px -3px 6px rgba(0, 0, 0, 0.1);
+
 }
 
-.footer-left p {
-  margin: 0;
-  font-size: 14px;
-  color: #000000;
+footer .social-link img {
+  
+  height: 15px;
+  margin: 10px;
+
 }
 
-.footer-center a {
-  margin: 0 10px;
-  text-decoration: none;
-  color: #000000;
-  font-size: 14px;
-}
-
-.footer-center a:hover {
-  text-decoration: underline;
-}
-
-.footer-right a img {
-  height: 20px;
-  margin: 0 5px;
+footer .social-link img:hover {
+  transform: scale(1.3);
 }
