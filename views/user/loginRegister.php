@@ -60,13 +60,13 @@
                         <input type="date" placeholder="Fecha de Nacimiento" name="usua_fecha_nacimiento" id="nacimiento">
 
                         <select name="usua_sexo" id="sexo" required>
-                            <option value="">Sexo</option>
+                            <option value=""disabled selected>Sexo</option>
                             <option value="1">Masculino</option>
                             <option value="2">Femenino</option>
                         </select>
 
                         <select name="usua_rh" id="rh" required>
-                            <option value="">Tipo de Sangre (RH)</option>
+                            <option value=""disabled selected>Tipo de Sangre (RH)</option>
                             <option value="1">A+</option>
                             <option value="2">A-</option>
                             <option value="3">B+</option>
