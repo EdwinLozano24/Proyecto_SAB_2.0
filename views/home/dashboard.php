@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <title>Inicio - Sistema Odontológico</title>
-  <link rel="stylesheet" href="../Assets/css/homePaciente.css">
+  <link rel="stylesheet" href="../../Assets/css/dashboard/homePaciente.css">
 </head>
 <body>
   <div class="header">
     <div class="logo">
-      <img src="../Assets/img/logo.png" alt="Logo" />
+      <img src="../../Assets/img/logoSab/logo.jpg" alt="Logo" />
     </div>
     <h1>Bienvenido al Sistema de Gestión Odontológica</h1>
   </div>
 
   <div class="container">
     <div class="image">
-      <img src="Assets/img/odontologia.jpg" alt="Odontología" />
+      <img src="../../Assets/img/dashboard/fondoDashboard.jpg" alt="Odontología" />
     </div>
 
     <div class="buttons">
