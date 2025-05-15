@@ -8,4 +8,4 @@ if (isset($_GET['logout']))
 }
 
 //Vista por defecto del usuario (Login)
-header('location: ./views/user/loginRegister.php');
+header('location: views/user/loginRegister.php');
