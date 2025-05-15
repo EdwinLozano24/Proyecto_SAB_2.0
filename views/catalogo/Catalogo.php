@@ -7,7 +7,9 @@
     <title>Tratamientos Sab</title>
     <link rel="stylesheet" href="../../Assets/css/catalogo/Catalogo.css">
     <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    
 </head>
 
 <body>
@@ -15,7 +17,7 @@
     <header>
         <div id="logo" class="d-flex align-items-center">
             <img src="../../Assets/img/logoSab/logo.jpg" alt="Logo" class="me-2">
-            <p>Salud Benefit</p>
+            
         </div>
 
         <!-- Menú de navegación -->
@@ -112,6 +114,15 @@
     <!-- Pie de página -->
     <footer class="text-center py-3">
         <p>&copy; <?=date('Y')?> Salud Benefit. Todos los derechos reservados.</p>
+          <a href="#" class="social-link">
+                    <img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="Facebook" class="imagenes--footer">
+                </a>
+                <a href="#" class="social-link">
+                    <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter" class="imagenes--footer">
+                </a>
+                <a href="#" class="social-link">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" class="imagenes--footer">
+                </a>
     </footer>
 
     <!-- Scripts -->

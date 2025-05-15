@@ -51,9 +51,9 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    background-color: #f3faff; /* Fondo azul oscuro */
-    color: #000000; /* Texto blanco */
-    border-radius: 8px;
+   background-color: #329FAB;
+  color: white !important;
+  transform: scale(1.10);
 }
 
 /* Información del Tratamiento */
@@ -127,11 +127,27 @@ aside .filtro {
 
 /* Pie de página */
 footer {
-    width: 100%;
-    text-align: center;
-    padding: 20px;
-    background-color: #90E0F2;
-    color: #333333;
-    font-size: 14px;
-    box-shadow: 0px -3px 6px rgba(0, 0, 0, 0.1);
+
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+  padding: 15px;
+  background-color: #90E0F2;
+  color: #333333;
+  font-size: 20px;
+    font-family: bold;
+  box-shadow: 0px -3px 6px rgba(0, 0, 0, 0.1);
+
+}
+
+footer .social-link img {
+  
+  height: 15px;
+  margin: 10px;
+
+}
+
+footer .social-link img:hover {
+  transform: scale(1.3);
 }

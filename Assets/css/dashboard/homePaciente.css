@@ -2,30 +2,71 @@ body {
   margin: 0;
   padding: 0;
   background-color: #329FAB;
-  font-family: Arial, sans-serif;
+    font-family: sans-serif;
   color: #333;
 }
 
-.header {
-  background-color: #ffffff;
-  padding: 20px;
+/* Header Oficial SAB*/
+
+header {
+  width: 100%;
   display: flex;
   align-items: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  justify-content: space-between;
+  padding: 25px 30px;
+  background-color: #90E0F2;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+  /* Sombras */
 }
 
-.logo img {
-  width: 80px;
-  height: auto;
-  margin-right: 20px;
+#logo {
+  display: flex;
+  align-items: center;
 }
 
-.header h1 {
-  font-size: 24px;
-  color: #329FAB;
+#logo img {
+  height: 60px;
+  margin-right: 10px;
 }
+
+#logo p {
+  font-size: 18px;
+  font-weight: bold;
+  color: #000000;
+}
+
+
+/* Menú de navegación */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  /* Espaciado entre elementos */
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: black !important;
+    padding: 8px 16px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+   background-color: #329FAB;
+  color: white !important;
+  transform: scale(1.10);
+}
+
+
+/* Contenedor */
 
 .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: white;
   max-width: 1000px;
   margin: 40px auto;
@@ -33,13 +74,20 @@ body {
   border-radius: 15px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   text-align: center;
+  height: 100vh;
 }
 
 .image img {
-  width: 300px;
+
+  width: 150px;
   border-radius: 10px;
   margin-bottom: 30px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.image img:hover {
+  transform: scale(1.04);
+  transition: transform 0.3s ease;
 }
 
 .buttons {
@@ -54,16 +102,15 @@ body {
   color: #000;
   padding: 15px 25px;
   text-decoration: none;
-  border-radius: 10px;
   font-weight: bold;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 2px 4px 8px rgba(0,0,0,0.2);
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .btn:hover {
   background-color: #329FAB;
   color: white;
-  transform: translateY(-3px);
+  transform: scale(1.10);
 }
 
 .logout {
@@ -72,5 +119,34 @@ body {
 }
 
 .logout:hover {
-  background-color: #d32f2f;
+  background-color: #9e9292;
+}
+
+
+/* Footer */
+
+footer {
+
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+  padding: 15px;
+  background-color: #90E0F2;
+  color: #333333;
+  font-size: 20px;
+  font-family: bold;
+  box-shadow: 0px -3px 6px rgba(0, 0, 0, 0.1);
+
+}
+
+footer .social-link img {
+
+  height: 15px;
+  margin: 10px;
+
+}
+
+footer .social-link img:hover {
+  transform: scale(1.3);
 }
