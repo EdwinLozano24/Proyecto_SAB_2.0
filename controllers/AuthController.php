@@ -30,7 +30,7 @@ if (isset($_POST['loginUsuario'])) {
     $user = $usuario->loginUsuario($_POST['usua_documento'], $_POST['usua_password']);
     if ($user) {
         $_SESSION['usuario'] = $user;
-        header('Location: ../views/dashboard.php');
+        header('Location: ../views/home/dashboard.php');
     } else {
         echo "Credenciales incorrectas.";
     }
