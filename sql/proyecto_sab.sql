@@ -79,6 +79,16 @@ ADD CONSTRAINT fk_especialista_especialidad
 FOREIGN KEY (espe_especialidad)
 REFERENCES tbl_especialidades(id_especialidad);
 
+ALTER TABLE tbl_tratamientos
+ADD CONSTRAINT fk_tratamiento_citas
+FOREIGN KEY (id_tratamiento)
+REFERENCES tbl_citas(id_cita);
+
+ALTER TABLE tbl_tratamientos
+ADD CONSTRAINT fk_tratamiento_historialClinico
+FOREIGN KEY ()
+REFERENCES ();
+
 ALTER TABLE tbl_citas
 ADD CONSTRAINT fk_cita_usuario
 FOREIGN KEY (cita_usuario)
