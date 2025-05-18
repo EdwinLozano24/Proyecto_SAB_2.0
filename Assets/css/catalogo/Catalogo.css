@@ -1,0 +1,153 @@
+/* Configuración general */
+body {
+    background: rgb(255, 255, 255); /* Fondo blanco */
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+/* Encabezado */
+header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 25px 30px;
+    background-color: #90E0F2;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2); /* Sombras */
+}
+
+#logo {
+    display: flex;
+    align-items: center;
+}
+
+#logo img {
+    height: 60px; 
+    margin-right: 10px;
+}
+
+#logo p {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000000;
+}
+
+/* Menú de navegación */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px; /* Espaciado entre elementos */
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: black !important;
+    padding: 8px 16px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+   background-color: #329FAB;
+  color: white !important;
+  transform: scale(1.10);
+}
+
+/* Información del Tratamiento */
+#informacionTratamiento {
+    text-align: center;
+    padding: 20px;
+    background-color: #ffffff; /* Fondo claro */
+    color: #333333;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+/* Carrusel */
+#carouselExample {
+    width: 100%;
+    max-height: 350px;
+    overflow: hidden;
+    margin: 20px auto;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+/* Filtros */
+aside .filtro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    width: 250px;
+    padding: 15px;
+    border-radius: 12px;
+}
+
+/* Tratamientos */
+.tratamientos {
+    display: justify;
+    margin: 20px auto;
+}
+
+.tratamiento-item {
+    background-color: #ffffff;
+    width: 100%; /* Ajuste automático de columnas */
+    padding: 15px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+}
+
+.tratamiento-item:hover {
+    transform: scale(1.05); /* Efecto de zoom */
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.tratamiento-item h3 {
+    font-size: 20px;
+    color: #29a6c9; /* Azul oscuro */
+}
+
+.tratamiento-item p {
+    font-size: 14px;
+    color: #333333;
+}
+
+/* Pie de página */
+footer {
+
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+  padding: 15px;
+  background-color: #90E0F2;
+  color: #333333;
+  font-size: 20px;
+    font-family: bold;
+  box-shadow: 0px -3px 6px rgba(0, 0, 0, 0.1);
+
+}
+
+footer .social-link img {
+  
+  height: 15px;
+  margin: 10px;
+
+}
+
+footer .social-link img:hover {
+  transform: scale(1.3);
+}
