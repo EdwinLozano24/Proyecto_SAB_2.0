@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 function confirmarLogin() {
     return isset($_SESSION['usuario']);
 }
@@ -11,6 +10,7 @@ function obtenerTipo() {
 
 function requiereTipo($role) {
     if (!confirmarLogin() || obtenerTipo() !== $role) {
+
         header('Location: .././error/acceso_denegado.php');
         exit;
     }

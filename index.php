@@ -1,6 +1,5 @@
 <?php
 //Inicia una 'session' respuesta a URL logout
-session_start();
 if (isset($_GET['logout']))
 {
     session_destroy();
