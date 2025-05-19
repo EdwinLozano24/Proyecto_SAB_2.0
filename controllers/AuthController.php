@@ -30,7 +30,20 @@ if (isset($_POST['loginUsuario'])) {
     $user = $usuario->loginUsuario($_POST['usua_documento'], $_POST['usua_password']);
     if ($user) {
         $_SESSION['usuario'] = $user;
-        header('Location: ../views/home/dashboard.php');
+        switch ($user['usua_tipo']) {
+            case 'Paciente':
+                header('Location: ../views/home/dashboard.php');
+                break;
+            case 'Empleados':
+                header('Location: ../views/user/dashboard.php');
+                break;
+            case 'Especialista':
+                header('Location: ../views/home/dashboard.php');
+                break;
+            case 'Administrador':
+                header('Location: ../views/home/dashboard.php');
+                break;
+            }
     } else {
         echo "Credenciales incorrectas.";
     }

@@ -1,3 +1,9 @@
+<?php
+//Plantilla para restriccion por rol
+// require_once '../../config/auth.php';
+// requiereTipo('Administrador');
+// requireAnyRole(['Especialista', 'Empleados']);
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
