@@ -45,5 +45,22 @@ class Usuario
         $stmt->execute(['paci_num_documento' => $paci_num_documento]);
         return $stmt->fetch();
     }
+    public function obtenerTodos() {
+        $stmt = $this->pdo->query("SELECT * FROM tbl_usuarios ORDER BY id_usuario DESC");
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function crear($usua_nombre, $usua_tipo_documento, $usua_documento, $usua_correo_electronico, $usua_num_contacto, $usua_num_secundario, $usua_direccion, $usua_fecha_nacimiento, $usua_sexo, $usua_rh, $usua_eps, $usua_tipo, $usua_password) {
+        $stmt = $this->pdo->prepare("INSERT INTO tbl_usuarios (usua_nombre, usua_tipo_documento, usua_documento, usua_correo_electronico, usua_num_contacto, usua_num_secundario, usua_direccion, usua_fecha_nacimiento, usua_sexo, usua_rh, usua_eps, usua_tipo, usua_password)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        return $stmt->execute([$usua_nombre, $usua_tipo_documento, $usua_documento, $usua_correo_electronico, $usua_num_contacto, $usua_num_secundario, $usua_direccion, $usua_fecha_nacimiento, $usua_sexo, $usua_rh, $usua_eps, $usua_tipo, $usua_password]);
+    }
+     public function actualizar($id, $nombre, $descripcion, $precio, $cantidad) {
+        $stmt = $this->pdo->prepare("UPDATE productos SET nombre = ?, descripcion = ?, precio = ?, cantidad = ? WHERE id = ?");
+        return $stmt->execute([$nombre, $descripcion, $precio, $cantidad, $id]);
+    }
 
+    public function eliminar($id_usuario) {
+        $stmt = $this->pdo->prepare("UPDATE tbl_usuarios SET usua_estado =? WHERE id_usuario = ?");
+        return $stmt->execute([$id_usuario]);
+    }
 }
