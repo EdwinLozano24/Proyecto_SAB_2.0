@@ -30,7 +30,7 @@ class Usuario
         $data['usua_password'] = password_hash($data['usua_password'], PASSWORD_DEFAULT);
         return $stmt->execute($data);
     }
-
+    
 
     public function indexPaciente()
     {
@@ -54,7 +54,6 @@ class Usuario
         $stmt->execute([$id_usuario]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
-
     public function crear($usua_nombre, $usua_tipo_documento, $usua_documento, $usua_correo_electronico, $usua_num_contacto, $usua_num_secundario, $usua_direccion, $usua_fecha_nacimiento, $usua_sexo, $usua_rh, $usua_eps, $usua_tipo, $usua_password) {
         $stmt = $this->pdo->prepare("INSERT INTO tbl_usuarios (usua_nombre, usua_tipo_documento, usua_documento, usua_correo_electronico, usua_num_contacto, usua_num_secundario, usua_direccion, usua_fecha_nacimiento, usua_sexo, usua_rh, usua_eps, usua_tipo, usua_password)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
