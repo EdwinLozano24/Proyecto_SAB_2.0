@@ -21,7 +21,7 @@ if (isset($_POST['registrarUsuario'])) {
         'usua_tipo_documento' => $_POST['usua_tipo_documento'],
     ];
     $usuario->createUsuario($data);
-    header('Location: ../views/user/loginRegister.php');
+    header('Location: ../views/usuario/loginRegister.php?exito=1');
     exit;
 }
 

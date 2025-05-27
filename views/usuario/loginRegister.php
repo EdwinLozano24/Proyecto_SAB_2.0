@@ -7,12 +7,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-     <!-- Bootstrap -->
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../../assets/css/user/loginRegister.css">
 </head>
 <body>
-
+    <?php if (isset($_GET['exito']) && $_GET['exito'] == 1): ?>
+    <div class="alert alert-primary alert-dismissible fade show m-3" role="alert">
+        ¡Registro exitoso! Ahora puedes iniciar sesión.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+    </div>
+<?php endif; ?>
     <main>
         <div class="contenedor__todo">
             <div class="caja__trasera">
@@ -88,6 +93,7 @@
             </div>
         </div>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../../assets/js/user/loginRespon.js"></script>
 </body>
 

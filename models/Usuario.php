@@ -46,21 +46,27 @@ class Usuario
         return $stmt->fetch();
     }
     public function obtenerTodos() {
-        $stmt = $this->pdo->query("SELECT * FROM tbl_usuarios ORDER BY id_usuario DESC");
+        $stmt = $this->pdo->query("SELECT * FROM tbl_usuarios ORDER BY usua_estado DESC");
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    public function obtenerPorId($id_usuario) {
+        $stmt = $this->pdo->prepare("SELECT * FROM tbl_usuarios WHERE id_usuario = ?");
+        $stmt->execute([$id_usuario]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
     public function crear($usua_nombre, $usua_tipo_documento, $usua_documento, $usua_correo_electronico, $usua_num_contacto, $usua_num_secundario, $usua_direccion, $usua_fecha_nacimiento, $usua_sexo, $usua_rh, $usua_eps, $usua_tipo, $usua_password) {
         $stmt = $this->pdo->prepare("INSERT INTO tbl_usuarios (usua_nombre, usua_tipo_documento, usua_documento, usua_correo_electronico, usua_num_contacto, usua_num_secundario, usua_direccion, usua_fecha_nacimiento, usua_sexo, usua_rh, usua_eps, usua_tipo, usua_password)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         return $stmt->execute([$usua_nombre, $usua_tipo_documento, $usua_documento, $usua_correo_electronico, $usua_num_contacto, $usua_num_secundario, $usua_direccion, $usua_fecha_nacimiento, $usua_sexo, $usua_rh, $usua_eps, $usua_tipo, $usua_password]);
     }
-     public function actualizar($id, $nombre, $descripcion, $precio, $cantidad) {
-        $stmt = $this->pdo->prepare("UPDATE productos SET nombre = ?, descripcion = ?, precio = ?, cantidad = ? WHERE id = ?");
-        return $stmt->execute([$nombre, $descripcion, $precio, $cantidad, $id]);
+    public function actualizar($usua_nombre, $usua_tipo_documento, $usua_documento, $usua_correo_electronico, $usua_num_contacto, $usua_num_secundario, $usua_direccion, $usua_fecha_nacimiento, $usua_sexo, $usua_rh, $usua_eps, $usua_tipo, $usua_password, $usua_estado, $id_usuario) {
+        $stmt = $this->pdo->prepare("UPDATE tbl_usuarios SET usua_nombre = ?, usua_tipo_documento = ?, usua_documento = ?, usua_correo_electronico = ?, usua_num_contacto = ?, usua_num_secundario = ?, usua_direccion = ?, usua_fecha_nacimiento = ?, usua_sexo = ?, usua_rh = ?, usua_eps = ?, usua_tipo = ?, usua_password = ?, usua_estado = ? WHERE id_usuario = ?");
+        return $stmt->execute([$usua_nombre, $usua_tipo_documento, $usua_documento, $usua_correo_electronico, $usua_num_contacto, $usua_num_secundario, $usua_direccion, $usua_fecha_nacimiento, $usua_sexo, $usua_rh, $usua_eps, $usua_tipo, $usua_password, $usua_estado, $id_usuario]);
     }
 
     public function eliminar($id_usuario) {
-        $stmt = $this->pdo->prepare("UPDATE tbl_usuarios SET usua_estado =? WHERE id_usuario = ?");
+        $stmt = $this->pdo->prepare("UPDATE tbl_usuarios SET usua_estado = 'Inactivo' WHERE id_usuario = ?");
         return $stmt->execute([$id_usuario]);
     }
 }
