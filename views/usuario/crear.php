@@ -6,7 +6,7 @@
     <title>Crear Usuario</title>
 </head>
 <body>
-    <form id="crearForm" method="POST" action="../../controllers/UsuarioController.php?accion=guardar" class="formulario__crear">
+    <form id="crearForm" method="POST" action="../controllers/UsuarioController.php?accion=guardar" class="formulario__crear">
         <h2>Crear usuario</h2>
         <div class="form-scroll-inner">
             <input type="text" placeholder="Nombre Completo" name="usua_nombre" id="nombre" required>
@@ -57,7 +57,7 @@
         </div>
 
         <button type="submit" name="registrarUsuario">Crear</button>
-        <a href="../../controllers/UsuarioController.php">Volver</a>
+        <a href=".././controllers/UsuarioController.php">Volver</a>
     </form>
 </body>
 </html>
