@@ -1,7 +1,20 @@
            <head>
                <!-- Bootstrap CSS -->
                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384..." crossorigin="anonymous">
-               <link rel="stylesheet" href="../cssLayouts/layout.css">
+            
+               <?php
+                
+                // $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/views/layouts/cssLayouts/layout.css';
+
+                // $cssUrl = '/views/layouts/cssLayouts/layout.css';
+
+                // if (file_exists($cssPath)) {
+                //     echo '<link rel="stylesheet" href="' . $cssUrl . '">';
+                // } else {
+                //     echo '<!-- CSS file not found at: ' . $cssPath . ' -->';
+                // }
+                ?>
+                
            </head>
 
            <body>
@@ -61,6 +74,6 @@
                        </li>
                    </ul>
                </aside>
-              >
+               >
 
            </body>

@@ -7,7 +7,19 @@
 <html lang="es">
 
 <head>
-    <link rel="stylesheet" href="../cssLayouts/layout.css">
+    <?php
+// Ruta absoluta a layout.css
+$cssPath = $_SERVER['DOCUMENT_ROOT'] . '/views/layouts/cssLayouts/layout.css';
+
+// Ruta para el navegador (desde la raíz pública)
+$cssUrl = '/views/layouts/cssLayouts/layout.css';
+
+if (file_exists($cssPath)) {
+    echo '<link rel="stylesheet" href="' . $cssUrl . '">';
+} else {
+    echo '<!-- CSS file not found at: ' . $cssPath . ' -->';
+}
+?>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
 </head>

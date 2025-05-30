@@ -1,5 +1,19 @@
 <head>
-    <link rel="stylesheet" href="../cssLayouts/layout.css">
+    <!-- <link rel="stylesheet" href="../cssLayouts/layout.css"> -->
+<?php
+// Ruta absoluta a layout.css
+$cssPath = $_SERVER['DOCUMENT_ROOT'] . '/views/layouts/cssLayouts/layout.css';
+
+// Ruta para el navegador (desde la raíz pública)
+$cssUrl = '/views/layouts/cssLayouts/layout.css';
+
+if (file_exists($cssPath)) {
+    echo '<link rel="stylesheet" href="' . $cssUrl . '">';
+} else {
+    echo '<!-- CSS file not found at: ' . $cssPath . ' -->';
+}
+?>
+
 </head>
 
 <body>
