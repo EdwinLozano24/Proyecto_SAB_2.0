@@ -1,23 +1,21 @@
 
-// header.php
+<!-- header.php 
 // Este archivo contendrá el encabezado común para todas las páginas
 // Puedes incluirlo en tus vistas principales para mantener la consistencia en el diseño
-// Asegúrate de que la ruta a los archivos CSS e imágenes sea correcta según tu estructura de carpetas
+// Asegúrate de que la ruta a los archivos CSS e imágenes sea correcta según tu estructura de carpetas -->
+
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $pageTitle ?? 'Sistema Odontológico'; ?></title>
-    <link rel="stylesheet" href="../../Assets/css/dashboard/homePaciente.css">
+    <link rel="stylesheet" href="../cssLayouts/layout.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <header class="main-header">
         <div class="main-header__logo">
-            <img src="../../Assets/img/logoSab/logo.jpg" alt="Logo Salud Benefit">
+            <img src=".././Assets/img/Logo.png" alt="Logo Salud Benefit">
         </div>
         <nav class="main-nav">
             <ul class="main-nav__list">
@@ -29,5 +27,6 @@
             </ul>
         </nav>
     </header>
-
-    <div class="page-wrapper">
+        
+    </body>
+</html>

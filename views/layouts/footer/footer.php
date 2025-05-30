@@ -1,6 +1,10 @@
+<head>
+    <link rel="stylesheet" href="../cssLayouts/layout.css">
+</head>
+
+<body>
 
 
-    </div>
     <footer class="main-footer">
         <div class="main-footer__content">
             <p>&copy; <?php echo date('Y'); ?> Salud Benefit. Todos los derechos reservados.</p>

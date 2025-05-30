@@ -1,4 +1,14 @@
-            <aside class="sidebar">
+           
+           
+<head>
+    <!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384..." crossorigin="anonymous">
+  <link rel="stylesheet" href="../cssLayouts/layout.css">
+</head>
+<body>
+    
+
+    <aside class="sidebar">
                 <ul class="sidebar__menu">
                     <li class="sidebar__item">
                         <a href="index.php?c=Citas&a=home" class="sidebar__link">
@@ -52,3 +62,7 @@
                     </li>
                 </ul>
             </aside>
+<!-- Bootstrap JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384..." crossorigin="anonymous"></script>
+
+            </body>
