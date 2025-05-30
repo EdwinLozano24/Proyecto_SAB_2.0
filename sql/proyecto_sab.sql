@@ -65,7 +65,6 @@ CREATE TABLE IF NOT EXISTS tbl_tratamientos (
   trat_duracion VARCHAR(100) NOT NULL,
   trat_descripcion VARCHAR(255) NOT NULL,
   trat_estado ENUM('Activo','Inactivo') NOT NULL,
-  trat_cita INT NOT NULL,
   trat_historial INT NOT NULL
 );
 
@@ -114,9 +113,6 @@ ALTER TABLE tbl_especialistas
     REFERENCES tbl_especialidades(id_especialidad);
 
 ALTER TABLE tbl_tratamientos
-  ADD CONSTRAINT fk_tratamiento_cita
-    FOREIGN KEY (trat_cita)
-    REFERENCES tbl_citas(id_cita),
   ADD CONSTRAINT fk_tratamiento_hist
     FOREIGN KEY (trat_historial)
     REFERENCES tbl_historialClinico(id_historiaClinica);

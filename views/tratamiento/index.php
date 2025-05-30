@@ -1,11 +1,14 @@
 <?php
-require_once '../../config/database.php';
+require_once __DIR__ . '/../../config/database.php';
+$sql = " SELECT * FROM tbl_tratamientos
+    ORDER BY
+        CASE trat_estado
+            WHEN 'activo' THEN 1
+            ELSE 2
+        END";
+$stmt = $pdo->query($sql);
+$usuarios = $stmt->fetchAll();
 ?>
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,5 +21,18 @@ require_once '../../config/database.php';
 <body>
     <h2>Tratamientos Registrados</h2>
     <a href="/proyecto_sab/controllers/TratamientoController.php?accion=crear">Añadir Tratamiento <i class="fa-solid fa-square-plus"></i></a>
+    <table id="#example" class="display">
+    <thead>
+        <th>Nombre</th>
+        <th>Duracion</th>
+        <th>Descripcion</th>
+        <th></th>
+        <th></th>
+        <th>Estado</th>
+    </thead>
+
+
+
+    </table>
 </body>
 </html>
