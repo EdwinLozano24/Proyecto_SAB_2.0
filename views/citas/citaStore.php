@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/../../config/database.php';
-
+global $pdo;
 $sql = "SELECT * FROM tbl_especialistas
     INNER JOIN tbl_usuarios ON espe_usuario = id_usuario
     ";
@@ -90,6 +90,8 @@ $tratamientos = $stmt->fetchAll();
         </option>
         <?php endforeach; ?>
     </select>
+    
+    <input type="submit" id="generar_cita" value="Generar Cita">
 
     </form>
 

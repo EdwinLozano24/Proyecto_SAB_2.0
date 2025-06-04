@@ -36,7 +36,7 @@ $citas = $stmt->fetchAll();
 </head>
 <body>
     <h2>Citas Registradas</h2>
-    <a href="/proyecto_sab/controllers/CitaController.php?accion=crear">Añadir Tratamiento <i class="fa-solid fa-square-plus"></i></a>
+    <a href="/proyecto_sab/controllers/CitaController.php?accion=create">Generar Cita<i class="fa-solid fa-square-plus"></i></a>
     <table id="example" class="display">
     <thead>
         <th>Usuario Solicitante</th>

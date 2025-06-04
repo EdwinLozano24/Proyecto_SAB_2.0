@@ -13,7 +13,7 @@ $options = [
 ];
 
 try {
-    $pdo = new PDO("mysql:host=$host;dbname=$db;charset=$charset", $user, $pass, $options);
+    $GLOBALS['pdo'] = new PDO("mysql:host=$host;dbname=$db;charset=$charset", $user, $pass, $options);
 } catch (\PDOException $e) {
     die("Error de conexión: " . $e->getMessage());
 }
