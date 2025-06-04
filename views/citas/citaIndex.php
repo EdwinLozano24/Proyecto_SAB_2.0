@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../../config/database.php';
+$pdo = conectarBD();
 $sql = " SELECT 
     c.*, 
     u.usua_nombre  AS nombre_paciente,

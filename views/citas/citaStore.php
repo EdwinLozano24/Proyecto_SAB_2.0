@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/../../config/database.php';
-global $pdo;
+$pdo = conectarBD();
 $sql = "SELECT * FROM tbl_especialistas
     INNER JOIN tbl_usuarios ON espe_usuario = id_usuario
     ";
@@ -32,12 +32,13 @@ $tratamientos = $stmt->fetchAll();
 
 <body>
 
-    <form id="citaStore" method="POST" action="../controllers/CitaController.php?accion=guardar">
+    <form id="citaStore" method="POST" action="../controllers/CitaController.php?accion=store">
     <h2>Crear Cita</h2>
+
     <select name="cita_usuario" id="cita_usuario">
         <option value="" disabled selected>Usuario Solicitante</option>
         <?php foreach ($usuarios as $usuario): ?>
-        <option value="<?= htmlspecialchars($usuario['usua_nombre']) ?>">
+        <option value="<?= htmlspecialchars($usuario['id_usuario']) ?>">
             <?=htmlspecialchars($usuario['usua_nombre']) ?>
         </option>
         <?php endforeach; ?>
@@ -46,7 +47,7 @@ $tratamientos = $stmt->fetchAll();
     <select name="cita_especialista" id="cita_especialista">
         <option value="" disabled selected>Especialista Encargado</option>
         <?php foreach ($especialistas as $especialista): ?>
-        <option value="<?= htmlspecialchars($especialista['usua_nombre']) ?>">
+        <option value="<?= htmlspecialchars($especialista['id_especialista']) ?>">
             <?=htmlspecialchars($especialista['usua_nombre']) ?>
         </option>
         <?php endforeach; ?>
@@ -58,7 +59,7 @@ $tratamientos = $stmt->fetchAll();
     <select name="cita_consultorio" id="cita_consultorio">
         <option value="" disabled selected>Consultorio</option>
         <?php foreach ($consultorios as $consultorio): ?>
-        <option value="<?= htmlspecialchars($consultorio['cons_numero']) ?>">
+        <option value="<?= htmlspecialchars($consultorio['id_consultorio']) ?>">
             <?=htmlspecialchars($consultorio['cons_numero']) ?>
         </option>
         <?php endforeach; ?>
@@ -85,7 +86,7 @@ $tratamientos = $stmt->fetchAll();
     <select name="cita_tratamiento" id="cita_tratamiento">
         <option value="" disabled selected>Tratamiento</option>
         <?php foreach ($tratamientos as $tratamiento): ?>
-        <option value="<?= htmlspecialchars($tratamiento['trat_nombre']) ?>">
+        <option value="<?= htmlspecialchars($tratamiento['id_tratamiento']) ?>">
             <?=htmlspecialchars($tratamiento['trat_nombre']) ?>
         </option>
         <?php endforeach; ?>
