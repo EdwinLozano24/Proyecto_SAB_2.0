@@ -32,7 +32,7 @@ $tratamientos = $stmt->fetchAll();
 
 <body>
 
-    <form id="citaStore" method="POST" action="../controllers/CitaController.php?accion=store">
+    <form id="citaStore" method="POST" action="/proyecto_sab/controllers/CitaController.php?accion=store">
     <h2>Crear Cita</h2>
 
     <select name="cita_usuario" id="cita_usuario">

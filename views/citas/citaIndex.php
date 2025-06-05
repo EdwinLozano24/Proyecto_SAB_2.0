@@ -48,6 +48,7 @@ $citas = $stmt->fetchAll();
         <th>Motivo</th>
         <th>Observacion</th>
         <th>Estado</th>
+        <th></th>
     </thead>
     <tbody>
         <?php foreach ($citas as $cita): ?>
@@ -60,8 +61,13 @@ $citas = $stmt->fetchAll();
                 <td><?= htmlspecialchars($cita['cita_motivo']) ?></td>
                 <td><?= htmlspecialchars($cita['cita_observacion']) ?></td>
                 <td><?= htmlspecialchars($cita['cita_estado']) ?></td>
+                <td>
+                <a href="/proyecto_sab/controllers/CitaController.php?accion=edit&id_cita=<?= $cita['id_cita']?>"><i class="fa-solid fa-pen-to-square"></i></a>
+                <a href="/proyecto_sab/controllers/CitaController.php?accion=delete&id_cita=<?= $cita['id_cita']?>"><i class="fa-solid fa-trash"></i></a>
+                </td>
             </tr>
         <?php endforeach; ?>
+
     </tbody>
     </table>
 
