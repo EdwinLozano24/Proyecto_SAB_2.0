@@ -1,63 +1,134 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear Usuario</title>
+    <title>Crear Usuario - Sistema Odontológico</title>
+    <?php
+    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/assets/css/admin/crudUsuario.css';
+    $cssUrl = '/proyecto_sab/assets/css/admin/crudUsuario.css';
+    if (file_exists($cssPath)) {
+        echo '<link rel="stylesheet" href="' . $cssUrl . '">';
+    } else {
+        echo ' CSS File not fount at: ' . $cssPath . '';
+    }
+    ?>
+
 </head>
+
 <body>
-    <form id="crearForm" method="POST" action="../controllers/UsuarioController.php?accion=guardar" class="formulario__crear">
-        <h2>Crear usuario</h2>
-        <div class="form-scroll-inner">
-            <input type="text" placeholder="Nombre Completo" name="usua_nombre" id="nombre" required>
-
-            <select name="usua_tipo_documento" id="doc_tipo" required>
-                <option value="" disabled selected>Tipo de Documento</option>
-                <option value="1">Cédula</option>
-                <option value="2">Tarjeta de Identidad</option>
-                <option value="3">Pasaporte</option>
-            </select>
-
-            <input type="int" placeholder="Número de Documento" name="usua_documento" id="num_documento" required>
-            <input type="email" placeholder="Correo Electrónico" name="usua_correo_electronico" id="correo" required>
-            <input type="tel" placeholder="Número de Contacto" name="usua_num_contacto" id="contacto">
-            <input type="tel" placeholder="Número Secundario / Acudiente" name="usua_num_secundario" id="acudiente">
-            <input type="text" placeholder="Dirección" name="usua_direccion" id="direccion">
-            <input type="date" placeholder="Fecha de Nacimiento" name="usua_fecha_nacimiento" id="nacimiento">
-
-            <select name="usua_sexo" id="sexo" required>
-                <option value=""disabled selected>Sexo</option>
-                <option value="1">Masculino</option>
-                <option value="2">Femenino</option>
-            </select>
-
-            <select name="usua_rh" id="rh" required>
-                <option value=""disabled selected>Tipo de Sangre (RH)</option>
-                <option value="1">A+</option>
-                <option value="2">A-</option>
-                <option value="3">B+</option>
-                <option value="4">B-</option>
-                <option value="5">AB+</option>
-                <option value="6">AB-</option>
-                <option value="7">O+</option>
-                <option value="8">O-</option>
-            </select>
-
-            
-            <input type="text" placeholder="EPS" name="usua_eps" id="eps">
-            <input type="password" placeholder="Contraseña" name="usua_password" id="contrasena" required>
-            
-            <select name="usua_tipo" id="tipo" required>
-                            <option value=""disabled selected>Tipo de usuario</option>
-                            <option value="1">Administrador</option>
-                            <option value="2">Especialista</option>
-                            <option value="3">Empleado</option>
-                            <option value="4">Paciente</option>
-            </select>
+    <div class="container">
+        <div class="header">
+            <div class="logo">🦷</div>
+            <h1>Crear Nuevo Usuario</h1>
+            <p class="subtitle">Ingresa la información para registrar un nuevo usuario en el sistema</p>
         </div>
 
-        <button type="submit" name="registrarUsuario">Crear</button>
-        <a href=".././controllers/UsuarioController.php">Volver</a>
-    </form>
+        <form id="crearForm" method="POST" action="../controllers/UsuarioController.php?accion=guardar" class="form-card">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="nombre">Nombre Completo <span class="required">*</span></label>
+                    <input type="text" placeholder="Nombre Completo" name="usua_nombre" id="nombre" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="doc_tipo">Tipo de Documento <span class="required">*</span></label>
+                    <select name="usua_tipo_documento" id="doc_tipo" required>
+                        <option value="" disabled selected>Tipo de Documento</option>
+                        <option value="CC (Cédula de ciudadanía)">Cédula</option>
+                        <option value="TI (Tarjeta de identidad)">Tarjeta de Identidad</option>
+                        <option value="CE (Cédula de extranjería)">Cédula de Extranjería</option>
+                        <option value="PED (Permiso especial de permanencia)">Permiso Especial de Permanencia</option>
+                        <option value="PAS (Pasaporte)">Pasaporte</option>
+                        <option value="NIT (Número de identificación tributaria)">Número de Identificación Tributaria</option>
+                        <option value="Otro">Otro</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="num_documento">Número de Documento <span class="required">*</span></label>
+                    <input type="number" placeholder="Número de Documento" name="usua_documento" id="num_documento" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="correo">Correo Electrónico <span class="required">*</span></label>
+                    <input type="email" placeholder="Correo Electrónico" name="usua_correo_electronico" id="correo" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="contacto">Número de Contacto</label>
+                    <input type="tel" placeholder="Número de Contacto" name="usua_num_contacto" id="contacto">
+                </div>
+
+                <div class="form-group">
+                    <label for="acudiente">Número Secundario / Emergencia</label>
+                    <input type="tel" placeholder="Número Secundario / Acudiente" name="usua_num_secundario" id="acudiente">
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="direccion">Dirección</label>
+                    <input type="text" placeholder="Dirección" name="usua_direccion" id="direccion">
+                </div>
+
+                <div class="form-group">
+                    <label for="nacimiento">Fecha de Nacimiento</label>
+                    <input type="date" placeholder="Fecha de Nacimiento" name="usua_fecha_nacimiento" id="nacimiento">
+                </div>
+
+                <div class="form-group">
+                    <label for="sexo">Sexo <span class="required">*</span></label>
+                    <select name="usua_sexo" id="sexo" required>
+                        <option value="" disabled selected>Sexo</option>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Femenino">Femenino</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="rh">Tipo de Sangre (RH) <span class="required">*</span></label>
+                    <select name="usua_rh" id="rh" required>
+                        <option value="" disabled selected>Tipo de Sangre (RH)</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="eps">EPS</label>
+                    <input type="text" placeholder="EPS" name="usua_eps" id="eps">
+                </div>
+
+                <div class="form-group">
+                    <label for="contrasena">Contraseña <span class="required">*</span></label>
+                    <input type="password" placeholder="Contraseña" name="usua_password" id="contrasena" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="tipo">Tipo de usuario <span class="required">*</span></label>
+                    <select name="usua_tipo" id="tipo" required>
+                        <option value="" disabled selected>Tipo de usuario</option>
+                        <option value="Paciente">Paciente</option>
+                        <option value="Empleado">Empleado</option>
+                        <option value="Especialista">Especialista</option>
+                        <option value="Administrador">Administrador</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="button-group">
+                <a href=".././controllers/UsuarioController.php" class="btn-link">Volver</a>
+                <button type="submit" name="registrarUsuario">Crear</button>
+            </div>
+        </form>
+    </div>
 </body>
+
 </html>
