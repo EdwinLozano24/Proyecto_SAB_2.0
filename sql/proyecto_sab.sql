@@ -1,4 +1,3 @@
-
 CREATE DATABASE IF NOT EXISTS proyecto_sab;
 
 USE proyecto_sab;
