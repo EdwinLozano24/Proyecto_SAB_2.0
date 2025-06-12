@@ -25,7 +25,7 @@
             <p class="subtitle">Sistema de Gestión Odontológica</p>
         </div>
 
-        <form action="../controllers/UsuarioController.php?accion=actualizar" method="POST" class="form-card">
+        <form action="../controllers/UsuarioController.php?accion=update" method="POST" class="form-card">
             <input type="hidden" name="id_usuario" value="<?= $usua['id_usuario'] ?>">
 
             <div class="form-section">
@@ -43,13 +43,13 @@
                         <label for="doc_tipo">Tipo de Documento <span class="required">*</span></label>
                         <select name="usua_tipo_documento" id="doc_tipo" required>
                             <option value="" disabled>Seleccionar tipo</option>
-                            <option value="1" <?= ($usua['usua_tipo_documento'] == "CC (Cédula de ciudadanía)") ? 'selected' : '' ?>>Cédula</option>
-                            <option value="2" <?= ($usua['usua_tipo_documento'] == "TI (Tarjeta de identidad)") ? 'selected' : '' ?>>Tarjeta de Identidad</option>
-                            <option value="3" <?= ($usua['usua_tipo_documento'] == "CE (Cédula de extranjería)") ? 'selected' : '' ?>>Cédula de Extranjería</option>
-                            <option value="4" <?= ($usua['usua_tipo_documento'] == "PED (Permiso especial de permanencia)") ? 'selected' : '' ?>>Permiso Especial de Permanencia</option>
-                            <option value="5" <?= ($usua['usua_tipo_documento'] == "PAS (Pasaporte)") ? 'selected' : '' ?>>Pasaporte</option>
-                            <option value="6" <?= ($usua['usua_tipo_documento'] == "NIT (Número de identificación tributaria)") ? 'selected' : '' ?>>Numero de Identificacion Tributaria</option>
-                            <option value="7" <?= ($usua['usua_tipo_documento'] == "Otro") ? 'selected' : '' ?>>Otro</option>
+                            <option value="Cédula de ciudadanía" <?= ($usua['usua_tipo_documento'] == "Cédula de ciudadanía") ? 'selected' : '' ?>>Cédula</option>
+                            <option value="Tarjeta de identidad" <?= ($usua['usua_tipo_documento'] == "Tarjeta de identidad") ? 'selected' : '' ?>>Tarjeta de Identidad</option>
+                            <option value="Cédula de extranjería" <?= ($usua['usua_tipo_documento'] == "Cédula de extranjería") ? 'selected' : '' ?>>Cédula de Extranjería</option>
+                            <option value="Permiso especial de permanencia" <?= ($usua['usua_tipo_documento'] == "Permiso especial de permanencia") ? 'selected' : '' ?>>Permiso Especial de Permanencia</option>
+                            <option value="Pasaporte" <?= ($usua['usua_tipo_documento'] == "Pasaporte") ? 'selected' : '' ?>>Pasaporte</option>
+                            <option value="Número de identificación tributaria" <?= ($usua['usua_tipo_documento'] == "Número de identificación tributaria") ? 'selected' : '' ?>>Numero de Identificacion Tributaria</option>
+                            <option value="Otro" <?= ($usua['usua_tipo_documento'] == "Otro") ? 'selected' : '' ?>>Otro</option>
                         </select>
                     </div>
 
@@ -67,8 +67,8 @@
                         <label for="sexo">Sexo <span class="required">*</span></label>
                         <select name="usua_sexo" id="sexo" required>
                             <option value="" disabled>Seleccionar</option>
-                            <option value="1" <?= ($usua['usua_sexo'] == "Masculino") ? 'selected' : '' ?>>Masculino</option>
-                            <option value="2" <?= ($usua['usua_sexo'] == "Femenino") ? 'selected' : '' ?>>Femenino</option>
+                            <option value="Masculino" <?= ($usua['usua_sexo'] == "Masculino") ? 'selected' : '' ?>>Masculino</option>
+                            <option value="Femenino" <?= ($usua['usua_sexo'] == "Femenino") ? 'selected' : '' ?>>Femenino</option>
                         </select>
                     </div>
 
@@ -130,17 +130,17 @@
 
                     <div class="form-group">
                         <label for="contrasena">Contraseña <span class="required">*</span></label>
-                        <input type="password" name="usua_password" id="contrasena" value="<?= $usua['usua_password'] ?>" required>
+                        <input type="password" name="usua_password" id="contrasena" value="" placeholder="Dejar en blanco si no desea cambiarla">
                     </div>
 
                     <div class="form-group">
                         <label for="tipo">Tipo de Usuario <span class="required">*</span></label>
                         <select name="usua_tipo" id="tipo" required>
-                            <option value="" disabled selected>Tipo de usuario</option>
-                            <option value="Administrador">Administrador</option>
-                            <option value="Especialista">Especialista</option>
-                            <option value="Empleado">Empleado</option>
-                            <option value="Paciente">Paciente</option>
+                            <option value="" disabled>Tipo de usuario</option>
+                            <option value="Administrador" <?=($usua['usua_tipo'] == "Administrador") ? 'selected' : '' ?>>Administrador</option>
+                            <option value="Especialista" <?=($usua['usua_tipo'] == "Especialista") ? 'selected' : '' ?>>Especialista</option>
+                            <option value="Empleado" <?=($usua['usua_tipo'] == "Empleado") ? 'selected' : '' ?>>Empleado</option>
+                            <option value="Paciente" <?=($usua['usua_tipo'] == "Paciente") ? 'selected' : '' ?>>Paciente</option>
                         </select>
                     </div>
 
@@ -148,8 +148,8 @@
                         <label for="estado">Estado del Usuario <span class="required">*</span></label>
                         <select name="usua_estado" id="estado" required>
                             <option value="" disabled>Seleccionar estado</option>
-                            <option value="1" <?= ($usua['usua_estado'] == "Activo") ? 'selected' : '' ?>>Activo</option>
-                            <option value="2" <?= ($usua['usua_estado'] == "Inactivo") ? 'selected' : '' ?>>Inactivo</option>
+                            <option value="Activo" <?= ($usua['usua_estado'] == "Activo") ? 'selected' : '' ?>>Activo</option>
+                            <option value="Inactivo" <?= ($usua['usua_estado'] == "Inactivo") ? 'selected' : '' ?>>Inactivo</option>
                         </select>
                     </div>
                 </div>

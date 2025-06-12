@@ -1,88 +1,122 @@
 <?php
-// C:\xampp\htdocs\proyecto_sab\controllers\UsuarioController.php
-
-// 1. Incluye el archivo de conexión a la base de datos
-// La ruta aquí debe ser correcta para llegar a tu database.php
-// Asumo que tu controllers está un nivel por debajo de la raíz del proyecto,
-// y config está al mismo nivel que controllers. Ajusta si es diferente.
-require_once __DIR__ . '/../config/database.php';
-
-// 2. Llama a tu función para obtener la conexión PDO
-// Esto asignará el objeto PDO a la variable $pdo
-$pdo = conectarBD();
-
-// 3. Ahora incluye tu modelo Usuario
-require_once '../models/Usuario.php';
-
-// 4. Pasa la conexión PDO al constructor de tu modelo Usuario
-// Ahora $pdo ya está definida y contiene el objeto de conexión
-$usuario = new Usuario($pdo);
-
-// El resto de tu lógica para manejar las acciones (crear, guardar, etc.) está bien
-$accion = $_GET['accion'] ?? 'listar';
+require_once __DIR__ . '/../models/UsuarioModel.php';
+//Variables para recibir 'accion'
+$usuario = new UsuarioController();
+$accion = $_GET['accion'] ?? 'index';
 
 switch ($accion) {
-    case 'crear':
-        include '../views/usuario/crear.php';
+    case 'view_store':
+        $usuario->view_store();
         break;
-    case 'guardar':
-        // Asegúrate de que el método 'crear' en tu modelo 'Usuario' esté bien definido
-        // y que reciba todos estos parámetros.
-        $usuario->crear(
-            $_POST['usua_nombre'],
-            $_POST['usua_tipo_documento'],
-            $_POST['usua_documento'],
-            $_POST['usua_correo_electronico'],
-            $_POST['usua_num_contacto'],
-            $_POST['usua_num_secundario'],
-            $_POST['usua_direccion'],
-            $_POST['usua_fecha_nacimiento'],
-            $_POST['usua_sexo'],
-            $_POST['usua_rh'],
-            $_POST['usua_eps'],
-            $_POST['usua_tipo'],
-            $_POST['usua_password']
-        );
-        header("Location: ../controllers/UsuarioController.php");
-        exit(); // Siempre usa exit() después de un header Location
+    case 'store':
+        $usuario->store();
         break;
-
-    case 'editar':
-        $usua = $usuario->obtenerPorId($_GET['id_usuario']);
-        include '../views/usuario/editar.php';
+    case 'view_update':
+        $usuario->view_update($_GET['id_usuario']);
         break;
-
-    case 'actualizar':
-        $usuario->actualizar(
-            $_POST['usua_nombre'],
-            $_POST['usua_tipo_documento'],
-            $_POST['usua_documento'],
-            $_POST['usua_correo_electronico'],
-            $_POST['usua_num_contacto'],
-            $_POST['usua_num_secundario'],
-            $_POST['usua_direccion'],
-            $_POST['usua_fecha_nacimiento'],
-            $_POST['usua_sexo'],
-            $_POST['usua_rh'],
-            $_POST['usua_eps'],
-            $_POST['usua_tipo'],
-            $_POST['usua_password'],
-            $_POST['usua_estado'],
-            $_POST['id_usuario']
-        );
-        header("Location: ../controllers/UsuarioController.php");
-        exit(); // Siempre usa exit() después de un header Location
+    case 'update':
+        $usuario->update();
         break;
-
-    case 'eliminar':
-        $usuario->eliminar($_GET['id_usuario']);
-        header("Location: ../controllers/UsuarioController.php");
-        exit(); // Siempre usa exit() después de un header Location
-        break;
-
+    case 'delete':
+        $usuario->delete($_GET['id_usuario']);
     default:
-        $usua = $usuario->obtenerTodos();
-        include '../views/usuario/index.php';
+        $usuario->index();
         break;
 }
-?>
+
+class UsuarioController
+{
+    protected $UsuarioModel;
+    //Definimos el modelo
+    public function __construct()
+    {
+        $this->UsuarioModel = new UsuarioModel();
+    }
+    //Redireccion a vista default 'INDEX'
+    public function index()
+    {
+        header('Location: ../views/usuario/usuarioIndex.php');
+        exit;
+    }
+    //Redireccion a vista crear usuario 'STORE'
+    public function view_store()
+    {
+        header('Location: ../views/usuario/usuarioStore.php');
+        exit;
+    }
+    //Funcion para generar USUARIO
+    public function store()
+    {
+        $data = [
+            'usua_nombre' => $_POST['usua_nombre'] ?? null,
+            'usua_documento' => $_POST['usua_documento'] ?? null,
+            'usua_tipo_documento' => $_POST['usua_tipo_documento'] ?? null,
+            'usua_correo_electronico' => $_POST['usua_correo_electronico'] ?? null,
+            'usua_direccion' => $_POST['usua_direccion'] ?? null,
+            'usua_num_contacto' => $_POST['usua_num_contacto'] ?? null,
+            'usua_num_secundario' => $_POST['usua_num_secundario'] ?? null,
+            'usua_fecha_nacimiento' => $_POST['usua_fecha_nacimiento'] ?? null,
+            'usua_sexo' => $_POST['usua_sexo'] ?? null,
+            'usua_rh' => $_POST['usua_rh'] ?? null,
+            'usua_eps' => $_POST['usua_eps'] ?? null,
+            'usua_password' => password_hash($_POST['usua_password'] ?? '', PASSWORD_DEFAULT),
+            'usua_tipo' => $_POST['usua_tipo'] ?? 'Paciente',
+            'usua_estado' => $_POST['usua_estado'] ?? 'Activo',
+        ];
+        try {
+            $this->UsuarioModel->store($data);
+            header('Location: ../views/usuario/usuarioIndex.php');
+            exit;
+        } catch (\Exception $exception) {
+            echo '[Ocurrio un error al CREAR el USUARIO (Estamos trabajando para soluctionarlo)]';
+            return;
+        }
+    }
+    //Redireccion a vista editar usuario 'UPDATE'
+    public function view_update($id_usuario)
+    {
+        $usua = $this->UsuarioModel->find($id_usuario);
+        include '../views/usuario/usuarioUpdate.php';
+        exit;
+    }
+    //Funcion para actualizar USUARIO
+    public function update()
+    {
+        $data = [
+            'usua_nombre' => $_POST['usua_nombre'] ?? null,
+            'usua_documento' => $_POST['usua_documento'] ?? null,
+            'usua_tipo_documento' => $_POST['usua_tipo_documento'] ?? null,
+            'usua_correo_electronico' => $_POST['usua_correo_electronico'] ?? null,
+            'usua_direccion' => $_POST['usua_direccion'] ?? null,
+            'usua_num_contacto' => $_POST['usua_num_contacto'] ?? null,
+            'usua_num_secundario' => $_POST['usua_num_secundario'] ?? null,
+            'usua_fecha_nacimiento' => $_POST['usua_fecha_nacimiento'] ?? null,
+            'usua_sexo' => $_POST['usua_sexo'] ?? null,
+            'usua_rh' => $_POST['usua_rh'] ?? null,
+            'usua_eps' => $_POST['usua_eps'] ?? null,
+            'usua_password' => password_hash($_POST['usua_password'] ?? '', PASSWORD_DEFAULT),
+            'usua_tipo' => $_POST['usua_tipo'] ?? null,
+            'usua_estado' => $_POST['usua_estado'] ?? null,
+            'id_usuario' => $_POST['id_usuario'] ?? null,
+        ];
+        try {
+            $this->UsuarioModel->update($data);
+            header('Location: ../views/usuario/usuarioIndex.php');
+            exit;
+        } catch (\Exception $exception) {
+            echo '[Ocurrio un error al ACTUALIZAR el USUARIO (Estamos trabajando para soluctionarlo)]';
+            return;
+        }
+    }
+    public function delete($id_usuario)
+    {
+        try {
+            $this->UsuarioModel->delete($id_usuario);
+            header('Location: ../views/usuario/usuarioIndex.php');
+            exit;
+        } catch (\Exception $exception) {
+            echo '[Ocurrio un error al ELIMINAR el USUARIO]';
+            return;
+        }
+    }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+}

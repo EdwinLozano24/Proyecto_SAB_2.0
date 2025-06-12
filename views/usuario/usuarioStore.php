@@ -25,7 +25,7 @@
             <p class="subtitle">Ingresa la información para registrar un nuevo usuario en el sistema</p>
         </div>
 
-        <form id="crearForm" method="POST" action="../controllers/UsuarioController.php?accion=guardar" class="form-card">
+        <form id="crearForm" method="POST" action="../../controllers/UsuarioController.php?accion=store" class="form-card">
             <div class="form-grid">
                 <div class="form-group">
                     <label for="nombre">Nombre Completo <span class="required">*</span></label>
@@ -36,12 +36,12 @@
                     <label for="doc_tipo">Tipo de Documento <span class="required">*</span></label>
                     <select name="usua_tipo_documento" id="doc_tipo" required>
                         <option value="" disabled selected>Tipo de Documento</option>
-                        <option value="CC (Cédula de ciudadanía)">Cédula</option>
-                        <option value="TI (Tarjeta de identidad)">Tarjeta de Identidad</option>
-                        <option value="CE (Cédula de extranjería)">Cédula de Extranjería</option>
-                        <option value="PED (Permiso especial de permanencia)">Permiso Especial de Permanencia</option>
-                        <option value="PAS (Pasaporte)">Pasaporte</option>
-                        <option value="NIT (Número de identificación tributaria)">Número de Identificación Tributaria</option>
+                        <option value="Cédula de ciudadanía">Cédula</option>
+                        <option value="Tarjeta de identidad">Tarjeta de Identidad</option>
+                        <option value="Cédula de extranjería">Cédula de Extranjería</option>
+                        <option value="Permiso especial de permanencia">Permiso Especial de Permanencia</option>
+                        <option value="Pasaporte">Pasaporte</option>
+                        <option value="Número de identificación tributaria">Número de Identificación Tributaria</option>
                         <option value="Otro">Otro</option>
                     </select>
                 </div>

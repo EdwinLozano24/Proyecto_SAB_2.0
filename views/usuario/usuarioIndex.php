@@ -1,22 +1,16 @@
 <?php
-// 1. Incluye el archivo donde está definida tu función conectarBD()
-// Asegúrate de que esta ruta sea correcta para llegar a tu archivo database.php
 require_once __DIR__ . '/../../config/database.php';
-
-// 2. Llama a la función para obtener el objeto PDO y asignarlo a $pdo
 $pdo = conectarBD();
-
-// 3. Ahora ya puedes usar $pdo para tus consultas
 $sql = " SELECT * FROM tbl_usuarios
     ORDER BY
         CASE usua_estado
-            WHEN 'activo' THEN 1
+            WHEN 'Activo' THEN 1
             ELSE 2
         END";
 $stmt = $pdo->query($sql);
 $usuarios = $stmt->fetchAll();
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,7 +46,7 @@ $usuarios = $stmt->fetchAll();
     <button onclick="toggleColumn(11)">EPS</button>
     <button onclick="toggleColumn(13)">Estado</button>
     </div> -->
-    <a href="/proyecto_sab/controllers/UsuarioController.php?accion=crear">Nuevo Usuario <i class="fa-solid fa-square-plus"></i></a>
+    <a href="/proyecto_sab/controllers/UsuarioController.php?accion=view_store">Nuevo Usuario <i class="fa-solid fa-square-plus"></i></a>
     <table id="example" class="display">
         <thead>
             <tr>
@@ -81,8 +75,8 @@ $usuarios = $stmt->fetchAll();
                     <td><?= htmlspecialchars($usuario['usua_tipo']) ?></td>
                     <td><?= htmlspecialchars($usuario['usua_estado']) ?></td>
                     <td>
-                        <a href="/proyecto_sab/controllers/UsuarioController.php?accion=editar&id_usuario=<?= $usuario['id_usuario'] ?>"><i class="fa-solid fa-pen-to-square"></i></a>
-                        <a href="/proyecto_sab/controllers/UsuarioController.php?accion=eliminar&id_usuario=<?= $usuario['id_usuario'] ?>"><i class="fa-solid fa-trash"></i></a>
+                        <a href="/proyecto_sab/controllers/UsuarioController.php?accion=view_update&id_usuario=<?= $usuario['id_usuario'] ?>"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a href="/proyecto_sab/controllers/UsuarioController.php?accion=delete&id_usuario=<?= $usuario['id_usuario'] ?>"><i class="fa-solid fa-trash"></i></a>
                     </td>
                 </tr>
             <?php endforeach; ?>

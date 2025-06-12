@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS tbl_usuarios (
     usua_eps VARCHAR(100) NOT NULL,
     usua_password VARCHAR(255) NOT NULL UNIQUE,
     usua_tipo ENUM('Paciente','Empleado','Especialista','Administrador') DEFAULT 'Paciente',
-    usua_estado ENUM('Activo','Inactivo') DEFAULT 'Activo'
+    usua_estado ENUM('Activo','Inactivo') NOT NULL DEFAULT 'Activo'
 );
 
 CREATE TABLE IF NOT EXISTS tbl_pacientes (
