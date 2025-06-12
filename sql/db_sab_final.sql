@@ -1,545 +1,232 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Servidor: 127.0.0.1
--- Tiempo de generación: 12-05-2025 a las 17:24:17
--- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.0.30
+CREATE DATABASE IF NOT EXISTS proyecto_sab;
+
+USE proyecto_sab;
+
+CREATE TABLE IF NOT EXISTS tbl_especialidades (
+    id_especialidad INT AUTO_INCREMENT PRIMARY KEY,
+    esp_nombre VARCHAR(255) NOT NULL,
+    esp_descripcion TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS tbl_usuarios (
+    id_usuario INT AUTO_INCREMENT PRIMARY KEY,
+    usua_nombre VARCHAR(100) NOT NULL,
+    usua_documento INT(11) NOT NULL UNIQUE,
+    usua_tipo_documento ENUM(
+    'Cédula de ciudadanía',
+    'Tarjeta de identidad',
+    'Cédula de extranjería',
+    'Permiso especial de permanencia',
+    'Pasaporte',
+    'Número de identificación tributaria',
+    'Otro'
+    ),
+    usua_correo_electronico VARCHAR(255) NOT NULL UNIQUE,
+    usua_direccion VARCHAR(100) NOT NULL,
+    usua_num_contacto VARCHAR(15) NOT NULL,
+    usua_num_secundario VARCHAR(15),
+    usua_fecha_nacimiento DATE NOT NULL,
+    usua_sexo ENUM('Masculino','Femenino'),
+    usua_rh ENUM('O+','O-','A+','A-','B+','B-','AB+','AB-'),
+    usua_eps VARCHAR(100) NOT NULL,
+    usua_password VARCHAR(255) NOT NULL UNIQUE,
+    usua_tipo ENUM('Paciente','Empleado','Especialista','Administrador') DEFAULT 'Paciente',
+    usua_estado ENUM('Activo','Inactivo') DEFAULT 'Activo'
+);
+
+CREATE TABLE IF NOT EXISTS tbl_pacientes (
+    id_paciente INT AUTO_INCREMENT PRIMARY KEY,
+    paci_usuario INT NOT NULL UNIQUE,
+    paci_fecha_registro DATE NOT NULL DEFAULT CURRENT_DATE,
+    paci_contacto_emergencia VARCHAR(100),
+    paci_telefono_emergencia VARCHAR(15),
+    paci_ultima_visita DATE,
+    paci_observaciones TEXT,
+    FOREIGN KEY (paci_usuario) REFERENCES tbl_usuarios(id_usuario)
+);
+
+CREATE TABLE IF NOT EXISTS tbl_roles (
+    id_rol INT AUTO_INCREMENT PRIMARY KEY,
+    rol_nombre VARCHAR(50) NOT NULL UNIQUE,
+    rol_descripcion VARCHAR(255)
+);
+
+CREATE TABLE IF NOT EXISTS tbl_empleados (
+    id_empleado INT AUTO_INCREMENT PRIMARY KEY,
+    empl_usuario INT NOT NULL UNIQUE,
+    empl_fecha_ingreso DATE NOT NULL DEFAULT CURRENT_DATE,
+    empl_rol INT NOT NULL,
+    empl_descripcion_especifica TEXT DEFAULT 'N/A',
+    empl_estado ENUM('Activo', 'Inactivo') DEFAULT 'Activo',
+    FOREIGN KEY (empl_usuario) REFERENCES tbl_usuarios(id_usuario),
+    FOREIGN KEY (empl_rol) REFERENCES tbl_roles(id_rol)
+);
+
+CREATE TABLE IF NOT EXISTS tbl_especialistas (  
+    id_especialista INT AUTO_INCREMENT PRIMARY KEY,
+    espe_usuario INT NOT NULL UNIQUE,
+    espe_especialidad INT NOT NULL,
+    espe_fecha_ingreso DATE NOT NULL DEFAULT CURRENT_DATE,
+    espe_num_licencia VARCHAR(50),
+    espe_estado ENUM('Activo', 'Inactivo') DEFAULT 'Activo',
+    FOREIGN KEY (espe_usuario) REFERENCES tbl_usuarios(id_usuario),
+    FOREIGN KEY (espe_especialidad) REFERENCES tbl_especialidades(id_especialidad)
+);
+
+CREATE TABLE IF NOT EXISTS tbl_consultorios (
+    id_consultorio INT AUTO_INCREMENT PRIMARY KEY,
+    cons_numero VARCHAR(10) NOT NULL UNIQUE,
+    cons_estado ENUM('Disponible','No Disponible') DEFAULT 'Disponible'
+);
+
+CREATE TABLE IF NOT EXISTS tbl_categorias_tratamientos(
+    id_categoria INT AUTO_INCREMENT PRIMARY KEY,
+    cate_nombre VARCHAR(50) NOT NULL UNIQUE,
+    cate_descripcion TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS tbl_tratamientos (
+    id_tratamiento INT AUTO_INCREMENT PRIMARY KEY,
+    trat_codigo VARCHAR(20) NOT NULL UNIQUE,
+    trat_nombre VARCHAR(100) NOT NULL,
+    trat_categoria INT NOT NULL,
+    trat_duracion_minutos INT UNSIGNED NOT NULL,
+    trat_riesgos TEXT NOT NULL DEFAULT 'N/A',
+    trat_duracion VARCHAR(100) NOT NULL,
+    trat_descripcion VARCHAR(255) NOT NULL,
+    trat_complejidad ENUM('Baja','Media','Alta','Urgencia'),
+    trat_estado ENUM('Activo','Inactivo') DEFAULT 'Activo',
+    FOREIGN KEY (trat_categoria) REFERENCES tbl_categorias_tratamientos(id_categoria)
+);
+
+CREATE TABLE IF NOT EXISTS tbl_citas (
+    id_cita INT AUTO_INCREMENT PRIMARY KEY,
+    cita_paciente INT(11) NOT NULL,
+    cita_especialista INT NOT NULL,
+    cita_fecha DATE NOT NULL,
+    cita_hora TIME NOT NULL,
+    cita_turno ENUM('Mañana', 'Tarde') NOT NULL,
+    cita_duracion INT NOT NULL,
+    cita_consultorio INT NOT NULL,
+    cita_motivo ENUM('Consulta general','Control','Urgencia','Seguimiento','Examen','Otro') DEFAULT 'Consulta general',
+    cita_observacion TEXT NOT NULL,
+    cita_estado ENUM('Cumplida','Incumplida','Proceso') DEFAULT 'Proceso',
+    FOREIGN KEY (cita_paciente) REFERENCES tbl_pacientes(id_paciente),
+    FOREIGN KEY (cita_especialista) REFERENCES tbl_especialistas(id_especialista),
+    FOREIGN KEY (cita_consultorio) REFERENCES tbl_consultorios(id_consultorio)
+);
+
+CREATE TABLE IF NOT EXISTS tbl_citas_tratamientos (
+    id_ct INT AUTO_INCREMENT PRIMARY KEY,
+    ct_cita INT NOT NULL,
+    ct_tratamiento INT NOT NULL,
+    ct_observaciones TEXT,
+    ct_fecha_aplicacion DATE DEFAULT CURRENT_DATE,
+    FOREIGN KEY (ct_cita) REFERENCES tbl_citas(id_cita),
+    FOREIGN KEY (ct_tratamiento) REFERENCES tbl_tratamientos(id_tratamiento)
+);
+
+CREATE TABLE IF NOT EXISTS tbl_diagnosticos (
+    id_diagnostico INT AUTO_INCREMENT PRIMARY KEY,
+    diag_nombre VARCHAR(80) NOT NULL UNIQUE,
+    diag_descripcion TEXT NOT NULL,
+    diag_tratamiento INT NOT NULL,
+    FOREIGN KEY (diag_tratamiento) REFERENCES tbl_tratamientos(id_tratamiento)
+);
+
+CREATE TABLE IF NOT EXISTS tbl_historial_clinico (
+    id_historial INT AUTO_INCREMENT PRIMARY KEY,
+    hist_paciente INT NOT NULL UNIQUE,
+    hist_antecedentes_personales TEXT NOT NULL,
+    hist_antecedentes_familiares TEXT NOT NULL,
+    hist_medicamentos_actuales TEXT NOT NULL,
+    hist_alegias TEXT NOT NULL,
+    hist_diagnostico INT NOT NULL,
+    hist_fecha_registro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    hist_fecha_actualizacion TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    hist_creado_por INT NOT NULL,
+    hist_actualizado_por INT NOT NULL,
+    hist_odontograma BOOLEAN NOT NULL,
+    hist_indice_dmft INT UNSIGNED NOT NULL,
+    hist_frecuencia_cepillado ENUM('1 vez/dia','2 veces/dia','>2 veces/dia','Ocasional') NOT NULL,
+    hist_hilo_dental BOOLEAN NOT NULL,
+    hist_enjuage_bucal BOOLEAN NOT NULL,
+    hist_sensibilidad_dental ENUM('Ninguna','Frío','Calor','Dulce','Oclusion') DEFAULT 'Ninguna',
+    hist_estado ENUM('Activo','Inactivo') NOT NULL DEFAULT 'Activo',
+    FOREIGN KEY (hist_paciente) REFERENCES tbl_pacientes(id_paciente),
+    FOREIGN KEY (hist_creado_por) REFERENCES tbl_especialistas(id_especialista),
+    FOREIGN KEY (hist_actualizado_por) REFERENCES tbl_especialistas(id_especialista),
+    FOREIGN KEY (hist_diagnostico) REFERENCES tbl_diagnosticos(id_diagnostico)
+);  
+
+INSERT INTO tbl_usuarios (usua_nombre, usua_documento, usua_tipo_documento, usua_correo_electronico, usua_direccion, usua_num_contacto, usua_num_secundario, usua_fecha_nacimiento, usua_sexo, usua_rh, usua_eps, usua_password, usua_tipo, usua_estado) VALUES
+('Juan Pérez',       1001001001, 'Cédula de ciudadanía',      'juan.perez@email.com',     'Calle 123 #45-67', '3100000001', '3200000001', '1990-05-10', 'Masculino', 'O+', 'Sura',         'passJuan123', 'Paciente',     'Activo'),
+('María Gómez',      1001001002, 'Tarjeta de identidad',      'maria.gomez@email.com',    'Cra 5 #12-34',     '3100000002', NULL,          '1995-07-20', 'Femenino',  'A+', 'Nueva EPS',     'passMaria123', 'Paciente',     'Activo'),
+('Carlos Sánchez',   1001001003, 'Pasaporte',                 'carlos.sanchez@email.com', 'Av 3 #45-67',      '3100000003', NULL,          '1985-03-15', 'Masculino', 'B+', 'Sanitas',       'passCarlos123','Paciente', 'Activo'),
+('Laura Ramírez',    1001001004, 'Cédula de extranjería',     'laura.ramirez@email.com',  'Calle 9 #9-99',    '3100000004', '3200000004', '1992-12-01', 'Femenino',  'AB+', 'Compensar',     'passLaura123', 'Empleado',     'Activo'),
+('Andrés Torres',    1001001005, 'Permiso especial de permanencia', 'andres.torres@email.com', 'Diagonal 10 #8-76', '3100000005', NULL, '1988-11-11', 'Masculino', 'O-', 'Coomeva',     'passAndres123','Empleado',     'Activo'),
+('Diana López',      1001001006, 'Número de identificación tributaria', 'diana.lopez@email.com', 'Cra 7 #21-43',   '3100000006', NULL,          '1999-06-30', 'Femenino',  'A-', 'Salud Total',   'passDiana123', 'Empleado', 'Activo'),
+('Pedro Martínez',   1001001007, 'Cédula de ciudadanía',      'pedro.martinez@email.com', 'Av 1 #1-23',       '3100000007', '3200000007', '1993-04-18', 'Masculino', 'B-', 'Sura',         'passPedro123', 'Especialista',     'Activo'),
+('Camila Ríos',      1001001008, 'Otro',                      'camila.rios@email.com',    'Calle 45 #9-10',   '3100000008', NULL,          '2000-01-25', 'Femenino',  'AB-', 'Sanitas',       'passCamila123','Especialista','Activo'),
+('David Moreno',     1001001009, 'Cédula de ciudadanía',      'david.moreno@email.com',   'Cra 11 #33-44',    '3100000009', NULL,          '1991-09-09', 'Masculino', 'O+', 'Nueva EPS',     'passDavid123', 'Especialista',     'Activo');
+
+INSERT INTO tbl_especialidades (esp_nombre, esp_descripcion) VALUES
+('Ortodoncia', 'Especialidad encargada de corregir la posición de los dientes y huesos maxilares mediante el uso de aparatos.'),
+('Endodoncia', 'Tratamiento de conductos para salvar dientes cuya pulpa está afectada por caries profundas o traumatismos.'),
+('Periodoncia', 'Especialidad que trata las enfermedades de las encías y los tejidos de soporte de los dientes.');
+
+INSERT INTO tbl_especialistas (espe_usuario, espe_especialidad, espe_fecha_ingreso, espe_num_licencia, espe_estado) VALUES
+(7, 1, '2023-04-01', 'LIC-ORTHO-2023001', 'Activo'),
+(8, 2, '2022-09-15', 'LIC-ENDO-2022007', 'Activo'),
+(9, 3, '2024-01-20', 'LIC-PERIO-2024010', 'Activo');
+
+INSERT INTO tbl_pacientes (paci_usuario, paci_fecha_registro, paci_contacto_emergencia, paci_telefono_emergencia, paci_ultima_visita, paci_observaciones) VALUES
+(1, '2024-06-10', 'Carlos Pérez',  '3201234567', '2024-06-01', 'Paciente con buena higiene bucal.'),
+(2, '2024-06-11', 'Ana Morales',   '3109876543', '2024-05-15', 'Leve sensibilidad en molares superiores.'),
+(3, '2024-06-12', 'Luis Mendoza',  '3114567890', '2024-04-20', 'Alergia a la penicilina, usar alternativas.');
+
+INSERT INTO tbl_roles (rol_nombre, rol_descripcion) VALUES
+('Recepcionista', 'Encargado de agendar citas, atender llamadas y gestionar el ingreso de pacientes.'),
+('Asistente Dental', 'Apoya al odontólogo en los procedimientos clínicos y prepara los materiales.'),
+('Administrador de Clínica', 'Gestiona el funcionamiento general del consultorio, incluyendo personal, horarios y reportes.');
+
+INSERT INTO tbl_empleados (empl_usuario, empl_fecha_ingreso, empl_rol, empl_descripcion_especifica, empl_estado) VALUES
+(4, '2023-03-01', 1, 'Recepcionista con experiencia en manejo de agendas médicas.', 'Activo'),
+(5, '2022-11-10', 2, 'Asistente dental con formación técnica y experiencia en ortodoncia.', 'Activo'),
+(6, '2021-08-15', 3, 'Administrador general encargado del control operativo y estratégico.', 'Activo');
+
+INSERT INTO tbl_consultorios (cons_numero, cons_estado) VALUES
+('101', 'Disponible'),
+('102', 'Disponible'),
+('103', 'No Disponible');
+
+INSERT INTO tbl_categorias_tratamientos (cate_nombre, cate_descripcion) VALUES
+('Ortodoncia', 'Tratamientos relacionados con la alineación y corrección de la posición de los dientes.'),
+('Endodoncia', 'Tratamientos de conducto y procedimientos para tratar el interior del diente.'),
+('Periodoncia', 'Tratamientos enfocados en las encías y estructuras de soporte dental.');
+
+INSERT INTO tbl_tratamientos (trat_codigo, trat_nombre, trat_categoria, trat_duracion_minutos, trat_riesgos, trat_duracion, trat_descripcion, trat_complejidad, trat_estado) VALUES
+('ORT-001', 'Brackets metálicos', 1, 60, 'Irritación bucal, dolor temporal', 'Aproximadamente 2 años', 'Aparatos para alinear dientes mediante presión continua.', 'Media', 'Activo'),
+('END-001', 'Tratamiento de conducto', 2, 90, 'Dolor postoperatorio, posibilidad de reinfección', '1 a 2 sesiones', 'Elimina la pulpa dental infectada y sella el conducto.', 'Alta', 'Activo'),
+('PER-001', 'Limpieza profunda (curetaje)', 3, 45, 'Sensibilidad dental, sangrado leve', '1 sesión de 45 minutos', 'Elimina el sarro y placa debajo de la línea de las encías.', 'Media', 'Activo');
+
+INSERT INTO tbl_citas (cita_paciente, cita_especialista, cita_fecha, cita_hora, cita_turno, cita_duracion, cita_consultorio, cita_motivo, cita_observacion, cita_estado) VALUES
+(1, 1, '2025-06-12', '08:30:00', 'Mañana', 60, 1, 'Consulta general', 'Paciente refiere dolor en la muela superior derecha.', 'Proceso'),
+(2, 2, '2025-06-13', '14:00:00', 'Tarde', 90, 2, 'Control', 'Control de tratamiento de ortodoncia en curso.', 'Proceso'),
+(3, 3, '2025-06-14', '10:00:00', 'Mañana', 45, 3, 'Urgencia', 'Inflamación y dolor intenso en encías inferiores.', 'Proceso');
+
+INSERT INTO tbl_citas_tratamientos (ct_cita, ct_tratamiento, ct_observaciones, ct_fecha_aplicacion) VALUES
+(1, 2, 'Se inició tratamiento de conducto, sin complicaciones.', '2025-06-12'),
+(2, 1, 'Ajuste de brackets realizado con éxito.', '2025-06-13'),
+(3, 3, 'Limpieza profunda aplicada, se recomienda seguimiento en 3 meses.', '2025-06-14');
+
+INSERT INTO tbl_diagnosticos (diag_nombre, diag_descripcion, diag_tratamiento) VALUES
+('Maloclusión dental', 'Desalineación en la mordida del paciente que requiere tratamiento ortodóntico.', 1),
+('Necrosis pulpar', 'La pulpa dental está muerta debido a caries profunda. Se requiere endodoncia.', 2),
+('Gingivitis', 'Inflamación de encías por acumulación de placa. Se recomienda limpieza profunda.', 3);
+
+INSERT INTO tbl_historial_clinico (hist_paciente, hist_antecedentes_personales, hist_antecedentes_familiares, hist_medicamentos_actuales, hist_alegias, hist_diagnostico, hist_creado_por, hist_actualizado_por, hist_odontograma, hist_indice_dmft, hist_frecuencia_cepillado, hist_hilo_dental, hist_enjuage_bucal, hist_sensibilidad_dental, hist_estado) VALUES
+(1, 'Paciente con antecedentes de caries recurrentes.', 'Padre con enfermedad periodontal.', 'Naproxeno 500mg', 'Ninguna', 1, 1, 1, TRUE, 3, '2 veces/dia', TRUE, TRUE, 'Frío', 'Activo'),
+(2, 'Sin antecedentes personales relevantes.', 'Madre con historia de gingivitis.', 'Ibuprofeno ocasional', 'Alergia a penicilina', 2, 2, 2, FALSE, 1, '1 vez/dia', FALSE, FALSE, 'Calor', 'Activo'),
+(3, 'Paciente diabético tipo 2.', 'Abuelos con pérdida dentaria temprana.', 'Metformina 850mg', 'Ninguna', 3, 3, 3, TRUE, 4, '>2 veces/dia', TRUE, TRUE, 'Dulce', 'Activo');
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Base de datos: `db_sab_final`
---
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `int_especialistas_historial`
---
-
-CREATE TABLE `int_especialistas_historial` (
-  `espe_id` int(11) NOT NULL,
-  `hist_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `tbl_catalogo_trat`
---
-
-CREATE TABLE `tbl_catalogo_trat` (
-  `cat_id` int(10) NOT NULL,
-  `cat_nombre` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `cat_costos` float(8,2) NOT NULL,
-  `cat_recomendaciones` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `cat_estado` tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `cat_procedimiento` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `cat_duracion` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `cat_Categoria` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `cat_descripcion` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `cat_trat_id` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Volcado de datos para la tabla `tbl_catalogo_trat`
---
-
-INSERT INTO `tbl_catalogo_trat` (`cat_id`, `cat_nombre`, `cat_costos`, `cat_recomendaciones`, `cat_estado`, `cat_procedimiento`, `cat_duracion`, `car_Categoria`, `cat_descripcion`, `cat_trat_id`) VALUES
-(1, 'Limpieza', 1000000.00, 'Elimina la placa y el sarro que no se pueden eliminar con el cepillo regular.', 'Activo', 'Limpieza', '1 semana', 'Limpieza', 'Elimina la placa y el sarro que no se pueden eliminar con el cepillo regular.', 1),
-(2, 'Blanquiamiento Dental', 1000000.00, 'Procedimiento estetico que ayuda a reducir las manchas y decoloraciones de los dientes', 'Activo', 'Blanquiamiento Dental', '1 hora', 'Blanquiamiento Dental', 'Procedimiento estetico que ayuda a reducir las manchas y decoloraciones de los dientes.', 2),
-(3, 'Revision Dental', 50000.00, 'Esencial para detectar problemas en sus primeras etapas.', 'Activo', 'Revision Dental', '30 minutos', 'Revision Dental', 'Esencial para detectar problemas en sus primeras etapas.', 3),
-(4, 'Extraccion Dental', 280000.00, 'Se retira un diente da?ado o problem?tico por los problemas que causa.', 'Inactivo', 'Extraccion Dental', '1 hora y media', 'Extraccion Dental', 'Se retira un diente da?ado o problem?tico por los problemas que causa.', 4),
-(5, 'Protesis dental', 1000000.00, 'Protesis dentales para reemplazar dientes faltantes.', 'Activo', 'Protesis dental', '1 semana', 'Protesis dental', 'Protesis dentales para reemplazar dientes faltantes.', 5);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `tbl_citas`
---
-
-CREATE TABLE `tbl_citas` (
-  `cit_fecha` date NOT NULL,
-  `cit_hora` time NOT NULL,
-  `cit_especialista` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `cit_examen_clinico` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `cit_estado` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `cit_disponibilidad` tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `cit_cons_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Volcado de datos para la tabla `tbl_citas`
---
-
-INSERT INTO `tbl_citas` (`cit_fecha`, `cit_hora`, `cit_especialista`, `cit_examen_clinico`, `cit_estado`, `cit_disponibilidad`, `cit_cons_id`) VALUES
-('2024-12-05', '10:00:00', 'Julio Ramiro', 'Consulta para limpieza', 'Pendiente', 'Disponible', 303),
-('2025-01-24', '13:00:00', 'Fabian Rodriguez', 'Consulta para limpieza', 'Pendiente', 'Disponible', 305),
-('2025-03-27', '11:00:00', 'Paola Machado', 'Consulta para tratamiento', 'Pendiente', 'Disponible', 304),
-('2025-05-29', '13:00:00', 'Marco Apolo', 'Consulta para tratamiento', 'Pendiente', 'Disponible', 305),
-('2025-07-30', '14:00:00', 'Dereck Reus', 'Consulta para limpieza', 'Pendiente', 'Disponible', 304);
-
---
--- Disparadores `tbl_citas`
---
-DELIMITER $$
-CREATE TRIGGER `Dis_Actualizar_Cita_Especialista` AFTER UPDATE ON `tbl_citas` FOR EACH ROW INSERT into Auditoria_sab (usuario,fecha,cambio) VALUES (CURRENT_USER, CURRENT_TIMESTAMP, CONCAT("Se han actualizado los datos de la cita:  ",new.cit_fecha,", ",new.cit_hora,", Asignada al especialista: ",new.cit_especialista))
-$$
-DELIMITER ;
-DELIMITER $$
-CREATE TRIGGER `Dis_Generar_Cita` AFTER INSERT ON `tbl_citas` FOR EACH ROW INSERT INTO int_generar
-(gen_cita_fecha, gen_cita_hora, gen_cita_especialista) VALUES
-(new.cit_fecha, new.cit_hora, new.cit_especialista)
-$$
-DELIMITER ;
-DELIMITER $$
-CREATE TRIGGER `Dis_Modifiacion_Cita` AFTER UPDATE ON `tbl_citas` FOR EACH ROW INSERT INTO auditoria_sab
-(usuario,fecha,cambio) VALUES
-(CURRENT_USER, CURRENT_TIMESTAMP,CONCAT ("Se a realizado una modificacion en la cita identificada con los datos: " ,new.cit_fecha,", ",new.cit_hora,", ",new.cit_especialista))
-$$
-DELIMITER ;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `tbl_consultorio`
---
-
-CREATE TABLE `tbl_consultorio` (
-  `cons_id` int(10) NOT NULL,
-  `cons_nombre` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `cons_especialidad` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `cons_ubicacion` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Volcado de datos para la tabla `tbl_consultorio`
---
-
-INSERT INTO `tbl_consultorio` (`cons_id`, `cons_nombre`, `cons_especialidad`, `cons_ubicacion`) VALUES
-(301, 'Ortodoncia', 'Unidad de ortodoncia', 'Piso 3 '),
-(302, 'Endodoncia', 'Unidad de endodoncia', 'Piso 3 '),
-(303, 'Valoracion ', 'Unidad de valoracion oral', 'Piso 3 '),
-(304, 'Cirugia Oral', 'Unidad de cirugia oral', 'Piso 3 '),
-(305, 'Protesis Dentales', 'Unidad de protesis dentales', 'Piso 3 ');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `tbl_empleados`
---
-
-CREATE TABLE `tbl_empleados` (
-  `empl_id` int(10) NOT NULL,
-  `empl_cedula` int(10) NOT NULL,
-  `empl_nombre` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `empl_direccion` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `empl_disponibilidad` tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `empl_contraseña` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `empl_num_contacto` bigint(20) NOT NULL,
-  `empl_num_secundario` bigint(20) NOT NULL,
-  `empl_estado` tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `empl_correo_electronico` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `empl_fecha_nacimiento` date NOT NULL,
-  `empl_sexo_id` tinyint(4) NOT NULL,
-  `empl_rh_id` tinyint(4) NOT NULL,
-  `empl_eps_id` int(11) NOT NULL,
-  `empl_doc_id` tinyint(4) NOT NULL,
-  `empl_rol_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Volcado de datos para la tabla `tbl_empleados`
---
-
-INSERT INTO `tbl_empleados` (`empl_id`, `empl_cedula`, `empl_nombre`, `empl_direccion`, `empl_disponibilidad`, `empl_contraseña`, `empl_num_contacto`, `empl_num_secundario`, `empl_estado`, `empl_correo_electronico`, `empl_fecha_nacimiento`, `empl_sexo_id`, `empl_rh_id`, `empl_eps_id`, `empl_doc_id`, `empl_rol_id`) VALUES
-(1, 1009029491, 'Juan Salazar', 'Calle 9 ', 'Disponible', '123aa', 3200000008, 3401230000, 'Inactivo', 'juan123@gmail.com', '1990-09-24', 1, 2, 1, 2, 3),
-(2, 1019239492, 'Maicol Rangel', 'Carrera 14', 'No disponible', '456aa', 3101000000, 3124500000, 'Activo', 'mairan234@gmail.com', '1997-11-12', 1, 5, 2, 2, 3),
-(3, 1019349493, 'Daniel Rodriguez', 'Avenida 29', 'Disponible', '789aa', 3051000000, 3214000000, 'Activo', 'mont45@gmail.com', '2001-01-09', 1, 3, 4, 2, 1),
-(4, 1089069495, 'Mia Calvo', 'Transversal 20', 'No disponible', '345aa', 3150000000, 3982300000, 'No activo', 'mia69@gmail.com', '1969-06-09', 2, 1, 2, 2, 2);
-
---
--- Disparadores `tbl_empleados`
---
-DELIMITER $$
-CREATE TRIGGER `Dis_Actualizacion_Empleado` AFTER UPDATE ON `tbl_empleados` FOR EACH ROW INSERT INTO Auditoria_sab (usuario,fecha,cambio) VALUES (CURRENT_USER(),CURRENT_TIMESTAMP,CONCAT("Se han actualizado los datos del empleado bajo el numero de documento: ",new.empl_cedula," y el nombre: ",new.empl_nombre,"  exitosamente."))
-$$
-DELIMITER ;
-DELIMITER $$
-CREATE TRIGGER `Dis_Borrar_Empleado` AFTER DELETE ON `tbl_empleados` FOR EACH ROW INSERT INTO Auditoria_sab (usuario,fecha,cambio) VALUES (CURRENT_USER(),CURRENT_TIMESTAMP,CONCAT("Se a eliminado el registro del empleado ",old.empl_nombre, "exitosamente."))
-$$
-DELIMITER ;
-DELIMITER $$
-CREATE TRIGGER `Dis_Registro_Empleado` AFTER INSERT ON `tbl_empleados` FOR EACH ROW INSERT INTO Auditoria_sab (usuario,fecha,cambio) VALUES (CURRENT_USER(),CURRENT_TIMESTAMP,CONCAT("Se a registrado un nuevo empleado exitosamente, Bajo el numero de documento: ",new.empl_cedula," y el nombre:",new.empl_nombre,"."))
-$$
-DELIMITER ;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `tbl_eps`
---
-
-CREATE TABLE `tbl_eps` (
-  `Eps_Id` int(2) NOT NULL,
-  `Eps_Nombre` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `Eps_Num_Contacto` bigint(20) NOT NULL,
-  `Eps_Direccion` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Volcado de datos para la tabla `tbl_eps`
---
-
-INSERT INTO `tbl_eps` (`Eps_Id`, `Eps_Nombre`, `Eps_Num_Contacto`, `Eps_Direccion`) VALUES
-(1, 'FamiSanar', 3010000000, 'Av 7 '),
-(2, 'Compensar', 3020000000, 'Av 15c'),
-(3, 'CooSalud', 3030000000, 'Calle 23S'),
-(4, 'CapitalSalud', 3040000000, 'Av Chile'),
-(5, 'SaludTotal', 3050000000, 'Carrera 114c');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `tbl_especialidades`
---
-
-CREATE TABLE `tbl_especialidades` (
-  `esp_id` int(10) NOT NULL,
-  `esp_nombre` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `esp_descripcion` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Volcado de datos para la tabla `tbl_especialidades`
---
-
-INSERT INTO `tbl_especialidades` (`esp_id`, `esp_nombre`, `esp_descripcion`) VALUES
-(1, 'Ortodoncista', 'Procedimientos Esteticos'),
-(2, 'Endodoncista', 'Tratamientos Bucales'),
-(3, 'Odontologo  ', 'Encargado de valoracion'),
-(4, 'Cirujano Oral', 'Procedimientos Quirurjicos'),
-(5, 'Prostodoncista', 'Diseño de protesis');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `tbl_especialistas`
---
-
-CREATE TABLE `tbl_especialistas` (
-  `espe_id` int(10) NOT NULL,
-  `espe_num_documento` int(11) NOT NULL,
-  `espe_nombre` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `espe_num_contacto` bigint(20) NOT NULL,
-  `espe_correo_electronico` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `espe_estado` tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `espe_esp_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Volcado de datos para la tabla `tbl_especialistas`
---
-
-INSERT INTO `tbl_especialistas` (`espe_id`, `espe_num_documento`, `espe_nombre`, `espe_num_contacto`, `espe_correo_electronico`, `espe_estado`, `espe_esp_id`) VALUES
-(1, 1009019445, 'Julio Ramiro', 3000000000, 'ramiro45@gmail.com', 'Disponible', 1),
-(2, 1029019478, 'Paola Machado', 3000000000, 'macha2003@hotmail.com', 'No disponible', 1),
-(3, 1109019498, 'Fabian Rodriguez', 3000000000, 'rodri23@hotmail.com', 'Disponible', 2),
-(4, 1209019442, 'Marco Apolo', 3000000000, 'apolo2003@gmail.com', 'No disponible', 2),
-(5, 1309019441, 'Dereck Reus', 3000000000, 'reus24@hotmail.com', 'Disponible', 2);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `tbl_historia_clinica`
---
-
-CREATE TABLE `tbl_historia_clinica` (
-  `hist_id` int(10) NOT NULL,
-  `hist_historial_clinico` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `hist_Antecedentes` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `hist_Radiografias` blob NOT NULL,
-  `hist_examen_clinico` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `hist_especialista` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `hist_plan_tratamiento` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `hist_notas_clinicas` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `hist_diagnostico` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `hist_fecha` date NOT NULL,
-  `hist_paci_num_documento` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Volcado de datos para la tabla `tbl_historia_clinica`
---
-
-INSERT INTO `tbl_historia_clinica` (`hist_id`, `hist_historial_clinico`, `hist_Antecedentes`, `hist_Radiografias`, `hist_examen_clinico`, `hist_especialista`, `hist_plan_tratamiento`, `hist_notas_clinicas`, `hist_diagnostico`, `hist_fecha`, `hist_paci_num_documento`) VALUES
-(1, 'Caries dental profunda en diente num16', 'Carie dental tratada con empaste de amalgama en diente #36.', 0x6e756c6c, 'Caries dental profunda en diente num16', 'Paola Machado', 'Tratamiento de primera elecci?n en casos de destrucci?n amplia de las piezas dentales', 'Limpieza', 'El paciente no debe consumir ningun alimentos durante 1 hora.', '2024-11-09', 1019019492),
-(2, 'Enfermedad periodontal cronica', 'Extraccion tercer molar superior derecho.', 0x6e756c6c, 'Enfermedad periodontal cronica', 'Paola Machado', 'Tratamiento de blanqueamiento dental', 'Blanquiamiento Dental', 'El paciente debe dejar de consumir bebidas oscuras para cuidar el tratamiento en cuestion.', '2024-12-01', 1033421135),
-(3, 'Bruximos nocturno con degaste', 'Colocacion coronas de porcelana en dientes #11 y #21.', 0x6e756c6c, 'Bruximos nocturno con degaste', 'Fabian Rodriguez', 'Tratamiento para valorar la salud dental del paciente', 'Revision Dental', 'El paciente debe mejorar higiene de sue?o.', '2024-11-02', 1140915008),
-(4, 'Lesiones ulceradas de 1cm en lengua', 'Tratamiento de ortodoncia a los 16 a?os.', 0x6e756c6c, 'Lesiones ulceradas de 1cm en lengua', 'Marco Apolo', 'Tratamiento para la extraccion de muelas ', 'Extraccion Dental', 'El paciente no es atento a las recomendaciones que brinda el especialista.', '2024-12-22', 1032677405),
-(5, 'Frenillo labial superior corto', 'Enfermedad periodontal tratada hace 5 a?os, con raspaje y alisado.', 0x6e756c6c, 'Frenillo labial superior corto', 'Dereck Reus', 'Tratamiento de protesis dental', 'Protesis dental', 'El paciente no debe consumir ningun alimentos durante 1 hora.', '2025-01-20', 1070592663);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `tbl_pacientes`
---
-
-CREATE TABLE `tbl_pacientes` (
-  `paci_num_documento` int(10) NOT NULL,
-  `paci_nombre` tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `paci_correo_electronico` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `paci_password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `paci_num_contacto` bigint(20) DEFAULT NULL,
-  `paci_direccion` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `paci_fecha_nacimiento` date DEFAULT NULL,
-  `paci_num_acudiente` bigint(20) DEFAULT NULL,
-  `paci_estado` enum('Activo','Inactivo','','') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Activo',
-  `paci_eps` text NOT NULL,
-  `paci_sexo` enum('Masculino','Femenino','','') NOT NULL,
-  `paci_rh` enum('A+','A-','B+','B-','AB+','AB-','O+','O-') NOT NULL,
-  `paci_tipo_documento` enum('Cédula','Tarjeta de Identidad','Pasaporte','') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Volcado de datos para la tabla `tbl_pacientes`
---
-
-INSERT INTO `tbl_pacientes` (`paci_num_documento`, `paci_nombre`, `paci_correo_electronico`, `paci_password`, `paci_num_contacto`, `paci_direccion`, `paci_fecha_nacimiento`, `paci_num_acudiente`, `paci_estado`, `paci_eps`, `paci_sexo`, `paci_rh`, `paci_tipo_documento`) VALUES
-(123213, 'asdasdasd', 'adasd@gmail.com', '$2y$10$43G2mbYN9XiYDqkJqnue7uc.ZIREhjGd9pz5qveEY7/YHdbsB/uoO', 123213, 'adasdsad', '2025-05-06', 12312323, 'Activo', 'asdads', 'Masculino', 'AB-', 'Cédula'),
-(1070592663, 'Santiago Carranza Carrillo', 'santiagocarranzacarrillo@gmail.com', '$2y$10$ZJvP7LLRje6IHf0jBZQIi.1rorwgH8SvFRebAutOvcLrag7r4NoIu', 3209295978, 'Cra 74A #74B', '2006-06-17', 3209295978, 'Activo', 'Sanitas', 'Masculino', 'O+', 'Cédula');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `tbl_pqrs`
---
-
-CREATE TABLE `tbl_pqrs` (
-  `pqr_id` int(10) NOT NULL,
-  `pqr_estado` tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `pqr_tipo` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `pqr_contenido` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `pqr_fecha_envio` date NOT NULL,
-  `pqr_fecha_respuesta` date NOT NULL,
-  `pqr_respuesta` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `pqr_paci_num_documento` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Volcado de datos para la tabla `tbl_pqrs`
---
-
-INSERT INTO `tbl_pqrs` (`pqr_id`, `pqr_estado`, `pqr_tipo`, `pqr_contenido`, `pqr_fecha_envio`, `pqr_fecha_respuesta`, `pqr_respuesta`, `pqr_paci_num_documento`) VALUES
-(1, 'Completado', 'Cita', 'No estaba mi especialista cuando fui a la cita.', '2024-09-21', '0000-00-00', 'Ejemplo_01', 1019019492),
-(2, 'Completado', 'Agendamiento', 'No me dejo agendar cita.', '2024-08-31', '0000-00-00', NULL, 1033421135),
-(3, 'Completado', 'Cita', 'No pude ir a la cita y me cobraron 3 citas de mas.', '2024-03-04', '0000-00-00', NULL, 1140915008),
-(4, 'En espera', 'Agendamiento', 'No me salio disponible niguna cita.', '2024-01-09', '0000-00-00', NULL, 1032677405),
-(5, 'Completado', 'Cita', 'Quiero reagendar mi cita lo mas pronto posible.', '2024-07-07', '0000-00-00', NULL, 1070592663);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `tbl_tratamientos`
---
-
-CREATE TABLE `tbl_tratamientos` (
-  `trat_id` int(10) NOT NULL,
-  `trat_descripcion` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `trat_nombre` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `trat_determinado` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `trat_objetivos` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `trat_observaciones` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `trat_estado` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `trat_procedimientos` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `trat_tiempo_estimado` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `trat_costos` float(8,2) NOT NULL,
-  `trat_fecha_finalizacion` date NOT NULL,
-  `trat_paci_num_documento` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Volcado de datos para la tabla `tbl_tratamientos`
---
-
-INSERT INTO `tbl_tratamientos` (`trat_id`, `trat_descripcion`, `trat_nombre`, `trat_determinado`, `trat_objetivos`, `trat_observaciones`, `trat_estado`, `trat_procedimientos`, `trat_tiempo_estimado`, `trat_costos`, `trat_fecha_finalizacion`, `trat_paci_num_documento`) VALUES
-(1, 'Tratamiento de primera eleccion en casos de destruccio\r\nn amplia de las piezas dentales', 'Limpieza', 'Ortodoncia', 'Eliminar la pulpa dental infectada o inflamada para detener la propagacion de la infeccion y preservar el diente natural', 'El paciente se presento para el tratamiento de una infeccion en la pulpa dental, Se administro anestesia local para asegurar la comodidad del paciente durante el procedimiento y se realiz? una apertura en la corona del diente para acceder a la pulpa denta', 'Realizado', 'Procedimiento Ortondoncia', '1 semana', 1000000.00, '2024-12-03', 1019019492),
-(2, 'Tratamiento de blanqueamiento dental', 'Blanquiamiento Dental', 'Endodoncia', 'Hacer un blaqueamiento y limpieza de los dientes', 'El paciente solicito y pago para un tratamiento y en estos momentos se estan esperando al paciente en el consultorio pero no ha llegado ', 'En proceso', 'Procedimiento Endodoncia', '1 hora', 1000000.00, '2024-11-26', 1033421135),
-(3, 'Tratamiento para valorar la salud dental del paciente', 'Revision Dental', 'Odontologia', 'Revision general de la dentura del paciente', 'El paciente se presento para la revision general de su dentadura y se pudo concluir que este no presenta ningun tipo de da?o ni caries', 'Realizado', 'Procedimiento  Odontologico', '30 minutos', 50000.00, '2024-11-26', 1140915008),
-(4, 'Tratamiento para la extraccion de muelas ', 'Extraccion Dental', 'Cirujano Oral', 'Extraer las muelas del juicio', 'El paciente no se presento para su extraccion de su muelas de juicio ni tampoco notifico el por que', 'Realizado', 'Procedimiento Cirujia Oral', '1 hora y media', 280000.00, '2024-11-26', 1032677405),
-(5, 'Tratamiento de protesis dental', 'Protesis dental', 'Protodoncista', 'Restaurar la estetica de la dentura', 'El paciente se presento y se realizo la correcta reparacion estetica dental', 'Realizado', 'Procedimiento Protodoncista', '1 semana', 1000000.00, '2024-12-03', 1070592663);
-
---
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `int_especialistas_historial`
---
-ALTER TABLE `int_especialistas_historial`
-  ADD PRIMARY KEY (`espe_id`,`hist_id`),
-  ADD KEY `hist_id` (`hist_id`);
-
---
--- Indices de la tabla `tbl_catalogo_trat`
---
-ALTER TABLE `tbl_catalogo_trat`
-  ADD PRIMARY KEY (`cat_id`),
-  ADD KEY `cat_trat_id` (`cat_trat_id`);
-
---
--- Indices de la tabla `tbl_citas`
---
-ALTER TABLE `tbl_citas`
-  ADD PRIMARY KEY (`cit_fecha`,`cit_hora`,`cit_especialista`),
-  ADD KEY `cit_cons_id` (`cit_cons_id`);
-
---
--- Indices de la tabla `tbl_consultorio`
---
-ALTER TABLE `tbl_consultorio`
-  ADD PRIMARY KEY (`cons_id`);
-
---
--- Indices de la tabla `tbl_empleados`
---
-ALTER TABLE `tbl_empleados`
-  ADD PRIMARY KEY (`empl_id`,`empl_cedula`),
-  ADD UNIQUE KEY `empl_correo_electronico` (`empl_correo_electronico`),
-  ADD KEY `empl_sexo_id` (`empl_sexo_id`),
-  ADD KEY `empl_rh_id` (`empl_rh_id`),
-  ADD KEY `empl_eps_id` (`empl_eps_id`),
-  ADD KEY `empl_doc_id` (`empl_doc_id`),
-  ADD KEY `empl_rol_id` (`empl_rol_id`);
-
---
--- Indices de la tabla `tbl_eps`
---
-ALTER TABLE `tbl_eps`
-  ADD PRIMARY KEY (`Eps_Id`);
-
---
--- Indices de la tabla `tbl_especialidades`
---
-ALTER TABLE `tbl_especialidades`
-  ADD PRIMARY KEY (`esp_id`);
-
---
--- Indices de la tabla `tbl_especialistas`
---
-ALTER TABLE `tbl_especialistas`
-  ADD PRIMARY KEY (`espe_id`),
-  ADD UNIQUE KEY `espe_correo_electronico` (`espe_correo_electronico`),
-  ADD KEY `espe_esp_id` (`espe_esp_id`);
-
---
--- Indices de la tabla `tbl_historia_clinica`
---
-ALTER TABLE `tbl_historia_clinica`
-  ADD PRIMARY KEY (`hist_id`),
-  ADD KEY `hist_paci_num_documento` (`hist_paci_num_documento`);
-
---
--- Indices de la tabla `tbl_pacientes`
---
-ALTER TABLE `tbl_pacientes`
-  ADD PRIMARY KEY (`paci_num_documento`),
-  ADD UNIQUE KEY `paci_correo_electronico` (`paci_correo_electronico`);
-
---
--- Indices de la tabla `tbl_pqrs`
---
-ALTER TABLE `tbl_pqrs`
-  ADD PRIMARY KEY (`pqr_id`),
-  ADD KEY `pqr_paci_num_documento` (`pqr_paci_num_documento`);
-
---
--- Indices de la tabla `tbl_tratamientos`
---
-ALTER TABLE `tbl_tratamientos`
-  ADD PRIMARY KEY (`trat_id`),
-  ADD KEY `trat_paci_num_documento` (`trat_paci_num_documento`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `tbl_empleados`
---
-ALTER TABLE `tbl_empleados`
-  MODIFY `empl_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT de la tabla `tbl_especialidades`
---
-ALTER TABLE `tbl_especialidades`
-  MODIFY `esp_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT de la tabla `tbl_especialistas`
---
-ALTER TABLE `tbl_especialistas`
-  MODIFY `espe_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT de la tabla `tbl_historia_clinica`
---
-ALTER TABLE `tbl_historia_clinica`
-  MODIFY `hist_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
-
---
--- AUTO_INCREMENT de la tabla `tbl_pqrs`
---
-ALTER TABLE `tbl_pqrs`
-  MODIFY `pqr_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT de la tabla `tbl_tratamientos`
---
-ALTER TABLE `tbl_tratamientos`
-  MODIFY `trat_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `int_especialistas_historial`
---
-ALTER TABLE `int_especialistas_historial`
-  ADD CONSTRAINT `int_especialistas_historial_ibfk_1` FOREIGN KEY (`espe_id`) REFERENCES `tbl_especialistas` (`espe_id`),
-  ADD CONSTRAINT `int_especialistas_historial_ibfk_2` FOREIGN KEY (`hist_id`) REFERENCES `tbl_historia_clinica` (`hist_id`);
-
---
--- Filtros para la tabla `tbl_catalogo_trat`
---
-ALTER TABLE `tbl_catalogo_trat`
-  ADD CONSTRAINT `tbl_catalogo_trat_ibfk_2` FOREIGN KEY (`cat_trat_id`) REFERENCES `tbl_tratamientos` (`trat_id`);
-
---
--- Filtros para la tabla `tbl_citas`
---
-ALTER TABLE `tbl_citas`
-  ADD CONSTRAINT `tbl_citas_ibfk_1` FOREIGN KEY (`cit_cons_id`) REFERENCES `tbl_consultorio` (`cons_id`);
-
---
--- Filtros para la tabla `tbl_especialistas`
---
-ALTER TABLE `tbl_especialistas`
-  ADD CONSTRAINT `tbl_especialistas_ibfk_1` FOREIGN KEY (`espe_esp_id`) REFERENCES `tbl_especialidades` (`esp_id`);
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
