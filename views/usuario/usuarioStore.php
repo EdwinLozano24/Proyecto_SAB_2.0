@@ -28,6 +28,7 @@
         <form id="crearForm" method="POST" action="../../controllers/UsuarioController.php?accion=store" class="form-card">
             <div class="form-grid">
                 <div class="form-group">
+                    <input type="hidden" name="origen_formulario" value="Administrador">
                     <label for="nombre">Nombre Completo <span class="required">*</span></label>
                     <input type="text" placeholder="Nombre Completo" name="usua_nombre" id="nombre" required>
                 </div>

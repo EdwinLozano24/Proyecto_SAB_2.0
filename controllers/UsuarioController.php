@@ -63,9 +63,15 @@ class UsuarioController
             'usua_tipo' => $_POST['usua_tipo'] ?? 'Paciente',
             'usua_estado' => $_POST['usua_estado'] ?? 'Activo',
         ];
+        $origen = $_POST['origen_formulario'] ?? 'Usuario';
         try {
             $this->UsuarioModel->store($data);
-            header('Location: ../views/usuario/usuarioIndex.php');
+            
+            if ($origen === 'Administrador') {
+                header('Location: ../views/usuario/usuarioIndex.php');
+            } else {
+                header('Location: ../views/usuario/loginRegister.php');
+            }
             exit;
         } catch (\Exception $exception) {
             echo '[Ocurrio un error al CREAR el USUARIO (Estamos trabajando para soluctionarlo)]';
@@ -118,5 +124,9 @@ class UsuarioController
             echo '[Ocurrio un error al ELIMINAR el USUARIO]';
             return;
         }
+    }
+    public function login()
+    {
+        
     }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
 }

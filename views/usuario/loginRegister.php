@@ -38,6 +38,7 @@
                 <!--Login-->
                 <form id="loginForm" action="../../controllers/authController.php" method="POST" class="formulario__login">
                     <h2>Iniciar Sesión</h2>
+                    <input type="hidden" name="origen_formulario" value="Usuario">
                     <input type="text" id="documento" name="usua_documento" placeholder="Número De Documento" required>
                     <input type="password" id="password" name="usua_password" placeholder="Contraseña" required>
                     <div id="error" style="color: blue;"></div>
@@ -45,7 +46,7 @@
                 </form>
 
                 <!--Register-->
-                <form id="registerForm" action="../../controllers/authController.php" method="POST" class="formulario__register">
+                <form id="registerForm" action="../../controllers/UsuarioController.php?accion=store" method="POST" class="formulario__register">
                     <h2>Registrarse</h2>
 
                     <!-- Contenedor con scroll -->
@@ -54,9 +55,13 @@
 
                         <select name="usua_tipo_documento" id="doc_tipo" required>
                             <option value="" disabled selected>Tipo de Documento</option>
-                            <option value="1">Cédula</option>
-                            <option value="2">Tarjeta de Identidad</option>
-                            <option value="3">Pasaporte</option>
+                            <option value="Cédula de ciudadanía">Cédula</option>
+                            <option value="Tarjeta de identidad">Tarjeta de Identidad</option>
+                            <option value="Cédula de extranjería">Cédula de Extranjería</option>
+                            <option value="Permiso especial de permanencia">Permiso Especial de Permanencia</option>
+                            <option value="Pasaporte">Pasaporte</option>
+                            <option value="Número de identificación tributaria">Número de Identificación Tributaria</option>
+                            <option value="Otro">Otro</option>
                         </select>
 
                         <input type="int" placeholder="Número de Documento" name="usua_documento" id="num_documento" required>
@@ -68,20 +73,20 @@
 
                         <select name="usua_sexo" id="sexo" required>
                             <option value=""disabled selected>Sexo</option>
-                            <option value="1">Masculino</option>
-                            <option value="2">Femenino</option>
+                            <option value="Masculino">Masculino</option>
+                            <option value="Femenino">Femenino</option>
                         </select>
 
                         <select name="usua_rh" id="rh" required>
                             <option value=""disabled selected>Tipo de Sangre (RH)</option>
-                            <option value="1">A+</option>
-                            <option value="2">A-</option>
-                            <option value="3">B+</option>
-                            <option value="4">B-</option>
-                            <option value="5">AB+</option>
-                            <option value="6">AB-</option>
-                            <option value="7">O+</option>
-                            <option value="8">O-</option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
                         </select>
 
                         <input type="text" placeholder="EPS" name="usua_eps" id="eps">
