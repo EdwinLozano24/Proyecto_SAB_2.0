@@ -1,13 +1,14 @@
 <?php
 require_once __DIR__ . '/../../config/database.php';
 $pdo = conectarBD();
-$sql = " SELECT 
+$sql = "SELECT 
     c.*, 
-    u.usua_nombre  AS nombre_paciente,
+    up.usua_nombre AS nombre_paciente,
     ue.usua_nombre AS nombre_especialista,
     co.cons_numero AS numero_consultorio
 FROM tbl_citas AS c
-INNER JOIN tbl_usuarios AS u ON c.cita_usuario = u.id_usuario
+INNER JOIN tbl_pacientes AS p ON c.cita_paciente = p.id_paciente
+INNER JOIN tbl_usuarios AS up ON p.paci_usuario = up.id_usuario
 INNER JOIN tbl_especialistas AS e ON c.cita_especialista = e.id_especialista
 INNER JOIN tbl_usuarios AS ue ON e.espe_usuario = ue.id_usuario
 INNER JOIN tbl_consultorios AS co ON c.cita_consultorio = co.id_consultorio
@@ -39,13 +40,15 @@ $citas = $stmt->fetchAll();
 
 <body>
     <h2>Citas Registradas</h2>
-    <a href="/proyecto_sab/controllers/CitaController.php?accion=create">Generar Cita<i class="fa-solid fa-square-plus"></i></a>
+    <a href="/proyecto_sab/controllers/CitaController.php?accion=view_store">Generar Cita<i class="fa-solid fa-square-plus"></i></a>
     <table id="example" class="display">
         <thead>
             <th>Usuario Solicitante</th>
             <th>Especialista Encargado</th>
             <th>Fecha</th>
             <th>Hora</th>
+            <th>Turno</th>
+            <th>Duracion</th>
             <th>Consultorio Asignado</th>
             <th>Motivo</th>
             <th>Observacion</th>
@@ -59,12 +62,14 @@ $citas = $stmt->fetchAll();
                     <td><?= htmlspecialchars($cita['nombre_especialista']) ?></td>
                     <td><?= htmlspecialchars($cita['cita_fecha']) ?></td>
                     <td><?= htmlspecialchars($cita['cita_hora']) ?></td>
+                    <td><?= htmlspecialchars($cita['cita_turno']) ?></td>
+                    <td><?= htmlspecialchars($cita['cita_duracion']) ?></td>
                     <td><?= htmlspecialchars($cita['numero_consultorio']) ?></td>
                     <td><?= htmlspecialchars($cita['cita_motivo']) ?></td>
                     <td><?= htmlspecialchars($cita['cita_observacion']) ?></td>
                     <td><?= htmlspecialchars($cita['cita_estado']) ?></td>
                     <td>
-                        <a href="/proyecto_sab/controllers/CitaController.php?accion=edit&id_cita=<?= $cita['id_cita'] ?>"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a href="/proyecto_sab/controllers/CitaController.php?accion=view_update&id_cita=<?= $cita['id_cita'] ?>"><i class="fa-solid fa-pen-to-square"></i></a>
                         <a href="/proyecto_sab/controllers/CitaController.php?accion=delete&id_cita=<?= $cita['id_cita'] ?>"><i class="fa-solid fa-trash"></i></a>
                     </td>
                 </tr>

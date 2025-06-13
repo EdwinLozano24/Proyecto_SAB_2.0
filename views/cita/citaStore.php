@@ -1,6 +1,12 @@
 <?php
 require_once __DIR__ . '/../../config/database.php';
 $pdo = conectarBD();
+$sql = "SELECT * FROM tbl_pacientes
+    INNER JOIN tbl_usuarios ON paci_usuario = id_usuario
+    ";
+$stmt = $pdo->query($sql);
+$pacientes = $stmt->fetchAll();
+
 $sql = "SELECT * FROM tbl_especialistas
     INNER JOIN tbl_usuarios ON espe_usuario = id_usuario
     ";
@@ -28,6 +34,8 @@ $tratamientos = $stmt->fetchAll();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crear Cita - Sistema Odontológico</title>
+    <!-- CSS de Select2 -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <!-- <link rel="stylesheet" href="styles.css"> -->
     <?php
     $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/assets/css/admin/crudCitas.css';
@@ -63,12 +71,13 @@ $tratamientos = $stmt->fetchAll();
                 <div class="form-grid">
                     <div class="form-group">
                         <label for="cita_usuario">Paciente <span class="required">*</span></label>
-                        <select name="cita_usuario" id="cita_usuario" required>
-                            <option value="" disabled selected>Seleccionar paciente...</option>
-                            <option value="1">María González Rodríguez</option>
-                            <option value="2">Carlos Pérez López</option>
-                            <option value="3">Ana Martínez Silva</option>
-                            <option value="4">Juan Diego Ramírez</option>
+                        <select name="cita_paciente" id="cita_paciente" class="form-control select2" required>
+                            <option value="">-- Selecciona un paciente --</option>
+                                <?php foreach ($pacientes as $paciente): ?>
+                                    <option value="<?= $paciente['id_paciente'] ?>">
+                                        <?= $paciente['paci_usuario'] ?> - <?= $paciente['usua_nombre'] ?>
+                                    </option>
+                                <?php endforeach; ?>
                         </select>
                     </div>
                 </div>
@@ -176,7 +185,18 @@ $tratamientos = $stmt->fetchAll();
         </form>
     </div>
 
+    <!-- JS de jQuery y Select2 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <!-- <script src="script.js"></script> -->
+    <script>
+$(document).ready(function() {
+    $('#cita_paciente').select2({
+        placeholder: "Buscar paciente...",
+        allowClear: true
+    });
+});
+</script>
 </body>
 
 </html>

@@ -75,7 +75,6 @@ class UsuarioModel
         usua_estado = :usua_estado
     WHERE id_usuario = :id_usuario";
     $stmt = $this->pdo->prepare($sql);
-
         $params = [];
         foreach ($data as $key => $value) 
         {

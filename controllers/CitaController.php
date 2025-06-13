@@ -5,93 +5,111 @@ $cita = new CitaController();
 $accion = $_GET['accion'] ?? 'index';
 
 switch ($accion) {
-    case 'create':
-        $cita->create();
+    case 'view_store':
+        $cita->view_store();
         break;
     case 'store':
         $cita->store();
         break;
-    case 'edit':
-        $cita->edit($_GET['id_cita']);
+    case 'view_update':
+        $cita->view_update($_GET['id_cita']);
         break;
     case 'update':
         $cita->update();
+        break;
+    case 'delete':
+        $cita->delete($_GET['id_cita']);
         break;
     default:
         $cita->index();
         break;
 }
 
-
 class CitaController
 {
-    protected $model;
+    protected $CitaModel;
+    //Definimos el modelo
     public function __construct()
     {
-        $this->model = new CitaModel();
+        $this->CitaModel = new CitaModel();
     }
+    //Redireccion a vista default 'INDEX'
     public function index()
     {
-        //require_once __DIR__ . '/../views/citas/citaIndex.php';
-        header('Location: ../views/citas/citaIndex.php');
+        header('Location: ../views/cita/citaIndex.php');
         exit;
     }
-    //Funcion para redirigir vista 'citaStore.php'
-    public function create()
+    //Redireccion a vista crear cita 'STORE'
+    public function view_store()
     {
-        header('Location: ../views/citas/citaStore.php');
+        header('Location: ../views/cita/citaStore.php');
+        exit;
     }
-    //Funcion para generar cita
+    //Funcion para generar CITA
     public function store()
     {
         $data = [
-            'cita_usuario' => $_POST['cita_usuario'] ?? null,
+            'cita_paciente' => $_POST['cita_paciente'] ?? null,
             'cita_especialista' => $_POST['cita_especialista'] ?? null,
             'cita_fecha' => $_POST['cita_fecha'] ?? null,
             'cita_hora' => $_POST['cita_hora'] ?? null,
+            'cita_turno' => $_POST['cita_turno'] ?? null,
+            'cita_duracion'=> $_POST['cita_duracion'] ?? null,
             'cita_consultorio' => $_POST['cita_consultorio'] ?? null,
             'cita_motivo' => $_POST['cita_motivo'] ?? null,
             'cita_observacion' => $_POST['cita_observacion'] ?? null,
             'cita_estado' => $_POST['cita_estado'] ?? null,
-            'cita_tratamiento' => $_POST['cita_tratamiento'] ?? null,
         ];
-
         try {
-            $this->model->store($data);
-            header('Location: CitaController.php?accion=index');
+            $this->CitaModel->store($data);
+            header('Location: ../views/cita/citaIndex.php');
             exit;
         } catch (\Exception $exception) {
-            echo 'Ocurrio un error al generar la cita. Intentalo nuevamente mas tarde (:c)';
-            header('Location: ../views/citas/citaIndex.php');
+            echo '[Ocurrio un error al GENERAR la CITA (Estamos trabajando para soluctionarlo)]';
             return;
         }
+    //Redireccion a vista editar cita 'UPDATE'
     }
-    public function edit($id_cita)
+    public function view_update($id_cita)
     {
-        $cita = $this->model->find($id_cita);
-        require_once __DIR__ . '/../views/citas/citaUpdate.php';
+        $cita = $this->CitaModel->find($id_cita);
+        include '../views/cita/citaUpdate.php';
+        exit;
     }
+    //Funcion para actualizar CITA
     public function update()
     {
         $data = [
-            'id_cita' => $_POST['id_cita'] ?? null,
-            'cita_usuario' => $_POST['cita_usuario'] ?? null,
+            'cita_paciente' => $_POST['cita_paciente'] ?? null,
             'cita_especialista' => $_POST['cita_especialista'] ?? null,
             'cita_fecha' => $_POST['cita_fecha'] ?? null,
             'cita_hora' => $_POST['cita_hora'] ?? null,
+            'cita_turno' => $_POST['cita_turno'] ?? null,
+            'cita_duracion'=> $_POST['cita_duracion'] ?? null,
             'cita_consultorio' => $_POST['cita_consultorio'] ?? null,
             'cita_motivo' => $_POST['cita_motivo'] ?? null,
             'cita_observacion' => $_POST['cita_observacion'] ?? null,
             'cita_estado' => $_POST['cita_estado'] ?? null,
-            'cita_tratamiento' => $_POST['cita_tratamiento'] ?? null,
         ];
-
         try {
-            $this->model->update($data);
-            header('Location: CitaController.php?accion=index');
+            $this->CitaModel->update($data);
+            header('Location: ../views/cita/citaIndex.php');
             exit;
         } catch (\Exception $e) {
-            echo 'Error al actualizar la cita: ' . $e->getMessage();
+            echo '[Ocurrio un error al ACTUALIZAR la CITA (Estamos trabajando para soluctionarlo)]';
+            return;
+        }
+    }
+    //Funcion para 'BORRAR'
+    public function delete($id_cita)
+    {
+        try {
+            $this->CitaModel->delete($id_cita);
+            header('Location: ../view/cita/citaIndex.php');
+            exit;
+        } catch (\Exception $exception) {
+            echo '[Ocurrio un error al ELIMINAR la CITA (Estamos trabajando para soluctionarlo)]';
+            return;
         }
     }
 }

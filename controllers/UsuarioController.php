@@ -114,6 +114,7 @@ class UsuarioController
             return;
         }
     }
+    //Funcion para 'BORRAR' USUARIO
     public function delete($id_usuario)
     {
         try {
@@ -121,12 +122,8 @@ class UsuarioController
             header('Location: ../views/usuario/usuarioIndex.php');
             exit;
         } catch (\Exception $exception) {
-            echo '[Ocurrio un error al ELIMINAR el USUARIO]';
+            echo '[Ocurrio un error al ELIMINAR el USUARIO (Estamos trabajando para soluctionarlo)]';
             return;
         }
-    }
-    public function login()
-    {
-        
-    }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+    }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
 }

@@ -110,7 +110,7 @@ CREATE TABLE IF NOT EXISTS tbl_citas (
     cita_consultorio INT NOT NULL,
     cita_motivo ENUM('Consulta general','Control','Urgencia','Seguimiento','Examen','Otro') DEFAULT 'Consulta general',
     cita_observacion TEXT NOT NULL,
-    cita_estado ENUM('Cumplida','Incumplida','Proceso') DEFAULT 'Proceso',
+    cita_estado ENUM('Cumplida','Incumplida','Proceso','Cancelada') DEFAULT 'Proceso',
     FOREIGN KEY (cita_paciente) REFERENCES tbl_pacientes(id_paciente),
     FOREIGN KEY (cita_especialista) REFERENCES tbl_especialistas(id_especialista),
     FOREIGN KEY (cita_consultorio) REFERENCES tbl_consultorios(id_consultorio)
