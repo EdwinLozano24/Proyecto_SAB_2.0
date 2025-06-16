@@ -72,10 +72,10 @@ $tratamientos = $stmt->fetchAll();
                     <div class="form-group">
                         <label for="cita_usuario">Paciente <span class="required">*</span></label>
                         <select name="cita_paciente" id="cita_paciente" class="form-control select2" required>
-                            <option value="">-- Selecciona un paciente --</option>
+                            <option value="">Seleccionar un paciente..</option>
                                 <?php foreach ($pacientes as $paciente): ?>
                                     <option value="<?= $paciente['id_paciente'] ?>">
-                                        <?= $paciente['paci_usuario'] ?> - <?= $paciente['usua_nombre'] ?>
+                                        <?= $paciente['usua_nombre'] ?>
                                     </option>
                                 <?php endforeach; ?>
                         </select>
@@ -91,23 +91,25 @@ $tratamientos = $stmt->fetchAll();
                 <div class="form-grid">
                     <div class="form-group">
                         <label for="cita_especialista">Especialista <span class="required">*</span></label>
-                        <select name="cita_especialista" id="cita_especialista" required>
-                            <option value="" disabled selected>Seleccionar especialista...</option>
-                            <option value="1">Dr. Roberto Sánchez - Odontología General</option>
-                            <option value="2">Dra. Laura Jiménez - Ortodoncia</option>
-                            <option value="3">Dr. Miguel Torres - Endodoncia</option>
-                            <option value="4">Dra. Patricia Morales - Periodoncia</option>
+                        <select name="cita_especialista" id="cita_especialista" class="form-control select2" required>
+                            <option value="" >Seleccionar especialista...</option>
+                            <?php foreach ($especialistas as $especialista): ?>
+                                <option value="<?= $especialista['id_especialista'] ?>">
+                                    <?=$especialista['usua_nombre'] ?>
+                                </option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <label for="cita_consultorio">Consultorio <span class="required">*</span></label>
-                        <select name="cita_consultorio" id="cita_consultorio" required>
+                        <select name="cita_consultorio" id="cita_consultorio" class="form-control select2" required>
                             <option value="" disabled selected>Seleccionar consultorio...</option>
-                            <option value="1">Consultorio 101 - General</option>
-                            <option value="2">Consultorio 102 - Especialidades</option>
-                            <option value="3">Consultorio 103 - Cirugía</option>
-                            <option value="4">Consultorio 104 - Urgencias</option>
+                                <?php foreach ($consultorios as $consultorio): ?>
+                                    <option value="<?= $consultorio['id_consultorio'] ?>">
+                                        <?= $consultorio['cons_numero'] ?>
+                                    </option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
 
@@ -160,19 +162,6 @@ $tratamientos = $stmt->fetchAll();
                         <label for="cita_observacion">Observaciones Adicionales</label>
                         <textarea name="cita_observacion" id="cita_observacion" maxlength="255" placeholder="Escriba cualquier observación relevante para la cita...">N/A</textarea>
                     </div>
-
-                    <div class="form-group">
-                        <label for="cita_estado">Estado Inicial <span class="required">*</span></label>
-                        <select name="cita_estado" id="cita_estado" required>
-                            <option value="" disabled>Seleccionar estado...</option>
-                            <option value="1">Cumplida</option>
-                            <option value="2">Incumplida</option>
-                            <option value="3" selected>En Proceso</option>
-                        </select>
-                        <div class="status-indicator status-proceso">
-                            🔄 Por defecto se asigna "En Proceso"
-                        </div>
-                    </div>
                 </div>
             </div>
 
@@ -191,8 +180,7 @@ $tratamientos = $stmt->fetchAll();
     <!-- <script src="script.js"></script> -->
     <script>
 $(document).ready(function() {
-    $('#cita_paciente').select2({
-        placeholder: "Buscar paciente...",
+    $('#cita_paciente, #cita_especialista, #cita_consultorio').select2({
         allowClear: true
     });
 });
