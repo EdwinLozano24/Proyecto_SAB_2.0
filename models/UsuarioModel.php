@@ -89,4 +89,9 @@ class UsuarioModel
         $stmt->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
         $stmt->execute();
     }
+    public function getUser($usua_documento)
+    {
+        $sql = "SELECT * FROM tbl_usuarios WHERE usua_documento = :usua_documento"
+        $stmt = $this->pdo->prepare($sql);
+    }
 }
