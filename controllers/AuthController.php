@@ -40,7 +40,7 @@ class AuthController
 
             $usuario=$this->AuthModel->getUser($usua_documento);
 
-            if($usuario && password_verify($usua_password, $usuario['password'])) {
+            if($usuario && password_verify($usua_password, $usuario['usua_password'])) {
                 session_start();
                 $_SESSION['id_usuario'] = $usuario['id_usuario'];
                 $_SESSION['usua_documemto'] = $usuario['usua_documento'];
