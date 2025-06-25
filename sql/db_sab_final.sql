@@ -117,16 +117,6 @@ CREATE TABLE IF NOT EXISTS tbl_citas (
     FOREIGN KEY (cita_consultorio) REFERENCES tbl_consultorios(id_consultorio)
 );
 
-CREATE TABLE IF NOT EXISTS tbl_citas_tratamientos (
-    id_ct INT AUTO_INCREMENT PRIMARY KEY,
-    ct_cita INT NOT NULL,
-    ct_tratamiento INT NOT NULL,
-    ct_observaciones TEXT,
-    ct_fecha_aplicacion DATE DEFAULT CURRENT_DATE,
-    FOREIGN KEY (ct_cita) REFERENCES tbl_citas(id_cita),
-    FOREIGN KEY (ct_tratamiento) REFERENCES tbl_tratamientos(id_tratamiento)
-);
-
 CREATE TABLE IF NOT EXISTS tbl_diagnosticos (
     id_diagnostico INT AUTO_INCREMENT PRIMARY KEY,
     diag_nombre VARCHAR(80) NOT NULL UNIQUE,
@@ -134,6 +124,17 @@ CREATE TABLE IF NOT EXISTS tbl_diagnosticos (
     diag_tratamiento INT NOT NULL,
     FOREIGN KEY (diag_tratamiento) REFERENCES tbl_tratamientos(id_tratamiento)
 );
+
+CREATE TABLE IF NOT EXISTS tbl_citas_diagnosticos (
+    id_ct INT AUTO_INCREMENT PRIMARY KEY,
+    ct_cita INT NOT NULL,
+    ct_diagnostico INT NOT NULL,
+    ct_observaciones TEXT,
+    ct_fecha_aplicacion DATE DEFAULT CURRENT_DATE,
+    FOREIGN KEY (ct_cita) REFERENCES tbl_citas(id_cita),
+    FOREIGN KEY (ct_diagnostico) REFERENCES tbl_diagnosticos(id_diagnostico)
+);
+
 
 CREATE TABLE IF NOT EXISTS tbl_historial_clinico (
     id_historial INT AUTO_INCREMENT PRIMARY KEY,
@@ -159,6 +160,21 @@ CREATE TABLE IF NOT EXISTS tbl_historial_clinico (
     FOREIGN KEY (hist_actualizado_por) REFERENCES tbl_especialistas(id_especialista),
     FOREIGN KEY (hist_diagnostico) REFERENCES tbl_diagnosticos(id_diagnostico)
 );  
+
+CREATE TABLE IF NOT EXISTS tbl_pqrs (
+    id_pqrs INT AUTO_INCREMENT PRIMARY KEY,
+    pqrs_tipo ENUM('Petición','Queja','Reclamo','Sugerencia') NOT NULL,
+    pqrs_asunto VARCHAR(150) NOT NULL,
+    pqrs_descripcion TEXT NOT NULL,
+    pqrs_fecha_envio DATE NOT NULL DEFAULT CURRENT_DATE,
+    pqrs_estado ENUM('Pendiente','En proceso','Respondido','Cerrado'),
+    pqrs_respuesta TEXT,
+    pqrs_fecha_respuesta TEXT,
+    pqrs_usuario INT NOT NULL,
+    pqrs_empleado INT,
+    FOREIGN KEY (pqrs_usuario) REFERENCES tbl_usuarios(id_usuario),
+    FOREIGN KEY (pqrs_empleado) REFERENCES tbl_empleados(id_empleado)
+);
 
 INSERT INTO tbl_usuarios (usua_nombre, usua_documento, usua_tipo_documento, usua_correo_electronico, usua_direccion, usua_num_contacto, usua_num_secundario, usua_fecha_nacimiento, usua_sexo, usua_rh, usua_eps, usua_password, usua_tipo, usua_estado) VALUES
 ('Juan Pérez',       1001001001, 'Cédula de ciudadanía',      'juan.perez@email.com',     'Calle 123 #45-67', '3100000001', '3200000001', '1990-05-10', 'Masculino', 'O+', 'Sura',         'passJuan123', 'Paciente',     'Activo'),
@@ -216,18 +232,24 @@ INSERT INTO tbl_citas (cita_paciente, cita_especialista, cita_fecha, cita_hora_i
 (2, 2, '2025-06-13', '14:00:00', '14:45:00', 'Tarde', 90, 2, 'Control', 'Control de tratamiento de ortodoncia en curso.', 'Proceso'),
 (3, 3, '2025-06-14', '10:00:00', '11:00:00', 'Mañana', 45, 3, 'Urgencia', 'Inflamación y dolor intenso en encías inferiores.', 'Proceso');
 
-INSERT INTO tbl_citas_tratamientos (ct_cita, ct_tratamiento, ct_observaciones, ct_fecha_aplicacion) VALUES
-(1, 2, 'Se inició tratamiento de conducto, sin complicaciones.', '2025-06-12'),
-(2, 1, 'Ajuste de brackets realizado con éxito.', '2025-06-13'),
-(3, 3, 'Limpieza profunda aplicada, se recomienda seguimiento en 3 meses.', '2025-06-14');
-
 INSERT INTO tbl_diagnosticos (diag_nombre, diag_descripcion, diag_tratamiento) VALUES
 ('Maloclusión dental', 'Desalineación en la mordida del paciente que requiere tratamiento ortodóntico.', 1),
 ('Necrosis pulpar', 'La pulpa dental está muerta debido a caries profunda. Se requiere endodoncia.', 2),
 ('Gingivitis', 'Inflamación de encías por acumulación de placa. Se recomienda limpieza profunda.', 3);
 
+INSERT INTO tbl_citas_diagnosticos (ct_cita, ct_diagnostico, ct_observaciones, ct_fecha_aplicacion) VALUES
+(1, 2, 'Se inició tratamiento de conducto, sin complicaciones.', '2025-06-12'),
+(2, 1, 'Ajuste de brackets realizado con éxito.', '2025-06-13'),
+(3, 3, 'Limpieza profunda aplicada, se recomienda seguimiento en 3 meses.', '2025-06-14');
+
 INSERT INTO tbl_historial_clinico (hist_paciente, hist_antecedentes_personales, hist_antecedentes_familiares, hist_medicamentos_actuales, hist_alegias, hist_diagnostico, hist_creado_por, hist_actualizado_por, hist_odontograma, hist_indice_dmft, hist_frecuencia_cepillado, hist_hilo_dental, hist_enjuage_bucal, hist_sensibilidad_dental, hist_estado) VALUES
 (1, 'Paciente con antecedentes de caries recurrentes.', 'Padre con enfermedad periodontal.', 'Naproxeno 500mg', 'Ninguna', 1, 1, 1, TRUE, 3, '2 veces/dia', TRUE, TRUE, 'Frío', 'Activo'),
 (2, 'Sin antecedentes personales relevantes.', 'Madre con historia de gingivitis.', 'Ibuprofeno ocasional', 'Alergia a penicilina', 2, 2, 2, FALSE, 1, '1 vez/dia', FALSE, FALSE, 'Calor', 'Activo'),
 (3, 'Paciente diabético tipo 2.', 'Abuelos con pérdida dentaria temprana.', 'Metformina 850mg', 'Ninguna', 3, 3, 3, TRUE, 4, '>2 veces/dia', TRUE, TRUE, 'Dulce', 'Activo');
+
+INSERT INTO tbl_pqrs (pqrs_tipo, pqrs_asunto, pqrs_descripcion, pqrs_fecha_envio, pqrs_estado, pqrs_respuesta, pqrs_fecha_respuesta, pqrs_usuario, pqrs_empleado) VALUES 
+('Petición', 'Solicitud de certificado', 'Por favor, necesito el certificado de asistencia al curso de higiene oral.', CURRENT_DATE, 'Pendiente', NULL, NULL, 1, 1),
+('Queja', 'Retraso en la atención', 'La cita fue agendada a las 9:00 AM y fui atendido a las 10:15 AM.', '2025-06-14', 'Respondido', 'Lamentamos el retraso. Tomaremos medidas para mejorar la puntualidad.', '2025-06-15', 2, 2),
+('Sugerencia', 'Agregar más horarios por la tarde', 'Sería ideal contar con más turnos después de las 5:00 PM para quienes trabajamos de día.', CURRENT_DATE, 'En proceso', NULL, NULL, 1, 3);
+
 
