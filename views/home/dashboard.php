@@ -1,8 +1,9 @@
 <!-- <?php
-//Plantilla para restriccion por rol
-// require_once '../../config/auth.php';
-// requiereTipo('Administrador');
-// requireAnyRole(['Especialista', 'Empleados']);
+// Plantilla para restriccion por rol
+require_once '../../config/auth.php';
+requiereSesion();
+//requiereTipo('Administrador');
+//requireVariosTipos(['Especialista', 'Empleados']);
 ?> -->
 <!DOCTYPE html>
 <html lang="es">
@@ -79,7 +80,7 @@
                     </a>
                 </li>
                 <li class="sidebar__item">
-                    <a href="index.php?c=login&a=logout" class="sidebar__link sidebar__link--logout">
+                    <a href="../../controllers/authController.php?accion=Logout" class="sidebar__link sidebar__link--logout">
                         <div class="sidebar__icon">
                             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M17,17H7V14L3,18L7,22V19H19V13H17M7,7H17V10L21,6L17,2V5H5V11H7V7Z" />

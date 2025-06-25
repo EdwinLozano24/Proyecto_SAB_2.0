@@ -1,13 +1,15 @@
 <?php
-require_once __DIR__ . '/../models/UsuarioModel.php';
+require_once __DIR__ . '/../models/AuthModel.php';
 //Variables para recibir 'accion'
 $auth = new AuthController();
 $accion = $_GET['accion'] ?? 'index';
 
-switch($accion) {
+switch ($accion) {
     case 'Login':
         $auth->login();
         break;
+    case 'Logout':
+        $auth->logout();
     default:
         $auth->index();
         break;
@@ -29,31 +31,41 @@ class AuthController
     }
     public function login()
     {
-        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $usua_documento = $_POST['usua_documento'] ?? '';
             $usua_password = $_POST['usua_password'] ?? '';
 
-            if (empty($usua_documento) || empty($usua_password)){
-                header('Location: ../views/usuario/loginRegister.php?error=1');
+            if (empty($usua_documento) || empty($usua_password)) {
+                header('Location: ../views/error/acceso_denegado.php');
                 exit;
             }
 
-            $usuario=$this->AuthModel->getUser($usua_documento);
-
-            if($usuario && password_verify($usua_password, $usuario['usua_password'])) {
+            $usuario = $this->AuthModel->getUser($usua_documento);
+            if ($usuario && password_verify($usua_password, $usuario['usua_password'])) {
                 session_start();
-                $_SESSION['id_usuario'] = $usuario['id_usuario'];
-                $_SESSION['usua_documemto'] = $usuario['usua_documento'];
-                $_SESSION['usua_tipo'] = $usuario['usua_tipo'];
+                $_SESSION['usuario'] = [
+                    'id_usuario' => $usuario['id_usuario'],
+                    'usua_documento' => $usuario['usua_documento'],
+                    'usua_tipo' => $usuario['usua_tipo']
+                ];
 
                 header('Location: ../views/home/dashboard.php');
                 exit;
             } else {
-                header('Location: ../views/usuario/loginRegister.php?error=1');
+                header('Location: ../views/error/acceso_denegado.php');
                 exit;
             }
         }
-    } 
+    }
+    public function logout()
+    {
+        session_start();
+        session_unset();
+        session_destroy();
+
+        header('Location: ../views/usuario/loginRegister.php');
+        exit;
+    }
 }
 
 //Login paciente
@@ -74,18 +86,18 @@ if (isset($_POST['loginUsuario'])) {
             case 'Administrador':
                 header('Location: ../views/home/dashboard.php');
                 break;
-            }
+        }
     } else {
         echo "Credenciales incorrectas.";
     }
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET' && !isset($_GET['paci_num_documento'])) {
-    $usuarios = $usuario->indexPaciente(); 
-    include '../views/usuario/indexPaciente.php'; 
+    $usuarios = $usuario->indexPaciente();
+    include '../views/usuario/indexPaciente.php';
 
-// Acción para ver los detalles de un usuario (read)
+    // Acción para ver los detalles de un usuario (read)
 } elseif (isset($_GET['paci_num_documento'])) {
-    $usuarioDetalle = $usuario->readPaciente($_GET['paci_num_documento']); 
-    include '../views/usuario/readPaciente.php'; 
+    $usuarioDetalle = $usuario->readPaciente($_GET['paci_num_documento']);
+    include '../views/usuario/readPaciente.php';
 }

@@ -36,7 +36,7 @@
             <!--Formulario de Login y registro-->
             <div class="contenedor__login-register">
                 <!--Login-->
-                <form id="loginForm" action="../../controllers/authController.php" method="POST" class="formulario__login">
+                <form id="loginForm" action="../../controllers/authController.php?accion=Login" method="POST" class="formulario__login">
                     <h2>Iniciar Sesión</h2>
                     <input type="hidden" name="origen_formulario" value="Usuario">
                     <input type="text" id="documento" name="usua_documento" placeholder="Número De Documento" required>
