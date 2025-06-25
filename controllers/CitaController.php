@@ -105,7 +105,7 @@ class CitaController
     {
         try {
             $this->CitaModel->delete($id_cita);
-            header('Location: ../view/cita/citaIndex.php');
+            header('Location: ../views/cita/citaIndex.php');
             exit;
         } catch (\Exception $exception) {
             echo '[Ocurrio un error al ELIMINAR la CITA (Estamos trabajando para soluctionarlo)]';

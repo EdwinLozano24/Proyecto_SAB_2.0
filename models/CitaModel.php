@@ -74,7 +74,7 @@ class CitaModel
     {
         $sql = "UPDATE tbl_citas SET cita_estado = 'Cancelada' WHERE id_cita = :id_cita";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
+        $stmt->bindParam(':id_cita', $id_cita, PDO::PARAM_INT);
         $stmt->execute();
     }
 }

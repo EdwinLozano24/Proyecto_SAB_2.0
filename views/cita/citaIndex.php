@@ -46,7 +46,8 @@ $citas = $stmt->fetchAll();
             <th>Usuario Solicitante</th>
             <th>Especialista Encargado</th>
             <th>Fecha</th>
-            <th>Hora</th>
+            <th>Hora Inicio</th>
+            <th>Hora Fin</th>
             <th>Turno</th>
             <th>Duracion</th>
             <th>Consultorio Asignado</th>
@@ -61,7 +62,8 @@ $citas = $stmt->fetchAll();
                     <td><?= htmlspecialchars($cita['nombre_paciente']) ?></td>
                     <td><?= htmlspecialchars($cita['nombre_especialista']) ?></td>
                     <td><?= htmlspecialchars($cita['cita_fecha']) ?></td>
-                    <td><?= htmlspecialchars($cita['cita_hora']) ?></td>
+                    <td><?= htmlspecialchars($cita['cita_hora_inicio']) ?></td>
+                    <td><?= htmlspecialchars($cita['cita_hora_fin']) ?></td>
                     <td><?= htmlspecialchars($cita['cita_turno']) ?></td>
                     <td><?= htmlspecialchars($cita['cita_duracion']) ?></td>
                     <td><?= htmlspecialchars($cita['numero_consultorio']) ?></td>

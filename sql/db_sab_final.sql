@@ -104,7 +104,8 @@ CREATE TABLE IF NOT EXISTS tbl_citas (
     cita_paciente INT(11) NOT NULL,
     cita_especialista INT NOT NULL,
     cita_fecha DATE NOT NULL,
-    cita_hora TIME NOT NULL,
+    cita_hora_inicio TIME NOT NULL,
+    cita_hora_fin TIME NOT NULL,
     cita_turno ENUM('Mañana', 'Tarde') NOT NULL,
     cita_duracion INT NOT NULL,
     cita_consultorio INT NOT NULL,
@@ -210,10 +211,10 @@ INSERT INTO tbl_tratamientos (trat_codigo, trat_nombre, trat_categoria, trat_dur
 ('END-001', 'Tratamiento de conducto', 2, 90, 'Dolor postoperatorio, posibilidad de reinfección', '1 a 2 sesiones', 'Elimina la pulpa dental infectada y sella el conducto.', 'Alta', 'Activo'),
 ('PER-001', 'Limpieza profunda (curetaje)', 3, 45, 'Sensibilidad dental, sangrado leve', '1 sesión de 45 minutos', 'Elimina el sarro y placa debajo de la línea de las encías.', 'Media', 'Activo');
 
-INSERT INTO tbl_citas (cita_paciente, cita_especialista, cita_fecha, cita_hora, cita_turno, cita_duracion, cita_consultorio, cita_motivo, cita_observacion, cita_estado) VALUES
-(1, 1, '2025-06-12', '08:30:00', 'Mañana', 60, 1, 'Consulta general', 'Paciente refiere dolor en la muela superior derecha.', 'Proceso'),
-(2, 2, '2025-06-13', '14:00:00', 'Tarde', 90, 2, 'Control', 'Control de tratamiento de ortodoncia en curso.', 'Proceso'),
-(3, 3, '2025-06-14', '10:00:00', 'Mañana', 45, 3, 'Urgencia', 'Inflamación y dolor intenso en encías inferiores.', 'Proceso');
+INSERT INTO tbl_citas (cita_paciente, cita_especialista, cita_fecha, cita_hora_inicio, cita_hora_fin, cita_turno, cita_duracion, cita_consultorio, cita_motivo, cita_observacion, cita_estado) VALUES
+(1, 1, '2025-06-12', '08:30:00', '09:00:00', 'Mañana', 60, 1, 'Consulta general', 'Paciente refiere dolor en la muela superior derecha.', 'Proceso'),
+(2, 2, '2025-06-13', '14:00:00', '14:45:00', 'Tarde', 90, 2, 'Control', 'Control de tratamiento de ortodoncia en curso.', 'Proceso'),
+(3, 3, '2025-06-14', '10:00:00', '11:00:00', 'Mañana', 45, 3, 'Urgencia', 'Inflamación y dolor intenso en encías inferiores.', 'Proceso');
 
 INSERT INTO tbl_citas_tratamientos (ct_cita, ct_tratamiento, ct_observaciones, ct_fecha_aplicacion) VALUES
 (1, 2, 'Se inició tratamiento de conducto, sin complicaciones.', '2025-06-12'),
