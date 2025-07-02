@@ -38,10 +38,10 @@ CREATE TABLE IF NOT EXISTS tbl_pacientes (
     id_paciente INT AUTO_INCREMENT PRIMARY KEY,
     paci_usuario INT NOT NULL UNIQUE,
     paci_fecha_registro DATE NOT NULL DEFAULT CURRENT_DATE,
-    paci_contacto_emergencia VARCHAR(100),
     paci_telefono_emergencia VARCHAR(15),
     paci_ultima_visita DATE,
     paci_observaciones TEXT,
+    paci_estado ENUM('Activo', 'Inactivo') DEFAULT 'Activo',
     FOREIGN KEY (paci_usuario) REFERENCES tbl_usuarios(id_usuario)
 );
 
@@ -197,10 +197,10 @@ INSERT INTO tbl_especialistas (espe_usuario, espe_especialidad, espe_fecha_ingre
 (8, 2, '2022-09-15', 'LIC-ENDO-2022007', 'Activo'),
 (9, 3, '2024-01-20', 'LIC-PERIO-2024010', 'Activo');
 
-INSERT INTO tbl_pacientes (paci_usuario, paci_fecha_registro, paci_contacto_emergencia, paci_telefono_emergencia, paci_ultima_visita, paci_observaciones) VALUES
-(1, '2024-06-10', 'Carlos Pérez',  '3201234567', '2024-06-01', 'Paciente con buena higiene bucal.'),
-(2, '2024-06-11', 'Ana Morales',   '3109876543', '2024-05-15', 'Leve sensibilidad en molares superiores.'),
-(3, '2024-06-12', 'Luis Mendoza',  '3114567890', '2024-04-20', 'Alergia a la penicilina, usar alternativas.');
+INSERT INTO tbl_pacientes (paci_usuario, paci_fecha_registro, paci_telefono_emergencia, paci_ultima_visita, paci_observaciones) VALUES
+(1, '2024-06-10',  '3201234567', '2024-06-01', 'Paciente con buena higiene bucal.'),
+(2, '2024-06-11',  '3109876543', '2024-05-15', 'Leve sensibilidad en molares superiores.'),
+(3, '2024-06-12',  '3114567890', '2024-04-20', 'Alergia a la penicilina, usar alternativas.');
 
 INSERT INTO tbl_roles (rol_nombre, rol_descripcion) VALUES
 ('Recepcionista', 'Encargado de agendar citas, atender llamadas y gestionar el ingreso de pacientes.'),
@@ -252,4 +252,48 @@ INSERT INTO tbl_pqrs (pqrs_tipo, pqrs_asunto, pqrs_descripcion, pqrs_fecha_envio
 ('Queja', 'Retraso en la atención', 'La cita fue agendada a las 9:00 AM y fui atendido a las 10:15 AM.', '2025-06-14', 'Respondido', 'Lamentamos el retraso. Tomaremos medidas para mejorar la puntualidad.', '2025-06-15', 2, 2),
 ('Sugerencia', 'Agregar más horarios por la tarde', 'Sería ideal contar con más turnos después de las 5:00 PM para quienes trabajamos de día.', CURRENT_DATE, 'En proceso', NULL, NULL, 1, 3);
 
+DELIMITER $$
 
+CREATE TRIGGER AUTO_ROL
+AFTER INSERT ON tbl_usuarios
+FOR EACH ROW
+BEGIN
+    IF NEW.usua_tipo = 'Paciente' THEN
+        INSERT INTO tbl_pacientes (paci_usuario) VALUES (NEW.id_usuario);
+    ELSEIF NEW.usua_tipo = 'Empleado' THEN
+        INSERT INTO tbl_empleados (empl_usuario, empl_rol) VALUES (NEW.id_usuario, 1);
+    ELSEIF NEW.usua_tipo = 'Especialista' THEN
+        INSERT INTO tbl_especialistas (espe_usuario, espe_especialidad) VALUES (NEW.id_usuario, 1);
+    ELSE
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Error Inesperado';
+    END IF;
+END$$
+
+DELIMITER ;
+
+DELIMITER $$
+
+CREATE TRIGGER CAMBIO_ROL
+AFTER UPDATE ON tbl_usuarios
+FOR EACH ROW
+BEGIN
+    IF OLD.usua_tipo <> NEW.usua_tipo THEN
+        IF OLD.usua_tipo = 'Paciente' THEN
+            UPDATE tbl_pacientes SET paci_estado = 'Inactivo' WHERE paci_usuario = OLD.id_usuario;
+        ELSEIF  OLD.usua_tipo = 'Empleado' THEN
+            UPDATE tbl_empleados SET empl_estado = 'Inactivo' WHERE empl_usuario = OLD.id_usuario;
+        ELSEIF OLD.usua_tipo = 'Especialista' THEN
+            UPDATE tbl_especialistas SET espe_estado = 'Inactivo' WHERE espe_usuario = OLD.id_usuario;
+    END IF;
+        IF NEW.usua_tipo = 'Paciente' THEN
+            INSERT INTO tbl_pacientes (paci_usuario) VALUES (NEW.id_usuario);
+        ELSEIF NEW.usua_tipo = 'Empleado' THEN
+            INSERT INTO tbl_empleados (empl_usuario, empl_rol) VALUES (NEW.id_usuario, 1);
+        ELSEIF NEW.usua_tipo = 'Especialista' THEN
+            INSERT INTO tbl_especialistas (espe_usuario, espe_especialidad) VALUES (NEW.id_usuario, 1);
+        END IF;
+    END IF;
+END$$
+
+DELIMITER ;
