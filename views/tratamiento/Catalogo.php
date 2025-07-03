@@ -114,7 +114,7 @@
     <!-- Pie de página -->
     <footer class="text-center py-3">
         <p>&copy; <?=date('Y')?> Salud Benefit. Todos los derechos reservados.</p>
-          <a href="#" class="social-link">
+        <a href="#" class="social-link">
                     <img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="Facebook" class="imagenes--footer">
                 </a>
                 <a href="#" class="social-link">
