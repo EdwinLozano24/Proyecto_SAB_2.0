@@ -142,7 +142,7 @@ CREATE TABLE IF NOT EXISTS tbl_historial_clinico (
     hist_antecedentes_personales TEXT NOT NULL,
     hist_antecedentes_familiares TEXT NOT NULL,
     hist_medicamentos_actuales TEXT NOT NULL,
-    hist_alegias TEXT NOT NULL,
+    hist_alergias TEXT NOT NULL,
     hist_diagnostico INT NOT NULL,
     hist_fecha_registro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     hist_fecha_actualizacion TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -152,7 +152,7 @@ CREATE TABLE IF NOT EXISTS tbl_historial_clinico (
     hist_indice_dmft INT UNSIGNED NOT NULL,
     hist_frecuencia_cepillado ENUM('1 vez/dia','2 veces/dia','>2 veces/dia','Ocasional') NOT NULL,
     hist_hilo_dental BOOLEAN NOT NULL,
-    hist_enjuage_bucal BOOLEAN NOT NULL,
+    hist_enjuague_bucal BOOLEAN NOT NULL,
     hist_sensibilidad_dental ENUM('Ninguna','Frío','Calor','Dulce','Oclusion') DEFAULT 'Ninguna',
     hist_estado ENUM('Activo','Inactivo') NOT NULL DEFAULT 'Activo',
     FOREIGN KEY (hist_paciente) REFERENCES tbl_pacientes(id_paciente),
@@ -242,7 +242,7 @@ INSERT INTO tbl_citas_diagnosticos (ct_cita, ct_diagnostico, ct_observaciones, c
 (2, 1, 'Ajuste de brackets realizado con éxito.', '2025-06-13'),
 (3, 3, 'Limpieza profunda aplicada, se recomienda seguimiento en 3 meses.', '2025-06-14');
 
-INSERT INTO tbl_historial_clinico (hist_paciente, hist_antecedentes_personales, hist_antecedentes_familiares, hist_medicamentos_actuales, hist_alegias, hist_diagnostico, hist_creado_por, hist_actualizado_por, hist_odontograma, hist_indice_dmft, hist_frecuencia_cepillado, hist_hilo_dental, hist_enjuage_bucal, hist_sensibilidad_dental, hist_estado) VALUES
+INSERT INTO tbl_historial_clinico (hist_paciente, hist_antecedentes_personales, hist_antecedentes_familiares, hist_medicamentos_actuales, hist_alergias, hist_diagnostico, hist_creado_por, hist_actualizado_por, hist_odontograma, hist_indice_dmft, hist_frecuencia_cepillado, hist_hilo_dental, hist_enjuague_bucal, hist_sensibilidad_dental, hist_estado) VALUES
 (1, 'Paciente con antecedentes de caries recurrentes.', 'Padre con enfermedad periodontal.', 'Naproxeno 500mg', 'Ninguna', 1, 1, 1, TRUE, 3, '2 veces/dia', TRUE, TRUE, 'Frío', 'Activo'),
 (2, 'Sin antecedentes personales relevantes.', 'Madre con historia de gingivitis.', 'Ibuprofeno ocasional', 'Alergia a penicilina', 2, 2, 2, FALSE, 1, '1 vez/dia', FALSE, FALSE, 'Calor', 'Activo'),
 (3, 'Paciente diabético tipo 2.', 'Abuelos con pérdida dentaria temprana.', 'Metformina 850mg', 'Ninguna', 3, 3, 3, TRUE, 4, '>2 veces/dia', TRUE, TRUE, 'Dulce', 'Activo');
