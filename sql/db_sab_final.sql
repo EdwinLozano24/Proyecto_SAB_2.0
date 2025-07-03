@@ -297,3 +297,25 @@ BEGIN
 END$$
 
 DELIMITER ;
+
+DELIMITER //
+
+CREATE PROCEDURE ObtenerHistorialClinico()
+BEGIN
+    SELECT
+        h.*, 
+        up.usua_nombre AS hist_paciente,
+        uc.usua_nombre AS hist_creado_por,
+        ua.usua_nombre AS hist_actualizado_por,
+        d.diag_nombre AS hist_diagnostico
+    FROM tbl_historial_clinico AS h
+        INNER JOIN tbl_diagnosticos     AS d   ON h.hist_diagnostico       = d.id_diagnostico
+        INNER JOIN tbl_pacientes        AS p   ON h.hist_paciente          = p.id_paciente
+        INNER JOIN tbl_usuarios         AS up  ON p.paci_usuario           = up.id_usuario
+        INNER JOIN tbl_especialistas    AS e_c ON h.hist_creado_por        = e_c.id_especialista
+        INNER JOIN tbl_usuarios         AS uc  ON e_c.espe_usuario         = uc.id_usuario
+        INNER JOIN tbl_especialistas    AS e_a ON h.hist_actualizado_por   = e_a.id_especialista
+        INNER JOIN tbl_usuarios         AS ua  ON e_a.espe_usuario         = ua.id_usuario;
+END //
+
+DELIMITER ;
