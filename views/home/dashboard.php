@@ -1,9 +1,10 @@
 <!-- <?php
 // Plantilla para restriccion por rol
-// require_once '../../config/auth.php';
-// requiereSesion();
 //requiereTipo('Administrador');
 //requireVariosTipos(['Especialista', 'Empleados']);
+
+require_once '../../config/auth.php';
+requiereSesion();
 ?> -->
 <!DOCTYPE html>
 <html lang="es">
@@ -27,7 +28,7 @@
                 <li class="main-nav__item"><a href="#" class="main-nav__link">Historial clínico</a></li>
                 <li class="main-nav__item"><a href="#" class="main-nav__link">Catálogo</a></li>
                 <li class="main-nav__item"><a href="#" class="main-nav__link">PQRS</a></li>
-                <li class="main-nav__item"><a href="#" class="main-nav__link">Agendar Cita</a></li>
+                <li class="main-nav__item"><a href="../../views/cita/citaIndex.php" class="main-nav__link">Agendar Cita</a></li>
             </ul>
         </nav>
     </header>
