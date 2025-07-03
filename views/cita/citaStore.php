@@ -119,8 +119,20 @@ $tratamientos = $stmt->fetchAll();
                             <input type="date" name="cita_fecha" id="cita_fecha" required min="2024-01-01">
                         </div>
                         <div>
-                            <label for="cita_hora">Hora de la Cita <span class="required">*</span></label>
-                            <input type="time" name="cita_hora" id="cita_hora" required min="08:00" max="18:00">
+                            <label for="cita_hora">Hora de Inicio <span class="required">*</span></label>
+                            <input type="time" name="cita_hora_inicio" id="cita_hora_inicio" required min="08:00" max="18:00">
+                        </div>
+                        <div>
+                            <label for="cita_hora">Hora de Final <span class="required">*</span></label>
+                            <input type="time" name="cita_hora_fin" id="cita_hora_fin" required min="08:00" max="18:00">
+                        </div>
+                        <div>
+                            <label for="cita_turno">Turno<span class="required">*</span></label>
+                            <select name="cita_motivo" id="cita_motivo" required>
+                                <option value="" disabled selected>Seleccionar el turno de la cita...</option>
+                                <option value="Mañana">Mañana</option>
+                                <option value="Tarde">Tarde</option>
+                        </select>
                         </div>
                     </div>
                 </div>
@@ -136,12 +148,12 @@ $tratamientos = $stmt->fetchAll();
                         <label for="cita_motivo">Motivo de la Consulta <span class="required">*</span></label>
                         <select name="cita_motivo" id="cita_motivo" required>
                             <option value="" disabled selected>Seleccionar motivo...</option>
-                            <option value="1">Consulta General</option>
-                            <option value="2">Control de Seguimiento</option>
-                            <option value="3">Urgencia Odontológica</option>
-                            <option value="4">Seguimiento de Tratamiento</option>
-                            <option value="5">Examen de Rutina</option>
-                            <option value="6">Otro</option>
+                            <option value="Consulta general">Consulta General</option>
+                            <option value="Control">Control de Seguimiento</option>
+                            <option value="Urgencia">Urgencia Odontológica</option>
+                            <option value="Seguimiento">Seguimiento de Tratamiento</option>
+                            <option value="Examen">Examen de Rutina</option>
+                            <option value="Otro">Otro</option>
                         </select>
                     </div>
 
@@ -149,12 +161,11 @@ $tratamientos = $stmt->fetchAll();
                         <label for="cita_tratamiento">Tratamiento Asociado</label>
                         <select name="cita_tratamiento" id="cita_tratamiento">
                             <option value="" disabled selected>Seleccionar tratamiento...</option>
-                            <option value="1">Limpieza Dental</option>
-                            <option value="2">Obturación</option>
-                            <option value="3">Extracción</option>
-                            <option value="4">Ortodoncia</option>
-                            <option value="5">Blanqueamiento</option>
-                            <option value="6">Implante Dental</option>
+                                <?php foreach ($tratamientos as $tratamiento): ?>
+                                    <option value="<?= $tratamiento['id_tratamiento'] ?>">
+                                        <?= $tratamiento['trat_nombre'] ?>
+                                    </option>
+                                <?php endforeach; ?>
                         </select>
                     </div>
 

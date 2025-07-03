@@ -1,13 +1,11 @@
 <?php
-require_once '../../config/auth.php';
-requiereSesion();
 require_once __DIR__ . '/../../config/database.php';
 $pdo = conectarBD();
 $sql = "SELECT 
     c.*, 
-    up.usua_nombre AS nombre_paciente,
-    ue.usua_nombre AS nombre_especialista,
-    co.cons_numero AS numero_consultorio
+    up.usua_nombre AS cita_paciente,
+    ue.usua_nombre AS cita_especialista,
+    co.cons_numero AS cita_consultorio
 FROM tbl_citas AS c
 INNER JOIN tbl_pacientes AS p ON c.cita_paciente = p.id_paciente
 INNER JOIN tbl_usuarios AS up ON p.paci_usuario = up.id_usuario
@@ -56,19 +54,19 @@ $citas = $stmt->fetchAll();
             <th>Motivo</th>
             <th>Observacion</th>
             <th>Estado</th>
-            <th></th>
+            <th>Acciones</th>
         </thead>
         <tbody>
             <?php foreach ($citas as $cita): ?>
                 <tr>
-                    <td><?= htmlspecialchars($cita['nombre_paciente']) ?></td>
-                    <td><?= htmlspecialchars($cita['nombre_especialista']) ?></td>
+                    <td><?= htmlspecialchars($cita['cita_paciente']) ?></td>
+                    <td><?= htmlspecialchars($cita['cita_especialista']) ?></td>
                     <td><?= htmlspecialchars($cita['cita_fecha']) ?></td>
                     <td><?= htmlspecialchars($cita['cita_hora_inicio']) ?></td>
                     <td><?= htmlspecialchars($cita['cita_hora_fin']) ?></td>
                     <td><?= htmlspecialchars($cita['cita_turno']) ?></td>
                     <td><?= htmlspecialchars($cita['cita_duracion']) ?></td>
-                    <td><?= htmlspecialchars($cita['numero_consultorio']) ?></td>
+                    <td><?= htmlspecialchars($cita['cita_consultorio']) ?></td>
                     <td><?= htmlspecialchars($cita['cita_motivo']) ?></td>
                     <td><?= htmlspecialchars($cita['cita_observacion']) ?></td>
                     <td><?= htmlspecialchars($cita['cita_estado']) ?></td>

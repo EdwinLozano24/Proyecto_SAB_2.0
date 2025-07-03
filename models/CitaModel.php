@@ -13,7 +13,8 @@ class CitaModel
         cita_paciente,
         cita_especialista,
         cita_fecha,
-        cita_hora,
+        cita_hora_inicio,
+        cita_hora_fin,
         cita_turno,
         cita_duracion,
         cita_consultorio,
@@ -21,10 +22,11 @@ class CitaModel
         cita_observacion,
         cita_estado
         ) VALUES (
-        :cita_usuario,
+        :cita_paciente,
         :cita_especialista,
         :cita_fecha,
-        :cita_hora,
+        :cita_hora_inicio,
+        :cita_hora_fin,
         :cita_turno,
         :cita_duracion,
         :cita_consultorio,
@@ -54,14 +56,15 @@ class CitaModel
         cita_paciente = :cita_paciente,
         cita_especialista = :cita_especialista,
         cita_fecha = :cita_fecha,
-        cita_hora = :cita_hora,
+        cita_hora_inicio = :cita_hora_inicio,
+        cita_hora_fin = :cita_hora_fin,
         cita_turno = :cita_turno,
         cita_duracion = :cita_duracion,
         cita_consultorio = :cita_consultorio,
         cita_motivo = :cita_motivo,
         cita_observacion = :cita_observacion,
         cita_estado = :cita_estado
-    WHERE id_cita = :id_cita";
+        WHERE id_cita = :id_cita";
     $stmt = $this->pdo->prepare($sql);
         $params = [];
         foreach ($data as $key => $value) 
