@@ -51,7 +51,6 @@ class TratamientoModel
             throw new InvalidArgumentException("[EL ID DEL TRATAMIENTO ES OBLIGATORIO PARA ACTUALIZAR]");
         }
         $sql = "UPDATE tbl_tratamientos SET
-        id_tratamiento = :id_tratamiento,
         trat_codigo = :trat_codigo,
         trat_nombre = :trat_nombre,
         trat_categoria = :trat_categoria,
@@ -60,13 +59,13 @@ class TratamientoModel
         trat_duracion = :trat_duracion,
         trat_descripcion = :trat_descripcion,
         trat_complejidad = :trat_complejidad,
-        trat_estado = trat_estado
+        trat_estado = :trat_estado
     WHERE id_tratamiento = :id_tratamiento";
     $stmt = $this->pdo->prepare($sql);
         $params = [];
         foreach ($data as $key => $value)
         {
-            $params[":key"] = $value;
+            $params[":$key"] = $value;
         }
         return $stmt->execute(($params));    
     }

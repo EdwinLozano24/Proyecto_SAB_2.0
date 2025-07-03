@@ -118,7 +118,7 @@ $tratamientos = $stmt->fetchAll();
 
                     ],
 
-                    lengthMenu: [10, 20, 50, 100],
+                    lengthMenu: [5, 10, 15, 20],
                     language: {
                         "processing": "Procesando...",
                         "lengthMenu": "Mostrar _MENU_ registros",
