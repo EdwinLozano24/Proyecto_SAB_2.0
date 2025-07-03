@@ -43,6 +43,7 @@
                     <input type="password" id="password" name="usua_password" placeholder="Contraseña" required>
                     <div id="error" style="color: blue;"></div>
                     <button type="submit" name="loginUsuario">Entrar</button>
+                    <a href="../../views/usuario/resetPasword.php">Olvidaste la contraseña?</a>
                 </form>
 
                 <!--Register-->

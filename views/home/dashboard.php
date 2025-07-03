@@ -1,7 +1,7 @@
 <!-- <?php
 // Plantilla para restriccion por rol
-require_once '../../config/auth.php';
-requiereSesion();
+// require_once '../../config/auth.php';
+// requiereSesion();
 //requiereTipo('Administrador');
 //requireVariosTipos(['Especialista', 'Empleados']);
 ?> -->
