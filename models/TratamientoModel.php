@@ -10,7 +10,6 @@ class TratamientoModel
     public function store(array $data)
     {
         $sql = "INSERT INTO tbl_tratamientos (
-        id_tratamiento,
         trat_codigo,
         trat_nombre,
         trat_categoria,
@@ -21,7 +20,6 @@ class TratamientoModel
         trat_complejidad,
         trat_estado    
         ) VALUES (
-        :id_tratamiento,
         :trat_codigo,
         :trat_nombre,
         :trat_categoria,
