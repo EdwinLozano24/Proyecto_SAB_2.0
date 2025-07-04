@@ -77,6 +77,7 @@ $pdo = conectarBD();
                     <div class="form-group full-width">
                         <label for="descripcion">Descripción</label>
                         <input type="text" name="trat_descripcion" id=descripcion value="<?= $trat['trat_descripcion'] ?>">
+
                     </div>
 
                     <div class="form-group">
