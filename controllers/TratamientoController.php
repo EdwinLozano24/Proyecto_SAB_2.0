@@ -47,8 +47,8 @@ class TratamientoController
     }
 
     public function store()
-{
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $data = [
             'trat_codigo' => $_POST['trat_codigo'] ?? null,
             'trat_nombre' => $_POST['trat_nombre'] ?? null,
@@ -61,16 +61,15 @@ class TratamientoController
             'trat_estado' => $_POST['trat_estado'] ?? null,
         ];
 
-        try {
-            $this->TratamientoModel->store($data);
-            header('Location: ../controllers/TratamientoController.php?accion=index');
-            exit;
-        } catch (Exception $e) {
-            
-            echo "Error al guardar el tratamiento: " . $e->getMessage();
+            try {
+                $this->TratamientoModel->store($data);
+                header('Location: ../controllers/TratamientoController.php?accion=index');
+                exit;
+            } catch (Exception $e) {
+                echo "Error al guardar el tratamiento: " . $e->getMessage();
+            }
         }
     }
-}
 
     public function view_update($id_tratamiento)
     {
