@@ -76,6 +76,28 @@
                         <label for="fecha de respuesta">Fecha de Respuesta</label>
                         <input type="date" name="pqrs_fecha_respuesta" id="pqrs_fecha_respuesta" value="<?= $pqr['pqrs_fecha_respuesta'] ?>">
                     </div>
+                    <div class="form-group">
+                        <label for="usuario">usuario <span class="required">*</span></label>
+                        <select name="pqrs_usuario" id="pqrs_usuario">
+                            <?php foreach ($usua as $usu): ?>
+                                <option value="<?= htmlspecialchars($usu['id_usuario']) ?>"
+                                    <?= $usu['id_usuario'] == $pqr['pqrs_usuario'] ? 'selected' : '' ?>>
+                                    <?= htmlspecialchars($usu['usua_nombre']) ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="empleado">Empleado <span class="required">*</span></label>
+                        <select name="pqrs_empleado" id="pqrs_empleado">
+                            <?php foreach ($empl as $emp): ?>
+                                <option value="<?= htmlspecialchars($emp['id_empleado']) ?>"
+                                    <?= $emp['id_empleado'] == $pqr['pqrs_empleado'] ? 'selected' : '' ?>>
+                                    <?= htmlspecialchars($emp['usua_nombre']) ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
                     
 
 

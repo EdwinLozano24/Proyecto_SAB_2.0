@@ -3,6 +3,8 @@
 | RUTEO BÁSICO
 ----------------------------------------------------------*/
 require_once __DIR__ . '/../models/PqrsModel.php';
+require_once __DIR__ . '/../models/EmpleadoModel.php';
+require_once __DIR__ . '/../models/UsuarioModel.php';
 
 $controller = new PqrsController();
 $action     = $_GET['accion'] ?? 'index';
@@ -40,10 +42,14 @@ class PqrsController
 {
     /** @var PqrsModel */
     protected $pqrsModel;
+    protected $EmpleadoModel;
+    protected $UsuarioModel;
 
     public function __construct()
     {
         $this->pqrsModel = new PqrsModel();
+        $this->EmpleadoModel = new EmpleadoModel();
+        $this->UsuarioModel = new UsuarioModel();
     }
 
     /* ---------- VISTAS ---------- */
@@ -67,6 +73,8 @@ class PqrsController
         }
 
         $pqr = $this->pqrsModel->find($id_pqrs);
+        $empl = $this->EmpleadoModel->findAll();
+        $usua = $this->UsuarioModel->findAll();
         include '../views/pqrs/pqrsUpdate.php';
         exit;
     }
