@@ -75,4 +75,11 @@ class TratamientoModel
         $stmt -> bindParam(':id_tratamiento', $id_tratamiento, PDO::PARAM_INT);
         $stmt->execute();
     }
+    public function findAll()
+    {
+        $sql = "SELECT * FROM tbl_tratamientos";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

@@ -89,5 +89,12 @@ class UsuarioModel
         $stmt->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
         $stmt->execute();
     }
+    public function findAll()
+    {
+        $sql = "SELECT * FROM tbl_usuarios";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 
 }
