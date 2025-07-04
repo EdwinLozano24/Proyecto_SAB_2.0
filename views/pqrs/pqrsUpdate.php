@@ -98,7 +98,12 @@
                             <?php endforeach; ?>
                         </select>
                     </div>
-                    
+                <div class="button-group">
+                <a href="../../controllers/PqrsController.php?accion=index" class="btn-link">
+                    ← Cancelar
+                </a>
+                <button type="submit">
+                    💾 Actualizar PQRS
 
 
     
