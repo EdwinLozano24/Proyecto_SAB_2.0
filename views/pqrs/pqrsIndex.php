@@ -1,14 +1,9 @@
 <?php
-require_once __DIR__ .'/../../config/database.php';
+require_once __DIR__ . '/../../config/database.php';
 $pdo = conectarBD();
-$sql = "SELECT * FROM tbl_pqrs
-    ORDER BY
-        CASE pqrs_estado
-            WHEN 'Pendiente' THEN 1
-            ELSE 2
-        END";
+$sql = "CALL ObtenerPQRs";
 $stmt = $pdo->query($sql);
-$pqrs = $stmt ->fetchAll();
+$pqrs = $stmt->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +23,7 @@ $pqrs = $stmt ->fetchAll();
     }
     ?>
     <title>PQRS CRUD</title>
-    
+
     <link href="https://cdn.datatables.net/2.3.1/css/dataTables.bootstrap5.min.css" rel="stylesheet" integrity="sha384-5hBbs6yhVjtqKk08rsxdk9xO80wJES15HnXHglWBQoj3cus3WT+qDJRpvs5rRP2c" crossorigin="anonymous">
     <link href="https://cdn.datatables.net/buttons/3.2.3/css/buttons.bootstrap5.min.css" rel="stylesheet" integrity="sha384-DJhypeLg79qWALC844KORuTtaJcH45J+36wNgzj4d1Kv1vt2PtRuV2eVmdkVmf/U" crossorigin="anonymous">
     <!-- Boostrap -->
@@ -36,6 +31,7 @@ $pqrs = $stmt ->fetchAll();
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
     <h2>Pqrs Registrados</h2>
     <!-- <div style="text-align: center; margin-bottom: 15px;">
@@ -44,6 +40,11 @@ $pqrs = $stmt ->fetchAll();
     <button onclick="toggleColumn(11)">EPS</button>
     <button onclick="toggleColumn(13)">Estado</button>
     </div> -->
+    
+    <div class="l-flex justify-content-end mb-3">
+        <a href="/proyecto_sab/controllers/PqrsController.php?accion=view_store" class="btn btn-primary">
+            <i class="fa-solid fa-plus"></i> Agregar PQR
+        </a>
     <table id="pqrs" class="display">
         <thead>
             <tr>
@@ -71,12 +72,18 @@ $pqrs = $stmt ->fetchAll();
                     <td><?= htmlspecialchars($pqr['pqrs_estado']) ?></td>
                     <td><?= htmlspecialchars($pqr['pqrs_respuesta']) ?></td>
                     <td><?= htmlspecialchars($pqr['pqrs_fecha_respuesta']) ?></td>
-                    <td><?= htmlspecialchars($pqr['pqrs_usuario']) ?></td>
-                    <td><?= htmlspecialchars($pqr['pqrs_empleado']) ?></td>
+                    <td><?= htmlspecialchars($pqr['nombre_usuario']) ?></td>
+                    <td><?= htmlspecialchars($pqr['nombre_empleado'] ?? 'Sin asignar') ?></td>
                     <td>
-                        <a href="/proyecto_sab/controllers/UsuarioController.php?accion=view_update&id_pqrs=<?= $pqr['id_pqrs'] ?>"><i class="fa-solid fa-pen-to-square"></i></a>
-                        <a href="/proyecto_sab/controllers/UsuarioController.php?accion=delete&id_pqrs=<?= $pqr['pqrs_usuario'] ?>"><i class="fa-solid fa-trash"></i></a>
-                    </td>
+                    <!-- Botón para Editar -->
+                    <a href="/proyecto_sab/controllers/PqrsController.php?accion=view_update&id_pqrs=<?= $pqr['id_pqrs'] ?>">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </a>
+                    <!-- Botón para cambiar el estado (simular eliminación) -->
+                    <a href="/proyecto_sab/controllers/PqrsController.php?accion=delete&id_pqrs=<?= $pqr['id_pqrs'] ?>">
+                        <i class="fa-solid fa-trash"></i>
+                    </a>
+                </td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
@@ -98,7 +105,7 @@ $pqrs = $stmt ->fetchAll();
     <!-- Boostrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
     <script>
-    // new DataTable('#example');
+        // new DataTable('#example');
         $(document).ready(function() {
             $('#pqrs').DataTable({
                     dom: "Blfrtip",
@@ -372,7 +379,7 @@ $pqrs = $stmt ->fetchAll();
                 },
 
 
-            ) 
+            )
 
         })
     </script>
@@ -389,4 +396,5 @@ function toggleColumn(index) {
 }
 </script> -->
 </body>
+
 </html>

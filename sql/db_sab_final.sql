@@ -319,3 +319,23 @@ BEGIN
 END //
 
 DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE ObtenerPQRs()
+BEGIN
+    SELECT
+        pq.*,
+        u.usua_nombre                          AS nombre_usuario,
+        uemp.usua_nombre                       AS nombre_empleado
+    FROM tbl_pqrs         AS pq
+    JOIN tbl_usuarios     AS u    ON pq.pqrs_usuario  = u.id_usuario
+    LEFT JOIN tbl_empleados AS e  ON pq.pqrs_empleado = e.id_empleado
+    LEFT JOIN tbl_usuarios  AS uemp ON e.empl_usuario = uemp.id_usuario
+    ORDER BY
+        CASE pq.pqrs_estado
+            WHEN 'Pendiente' THEN 1
+            ELSE 2
+        END;
+END //
+
+DELIMITER ;
