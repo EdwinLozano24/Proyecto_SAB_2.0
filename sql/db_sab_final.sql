@@ -146,7 +146,7 @@ CREATE TABLE IF NOT EXISTS tbl_historial_clinico (
     hist_alergias TEXT NOT NULL,
     hist_diagnostico INT NOT NULL,
     hist_fecha_registro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    hist_fecha_actualizacion TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    hist_fecha_actualizacion TIMESTAMP NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
     hist_creado_por INT NOT NULL,
     hist_actualizado_por INT NOT NULL,
     hist_odontograma BOOLEAN NOT NULL,
