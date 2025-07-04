@@ -61,10 +61,10 @@ class DiagnosticoController
 
             try {
                 $this->DiagnosticoModel->store($data);
-                header('Location: ../controllers/diagnosticoController.php?accion=index');
+                header('Location: ../controllers/DiagnosticoController.php?accion=index');
                 exit;
             } catch (Exception $e) {
-                echo "Error al guardar el tratamiento: " . $e->getMessage();
+                echo "Error al guardar el Diagnostico: " . $e->getMessage();
             }
         }
     }
@@ -79,7 +79,8 @@ class DiagnosticoController
 
         public function update()
     {
-        $data = [
+        $data = 
+        [
             'id_diagnostico' => $_POST['id_diagnostico'] ?? null,
             'diag_nombre' => $_POST['diag_nombre'] ?? null,
             'diag_descripcion' => $_POST['diag_descripcion'] ?? null,
@@ -88,7 +89,7 @@ class DiagnosticoController
         ];
         try {
             $this->DiagnosticoModel->update($data);
-            header('Location: ../controllers/diagnosticoController.php?accion=index');
+            header('Location: ../controllers/DiagnosticoController.php?accion=index ');
             exit;
         } catch (\Exception $e) {
             echo '[Ocurrio un error al ACTUALIZAR el diagnostico (Estamos trabajando para soluctionarlo)]';
@@ -100,7 +101,7 @@ class DiagnosticoController
     {
         try {
             $this->DiagnosticoModel->delete($id_diagnostico);
-            header('Location: ../views/diagnostico/diagnosticoIndex.php');
+            header('Location: ../controllers/DiagnosticoController.php?accion=index');
             exit;
         } catch (\Exception $exception) {
             echo '[Ocurrio un error al ELIMINAR el diagnostico (Estamos trabajando para soluctionarlo)]';
