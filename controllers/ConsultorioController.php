@@ -39,10 +39,10 @@ switch ($action) {
 
 class ConsultorioController
 {
-    protected $consultorioModel;
+    protected $ConsultorioModel;
     public function __construct()
     {
-        $this->consultorioModel = new ConsultorioModel();
+        $this->ConsultorioModel = new ConsultorioModel();
     }
 
     /* ---------- VISTAS ---------- */
@@ -57,11 +57,11 @@ class ConsultorioController
     }
 
     public function view_update($id_consultorio): void {
-        if(!id_consultorio) {
+        if(!$id_consultorio) {
             $this->index();
         }
 
-        $consultorio = $this->ConsultorioModel->find(id_consultorio);
+        $cons = $this->ConsultorioModel->find($id_consultorio);
         include '../views/consultorio/consultorioUpdate.php';
         exit;
     }
@@ -71,12 +71,12 @@ class ConsultorioController
     public function store(): void
     {
        $data = [
-            'cons_numero' => $_PIST['cons_numero'] ?? null,
+            'cons_numero' => $_POST['cons_numero'] ?? null,
             'cons_estado' => $_POST['cons_estado'] ?? 'Disponible',
        ];
 
        try {
-            $this->consultorioModel->store($data);
+            $this->ConsultorioModel->store($data);
             header('Location: ../views/consultorio/consultorioIndex.php');
             exit;
        } catch (Exception $e) {
@@ -85,6 +85,9 @@ class ConsultorioController
        }
 
     }
+
+    
+
 
     public function update(): void {
         $id_consultorio = $_POST['id_consultorio'] ?? null;
@@ -109,6 +112,8 @@ class ConsultorioController
 
     }
 
+    
+
     public function delete($id_consultorio): void 
     {
         if(!$id_consultorio) {
@@ -116,7 +121,7 @@ class ConsultorioController
         }
 
         try {
-            $this->consultorioModel->delete($id_consultorio);
+            $this->ConsultorioModel->delete($id_consultorio);
             header('Location: ../views/consultorio/consultorioIndex.php');
             exit;
         } catch (Exception $e) {

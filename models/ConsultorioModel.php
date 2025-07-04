@@ -28,9 +28,8 @@ class ConsultorioModel
 
     public function find($id_consultorio)
     {
-        $sql = ("SELECT * FROM tbl_consultorios WHERE id_consultorio = :id_consultorio");
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute();
+        $stmt = $this->pdo->prepare("SELECT * FROM tbl_consultorios WHERE id_consultorio = :id_consultorio");
+        $stmt->execute([':id_consultorio' => $id_consultorio]);
         return $stmt->fetch();
     }
 
@@ -52,7 +51,7 @@ class ConsultorioModel
 
     public function delete($id_consultorio)
     {
-        $stmt = $this->pdo->prepare("UPDATE tbl_consultorios SET cons_Estado = 'Inactivo' WHERE id_consultorio = :id_consultorio");
+        $stmt = $this->pdo->prepare("UPDATE tbl_consultorios SET cons_Estado = 'No Disponible' WHERE id_consultorio = :id_consultorio");
         return $stmt->execute([':id_consultorio' => $id_consultorio]);
     }
 
