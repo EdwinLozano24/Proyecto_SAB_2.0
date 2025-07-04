@@ -1,15 +1,3 @@
-<?php
-require_once __DIR__ . '/../../config/database.php';
-$pdo = conectarBD();
-// Obtener todas las categorías para el select
-$sql = "SELECT * FROM tbl_consultorios  ";
-$stmt = $pdo->query($sql);
-$consultorios = $stmt->fetchAll();
-$consultorio_selected = $consultorio['id_consultorio'];  // Definir la variable con el ID del consultorio seleccionado.
-$consultorio = obtenerConsultorioPorId($id_consultorio); // Supón que obtienes el consultorio de la base de datos.
-
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -55,15 +43,29 @@ $consultorio = obtenerConsultorioPorId($id_consultorio); // Supón que obtienes 
     <div class="form-group full-width">
         <label for="cons_numero">Numero del Consultorio <span class="required">*</span></label>
         <select name="cons_numero" id="cons_numero" required>
-            <option value="" disabled>Seleccionar consultorio a modificar...</option>
-            <?php foreach (($consultorios ?? []) as $consultorio): ?>
-                <option value="<?= htmlspecialchars($consultorio['id_consultorio']) ?>" 
-                        <?= (isset($consultorio_selected) && $consultorio_selected == $consultorio['id_consultorio']) ? 'selected' : '' ?>>
-                    <?= htmlspecialchars($consultorio['cons_numero']) ?>
+            <?php foreach ($cons as $con): ?>
+                    <option value="<?= htmlspecialchars($con['id_consultorio']) ?>"
+                        <?= $con['id_consultorio'] == $hist['hist_paciente'] ? 'selected' : '' ?>>
+                    <?= htmlspecialchars($pac['usua_nombre']) ?>
                 </option>
             <?php endforeach; ?>
         </select>
     </div>
+
+<div class="form-grid">
+                    <div class="form-group">
+                        <label for="codigo">Actualizado Por (Especialista)<span class="required">*</span></label>
+                            <select name="hist_actualizado_por" id="hist_actualizado_por">
+                                <?php foreach ($espe as $esp): ?>
+                                    <option value="<?= htmlspecialchars($esp['id_especialista']) ?>"
+                                        <?= $esp['id_especialista'] == $hist['hist_actualizado_por'] ? 'selected' : '' ?>>
+                                        <?= htmlspecialchars($esp['usua_nombre']) ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                    </div
+tengo este select que reitera en una consulta con inner join, quiero adaptarlo a uno que solo me traiga los datos que hay en mi tabla (es un campo normal sin inner join) y me deje seleccionado el correspondiente en la base de datos
+
 
     <div class="form-group">
         <label for="cons_estado">Estado</label>
