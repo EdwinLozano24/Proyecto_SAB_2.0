@@ -1,5 +1,8 @@
 <?php
 require_once __DIR__ . '/../models/HistorialModel.php';
+require_once __DIR__ . '/../models/PacienteModel.php';
+require_once __DIR__ . '/../models/EmpleadoModel.php';
+require_once __DIR__ . '/../models/DiagnosticoModel.php';
 $historial = new HistorialController();
 $accion = $_GET['accion'] ?? 'index';
 
@@ -26,10 +29,16 @@ switch ($accion) {
 class HistorialController
 {
     protected $HistorialModel;
+    protected $PacienteModel;
+    protected $EmpleadoModel;
+    protected $DiagnosticoModel;
 
     public function __construct()
     {
         $this->HistorialModel = new HistorialModel();
+        $this->PacienteModel = new PacienteModel();
+        $this->EmpleadoModel = new EmpleadoModel();
+        $this->DiagnosticoModel = new DiagnosticoModel();
     }
 
     public function index()
@@ -78,6 +87,9 @@ class HistorialController
     public function view_update($id_historial)
     {
         $hist = $this->HistorialModel->find($id_historial);
+        $empl = $this->EmpleadoModel->findAll();
+        $paci = $this->PacienteModel->findAll();
+        $diag = $this->DiagnosticoModel->findAll();
         include '../views/historial/historialUpdate.php';
         exit;
     }
