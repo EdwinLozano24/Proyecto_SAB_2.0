@@ -52,7 +52,7 @@ $tratamientos = $stmtTratamientos->fetchAll();
             <p class="subtitle">Sistema de Gestión Odontológica</p>
         </div>
 
-        <form action="../../controllers/DiagnosticoController.php?accion=update" method="POST" class="form-card">
+        <form action="/proyecto_sab/controllers/DiagnosticoController.php?accion=update" method="POST" class="form-card">
             <input type="hidden" name="id_diagnostico" value="<?= $diagnostico['id_diagnostico'] ?>">
 
             <div class="form-section">
