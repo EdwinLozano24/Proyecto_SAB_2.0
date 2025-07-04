@@ -8,11 +8,52 @@ class ConsultorioModel
     {
         $this->pdo = conectarBD();
     }
-    public function findAll()
+
+
+    public function store(array $data)
+
     {
-        $sql = "SELECT * FROM tbl_consultorios";
+            $sql = "INSERT INTO tbl_consultorios (
+                    cons_numero,
+                    cons_estado
+                ) VALUES (
+                    :cons_numero,
+                    :cons_estado
+                )";
+
+            $stmt = $this->pdo->prepare($sql);
+            return $stmt->execute($data);
+    
+    }
+
+    public function find($id_consultorio)
+    {
+        $sql = ("SELECT * FROM tbl_consultorios WHERE id_consultorio = :id_consultorio");
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $stmt->fetch();
     }
+
+    public function update(array $data)
+    {
+        if (!isset($data['id_consultorio'])) {
+            throw new InvalidArgumentException("[El ID del consultorio es obligatorio para ACTUALIZAR]");
+        }
+
+        $sql = "UPDATE tbl_consultorios SET
+            cons_numero = :cons_numero,
+            cons_estado = :cons_estado
+            WHERE id_consultorio = :id_consultorio";
+
+            $stmt = $this->pdo->prepare($sql);
+            return $stmt->execute($data);
+    }
+
+
+    public function delete($id_consultorio)
+    {
+        $stmt = $this->pdo->prepare("UPDATE tbl_consultorios SET cons_Estado = 'Inactivo' WHERE id_consultorio = :id_consultorio");
+        return $stmt->execute([':id_consultorio' => $id_consultorio]);
+    }
+
 }
