@@ -100,7 +100,7 @@ $pdo = conectarBD();
             </div>
 
             <div class="button-group">
-                <a href=".././controllers/TratamientoController.php" class="btn-link">← Cancelar</a>
+                <a href="../../controllers/TratamientoController.php?accion=index" class="btn-link">← Cancelar</a>
                 <button type="submit" id="actualizar_tratamiento">💾 Actualizar Tratamiento</button>
             </div>
         </form>

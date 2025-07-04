@@ -2,7 +2,7 @@
 require_once __DIR__ . '/../../config/database.php';
 $pdo = conectarBD();
 $sql = "SELECT * FROM tbl_diagnosticos
-        INNER JOIN tbl_tratamientos ON diag_tratamiento = id_diagnostico";
+        INNER JOIN tbl_tratamientos ON diag_tratamiento = id_tratamiento";
 $stmt = $pdo->query($sql);
 $diagnosticos = $stmt->fetchAll();
 ?>
@@ -33,7 +33,7 @@ $diagnosticos = $stmt->fetchAll();
 
 <body>
     <H2>Diagnosticos Registrados</H2>
-    <a href="/proyecto_sab/controllers/TratamientoController.php?accion=view_store">Nuevo diagnostico<i class="fa-solid fa-square-plus"></i></a>
+    <a href="/proyecto_sab/controllers/DiagnosticoController.php?accion=view_store">Nuevo diagnostico<i class="fa-solid fa-square-plus"></i></a>
     <table id="DiagnosticosDatatable" class="display">
         <thead>
             <tr>
@@ -54,8 +54,8 @@ $diagnosticos = $stmt->fetchAll();
                     <td><?= htmlspecialchars($diagnostico['diag_tratamiento']) ?></td>
                     <td><?= htmlspecialchars($diagnostico['diag_estado']) ?></td>
                     <td>
-                        <a href="/proyecto_sab/controllers/TratamientoController.php?accion=view_update&id_diagnostico=<?= $diagnostico['id_diagnostico'] ?>"><i class="fa-solid fa-pen-to-square"></i></a>
-                        <a href="/proyecto_sab/controllers/TratamientoController.php?accion=delete&id_diagnostico=<?= $diagnostico['id_diagnostico'] ?>"><i class="fa-solid fa-trash"></i></a>
+                        <a href="/proyecto_sab/controllers/diagnosticoController.php?accion=view_update&id_diagnostico=<?= $diagnostico['id_diagnostico'] ?>"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a href="/proyecto_sab/controllers/diagnosticoController.php?accion=delete&id_diagnostico=<?= $diagnostico['id_diagnostico'] ?>"><i class="fa-solid fa-trash"></i></a>
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -104,7 +104,7 @@ $diagnosticos = $stmt->fetchAll();
 
                     ],
 
-                    lengthMenu: [5, 10, 15, 20],
+                    lengthMenu: [10, 20, 30],
                     language: {
                         "processing": "Procesando...",
                         "lengthMenu": "Mostrar _MENU_ registros",
