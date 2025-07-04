@@ -170,7 +170,7 @@ CREATE TABLE IF NOT EXISTS tbl_pqrs (
     pqrs_fecha_envio DATE NOT NULL DEFAULT CURRENT_DATE,
     pqrs_estado ENUM('Pendiente','En proceso','Respondido','Cerrado'),
     pqrs_respuesta TEXT,
-    pqrs_fecha_respuesta TEXT,
+    pqrs_fecha_respuesta DATE,
     pqrs_usuario INT NOT NULL,
     pqrs_empleado INT,
     FOREIGN KEY (pqrs_usuario) REFERENCES tbl_usuarios(id_usuario),
