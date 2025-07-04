@@ -49,8 +49,14 @@ $pdo = conectarBD();
                     </div>
 
                     <div class="form-group">
-                        <label for="categoria">ID Categoría <span class="required">*</span></label>
-                        <input type="number" name="trat_categoria" id="categoria" value="<?= $trat['trat_categoria'] ?>" required>
+                        <select name="trat_categoria" id="trat_categoria">
+                            <?php foreach ($cate as $cat): ?>
+                                <option value="<?= htmlspecialchars($cat['id_categoria']) ?>"
+                                    <?= $cat['id_categoria'] == $trat['trat_categoria'] ? 'selected' : '' ?>>
+                                    <?= htmlspecialchars($cat['cate_nombre']) ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
                     </div>
 
                     <div class="form-group">
@@ -70,7 +76,7 @@ $pdo = conectarBD();
 
                     <div class="form-group full-width">
                         <label for="descripcion">Descripción</label>
-                        <textarea name="trat_descripcion" id="descripcion" rows="4"><?= $trat['trat_descripcion'] ?></textarea>
+                        <input type="text" name="trat_descripcion" id=descripcion value="<?= $trat['trat_descripcion'] ?>">
                     </div>
 
                     <div class="form-group">

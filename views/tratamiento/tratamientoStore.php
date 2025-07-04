@@ -89,7 +89,7 @@ $categorias = $stmt->fetchAll();
 
                     <div class="form-group full-width">
                         <label for="descripcion">Descripción</label>
-                        <textarea name="trat_descripcion" id="descripcion" rows="4"></textarea>
+                        <input type="text" name="trat_descripcion" id="descripcion">
                     </div>
 
                     <div class="form-group">
@@ -104,7 +104,7 @@ $categorias = $stmt->fetchAll();
             </div>
 
             <div class="button-group">
-                <a href="./../controllers/TratamientoController.php" class="btn-link">← Cancelar</a>
+                <a href="../../controllers/TratamientoController.php?accion=index" class="btn-link">← Cancelar</a>
                 <button type="submit">💾 Registrar Tratamiento</button>
             </div>
         </form>

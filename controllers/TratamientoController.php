@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../models/TratamientoModel.php';
+require_once __DIR__ . '/../models/CategoriaModel.php';
 
 $tratamiento = new TratamientoController();
 $accion = $_GET['accion'] ?? 'index';
@@ -28,10 +29,12 @@ switch ($accion) {
 class TratamientoController
 {
     protected $TratamientoModel;
+    protected $CategoriaModel;
 
     public function __construct()
     {
         $this->TratamientoModel = new TratamientoModel();
+        $this->CategoriaModel = new CategoriaModel();
     }
 
     public function index()
@@ -74,6 +77,7 @@ class TratamientoController
     public function view_update($id_tratamiento)
     {
         $trat = $this->TratamientoModel->find($id_tratamiento);
+        $cate = $this->CategoriaModel->findAll();
         include '../views/tratamiento/tratamientoUpdate.php';
         exit;
     }

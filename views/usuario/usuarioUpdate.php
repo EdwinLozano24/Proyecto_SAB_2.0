@@ -156,7 +156,7 @@
             </div>
 
             <div class="button-group">
-                <a href=".././controllers/UsuarioController.php" class="btn-link">
+                <a href="../../controllers/TratamientoController.php?accion=index" class="btn-link">
                     ← Cancelar
                 </a>
                 <button type="submit">
