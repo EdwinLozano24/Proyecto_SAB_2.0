@@ -62,6 +62,7 @@ class ConsultorioController
         }
 
         $cons = $this->ConsultorioModel->find($id_consultorio);
+        $consAll = $this->ConsultorioModel->findAll();
         include '../views/consultorio/consultorioUpdate.php';
         exit;
     }
@@ -98,12 +99,13 @@ class ConsultorioController
 
 
         $data = [
+            'id_consultorio' => $_POST['id_consultorio'] ?? null,
             'cons_numero' => $_POST['cons_numero'] ?? null,
             'cons_estado' => $_POST['cons_estado'] ?? 'Disponible',
         ];
 
         try {
-            $this->consultorioModel->update($data);
+            $this->ConsultorioModel->update($data);
             header('Location: ../views/consultorio/consultorioIndex.php');
             exit;
         } catch (Exception $e) {

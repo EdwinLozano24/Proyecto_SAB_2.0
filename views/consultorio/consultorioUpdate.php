@@ -32,8 +32,7 @@
 
 
         <form id="consultorioEditForm" method="POST" action="../controllers/ConsultorioController.php?accion=update">
-            <input type="hidden" name="id_consultorio" value="<?= htmlspecialchars($consultorios['id_consultorio'] ?? '') ?>">
-
+            <input type="hidden" name="id_consultorio" value="<?= $cons['id_consultorio'] ?>">
             <div class="form-section">
                 <div class="section-title">
                     <div class="section-icon">👤</div>
@@ -41,39 +40,29 @@
                 </div>
                 <div class="form-grid">
     <div class="form-group full-width">
-        <label for="cons_numero">Numero del Consultorio <span class="required">*</span></label>
-        <select name="cons_numero" id="cons_numero" required>
-            <?php foreach ($cons as $con): ?>
-                    <option value="<?= htmlspecialchars($con['id_consultorio']) ?>"
-                        <?= $con['id_consultorio'] == $hist['hist_paciente'] ? 'selected' : '' ?>>
-                    <?= htmlspecialchars($pac['usua_nombre']) ?>
-                </option>
-            <?php endforeach; ?>
-        </select>
-    </div>
-
-<div class="form-grid">
-                    <div class="form-group">
+                    <div>
                         <label for="codigo">Actualizado Por (Especialista)<span class="required">*</span></label>
-                            <select name="hist_actualizado_por" id="hist_actualizado_por">
-                                <?php foreach ($espe as $esp): ?>
-                                    <option value="<?= htmlspecialchars($esp['id_especialista']) ?>"
-                                        <?= $esp['id_especialista'] == $hist['hist_actualizado_por'] ? 'selected' : '' ?>>
-                                        <?= htmlspecialchars($esp['usua_nombre']) ?>
+                            <select name="cons_numero" id="cons_numero">
+                                <?php foreach ($consAll as $con): ?>
+                                    <option value="<?= htmlspecialchars($con['cons_numero']) ?>"
+                                        <?= $con['id_consultorio'] == $cons['id_consultorio'] ? 'selected' : '' ?>>
+                                        <?= htmlspecialchars($con['cons_numero']) ?>
                                     </option>
                                 <?php endforeach; ?>
                             </select>
-                    </div
-tengo este select que reitera en una consulta con inner join, quiero adaptarlo a uno que solo me traiga los datos que hay en mi tabla (es un campo normal sin inner join) y me deje seleccionado el correspondiente en la base de datos
-
-
-    <div class="form-group">
-        <label for="cons_estado">Estado</label>
-        <select name="cons_estado" id="cons_estado" required>
-            <option value="Disponible" <?= ($consultorio['cons_estado'] == "Disponible") ? 'selected' : '' ?>>Disponible</option>
-            <option value="No Disponible" <?= ($consultorio['cons_estado'] == "No Disponible") ? 'selected' : '' ?>>No Disponible</option>
-        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="cons_estado">Estado</label>
+                            <select name="cons_estado" id="cons_estado" required>
+                                <option value="Disponible" <?= ($cons['cons_estado'] == "Disponible") ? 'selected' : '' ?>>Disponible</option>
+                                <option value="No Disponible" <?= ($cons['cons_estado'] == "No Disponible") ? 'selected' : '' ?>>No Disponible</option>
+                            </select>
+                     </div>
     </div>
+                        
+
+
+
 </div>
             
 

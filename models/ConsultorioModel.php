@@ -55,4 +55,11 @@ class ConsultorioModel
         return $stmt->execute([':id_consultorio' => $id_consultorio]);
     }
 
+    public function findAll()
+    {
+        $sql = "SELECT * FROM tbl_consultorios";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
