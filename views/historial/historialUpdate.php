@@ -36,71 +36,138 @@
                         <select name="hist_paciente" id="hist_paciente">
                             <?php foreach ($paci as $pac): ?>
                                 <option value="<?= htmlspecialchars($pac['id_paciente']) ?>"
-                                    <?= $pac['id_usuario'] == $pqr['pqrs_usuario'] ? 'selected' : '' ?>>
-                                    <?= htmlspecialchars($usu['usua_nombre']) ?>
+                                    <?= $pac['id_paciente'] == $hist['hist_paciente'] ? 'selected' : '' ?>>
+                                    <?= htmlspecialchars($pac['usua_nombre']) ?>
                                 </option>
                             <?php endforeach; ?>
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <label for="nombre">Nombre <span class="required">*</span></label>
-                        <input type="text" name="trat_nombre" id="nombre" value="<?= $trat['trat_nombre'] ?>" required>
+                        <label for="nombre">Antecedentes Personales<span class="required">*</span></label>
+                        <input type="text" name="hist_antecedentes_personales" id="hist_antecedentes_personales" value="<?= $hist['hist_antecedentes_personales'] ?>" required>
                     </div>
 
                     <div class="form-group">
-                        <select name="trat_categoria" id="trat_categoria">
-                            <?php foreach ($cate as $cat): ?>
-                                <option value="<?= htmlspecialchars($cat['id_categoria']) ?>"
-                                    <?= $cat['id_categoria'] == $trat['trat_categoria'] ? 'selected' : '' ?>>
-                                    <?= htmlspecialchars($cat['cate_nombre']) ?>
+                        <label for="nombre">Antecedentes Familiares<span class="required">*</span></label>
+                        <input type="text" name="hist_antecedentes_familiares" id="hist_antecedentes_familiares" value="<?= $hist['hist_antecedentes_familiares'] ?>" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nombre">Medicamentos Actuales<span class="required">*</span></label>
+                        <input type="text" name="hist_medicamentos_actuales" id="hist_medicamentos_actuales" value="<?= $hist['hist_medicamentos_actuales'] ?>" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nombre">Alergias<span class="required">*</span></label>
+                        <input type="text" name="hist_alergias" id="hist_alergias" value="<?= $hist['hist_alergias'] ?>" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="codigo">Diagnostico Asignado<span class="required">*</span></label>
+                        <select name="hist_diagnostico" id="hist_diagnostico">
+                            <?php foreach ($diag as $dia): ?>
+                                <option value="<?= htmlspecialchars($dia['id_diagnostico']) ?>"
+                                    <?= $dia['id_diagnostico'] == $hist['hist_diagnostico'] ? 'selected' : '' ?>>
+                                    <?= htmlspecialchars($dia['diag_nombre']) ?>
                                 </option>
                             <?php endforeach; ?>
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <label for="duracion_minutos">Duración por sesión (minutos)</label>
-                        <input type="number" name="trat_duracion_minutos" id="duracion_minutos" value="<?= $trat['trat_duracion_minutos'] ?>">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="riesgos">Riesgos</label>
-                        <input type="text" name="trat_riesgos" id="riesgos" value="<?= $trat['trat_riesgos'] ?>">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="duracion">Duración estimada</label>
-                        <input type="text" name="trat_duracion" id="duracion" value="<?= $trat['trat_duracion'] ?>">
-                    </div>
-
-                    <div class="form-group full-width">
-                        <label for="descripcion">Descripción</label>
-                        <input type="text" name="trat_descripcion" id=descripcion value="<?= $trat['trat_descripcion'] ?>">
-
-                    </div>
-
-                    <div class="form-group">
-                        <label for="complejidad">Complejidad</label>
-                        <select name="trat_complejidad" id="complejidad" required>
-                            <option value="Baja" <?= ($trat['trat_complejidad'] == "Baja") ? 'selected' : '' ?>>Baja</option>
-                            <option value="Media" <?= ($trat['trat_complejidad'] == "Media") ? 'selected' : '' ?>>Media</option>
-                            <option value="Alta" <?= ($trat['trat_complejidad'] == "Alta") ? 'selected' : '' ?>>Alta</option>
+                        <label for="estado">Odontograma<span class="required">*</span></label>
+                        <select name="hist_odontograma" id="hist_odontograma" required>
+                            <option value="" disabled>¿Posee Odontograma?</option>
+                            <option value="1" <?= ($hist['hist_odontograma'] == "1") ? 'selected' : '' ?>>Si</option>
+                            <option value="0" <?= ($hist['hist_odontograma'] == "0") ? 'selected' : '' ?>>No</option>
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <label for="estado">Estado</label>
-                        <select name="trat_estado" id="estado" required>
-                            <option value="Activo" <?= ($trat['trat_estado'] == "Activo") ? 'selected' : '' ?>>Activo</option>
-                            <option value="Inactivo" <?= ($trat['trat_estado'] == "Inactivo") ? 'selected' : '' ?>>Inactivo</option>
+                        <label for="nombre">Indice DMFT<span class="required">*</span></label>
+                        <input type="integer" name="hist_indice_dmft" id="hist_indice_dmft" value="<?= $hist['hist_indice_dmft'] ?>" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="estado">Frecuencia de Cepillado<span class="required">*</span></label>
+                        <select name="hist_frecuencia_cepillado" id="hist_frecuencia_cepillado" required>
+                            <option value="" disabled>¿Frecuencia de Cepillado?</option>
+                            <option value="1 vez/dia" <?= ($hist['hist_frecuencia_cepillado'] == "1 vez/dia") ? 'selected' : '' ?>>Una vez al dia</option>
+                            <option value="2 veces/dia" <?= ($hist['hist_frecuencia_cepillado'] == "2 veces/dia") ? 'selected' : '' ?>>Dos veces al dia</option>
+                            <option value=">2 veces/dia" <?= ($hist['hist_frecuencia_cepillado'] == ">2 veces/dia") ? 'selected' : '' ?>>Mas de dos veces al dia</option>
+                            <option value="Ocasional" <?= ($hist['hist_frecuencia_cepillado'] == "Ocasional") ? 'selected' : '' ?>>Ocasionalmente</option>
                         </select>
                     </div>
+
+                    <div class="form-group">
+                        <label for="estado">Hilo Dental<span class="required">*</span></label>
+                        <select name="hist_hilo_dental" id="hist_hilo_dental" required>
+                            <option value="" disabled>¿Usa Hilo Dental?</option>
+                            <option value="1" <?= ($hist['hist_hilo_dental'] == "1") ? 'selected' : '' ?>>Si</option>
+                            <option value="0" <?= ($hist['hist_hilo_dental'] == "0") ? 'selected' : '' ?>>No</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="estado">Enjuague Bucal<span class="required">*</span></label>
+                        <select name="hist_enjuague_bucal" id="hist_enjuague_bucal" required>
+                            <option value="" disabled>¿Usa Enjuague Bucal?</option>
+                            <option value="1" <?= ($hist['hist_enjuague_bucal'] == "1") ? 'selected' : '' ?>>Si</option>
+                            <option value="0" <?= ($hist['hist_enjuague_bucal'] == "0") ? 'selected' : '' ?>>No</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="estado">Sensibilidad Dental<span class="required">*</span></label>
+                        <select name="hist_sensibilidad_dental" id="hist_sensibilidad_dental" required>
+                            <option value="" disabled>¿Posee sensibilidad dental?</option>
+                            <option value="Ninguna" <?= ($hist['hist_sensibilidad_dental'] == "Ninguna") ? 'selected' : '' ?>>Ninguna</option>
+                            <option value="Frío" <?= ($hist['hist_sensibilidad_dental'] == "Frío") ? 'selected' : '' ?>>Frío</option>
+                            <option value="Calor" <?= ($hist['hist_sensibilidad_dental'] == "Calor") ? 'selected' : '' ?>>Calor</option>
+                            <option value="Dulce" <?= ($hist['hist_sensibilidad_dental'] == "Dulce") ? 'selected' : '' ?>>Dulce</option>
+                            <option value="Oclusion" <?= ($hist['hist_sensibilidad_dental'] == "Oclusion") ? 'selected' : '' ?>>Oclusion</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <br>
+                
+                <div class="section-title">
+                    <div class="section-icon">👤</div>
+                    Datos de Manejo
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="codigo">Actualizado Por (Especialista)<span class="required">*</span></label>
+                            <select name="hist_actualizado_por" id="hist_actualizado_por">
+                                <?php foreach ($espe as $esp): ?>
+                                    <option value="<?= htmlspecialchars($esp['id_especialista']) ?>"
+                                        <?= $esp['id_especialista'] == $hist['hist_actualizado_por'] ? 'selected' : '' ?>>
+                                        <?= htmlspecialchars($esp['usua_nombre']) ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                    </div>
+
+                      <div class="form-group">
+                        <label for="estado">Estado<span class="required">*</span></label>
+                        <select name="hist_estado" id="hist_estado" required>
+                            <option value="" disabled>Estado</option>
+                            <option value="Activo" <?= ($hist['hist_estado'] == "Activo") ? 'selected' : '' ?>>Activo</option>
+                            <option value="Inactivo" <?= ($hist['hist_estado'] == "Inactivo") ? 'selected' : '' ?>>Inactivo</option>
+                        </select>
+                    </div>
+
+
+
                 </div>
             </div>
 
             <div class="button-group">
-                <a href=".././controllers/TratamientoController.php" class="btn-link">← Cancelar</a>
+                <a href="/proyecto_sab/controllers/HistorialController.php?accion=index" class="btn-link">← Cancelar</a>
                 <button type="submit" id="actualizar_tratamiento">💾 Actualizar Tratamiento</button>
             </div>
         </form>

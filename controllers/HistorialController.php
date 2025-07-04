@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/../models/HistorialModel.php';
 require_once __DIR__ . '/../models/PacienteModel.php';
-require_once __DIR__ . '/../models/EmpleadoModel.php';
+require_once __DIR__ . '/../models/EspecialistaModel.php';
 require_once __DIR__ . '/../models/DiagnosticoModel.php';
 $historial = new HistorialController();
 $accion = $_GET['accion'] ?? 'index';
@@ -30,14 +30,14 @@ class HistorialController
 {
     protected $HistorialModel;
     protected $PacienteModel;
-    protected $EmpleadoModel;
+    protected $EspecialistaModel;
     protected $DiagnosticoModel;
 
     public function __construct()
     {
         $this->HistorialModel = new HistorialModel();
         $this->PacienteModel = new PacienteModel();
-        $this->EmpleadoModel = new EmpleadoModel();
+        $this->EspecialistaModel = new EspecialistaModel();
         $this->DiagnosticoModel = new DiagnosticoModel();
     }
 
@@ -62,8 +62,7 @@ class HistorialController
             'hist_medicamentos_actuales' => $_POST['hist_medicamentos_actuales'] ?? null,
             'hist_alergias' => $_POST['hist_alergias'] ?? null,
             'hist_diagnostico' => $_POST['hist_diagnostico'] ?? null,
-            'hist_fecha_registro' => date('Y-m-d H:i:s'),
-            'hist_fecha_actualizacion' => date('Y-m-d H:i:s'),
+            'hist_fecha_registro' => $_POST['hist_fecha_registro'] ?? null,
             'hist_creado_por' => $_POST['hist_creado_por'] ?? null,
             'hist_actualizado_por' => $_POST['hist_actualizado_por'] ?? null,
             'hist_odontograma' => $_POST['hist_odontograma'] ?? null,
@@ -87,7 +86,7 @@ class HistorialController
     public function view_update($id_historial)
     {
         $hist = $this->HistorialModel->find($id_historial);
-        $empl = $this->EmpleadoModel->findAll();
+        $espe = $this->EspecialistaModel->findAll();
         $paci = $this->PacienteModel->findAll();
         $diag = $this->DiagnosticoModel->findAll();
         include '../views/historial/historialUpdate.php';
@@ -97,15 +96,14 @@ class HistorialController
     public function update()
     {
         $data = [
+            'id_historial' => $_POST['id_historial'] ?? null,
             'hist_paciente' => $_POST['hist_paciente'] ?? null,
             'hist_antecedentes_personales' => $_POST['hist_antecedentes_personales'] ?? null,
             'hist_antecedentes_familiares' => $_POST['hist_antecedentes_familiares'] ?? null,
             'hist_medicamentos_actuales' => $_POST['hist_medicamentos_actuales'] ?? null,
             'hist_alergias' => $_POST['hist_alergias'] ?? null,
             'hist_diagnostico' => $_POST['hist_diagnostico'] ?? null,
-            'hist_fecha_registro' => date('Y-m-d H:i:s'),
             'hist_fecha_actualizacion' => date('Y-m-d H:i:s'),
-            'hist_creado_por' => $_POST['hist_creado_por'] ?? null,
             'hist_actualizado_por' => $_POST['hist_actualizado_por'] ?? null,
             'hist_odontograma' => $_POST['hist_odontograma'] ?? null,
             'hist_indice_dmft' => $_POST['hist_indice_dmft'] ?? null,

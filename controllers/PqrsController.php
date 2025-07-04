@@ -89,10 +89,10 @@ class PqrsController
             'pqrs_descripcion'    => $_POST['pqrs_descripcion'] ?? null,
             'pqrs_estado'         => $_POST['pqrs_estado']      ?? 'Pendiente',
             'pqrs_fecha_envio'    => date('Y-m-d'),
-            'pqrs_respuesta'      => null,          // Se responderá más adelante
-            'pqrs_fecha_respuesta' => null,
+            'pqrs_respuesta'      => null,
+            'pqrs_fecha_respuesta'=> null,
             'pqrs_usuario'        => $_POST['pqrs_usuario']     ?? null,
-            'pqrs_empleado'       => $_POST['pqrs_empleado']    ?? null,
+            'pqrs_empleado'       => $_POST['pqrs_empleado'] !== "" ? $_POST['pqrs_empleado'] : null,
         ];
 
         try {

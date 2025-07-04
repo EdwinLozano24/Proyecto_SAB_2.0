@@ -9,7 +9,7 @@ class HistorialModel
     }
     public function store(array $data)
     {
-        $sql = "INSERT INTO tbl_historial (
+        $sql = "INSERT INTO tbl_historial_clinico (
         hist_paciente,
         hist_antecedentes_personales,
         hist_antecedentes_familiares,
@@ -17,7 +17,6 @@ class HistorialModel
         hist_alergias,
         hist_diagnostico,
         hist_fecha_registro,
-        hist_fecha_actualizacion,
         hist_creado_por,
         hist_actualizado_por,
         hist_odontograma,
@@ -35,7 +34,6 @@ class HistorialModel
         :hist_alergias,
         :hist_diagnostico,
         :hist_fecha_registro,
-        :hist_fecha_actualizacion,
         :hist_creado_por,
         :hist_actualizado_por,
         :hist_odontograma,
