@@ -84,7 +84,8 @@ class TratamientoController
 
     public function update()
     {
-        $data = [
+        $data = 
+        [
             'id_tratamiento' => $_POST['id_tratamiento'] ?? null,
             'trat_codigo' => $_POST['trat_codigo'] ?? null,
             'trat_nombre' => $_POST['trat_nombre'] ?? null,

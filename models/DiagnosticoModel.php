@@ -53,10 +53,10 @@ public function update(array $data)
     $stmt = $this->pdo->prepare($sql);
 
     $params = [];
-    foreach ($data as $key => $value) {
+    foreach ($data as $key => $value) 
+    {
         $params[":$key"] = $value;
     }
-
     return $stmt->execute($params);
 }
 
