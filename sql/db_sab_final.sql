@@ -122,6 +122,7 @@ CREATE TABLE IF NOT EXISTS tbl_diagnosticos (
     diag_nombre VARCHAR(80) NOT NULL UNIQUE,
     diag_descripcion TEXT NOT NULL,
     diag_tratamiento INT NOT NULL,
+    diag_estado ENUM('Activo','Inactivo') DEFAULT 'Activo',
     FOREIGN KEY (diag_tratamiento) REFERENCES tbl_tratamientos(id_tratamiento)
 );
 
