@@ -16,9 +16,7 @@ class HistorialModel
         hist_medicamentos_actuales,
         hist_alergias,
         hist_diagnostico,
-        hist_fecha_registro,
         hist_creado_por,
-        hist_actualizado_por,
         hist_odontograma,
         hist_indice_dmft,
         hist_frecuencia_cepillado,
@@ -33,9 +31,7 @@ class HistorialModel
         :hist_medicamentos_actuales,
         :hist_alergias,
         :hist_diagnostico,
-        :hist_fecha_registro,
         :hist_creado_por,
-        :hist_actualizado_por,
         :hist_odontograma,
         :hist_indice_dmft,
         :hist_frecuencia_cepillado,
@@ -79,10 +75,9 @@ class HistorialModel
         hist_sensibilidad_dental = :hist_sensibilidad_dental,
         hist_estado = :hist_estado
         WHERE id_historial = :id_historial";
-    $stmt = $this->pdo->prepare($sql);
+        $stmt = $this->pdo->prepare($sql);
         $params = [];
-        foreach ($data as $key => $value) 
-        {
+        foreach ($data as $key => $value) {
             $params[":$key"] = $value;
         }
         return $stmt->execute($params);

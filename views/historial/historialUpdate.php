@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +15,7 @@
     }
     ?>
 </head>
+
 <body>
     <div class="container">
         <div class="header">
@@ -45,22 +47,26 @@
 
                     <div class="form-group">
                         <label for="nombre">Antecedentes Personales<span class="required">*</span></label>
-                        <input type="text" name="hist_antecedentes_personales" id="hist_antecedentes_personales" value="<?= $hist['hist_antecedentes_personales'] ?>" required>
+                        <input type="text" name="hist_antecedentes_personales" id="hist_antecedentes_personales"
+                            value="<?= $hist['hist_antecedentes_personales'] ?>" required>
                     </div>
 
                     <div class="form-group">
                         <label for="nombre">Antecedentes Familiares<span class="required">*</span></label>
-                        <input type="text" name="hist_antecedentes_familiares" id="hist_antecedentes_familiares" value="<?= $hist['hist_antecedentes_familiares'] ?>" required>
+                        <input type="text" name="hist_antecedentes_familiares" id="hist_antecedentes_familiares"
+                            value="<?= $hist['hist_antecedentes_familiares'] ?>" required>
                     </div>
 
                     <div class="form-group">
                         <label for="nombre">Medicamentos Actuales<span class="required">*</span></label>
-                        <input type="text" name="hist_medicamentos_actuales" id="hist_medicamentos_actuales" value="<?= $hist['hist_medicamentos_actuales'] ?>" required>
+                        <input type="text" name="hist_medicamentos_actuales" id="hist_medicamentos_actuales"
+                            value="<?= $hist['hist_medicamentos_actuales'] ?>" required>
                     </div>
 
                     <div class="form-group">
                         <label for="nombre">Alergias<span class="required">*</span></label>
-                        <input type="text" name="hist_alergias" id="hist_alergias" value="<?= $hist['hist_alergias'] ?>" required>
+                        <input type="text" name="hist_alergias" id="hist_alergias" value="<?= $hist['hist_alergias'] ?>"
+                            required>
                     </div>
 
                     <div class="form-group">
@@ -86,7 +92,8 @@
 
                     <div class="form-group">
                         <label for="nombre">Indice DMFT<span class="required">*</span></label>
-                        <input type="integer" name="hist_indice_dmft" id="hist_indice_dmft" value="<?= $hist['hist_indice_dmft'] ?>" required>
+                        <input type="integer" name="hist_indice_dmft" id="hist_indice_dmft"
+                            value="<?= $hist['hist_indice_dmft'] ?>" required>
                     </div>
 
                     <div class="form-group">
@@ -123,9 +130,12 @@
                         <select name="hist_sensibilidad_dental" id="hist_sensibilidad_dental" required>
                             <option value="" disabled>¿Posee sensibilidad dental?</option>
                             <option value="Ninguna" <?= ($hist['hist_sensibilidad_dental'] == "Ninguna") ? 'selected' : '' ?>>Ninguna</option>
-                            <option value="Frío" <?= ($hist['hist_sensibilidad_dental'] == "Frío") ? 'selected' : '' ?>>Frío</option>
-                            <option value="Calor" <?= ($hist['hist_sensibilidad_dental'] == "Calor") ? 'selected' : '' ?>>Calor</option>
-                            <option value="Dulce" <?= ($hist['hist_sensibilidad_dental'] == "Dulce") ? 'selected' : '' ?>>Dulce</option>
+                            <option value="Frío" <?= ($hist['hist_sensibilidad_dental'] == "Frío") ? 'selected' : '' ?>>
+                                Frío</option>
+                            <option value="Calor" <?= ($hist['hist_sensibilidad_dental'] == "Calor") ? 'selected' : '' ?>>
+                                Calor</option>
+                            <option value="Dulce" <?= ($hist['hist_sensibilidad_dental'] == "Dulce") ? 'selected' : '' ?>>
+                                Dulce</option>
                             <option value="Oclusion" <?= ($hist['hist_sensibilidad_dental'] == "Oclusion") ? 'selected' : '' ?>>Oclusion</option>
                         </select>
                     </div>
@@ -133,7 +143,7 @@
                 </div>
 
                 <br>
-                
+
                 <div class="section-title">
                     <div class="section-icon">👤</div>
                     Datos de Manejo
@@ -142,22 +152,24 @@
                 <div class="form-grid">
                     <div class="form-group">
                         <label for="codigo">Actualizado Por (Especialista)<span class="required">*</span></label>
-                            <select name="hist_actualizado_por" id="hist_actualizado_por">
-                                <?php foreach ($espe as $esp): ?>
-                                    <option value="<?= htmlspecialchars($esp['id_especialista']) ?>"
-                                        <?= $esp['id_especialista'] == $hist['hist_actualizado_por'] ? 'selected' : '' ?>>
-                                        <?= htmlspecialchars($esp['usua_nombre']) ?>
-                                    </option>
-                                <?php endforeach; ?>
-                            </select>
+                        <select name="hist_actualizado_por" id="hist_actualizado_por">
+                            <?php foreach ($espe as $esp): ?>
+                                <option value="<?= htmlspecialchars($esp['id_especialista']) ?>"
+                                    <?= $esp['id_especialista'] == $hist['hist_actualizado_por'] ? 'selected' : '' ?>>
+                                    <?= htmlspecialchars($esp['usua_nombre']) ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
                     </div>
 
-                      <div class="form-group">
+                    <div class="form-group">
                         <label for="estado">Estado<span class="required">*</span></label>
                         <select name="hist_estado" id="hist_estado" required>
                             <option value="" disabled>Estado</option>
-                            <option value="Activo" <?= ($hist['hist_estado'] == "Activo") ? 'selected' : '' ?>>Activo</option>
-                            <option value="Inactivo" <?= ($hist['hist_estado'] == "Inactivo") ? 'selected' : '' ?>>Inactivo</option>
+                            <option value="Activo" <?= ($hist['hist_estado'] == "Activo") ? 'selected' : '' ?>>Activo
+                            </option>
+                            <option value="Inactivo" <?= ($hist['hist_estado'] == "Inactivo") ? 'selected' : '' ?>>Inactivo
+                            </option>
                         </select>
                     </div>
 
@@ -173,4 +185,5 @@
         </form>
     </div>
 </body>
+
 </html>

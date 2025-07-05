@@ -62,9 +62,7 @@ class HistorialController
             'hist_medicamentos_actuales' => $_POST['hist_medicamentos_actuales'] ?? null,
             'hist_alergias' => $_POST['hist_alergias'] ?? null,
             'hist_diagnostico' => $_POST['hist_diagnostico'] ?? null,
-            'hist_fecha_registro' => $_POST['hist_fecha_registro'] ?? null,
             'hist_creado_por' => $_POST['hist_creado_por'] ?? null,
-            'hist_actualizado_por' => $_POST['hist_actualizado_por'] ?? null,
             'hist_odontograma' => $_POST['hist_odontograma'] ?? null,
             'hist_indice_dmft' => $_POST['hist_indice_dmft'] ?? null,
             'hist_frecuencia_cepillado' => $_POST['hist_frecuencia_cepillado'] ?? null,
@@ -79,6 +77,9 @@ class HistorialController
             exit;
         } catch (\Exception $exception) {
             echo '[Ocurrio un error al GENERAR el HISTORIAL CLINICO (Estamos trabajando para soluctionarlo)]';
+            echo $exception->getMessage();
+            echo "\n</pre>";
+
             return;
         }
     }

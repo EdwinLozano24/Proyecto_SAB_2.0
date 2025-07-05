@@ -140,20 +140,20 @@ CREATE TABLE IF NOT EXISTS tbl_citas_diagnosticos (
 CREATE TABLE IF NOT EXISTS tbl_historial_clinico (
     id_historial INT AUTO_INCREMENT PRIMARY KEY,
     hist_paciente INT NOT NULL UNIQUE,
-    hist_antecedentes_personales TEXT NOT NULL,
-    hist_antecedentes_familiares TEXT NOT NULL,
-    hist_medicamentos_actuales TEXT NOT NULL,
-    hist_alergias TEXT NOT NULL,
-    hist_diagnostico INT NOT NULL,
+    hist_antecedentes_personales TEXT NOT NULL DEFAULT 'N/A',
+    hist_antecedentes_familiares TEXT NOT NULL DEFAULT 'N/A',
+    hist_medicamentos_actuales TEXT NOT NULL DEFAULT 'N/A',
+    hist_alergias TEXT NOT NULL DEFAULT 'N/A',
+    hist_diagnostico INT NOT NULL DEFAULT 1,
     hist_fecha_registro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     hist_fecha_actualizacion TIMESTAMP NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
     hist_creado_por INT NOT NULL,
-    hist_actualizado_por INT NOT NULL,
-    hist_odontograma BOOLEAN NOT NULL,
-    hist_indice_dmft INT UNSIGNED NOT NULL,
+    hist_actualizado_por INT NULL,
+    hist_odontograma BOOLEAN NOT NULL DEFAULT 0,
+    hist_indice_dmft INT UNSIGNED NOT NULL DEFAULT 0,
     hist_frecuencia_cepillado ENUM('1 vez/dia','2 veces/dia','>2 veces/dia','Ocasional') NOT NULL,
-    hist_hilo_dental BOOLEAN NOT NULL,
-    hist_enjuague_bucal BOOLEAN NOT NULL,
+    hist_hilo_dental BOOLEAN NOT NULL DEFAULT 0,
+    hist_enjuague_bucal BOOLEAN NOT NULL DEFAULT 0,
     hist_sensibilidad_dental ENUM('Ninguna','Frío','Calor','Dulce','Oclusion') DEFAULT 'Ninguna',
     hist_estado ENUM('Activo','Inactivo') NOT NULL DEFAULT 'Activo',
     FOREIGN KEY (hist_paciente) REFERENCES tbl_pacientes(id_paciente),
@@ -310,16 +310,18 @@ BEGIN
         ua.usua_nombre AS hist_actualizado_por,
         d.diag_nombre AS hist_diagnostico
     FROM tbl_historial_clinico AS h
-        INNER JOIN tbl_diagnosticos     AS d   ON h.hist_diagnostico       = d.id_diagnostico
-        INNER JOIN tbl_pacientes        AS p   ON h.hist_paciente          = p.id_paciente
-        INNER JOIN tbl_usuarios         AS up  ON p.paci_usuario           = up.id_usuario
-        INNER JOIN tbl_especialistas    AS e_c ON h.hist_creado_por        = e_c.id_especialista
-        INNER JOIN tbl_usuarios         AS uc  ON e_c.espe_usuario         = uc.id_usuario
-        INNER JOIN tbl_especialistas    AS e_a ON h.hist_actualizado_por   = e_a.id_especialista
-        INNER JOIN tbl_usuarios         AS ua  ON e_a.espe_usuario         = ua.id_usuario;
+        INNER JOIN tbl_diagnosticos     AS d   ON h.hist_diagnostico     = d.id_diagnostico
+        INNER JOIN tbl_pacientes        AS p   ON h.hist_paciente        = p.id_paciente
+        INNER JOIN tbl_usuarios         AS up  ON p.paci_usuario         = up.id_usuario
+        INNER JOIN tbl_especialistas    AS e_c ON h.hist_creado_por      = e_c.id_especialista
+        INNER JOIN tbl_usuarios         AS uc  ON e_c.espe_usuario       = uc.id_usuario
+        LEFT JOIN tbl_especialistas    AS e_a ON h.hist_actualizado_por = e_a.id_especialista
+        LEFT JOIN tbl_usuarios         AS ua  ON e_a.espe_usuario       = ua.id_usuario
+    ;
 END //
 
 DELIMITER ;
+
 
 DELIMITER //
 CREATE PROCEDURE ObtenerPQRs()
