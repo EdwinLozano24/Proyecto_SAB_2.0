@@ -253,51 +253,67 @@ INSERT INTO tbl_pqrs (pqrs_tipo, pqrs_asunto, pqrs_descripcion, pqrs_fecha_envio
 ('Queja', 'Retraso en la atención', 'La cita fue agendada a las 9:00 AM y fui atendido a las 10:15 AM.', '2025-06-14', 'Respondido', 'Lamentamos el retraso. Tomaremos medidas para mejorar la puntualidad.', '2025-06-15', 2, 2),
 ('Sugerencia', 'Agregar más horarios por la tarde', 'Sería ideal contar con más turnos después de las 5:00 PM para quienes trabajamos de día.', CURRENT_DATE, 'En proceso', NULL, NULL, 1, 3);
 
-DELIMITER $$
 
-CREATE TRIGGER AUTO_ROL
-AFTER INSERT ON tbl_usuarios
-FOR EACH ROW
-BEGIN
-    IF NEW.usua_tipo = 'Paciente' THEN
-        INSERT INTO tbl_pacientes (paci_usuario) VALUES (NEW.id_usuario);
-    ELSEIF NEW.usua_tipo = 'Empleado' THEN
-        INSERT INTO tbl_empleados (empl_usuario, empl_rol) VALUES (NEW.id_usuario, 1);
-    ELSEIF NEW.usua_tipo = 'Especialista' THEN
-        INSERT INTO tbl_especialistas (espe_usuario, espe_especialidad) VALUES (NEW.id_usuario, 1);
-    ELSE
-        SIGNAL SQLSTATE '45000'
-        SET MESSAGE_TEXT = 'Error Inesperado';
-    END IF;
-END$$
+/* Vistas DB Creadas por: Juan Castro */
 
-DELIMITER ;
+-- Esta vista nos permite observar aquellas pqrs las cuales se encuentren en estado pendiente
+-- y ademas muestra el usuario que la creo y el empleado asignado a la misma
+CREATE VIEW vista_pqrs_pendientes AS
+SELECT pqr.id_pqrs, pqr.pqrs_tipo, pqr.pqrs_asunto, pqr.pqrs_descripcion, pqr.pqrs_fecha_envio, pqr.pqrs_estado, pqr.pqrs_respuesta, pqr.pqrs_fecha_respuesta,
+up.usua_nombre AS pqr_creado_por,
+eu.usua_nombre AS empleado_asignado
+FROM tbl_pqrs AS pqr 
+INNER JOIN tbl_pacientes AS p ON pqr.pqrs_usuario = p.id_paciente 
+INNER JOIN tbl_usuarios AS up ON p.paci_usuario = up.id_usuario
+INNER JOIN tbl_empleados AS e ON pqr.pqrs_empleado = e.id_empleado 
+INNER JOIN tbl_usuarios AS eu ON e.empl_usuario = eu.id_usuario
+WHERE pqr.pqrs_estado = "Pendiente"; 
 
-DELIMITER $$
 
-CREATE TRIGGER CAMBIO_ROL
-AFTER UPDATE ON tbl_usuarios
-FOR EACH ROW
-BEGIN
-    IF OLD.usua_tipo <> NEW.usua_tipo THEN
-        IF OLD.usua_tipo = 'Paciente' THEN
-            UPDATE tbl_pacientes SET paci_estado = 'Inactivo' WHERE paci_usuario = OLD.id_usuario;
-        ELSEIF  OLD.usua_tipo = 'Empleado' THEN
-            UPDATE tbl_empleados SET empl_estado = 'Inactivo' WHERE empl_usuario = OLD.id_usuario;
-        ELSEIF OLD.usua_tipo = 'Especialista' THEN
-            UPDATE tbl_especialistas SET espe_estado = 'Inactivo' WHERE espe_usuario = OLD.id_usuario;
-    END IF;
-        IF NEW.usua_tipo = 'Paciente' THEN
-            INSERT INTO tbl_pacientes (paci_usuario) VALUES (NEW.id_usuario);
-        ELSEIF NEW.usua_tipo = 'Empleado' THEN
-            INSERT INTO tbl_empleados (empl_usuario, empl_rol) VALUES (NEW.id_usuario, 1);
-        ELSEIF NEW.usua_tipo = 'Especialista' THEN
-            INSERT INTO tbl_especialistas (espe_usuario, espe_especialidad) VALUES (NEW.id_usuario, 1);
-        END IF;
-    END IF;
-END$$
+-- Esta vista nos permiste ver el nombre y documento del empleado y el nombre del rol especifico al cual 
+-- se le fue encargado y solo mostrará los que esten en estado activo
 
-DELIMITER ;
+CREATE VIEW vista_roles_empleados_activos AS
+SELECT 
+
+    eu.usua_nombre AS nombre_del_empleado, 
+    eu.usua_documento AS numero_de_documento,
+    er.rol_nombre as rol_asignado,
+    e.empl_fecha_ingreso, 
+    e.empl_estado
+FROM 
+    tbl_empleados AS e
+INNER JOIN tbl_usuarios AS eu ON e.empl_usuario = eu.id_usuario
+INNER JOIN tbl_roles AS er ON e.empl_rol = er.id_rol
+WHERE 
+    e.empl_estado = 'Activo';
+
+
+
+
+-- Esta vista se encarga de mostrar los especialistas con su nombre, documento y especialidad asignada y solamente 
+-- muestra aquellos en estado activo
+
+CREATE VIEW vista_especialistas_roles_activos AS
+SELECT 
+    espn.usua_nombre as nombre_del_especialista,
+    espn.usua_documento as numero_de_documento,
+    eslidad.esp_nombre as especialidad_asignada,
+    esp.espe_fecha_ingreso,
+    esp.espe_num_licencia,
+    esp.espe_estado
+FROM 
+    tbl_especialistas AS esp
+INNER JOIN tbl_usuarios AS espn ON esp.espe_usuario = espn.id_usuario
+INNER JOIN tbl_especialidades AS eslidad ON esp.espe_especialidad = eslidad.id_especialidad
+
+WHERE 
+    esp.espe_estado = 'Activo';
+
+
+
+
+/* Procedimientos Almacenados DB  Creadas por Santiago y Camilo creo*/
 
 DELIMITER //
 
@@ -342,3 +358,65 @@ BEGIN
 END //
 
 DELIMITER ;
+
+
+
+
+/* Triggers DB creadors por: Santiago */
+
+DELIMITER $$
+
+CREATE TRIGGER AUTO_ROL
+AFTER INSERT ON tbl_usuarios
+FOR EACH ROW
+BEGIN
+    IF NEW.usua_tipo = 'Paciente' THEN
+        INSERT INTO tbl_pacientes (paci_usuario) VALUES (NEW.id_usuario);
+    ELSEIF NEW.usua_tipo = 'Empleado' THEN
+        INSERT INTO tbl_empleados (empl_usuario, empl_rol) VALUES (NEW.id_usuario, 1);
+    ELSEIF NEW.usua_tipo = 'Especialista' THEN
+        INSERT INTO tbl_especialistas (espe_usuario, espe_especialidad) VALUES (NEW.id_usuario, 1);
+    ELSE
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Error Inesperado';
+    END IF;
+END$$
+
+DELIMITER ;
+
+DELIMITER $$
+
+CREATE TRIGGER CAMBIO_ROL
+AFTER UPDATE ON tbl_usuarios
+FOR EACH ROW
+BEGIN
+    IF OLD.usua_tipo <> NEW.usua_tipo THEN
+        IF OLD.usua_tipo = 'Paciente' THEN
+            UPDATE tbl_pacientes SET paci_estado = 'Inactivo' WHERE paci_usuario = OLD.id_usuario;
+        ELSEIF  OLD.usua_tipo = 'Empleado' THEN
+            UPDATE tbl_empleados SET empl_estado = 'Inactivo' WHERE empl_usuario = OLD.id_usuario;
+        ELSEIF OLD.usua_tipo = 'Especialista' THEN
+            UPDATE tbl_especialistas SET espe_estado = 'Inactivo' WHERE espe_usuario = OLD.id_usuario;
+    END IF;
+        IF NEW.usua_tipo = 'Paciente' THEN
+            INSERT INTO tbl_pacientes (paci_usuario) VALUES (NEW.id_usuario);
+        ELSEIF NEW.usua_tipo = 'Empleado' THEN
+            INSERT INTO tbl_empleados (empl_usuario, empl_rol) VALUES (NEW.id_usuario, 1);
+        ELSEIF NEW.usua_tipo = 'Especialista' THEN
+            INSERT INTO tbl_especialistas (espe_usuario, espe_especialidad) VALUES (NEW.id_usuario, 1);
+        END IF;
+    END IF;
+END$$
+
+
+
+/* Triggers DB creadors por: Juan */
+
+
+
+
+
+
+
+
+
