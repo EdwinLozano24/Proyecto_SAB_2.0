@@ -410,7 +410,7 @@ END$$
 
 
 
-/* Triggers DB creadors por: Juan */
+
 
 
 
