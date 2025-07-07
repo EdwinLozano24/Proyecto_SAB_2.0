@@ -72,7 +72,7 @@ class PqrsController
             $this->index();
         }
 
-        $pqr = $this->pqrsModel->find($id_pqrs);
+        $pqrs = $this->pqrsModel->find($id_pqrs);
         $empl = $this->EmpleadoModel->findAll();
         $usua = $this->UsuarioModel->findAll();
         include '../views/pqrs/pqrsUpdate.php';
@@ -119,7 +119,8 @@ class PqrsController
             'pqrs_descripcion'    => $_POST['pqrs_descripcion'] ?? null,
             'pqrs_estado'         => $_POST['pqrs_estado']      ?? 'Pendiente',
             'pqrs_respuesta'      => $_POST['pqrs_respuesta']   ?? null,
-            'pqrs_fecha_respuesta' => $_POST['pqrs_fecha_respuesta'] ?? date('Y-m-d'),
+            'pqrs_fecha_respuesta' => $_POST['pqrs_fecha_respuesta'] ?? null,
+            'pqrs_usuario' => $_POST['pqrs_usuario'] ?? null,
             'pqrs_empleado'       => $_POST['pqrs_empleado']    ?? null,
         ];
 

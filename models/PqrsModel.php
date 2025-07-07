@@ -59,6 +59,7 @@ class PqrsModel
             pqrs_estado = :pqrs_estado,
             pqrs_respuesta = :pqrs_respuesta,
             pqrs_fecha_respuesta = :pqrs_fecha_respuesta,
+            pqrs_usuario = :pqrs_usuario,
             pqrs_empleado = :pqrs_empleado
         WHERE id_pqrs = :id_pqrs";
 

@@ -62,14 +62,14 @@ class EmpleadoModel
         $stmt = $this->pdo->prepare("UPDATE tbl_empleados SET empl_estado = 'Inactivo' WHERE id_empleado = :id_empleado");
         return $stmt->execute([':id_empleado' => $id_empleado]);
     }
- public function findAll()
-{
+    public function findAll()
+    {
 
-        $sql = "SELECT * FROM tbl_empleados";
+        $sql = "SELECT * FROM tbl_empleados
+        INNER JOIN tbl_usuarios ON empl_usuario = id_usuario";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
-  
-}
+    }
 
 }
