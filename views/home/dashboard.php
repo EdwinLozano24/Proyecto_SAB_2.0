@@ -3,8 +3,8 @@
 //requiereTipo('Administrador');
 //requireVariosTipos(['Especialista', 'Empleados']);
 
-require_once '../../config/auth.php';
-requiereSesion();
+//require_once '../../config/auth.php';
+//requiereSesion();
 ?> -->
 <!DOCTYPE html>
 <html lang="es">

@@ -113,26 +113,19 @@ $tratamientos = $stmt->fetchAll();
                         </select>
                     </div>
 
+                    <div class="form-group full-width">
+                        <label for="cita_fecha">Fecha de la Cita <span class="required">*</span></label>
+                        <input type="date" name="cita_fecha" id="cita_fecha" required min="2024-01-01">
+                    </div>
+                    
                     <div class="form-group time-grid" style="grid-column: 1 / -1;">
                         <div>
-                            <label for="cita_fecha">Fecha de la Cita <span class="required">*</span></label>
-                            <input type="date" name="cita_fecha" id="cita_fecha" required min="2024-01-01">
-                        </div>
-                        <div>
                             <label for="cita_hora">Hora de Inicio <span class="required">*</span></label>
-                            <input type="time" name="cita_hora_inicio" id="cita_hora_inicio" required min="08:00" max="18:00">
+                            <input type="time" name="cita_hora_inicio" id="cita_hora_inicio" required min="06:00" max="18:00">
                         </div>
                         <div>
                             <label for="cita_hora">Hora de Final <span class="required">*</span></label>
-                            <input type="time" name="cita_hora_fin" id="cita_hora_fin" required min="08:00" max="18:00">
-                        </div>
-                        <div>
-                            <label for="cita_turno">Turno<span class="required">*</span></label>
-                            <select name="cita_motivo" id="cita_motivo" required>
-                                <option value="" disabled selected>Seleccionar el turno de la cita...</option>
-                                <option value="Mañana">Mañana</option>
-                                <option value="Tarde">Tarde</option>
-                        </select>
+                            <input type="time" name="cita_hora_fin" id="cita_hora_fin" required min="06:00" max="18:00">
                         </div>
                     </div>
                 </div>
@@ -143,7 +136,7 @@ $tratamientos = $stmt->fetchAll();
                     <div class="section-icon">📋</div>
                     Detalles de la Cita
                 </div>
-                <div class="form-grid">
+                <div class="form-group full-width">
                     <div class="form-group">
                         <label for="cita_motivo">Motivo de la Consulta <span class="required">*</span></label>
                         <select name="cita_motivo" id="cita_motivo" required>
@@ -156,19 +149,7 @@ $tratamientos = $stmt->fetchAll();
                             <option value="Otro">Otro</option>
                         </select>
                     </div>
-
-                    <div class="form-group">
-                        <label for="cita_tratamiento">Tratamiento Asociado</label>
-                        <select name="cita_tratamiento" id="cita_tratamiento">
-                            <option value="" disabled selected>Seleccionar tratamiento...</option>
-                                <?php foreach ($tratamientos as $tratamiento): ?>
-                                    <option value="<?= $tratamiento['id_tratamiento'] ?>">
-                                        <?= $tratamiento['trat_nombre'] ?>
-                                    </option>
-                                <?php endforeach; ?>
-                        </select>
-                    </div>
-
+                    <br>
                     <div class="form-group full-width">
                         <label for="cita_observacion">Observaciones Adicionales</label>
                         <textarea name="cita_observacion" id="cita_observacion" maxlength="255" placeholder="Escriba cualquier observación relevante para la cita...">N/A</textarea>
