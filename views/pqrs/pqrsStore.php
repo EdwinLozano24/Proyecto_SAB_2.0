@@ -1,101 +1,108 @@
 <?php
-/*-----------------------------------------------------------------
-| 1. Cargar listas de usuarios y empleados para los <select>
------------------------------------------------------------------*/
 require_once __DIR__ . '/../../config/database.php';
 $pdo = conectarBD();
+$sql = "SELECT * FROM tbl_usuarios";
+$stmt = $pdo->query($sql);
+$usua = $stmt->fetchAll();
 
-/*‑‑ Usuarios activos (si quieres filtrar por tipo, agrega WHERE) */
-$usuarios = $pdo->query("SELECT id_usuario, usua_nombre FROM tbl_usuarios ORDER BY usua_nombre ASC")
-                ->fetchAll(PDO::FETCH_ASSOC);
-
-/*‑‑ Empleados activos (LEFT JOIN para sacar el nombre desde tbl_usuarios) */
-$empleados = $pdo->query("
-    SELECT  e.id_empleado,
-            u.usua_nombre
-    FROM    tbl_empleados e
-    JOIN    tbl_usuarios  u ON e.empl_usuario = u.id_usuario
-    ORDER BY u.usua_nombre ASC")
-    ->fetchAll(PDO::FETCH_ASSOC);
+$sql = "SELECT * FROM tbl_empleados
+    INNER JOIN tbl_usuarios ON empl_usuario = id_usuario";
+$stmt = $pdo->query($sql);
+$empl = $stmt->fetchAll();
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear PQR - Sistema Odontológico</title>
-
+    <title>Generar Pqrs - Sistema Odontológico</title>
+    <!-- CSS de Select2 -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <!-- <link rel="stylesheet" href="styles.css"> -->
     <?php
-    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/assets/css/admin/crudUsuario.css';
-    $cssUrl  = '/proyecto_sab/assets/css/admin/crudUsuario.css';
-    echo file_exists($cssPath)
-        ? "<link rel='stylesheet' href='$cssUrl'>"
-        : "CSS File not found at: $cssPath";
+    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/assets/css/admin/crudCitas.css';
+    $cssUrl = '/proyecto_sab/assets/css/admin/crudCitas.css';
+    if (file_exists($cssPath)) {
+        echo '<link rel="stylesheet" href="' . $cssUrl . '">';
+    } else {
+        echo ' CSS File not fount at: ' . $cssPath . '';
+    }
     ?>
 </head>
 
 <body>
-<div class="container">
-    <div class="header">
-        <div class="logo">📩</div>
-        <h1>Crear Nueva PQR</h1>
-        <p class="subtitle">Registra la petición, queja, reclamo o sugerencia de un paciente.</p>
+    <div class="container">
+        <div class="header">
+            <div class="logo">🦷</div>
+            <h2>Generar PQRS</h2>
+            <p class="subtitle">Sistema de Gestión Odontológica SAB</p>
+        </div>
+
+        <form id="PqrsStore" method="POST" action="/proyecto_sab/controllers/PqrsController.php?accion=store">
+            <div class="form-section">
+                <div class="section-title">
+                    <div class="section-icon">📝</div>
+                    Información del Pqrs
+                </div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="pqrs_usuario">Usuario Responsable<span class="required">*</span></label>
+                        <select name="pqrs_usuario" id="pqrs_usuario" class="form-control select2" required>
+                            <option value="" selected disabled>Seleccionar un usuario...</option>
+                                <?php foreach ($usua as $usu): ?>
+                                    <option value="<?= $usu['id_usuario'] ?>">
+                                        <?= $usu['usua_nombre'] ?>
+                                    </option>
+                                <?php endforeach; ?>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pqrs_tipo">Tipo de Pqrs<span class="required">*</span></label>
+                        <select name="pqrs_tipo" id="pqrs_tipo" required>
+                            <option value="" disabled selected>Seleccionar tipo...</option>
+                            <option value="Petición">Petición</option>
+                            <option value="Queja">Queja</option>
+                            <option value="Reclamo">Reclamo</option>
+                            <option value="Sugerencia">Sugerencia</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="pqrs_asunto">Asunto<span class="required">*</span></label>
+                        <input type="text" name="pqrs_asunto" id="pqrs_asunto" required>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="pqrs_descripcion">Descripcion<span class="required">*</span></label>
+                        <textarea name="pqrs_descripcion" id="pqrs_descripcion" maxlength="255"
+                            placeholder="Escriba su Pqrs..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="button-group">
+                    <button type="button" class="btn-secondary" onclick="window.history.back()">
+                        ← Cancelar
+                    </button>
+                    <input type="submit" id="generar_cita" value="📅 Generar Pqrs">
+            </div>
+        </form>
     </div>
 
-    <form id="crearPqrForm" method="POST"
-          action="../../controllers/PqrsController.php?accion=store"
-          class="form-card">
-
-        <div class="form-grid">
-
-            <div class="form-group">
-                <label for="tipo_pqrs">Tipo de PQR <span class="required">*</span></label>
-                <select name="pqrs_tipo" id="tipo_pqrs" required>
-                    <option value="" disabled selected>Seleccione</option>
-                    <option value="Petición">Petición</option>
-                    <option value="Queja">Queja</option>
-                    <option value="Reclamo">Reclamo</option>
-                    <option value="Sugerencia">Sugerencia</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="asunto">Asunto <span class="required">*</span></label>
-                <input type="text" name="pqrs_asunto" id="asunto"
-                       placeholder="Asunto" maxlength="150" required>
-            </div>
-
-            <div class="form-group">
-                    <label for="descripcion">Descripción</label>
-                    <input type="text" placeholder="Describe la petición o queja…" name="pqrs_descripcion" id="descripcion">
-                </div>
-            <div class="form-group">
-                <label for="usuario">Usuario <span class="required">*</span></label>
-                <select name="pqrs_usuario" id="usuario" required>
-                    <option value="" disabled selected>Selecciona usuario</option>
-                    <?php foreach ($usuarios as $u): ?>
-                        <option value="<?= $u['id_usuario'] ?>"><?= htmlspecialchars($u['usua_nombre']) ?></option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="empleado">Empleado asignado</label>
-                <select name="pqrs_empleado" id="empleado">
-                    <option value="" selected>— Sin asignar —</option>
-                    <?php foreach ($empleados as $e): ?>
-                        <option value="<?= $e['id_empleado'] ?>"><?= htmlspecialchars($e['usua_nombre']) ?></option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-            <input type="hidden" name="pqrs_estado" value="Pendiente">
-
-        </div>
-        <div class="button-group">
-            <a href="/proyecto_sab/views/pqrs/pqrsIndex.php" class="btn-link">Volver</a>
-            <button type="submit">Crear PQR</button>
-        </div>
-    </form>
-</div>
+    <!-- JS de jQuery y Select2 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <!-- <script src="script.js"></script> -->
+    <script>
+        $(document).ready(function () {
+            $('#pqrs_usuario, #pqrs_empleado').select2({
+                allowClear: true
+            });
+        });
+    </script>
 </body>
+
 </html>

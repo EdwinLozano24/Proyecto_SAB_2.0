@@ -32,15 +32,16 @@ class AuthController
     public function login()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $usua_documento = $_POST['usua_documento'] ?? '';
-            $usua_password = $_POST['usua_password'] ?? '';
+            $usua_documento = trim($_POST['usua_documento'] ?? '');
+            $usua_password = trim($_POST['usua_password'] ?? '');
 
-            if (empty($usua_documento) || empty($usua_password)) {
+            if ($usua_documento === '' || $usua_password === '') {
                 header('Location: ../views/error/acceso_denegado.php');
                 exit;
             }
 
             $usuario = $this->AuthModel->getUser($usua_documento);
+
             if ($usuario && password_verify($usua_password, $usuario['usua_password'])) {
                 session_start();
                 $_SESSION['usuario'] = [
@@ -48,7 +49,6 @@ class AuthController
                     'usua_documento' => $usuario['usua_documento'],
                     'usua_tipo' => $usuario['usua_tipo']
                 ];
-
                 header('Location: ../views/home/dashboard.php');
                 exit;
             } else {
@@ -57,6 +57,7 @@ class AuthController
             }
         }
     }
+
     public function logout()
     {
         session_start();

@@ -23,11 +23,11 @@
     <div class="container">
         <div class="header">
             <div class="logo">🦷</div>
-            <h2>Actualizar Información de la PQR</h2>
+            <h2>Actualizar Información del PQRS</h2>
             <p class="subtitle">Sistema de Gestión Odontológica</p>
         </div>
 
-        <form id="PqrsStore" method="POST" action="/proyecto_sab/controllers/PqrsController.php?accion=update">
+        <form id="PqrsUpdate" method="POST" action="/proyecto_sab/controllers/PqrsController.php?accion=update">
             <input type="hidden" name="id_pqrs" value="<?= $pqrs['id_pqrs'] ?>">
             <div class="form-section">
                 <div class="section-title">
