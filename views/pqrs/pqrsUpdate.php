@@ -1,3 +1,7 @@
+<?php
+require_once '../config/auth.php';
+requiereSesion();
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -9,8 +13,8 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <!-- <link rel="stylesheet" href="styles.css"> -->
     <?php
-    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/assets/css/admin/crudCitas.css';
-    $cssUrl = '/proyecto_sab/assets/css/admin/crudCitas.css';
+    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/assets/css/admin/crudPage.css';
+    $cssUrl = '/proyecto_sab/assets/css/admin/crudPage.css';
     if (file_exists($cssPath)) {
         echo '<link rel="stylesheet" href="' . $cssUrl . '">';
     } else {
@@ -133,9 +137,9 @@
             </div>
             <div class="button-group">
                     <button type="button" class="btn-secondary" onclick="window.history.back()">
-                        ← Cancelar
-                    </button>
-                    <input type="submit" id="generar_cita" value="📅 Actualizar Pqrs">
+                    ← Cancelar
+                </button>
+                <input type="submit" id="generar_cita" value="⚠️ Actualizar Pqrs">
             </div>
         </form>
     </div>
@@ -146,10 +150,9 @@
     <!-- <script src="script.js"></script> -->
     <script>
         $(document).ready(function () {
-            $('#pqrs_usuario, #pqrs_empleado').select2({
-                allowClear: true
+            $('#pqrs_usuario, #pqrs_empleado').select2();
             });
-        });
+
     </script>
 </body>
 

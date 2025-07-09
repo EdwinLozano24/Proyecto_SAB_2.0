@@ -1,4 +1,6 @@
 <?php
+require_once '../../config/auth.php';
+requiereSesion();
 require_once __DIR__ . '/../../config/database.php';
 $pdo = conectarBD();
 
@@ -15,12 +17,12 @@ $categorias = $stmt->fetchAll();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrar Tratamiento - Sistema Odontológico</title>
     <?php
-    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/assets/css/admin/crudUsuario.css';
-    $cssUrl = '/proyecto_sab/assets/css/admin/crudUsuario.css';
+    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/assets/css/admin/crudPage.css';
+    $cssUrl = '/proyecto_sab/assets/css/admin/crudPage.css';
     if (file_exists($cssPath)) {
         echo '<link rel="stylesheet" href="' . $cssUrl . '">';
     } else {
-        echo 'CSS no encontrado en: ' . $cssPath;
+        echo ' CSS File not fount at: ' . $cssPath . '';
     }
     ?>
 </head>
@@ -104,8 +106,10 @@ $categorias = $stmt->fetchAll();
             </div>
 
             <div class="button-group">
-                <a href="../../controllers/TratamientoController.php?accion=index" class="btn-link">← Cancelar</a>
-                <button type="submit">💾 Registrar Tratamiento</button>
+                <button type="button" class="btn-secondary" onclick="window.history.back()">
+                    ← Cancelar
+                </button>
+                <input type="submit" id="generar_cita" value="💉 Registrar Tratamiento">
             </div>
         </form>
     </div>

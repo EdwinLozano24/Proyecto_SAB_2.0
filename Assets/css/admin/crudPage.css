@@ -40,7 +40,7 @@ body {
 .logo {
     width: 60px;
     height: 60px;
-     background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
     border-radius: 12px;
     display: flex;
     align-items: center;
@@ -49,6 +49,18 @@ body {
     font-size: 24px;
     color: white;
     font-weight: 600;
+}
+
+h1 {
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    unicode-bidi: isolate;
+    margin-bottom: 10px;
 }
 
 h2 {
@@ -85,7 +97,7 @@ h2 {
 .section-icon {
     width: 20px;
     height: 20px;
-    background: #10b981;
+    background: #0ea5e9;
     border-radius: 4px;
     display: flex;
     align-items: center;
@@ -135,8 +147,8 @@ input:focus,
 select:focus,
 textarea:focus {
     outline: none;
-    border-color: #10b981;
-    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+    border-color: #0ea5e9;
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
 }
 
 input:hover,
@@ -254,14 +266,14 @@ input[type="submit"],
 }
 
 input[type="submit"] {
-    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
     color: white;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 input[type="submit"]:hover {
-    background: linear-gradient(135deg, #059669 0%, #047857 100%);
-    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
     transform: translateY(-1px);
 }
 
@@ -339,8 +351,8 @@ input[type="submit"]:active {
 .form-group.success input,
 .form-group.success select,
 .form-group.success textarea {
-    border-color: #10b981;
-    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+    border-color: #0ea5e9;
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);;
 }
 
 .error-message {
@@ -416,4 +428,49 @@ input[type="submit"]:active {
 .input-with-icon input,
 .input-with-icon select {
     padding-left: 40px;
+}
+
+.select2-container--default .select2-selection--single {
+    height: auto;
+    padding: 12px 16px;
+    border: 1.5px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    color: #374151;
+    background: white;
+    transition: all 0.2s ease;
+}
+
+.select2-container--default .select2-selection--single:hover {
+    border-color: #9ca3af;
+}
+
+.select2-container--default .select2-selection--single:focus {
+    outline: none;
+    border-color: #0ea5e9;
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: #374151;
+    line-height: normal;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    top: 50%;
+    transform: translateY(-50%);
+    right: 12px;
+}
+
+/* Opciones del dropdown */
+.select2-container--default .select2-results__option {
+    font-size: 14px;
+    padding: 8px 12px;
+    color: #374151;
+}
+
+.select2-container--default .select2-results__option--highlighted {
+    background: #e0f2fe;
+    color: #0369a1;
 }

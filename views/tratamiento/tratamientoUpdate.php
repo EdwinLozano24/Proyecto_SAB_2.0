@@ -1,4 +1,6 @@
 <?php
+require_once '../config/auth.php';
+requiereSesion();
 require_once __DIR__ . '/../../config/database.php';
 $pdo = conectarBD();
 ?>
@@ -9,14 +11,13 @@ $pdo = conectarBD();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Actualizar Tratamiento - Sistema Odontológico</title>
-
     <?php
-    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/assets/css/admin/crudUsuario.css';
-    $cssUrl = '/proyecto_sab/assets/css/admin/crudUsuario.css';
+    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/assets/css/admin/crudPage.css';
+    $cssUrl = '/proyecto_sab/assets/css/admin/crudPage.css';
     if (file_exists($cssPath)) {
         echo '<link rel="stylesheet" href="' . $cssUrl . '">';
     } else {
-        echo ' CSS File not found at: ' . $cssPath . '';
+        echo ' CSS File not fount at: ' . $cssPath . '';
     }
     ?>
 </head>
@@ -61,7 +62,8 @@ $pdo = conectarBD();
 
                     <div class="form-group">
                         <label for="duracion_minutos">Duración por sesión (minutos)</label>
-                        <input type="number" name="trat_duracion_minutos" id="duracion_minutos" value="<?= $trat['trat_duracion_minutos'] ?>">
+                        <input type="number" name="trat_duracion_minutos" id="duracion_minutos"
+                            value="<?= $trat['trat_duracion_minutos'] ?>">
                     </div>
 
                     <div class="form-group">
@@ -76,32 +78,41 @@ $pdo = conectarBD();
 
                     <div class="form-group full-width">
                         <label for="descripcion">Descripción</label>
-                        <input type="text" name="trat_descripcion" id=descripcion value="<?= $trat['trat_descripcion'] ?>">
+                        <input type="text" name="trat_descripcion" id=descripcion
+                            value="<?= $trat['trat_descripcion'] ?>">
 
                     </div>
 
                     <div class="form-group">
                         <label for="complejidad">Complejidad</label>
                         <select name="trat_complejidad" id="complejidad" required>
-                            <option value="Baja" <?= ($trat['trat_complejidad'] == "Baja") ? 'selected' : '' ?>>Baja</option>
-                            <option value="Media" <?= ($trat['trat_complejidad'] == "Media") ? 'selected' : '' ?>>Media</option>
-                            <option value="Alta" <?= ($trat['trat_complejidad'] == "Alta") ? 'selected' : '' ?>>Alta</option>
+                            <option value="Baja" <?= ($trat['trat_complejidad'] == "Baja") ? 'selected' : '' ?>>Baja
+                            </option>
+                            <option value="Media" <?= ($trat['trat_complejidad'] == "Media") ? 'selected' : '' ?>>Media
+                            </option>
+                            <option value="Alta" <?= ($trat['trat_complejidad'] == "Alta") ? 'selected' : '' ?>>Alta
+                            </option>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <label for="estado">Estado</label>
                         <select name="trat_estado" id="estado" required>
-                            <option value="Activo" <?= ($trat['trat_estado'] == "Activo") ? 'selected' : '' ?>>Activo</option>
-                            <option value="Inactivo" <?= ($trat['trat_estado'] == "Inactivo") ? 'selected' : '' ?>>Inactivo</option>
+                            <option value="Activo" <?= ($trat['trat_estado'] == "Activo") ? 'selected' : '' ?>>Activo
+                            </option>
+                            <option value="Inactivo" <?= ($trat['trat_estado'] == "Inactivo") ? 'selected' : '' ?>>Inactivo
+                            </option>
                         </select>
                     </div>
                 </div>
             </div>
 
             <div class="button-group">
-                <a href="../../controllers/TratamientoController.php?accion=index" class="btn-link">← Cancelar</a>
-                <button type="submit" id="actualizar_tratamiento">💾 Actualizar Tratamiento</button>
+                <button type="button" class="btn-secondary" onclick="window.history.back()">
+                    ← Cancelar
+                </button>
+                <input type="submit" id="generar_cita" value="💉 Actualizar Tratamiento">
+            </div>
             </div>
         </form>
     </div>

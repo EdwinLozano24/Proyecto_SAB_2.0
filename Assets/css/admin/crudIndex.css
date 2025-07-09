@@ -1,0 +1,367 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* --- Reset y base --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    color: #334155;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* --- Contenedor principal --- */
+.container-custom {
+    background: white;
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    max-width: 1400px;
+    margin: 0 auto;
+    border: 1px solid #e2e8f0;
+    flex: 1;
+}
+
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+}
+
+
+/* --- Header --- */
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.logo {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    font-size: 24px;
+    color: white;
+    font-weight: 600;
+}
+
+h2 {
+    color: #1e293b;
+    font-weight: 600;
+    font-size: 28px;
+    margin-bottom: 8px;
+    letter-spacing: -0.025em;
+}
+
+.subtitle {
+    color: #64748b;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+/* --- Botones personalizados --- */
+.btn-custom {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    border: none;
+    letter-spacing: -0.025em;
+    margin-bottom: 24px;
+}
+
+.btn-primary-custom {
+    background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+    color: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary-custom:hover {
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+    transform: translateY(-1px);
+    color: white;
+}
+
+/* --- Personalización de DataTables --- */
+.dataTables_wrapper {
+    font-family: 'Inter', sans-serif;
+}
+
+.dataTables_wrapper .dataTables_filter {
+    margin-bottom: 20px;
+}
+
+.dataTables_wrapper .dataTables_filter input {
+    padding: 8px 12px;
+    border: 1.5px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-left: 8px;
+    transition: all 0.2s ease;
+}
+
+.dataTables_wrapper .dataTables_filter input:focus {
+    outline: none;
+    border-color: #0ea5e9;
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+}
+
+.dataTables_wrapper .dataTables_length select {
+    padding: 8px 12px;
+    border: 1.5px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 14px;
+    margin: 0 8px;
+    transition: all 0.2s ease;
+}
+
+.dataTables_wrapper .dataTables_length select:focus {
+    outline: none;
+    border-color: #0ea5e9;
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+}
+
+/* --- Tabla personalizada --- */
+.table-custom {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 0;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.table-custom thead {
+    background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+}
+
+.table-custom thead th {
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 16px 12px;
+    text-align: left;
+    border: none;
+    letter-spacing: -0.025em;
+}
+
+.table-custom tbody tr {
+    border-bottom: 1px solid #e2e8f0;
+    transition: all 0.2s ease;
+}
+
+.table-custom tbody tr:hover {
+    background: #f8fafc;
+}
+
+.table-custom tbody tr:last-child {
+    border-bottom: none;
+}
+
+.table-custom tbody td {
+    padding: 16px 12px;
+    font-size: 14px;
+    color: #374151;
+    vertical-align: middle;
+}
+
+/* --- Botones de acción --- */
+.action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    margin: 0 2px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.action-btn.edit {
+    background: #3b82f6;
+    color: white;
+}
+
+.action-btn.edit:hover {
+    background: #2563eb;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.action-btn.delete {
+    background: #ef4444;
+    color: white;
+}
+
+.action-btn.delete:hover {
+    background: #dc2626;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+/* --- Botones de DataTables --- */
+.dt-buttons {
+    margin-bottom: 20px;
+}
+
+.dt-buttons .btn {
+    margin-right: 8px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border: none;
+}
+
+.dt-buttons .btn-success {
+    background: #0ea5e9;
+    border-color: #0ea5e9;
+}
+
+.dt-buttons .btn-success:hover {
+    background: #0284c7;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+}
+
+.dt-buttons .btn-danger {
+    background: #ef4444;
+    border-color: #ef4444;
+}
+
+.dt-buttons .btn-danger:hover {
+    background: #dc2626;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+.dt-buttons .btn-warning {
+    background: #f59e0b;
+    border-color: #f59e0b;
+}
+
+.dt-buttons .btn-warning:hover {
+    background: #d97706;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+}
+
+/* --- Paginación personalizada --- */
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    padding: 8px 12px;
+    margin: 0 2px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    background: white;
+    color: #374151;
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background: #f8fafc;
+    border-color: #0ea5e9;
+    color: #0ea5e9;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+    border-color: #0ea5e9;
+    color: white;
+}
+
+/* --- Info y estado --- */
+.dataTables_info {
+    color: #64748b;
+    font-size: 14px;
+    padding: 16px 0;
+}
+
+/* --- Estados de usuario --- */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.status-activo {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.status-inactivo {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    .container-custom {
+        padding: 20px;
+        margin: 10px;
+    }
+
+    .table-custom {
+        font-size: 12px;
+    }
+
+    .table-custom thead th,
+    .table-custom tbody td {
+        padding: 8px 6px;
+    }
+
+    .dt-buttons .btn {
+        margin-bottom: 8px;
+    }
+}
+
+/* --- Animaciones --- */
+.container-custom {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.mb-4 {
+    margin-bottom: 0rem !important;
+}

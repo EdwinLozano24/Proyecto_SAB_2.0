@@ -1,4 +1,6 @@
 <?php
+require_once '../../config/auth.php';
+requiereSesion();
 require_once __DIR__ . '/../../config/database.php';
 $pdo = conectarBD();
 $sql = "SELECT * FROM tbl_usuarios";
@@ -22,8 +24,8 @@ $empl = $stmt->fetchAll();
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <!-- <link rel="stylesheet" href="styles.css"> -->
     <?php
-    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/assets/css/admin/crudCitas.css';
-    $cssUrl = '/proyecto_sab/assets/css/admin/crudCitas.css';
+    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/assets/css/admin/crudPage.css';
+    $cssUrl = '/proyecto_sab/assets/css/admin/crudPage.css';
     if (file_exists($cssPath)) {
         echo '<link rel="stylesheet" href="' . $cssUrl . '">';
     } else {
@@ -85,9 +87,9 @@ $empl = $stmt->fetchAll();
 
             <div class="button-group">
                     <button type="button" class="btn-secondary" onclick="window.history.back()">
-                        ← Cancelar
-                    </button>
-                    <input type="submit" id="generar_cita" value="📅 Generar Pqrs">
+                    ← Cancelar
+                </button>
+                <input type="submit" id="generar_cita" value="⚠️ Registrar Pqrs">
             </div>
         </form>
     </div>
@@ -98,10 +100,9 @@ $empl = $stmt->fetchAll();
     <!-- <script src="script.js"></script> -->
     <script>
         $(document).ready(function () {
-            $('#pqrs_usuario, #pqrs_empleado').select2({
-                allowClear: true
+            $('#pqrs_usuario').select2();
             });
-        });
+
     </script>
 </body>
 

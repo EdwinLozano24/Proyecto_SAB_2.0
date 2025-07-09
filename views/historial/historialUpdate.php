@@ -1,3 +1,7 @@
+<?php
+require_once '../config/auth.php';
+requiereSesion();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,9 +9,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Actualizar Historial Clinico</title>
+    <!-- CSS de Select2 -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <?php
-    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/assets/css/admin/crudUsuario.css';
-    $cssUrl = '/proyecto_sab/assets/css/admin/crudUsuario.css';
+    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/assets/css/admin/crudPage.css';
+    $cssUrl = '/proyecto_sab/assets/css/admin/crudPage.css';
     if (file_exists($cssPath)) {
         echo '<link rel="stylesheet" href="' . $cssUrl . '">';
     } else {
@@ -179,11 +185,24 @@
             </div>
 
             <div class="button-group">
-                <a href="/proyecto_sab/controllers/HistorialController.php?accion=index" class="btn-link">← Cancelar</a>
-                <button type="submit" id="actualizar_tratamiento">💾 Actualizar Tratamiento</button>
+                <button type="button" class="btn-secondary" onclick="window.history.back()">
+                    ← Cancelar
+                </button>
+                <input type="submit" id="generar_cita" value="📋 Actualizar Historial Clinico">
             </div>
         </form>
     </div>
+
+    <!-- JS de jQuery y Select2 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <!-- <script src="script.js"></script> -->
+    <script>
+        $(document).ready(function () {
+            $('#hist_paciente, #hist_actualizado_por').select2();
+            });
+
+    </script>
 </body>
 
 </html>

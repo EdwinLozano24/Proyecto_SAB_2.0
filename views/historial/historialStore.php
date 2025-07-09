@@ -1,4 +1,6 @@
 <?php
+require_once '../../config/auth.php';
+requiereSesion();
 require_once __DIR__ . '/../../config/database.php';
 $pdo = conectarBD();
 $sql = "SELECT * FROM tbl_pacientes
@@ -35,8 +37,8 @@ $tratamientos = $stmt->fetchAll();
     <!-- CSS de Select2 -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <?php
-    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/assets/css/admin/crudUsuario.css';
-    $cssUrl = '/proyecto_sab/assets/css/admin/crudUsuario.css';
+    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/assets/css/admin/crudPage.css';
+    $cssUrl = '/proyecto_sab/assets/css/admin/crudPage.css';
     if (file_exists($cssPath)) {
         echo '<link rel="stylesheet" href="' . $cssUrl . '">';
     } else {
@@ -192,8 +194,10 @@ $tratamientos = $stmt->fetchAll();
             </div>
 
             <div class="button-group">
-                <a href="/proyecto_sab/controllers/HistorialController.php?accion=index" class="btn-link">← Cancelar</a>
-                <button type="submit" id="Guardar_Historial">💾 Guardar Historial</button>
+                <button type="button" class="btn-secondary" onclick="window.history.back()">
+                    ← Cancelar
+                </button>
+                <input type="submit" id="generar_cita" value="📋 Registrar Historial Clinico">
             </div>
         </form>
     </div>
@@ -203,9 +207,8 @@ $tratamientos = $stmt->fetchAll();
     <!-- <script src="script.js"></script> -->
     <script>
         $(document).ready(function () {
-            $('#hist_paciente, #hist_creado_por').select2({
-                allowClear: true
-            });
+            $('#hist_paciente, #hist_creado_por').select2();
+
         });
     </script>
 </body>

@@ -1,4 +1,6 @@
 <?php
+require_once '../../config/auth.php';
+requiereSesion();
 require_once __DIR__ . '/../../config/database.php';
 $pdo = conectarBD();
 $sql = "SELECT * FROM tbl_pacientes
@@ -38,8 +40,8 @@ $tratamientos = $stmt->fetchAll();
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <!-- <link rel="stylesheet" href="styles.css"> -->
     <?php
-    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/assets/css/admin/crudCitas.css';
-    $cssUrl = '/proyecto_sab/assets/css/admin/crudCitas.css';
+    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/assets/css/admin/crudPage.css';
+    $cssUrl = '/proyecto_sab/assets/css/admin/crudPage.css';
     if (file_exists($cssPath)) {
         echo '<link rel="stylesheet" href="' . $cssUrl . '">';
     } else {
@@ -72,7 +74,7 @@ $tratamientos = $stmt->fetchAll();
                     <div class="form-group">
                         <label for="cita_usuario">Paciente <span class="required">*</span></label>
                         <select name="cita_paciente" id="cita_paciente" class="form-control select2" required>
-                            <option value="">Seleccionar un paciente..</option>
+                            <option value="" disabled selected>Seleccionar un paciente..</option>
                                 <?php foreach ($pacientes as $paciente): ?>
                                     <option value="<?= $paciente['id_paciente'] ?>">
                                         <?= $paciente['usua_nombre'] ?>
@@ -172,9 +174,7 @@ $tratamientos = $stmt->fetchAll();
     <!-- <script src="script.js"></script> -->
     <script>
 $(document).ready(function() {
-    $('#cita_paciente, #cita_especialista, #cita_consultorio').select2({
-        allowClear: true
-    });
+    $('#cita_paciente, #cita_especialista, #cita_consultorio').select2();
 });
 </script>
 </body>

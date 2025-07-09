@@ -1,3 +1,7 @@
+<?php
+require_once '../../config/auth.php';
+requiereSesion();
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -6,8 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crear Usuario - Sistema Odontológico</title>
     <?php
-    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/assets/css/admin/crudUsuario.css';
-    $cssUrl = '/proyecto_sab/assets/css/admin/crudUsuario.css';
+    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/assets/css/admin/crudPage.css';
+    $cssUrl = '/proyecto_sab/assets/css/admin/crudPage.css';
     if (file_exists($cssPath)) {
         echo '<link rel="stylesheet" href="' . $cssUrl . '">';
     } else {
@@ -125,8 +129,10 @@
             </div>
 
             <div class="button-group">
-                <a href=".././controllers/UsuarioController.php" class="btn-link">Volver</a>
-                <button type="submit" name="registrarUsuario">Crear</button>
+                <button type="button" class="btn-secondary" onclick="window.history.back()">
+                    ← Cancelar
+                </button>
+                <input type="submit" id="generar_cita" value="👤 Registrar Usuario">
             </div>
         </form>
     </div>
