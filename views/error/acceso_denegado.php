@@ -38,7 +38,7 @@
 
         <!-- Botones de acción -->
         <div class="button-group">
-            <a href="javascript:history.back()" class="btn-custom btn-primary-custom">
+            <a href="/proyecto_sab/controllers/AuthController.php?accion=index" class="btn-custom btn-primary-custom">
                 ← Volver Atrás
             </a>
             <a href="/proyecto_sab/controllers/AuthController.php?accion=index" class="btn-custom btn-secondary-custom">
