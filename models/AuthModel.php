@@ -11,11 +11,7 @@ class AuthModel
 
     public function getUser(string $usua_documento): ?array
     {
-        $sql = "SELECT 
-                    id_usuario, 
-                    usua_documento, 
-                    usua_tipo, 
-                    usua_password 
+        $sql = "SELECT *
                 FROM tbl_usuarios 
                 WHERE usua_documento = ?";
         

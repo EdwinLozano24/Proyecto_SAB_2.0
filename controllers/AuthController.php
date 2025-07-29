@@ -29,6 +29,7 @@ class AuthController
         header('Location: ../views/usuario/loginRegister.php');
         exit;
     }
+
     public function login()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -45,11 +46,29 @@ class AuthController
             if ($usuario && password_verify($usua_password, $usuario['usua_password'])) {
                 session_start();
                 $_SESSION['usuario'] = [
-                    'id_usuario' => $usuario['id_usuario'],
-                    'usua_documento' => $usuario['usua_documento'],
-                    'usua_tipo' => $usuario['usua_tipo']
-                ];
-                header('Location: ../views/home/dashboard.php');
+                'id_usuario' => $usuario['id_usuario'],
+                'usua_nombre' => $usuario['usua_nombre'],
+                'usua_documento' => $usuario['usua_documento'],
+                'usua_tipo' => $usuario['usua_tipo']
+            ];
+
+            switch ($usuario['usua_tipo']) {
+                case 'Administrador':
+                    header('Location: ../views/home/admin_dashboard.php');
+                    break;
+                case 'Especialista':
+                    header('Location: ../views/home/especialista_dashboard.php');
+                    break;
+                case 'Empleado':
+                    header('Location: ../views/home/empleado_dashboard.php');
+                    break;
+                case 'Paciente':
+                    header('Location: ../views/paciente/home/paciente_dashboard.php');
+                    break;
+                default:
+                    header('Location: ../views/error/acceso_denegado.php');
+                    break;
+            }
                 exit;
             } else {
                 header('Location: ../views/error/acceso_denegado.php');

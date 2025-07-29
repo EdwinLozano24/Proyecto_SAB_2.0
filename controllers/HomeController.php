@@ -1,5 +1,5 @@
 <?php
-
+require_once __DIR__ . '/../models/UsuarioModel.php';
 $home = new HomeController();
 $accion = $_GET['accion'] ?? 'home';
 
@@ -9,6 +9,9 @@ switch ($accion) {
         break;
     case 'Logout':
         $home->logout();
+        break;
+    case 'PacientePerfilView':
+        $home->pacientePerfilView($_GET['id_usuario']);
     default:
         $home->home();
         break;
@@ -16,9 +19,23 @@ switch ($accion) {
 
 class HomeController
 {
+    protected $UsuarioModel;
+
+    public function __construct()
+    {
+        $this->UsuarioModel = new UsuarioModel();
+    }
+
     public function home()
     {
         header('Location: ../views/home/dashboard.php');
+        exit;
+    }
+
+    public function PacientePerfilView()
+    {
+        $paciente = $this->UsuarioModel->find($id_usuario);
+        include '../views/paciente/perfil/pacientePerfil.php';
         exit;
     }
 }
