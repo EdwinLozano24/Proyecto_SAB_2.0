@@ -32,7 +32,7 @@ class HomeController
         exit;
     }
 
-    public function PacientePerfilView()
+    public function PacientePerfilView($id_usuario)
     {
         $paciente = $this->UsuarioModel->find($id_usuario);
         include '../views/paciente/perfil/pacientePerfil.php';

@@ -25,13 +25,13 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
 
 <body>
     <!-- Header -->
-    <input type="hidden" name="id_usuario" value="<?php echo htmlspecialchars($idUsuario); ?>">
+    <input type="hidden" name="id_usuario" value="<?php echo htmlspecialchars($id_usuario); ?>">
     <header class="header">
         <div class="header-content">
             <div class="logo">SAB</div>
             <h1 class="header-title">Sistema de Gestión Odontológica</h1>
         </div>
-        <a href="/proyecto_sab/controllers/HomeController.php?accion=PacientePerfilView" class="user-info" style="text-decoration: none; color: inherit;">
+        <a href="/proyecto_sab/controllers/HomeController.php?accion=PacientePerfilView&id_usuario=<?php echo $id_usuario; ?>" class="user-info" style="text-decoration: none; color: inherit;">
             <div class="user-avatar">👤</div>
             <span><?php echo htmlspecialchars($nombreUsuario); ?></span>
         </a>
