@@ -51,7 +51,55 @@ class PasswordController
                     $mail->addAddress($correo);
                     $mail->isHTML(true);
                     $mail->Subject = 'Recupera Tu Password';
-                    $mail->Body = "Haz clic para restablecer tu contraseña: <a href='$enlace'>$enlace</a>";
+                    $mail->Body = '
+  <div style="font-family:-apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Arial, sans-serif;
+              background:#f8fafc; padding:20px;">
+    <div style="max-width:600px; margin:0 auto; background:#fff; border-radius:16px;
+                padding:40px; box-shadow:0 20px 25px rgba(0,0,0,0.1);">
+      
+      <!-- Header -->
+      <div style="text-align:center; margin-bottom:32px; border-bottom:2px solid #e2e8f0; padding-bottom:24px; display:flex; flex-direction:column; align-items:center;">
+        <div style="width:80px; height:80px; background:linear-gradient(135deg,#0ea5e9,#0284c7);
+                    border-radius:16px; align-items:center; line-height:80px;
+                    justify-content:center; font-size:32px; color:#fff; font-weight:600; margin-bottom:20px;">
+          🔐
+        </div>
+        <h1 style="font-size:24px; color:#1e293b; margin:0 0 8px;">Mi Aplicación</h1>
+        <p style="color:#64748b; font-size:14px; margin:0;">Sistema de Gestión Seguro</p>
+      </div>
+      
+      <!-- Mensaje -->
+      <p style="font-size:18px; color:#1e293b; font-weight:600; margin:0 0 16px;">¡Hola!</p>
+      <p style="font-size:16px; color:#475569; line-height:1.7; margin:0 0 24px;">
+        Hemos recibido una solicitud para restablecer la contraseña de tu cuenta. 
+        Si fuiste tú quien solicitó este cambio, haz clic en el botón de abajo.
+      </p>
+      
+      <!-- Botón -->
+      <div style="text-align:center; margin:40px 0;">
+        <a href="' . $enlace . '" 
+           style="display:inline-block; padding:16px 32px; background:linear-gradient(135deg,#0ea5e9,#0284c7);
+                  color:#fff; text-decoration:none; border-radius:8px; font-size:16px; font-weight:600;">
+          🔑 Restablecer mi contraseña
+        </a>
+      </div>
+      
+      <!-- Enlace alternativo -->
+      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px;
+                  padding:16px; margin:24px 0; font-size:14px; color:#64748b;">
+        <p style="margin:0 0 8px;"><strong>¿El botón no funciona?</strong> Copia y pega este enlace:</p>
+        <p style="font-family:monospace; font-size:12px; color:#475569; margin:0; word-break:break-all;">
+          ' . $enlace . '
+        </p>
+      </div>
+      
+      <!-- Footer -->
+      <p style="font-size:12px; color:#94a3b8; text-align:center; margin:40px 0 0;">
+        © 2025 Mi Aplicación. Este es un correo automático, por favor no respondas.
+      </p>
+    </div>
+  </div>
+';
 
                     $mail->send();
                     $mensaje = "Revisa tu correo para restablecer tu contraseña.";
