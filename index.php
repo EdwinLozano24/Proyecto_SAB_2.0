@@ -1,10 +1,29 @@
 <?php
-//Inicia una 'session' respuesta a URL logout
-if (isset($_GET['logout']))
-{
-    session_destroy();
-    header('location: views/usuario/login.php');
+require_once 'config/database.php';
+require_once 'controllers/PasswordController.php';
+date_default_timezone_set('America/Bogota');
+
+$pdo = conectarBD();
+$controller = new PasswordController($pdo);
+
+$action = $_GET['action'] ?? 'index';
+
+switch ($action) {
+    case 'showRecoverForm':
+        $controller->showRecoverForm();
+        break;
+    case 'sendResetLink':
+        $controller->sendResetLink();
+        break;
+    case 'resetForm':
+        $controller->showResetForm();
+        break;
+    case 'resetPassword':
+        $controller->resetPassword();
+        break;
+    default:
+        header('location: views/usuario/loginRegister.php');
 }
 
-//Vista por defecto del usuario (Login)
-header('location: views/usuario/loginRegister.php');
+
+

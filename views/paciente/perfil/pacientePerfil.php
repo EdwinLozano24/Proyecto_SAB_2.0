@@ -11,6 +11,7 @@ function obtenerIniciales($nombreCompleto) {
     }
     return $iniciales;
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
