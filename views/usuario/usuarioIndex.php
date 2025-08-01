@@ -165,6 +165,16 @@ $usuarios = $stmt->fetchAll();
                         exportOptions: {
                             columns: ':visible:not(:last-child)'
                         },
+                            customize: function(xlsx) {
+                                var sheet = xlsx.xl.worksheets['sheet1.xml'];
+
+                                // Agrega estilo de cabecera (negrita)
+                                $('row:first c', sheet).attr('s', '2'); // Negrita para la primera fila
+
+                                // Aplica borde a todas las celdas
+                                $('row c', sheet).attr('s', '25'); // Sólo funciona si el estilo 25 está definido por defecto
+                            }
+                    
                     },
                     {
                         extend: 'pdfHtml5',
