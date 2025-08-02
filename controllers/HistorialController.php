@@ -135,4 +135,5 @@ class HistorialController
             return;
         }
     }
+
 }

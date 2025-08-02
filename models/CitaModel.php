@@ -8,9 +8,10 @@ class CitaModel
         $this->pdo = conectarBD();
     }
     public function store(array $data)
-    {
-        $sql = "INSERT INTO tbl_citas (
+{
+    $sql = "INSERT INTO tbl_citas (
         cita_paciente,
+        cita_historial,
         cita_especialista,
         cita_fecha,
         cita_hora_inicio,
@@ -21,8 +22,9 @@ class CitaModel
         cita_motivo,
         cita_observacion,
         cita_estado
-        ) VALUES (
+    ) VALUES (
         :cita_paciente,
+        :cita_historial,
         :cita_especialista,
         :cita_fecha,
         :cita_hora_inicio,
@@ -33,14 +35,34 @@ class CitaModel
         :cita_motivo,
         :cita_observacion,
         :cita_estado
-        )";
-        $stmt = $this->pdo->prepare($sql);
-        $params = [];
-        foreach ($data as $key => $value) {
-            $params[":$key"] = $value;
-        }
-        return $stmt->execute($params);
+    )";
+
+    $stmt = $this->pdo->prepare($sql);
+
+    // ✅ Lista corregida de parámetros esperados
+    $paramsEsperados = [
+        ':cita_paciente',
+        ':cita_historial',
+        ':cita_especialista',
+        ':cita_fecha',
+        ':cita_hora_inicio',
+        ':cita_hora_fin',
+        ':cita_turno',
+        ':cita_duracion',
+        ':cita_consultorio',
+        ':cita_motivo',
+        ':cita_observacion',
+        ':cita_estado'
+    ];
+
+    $params = [];
+    foreach ($paramsEsperados as $param) {
+        $key = ltrim($param, ':');
+        $params[$param] = $data[$key] ?? null;
     }
+
+    return $stmt->execute($params);
+}
     public function find($id_cita)
     {
         $stmt = $this->pdo->prepare("SELECT * FROM tbl_citas WHERE id_cita = :id_cita");
@@ -65,10 +87,9 @@ class CitaModel
         cita_observacion = :cita_observacion,
         cita_estado = :cita_estado
         WHERE id_cita = :id_cita";
-    $stmt = $this->pdo->prepare($sql);
+        $stmt = $this->pdo->prepare($sql);
         $params = [];
-        foreach ($data as $key => $value) 
-        {
+        foreach ($data as $key => $value) {
             $params[":$key"] = $value;
         }
         return $stmt->execute($params);
@@ -79,5 +100,55 @@ class CitaModel
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(':id_cita', $id_cita, PDO::PARAM_INT);
         $stmt->execute();
+    }
+
+    // Verifica si un especialista está disponible en la fecha y hora dadas
+    public function verificarDisponibilidad($id_especialista, $fecha, $hora_inicio, $hora_fin)
+    {
+        $sql = "SELECT COUNT(*) FROM tbl_citas
+            WHERE cita_especialista = :id_especialista
+            AND cita_fecha = :fecha
+            AND (
+                (cita_hora_inicio <= :hora_inicio AND cita_hora_fin > :hora_inicio)
+                OR (cita_hora_inicio < :hora_fin AND cita_hora_fin >= :hora_fin)
+                OR (cita_hora_inicio >= :hora_inicio AND cita_hora_fin <= :hora_fin)
+            )
+            AND cita_estado != 'Cancelada'";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([
+            ':id_especialista' => $id_especialista,
+            ':fecha' => $fecha,
+            ':hora_inicio' => $hora_inicio,
+            ':hora_fin' => $hora_fin
+        ]);
+
+        $count = $stmt->fetchColumn();
+        return $count == 0; // true si está disponible
+    }
+
+    // Verifica si un consultorio está disponible en la fecha y hora dadas
+    public function verificarConsultorio($id_consultorio, $fecha, $hora_inicio, $hora_fin)
+    {
+        $sql = "SELECT COUNT(*) FROM tbl_citas
+            WHERE cita_consultorio = :id_consultorio
+            AND cita_fecha = :fecha
+            AND (
+                (cita_hora_inicio <= :hora_inicio AND cita_hora_fin > :hora_inicio)
+                OR (cita_hora_inicio < :hora_fin AND cita_hora_fin >= :hora_fin)
+                OR (cita_hora_inicio >= :hora_inicio AND cita_hora_fin <= :hora_fin)
+            )
+            AND cita_estado != 'Cancelada'";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([
+            ':id_consultorio' => $id_consultorio,
+            ':fecha' => $fecha,
+            ':hora_inicio' => $hora_inicio,
+            ':hora_fin' => $hora_fin
+        ]);
+
+        $count = $stmt->fetchColumn();
+        return $count == 0;
     }
 }

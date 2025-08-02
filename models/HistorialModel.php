@@ -89,4 +89,11 @@ class HistorialModel
         $stmt->bindParam(':id_historial', $id_historial, PDO::PARAM_INT);
         $stmt->execute();
     }
+
+    public function findByPaciente($id_paciente)
+{
+    $stmt = $this->pdo->prepare("SELECT * FROM tbl_historial_clinico WHERE hist_paciente = :id_paciente AND hist_estado = 'Activo' LIMIT 1");
+    $stmt->execute([':id_paciente' => $id_paciente]);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
 }
