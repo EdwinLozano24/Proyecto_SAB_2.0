@@ -11,8 +11,8 @@ $controller = new PasswordController($pdo);
 
 $action = $_GET['action'] ?? 'index';
 switch ($action) {
-    case 'showRecoverFor':
-        $controller->showRecoverForm();
+    case 'showResetForm':
+        $controller->showResetForm();
         break;
     case 'sendResetLink':
         $controller->sendResetLink();
