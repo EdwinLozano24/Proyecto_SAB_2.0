@@ -99,31 +99,30 @@ class UsuarioModel
 
     //- - - - - - - - - - - - - - - - - - - - - - RESET PASSWORD - - - - - - - - - - - - - - - - - - - - - -//
 
-    public function findCorreo($correo)
+    public function findCorreo(string $correo): ?array
     {
         $sql = "SELECT * FROM tbl_usuarios WHERE usua_correo_electronico = ?";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([$correo]);
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        return $stmt->fetch(PDO::FETCH_ASSOC) ?: null;
     }
 
-    public function saveToken($correo, $token, $expira)
+    public function saveToken(int $id_usuario, string $token, string $expira): bool
     {
-       $sql = "UPDATE tbl_usuarios SET usua_reset_token = ?, usua_token_expira = ? WHERE usua_correo_electronico = ?";
+        $sql  = "UPDATE tbl_usuarios SET usua_reset_token = ?, usua_token_expira = ? WHERE id_usuario = ?";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([$token, $expira, $correo]);
-        return $stmt->fetch(PDO::FETCH_ASSOC); 
+        return $stmt->execute([$token, $expira, $id_usuario]);
     }
 
-    public function findToken($token)
+    public function findToken(string $token): ?array
     {
         $sql = "SELECT * FROM tbl_usuarios WHERE usua_reset_token = ? AND usua_token_expira > NOW()";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([$token]);
-        return $stmt->fetch(PDO::FETCH_ASSOC); 
+        return $stmt->fetch(PDO::FETCH_ASSOC) ?: null; 
     }
 
-    public function UpdatePassword($id_usuario, $newPassword)
+    public function updatePassword(int $id_usuario, string $newPassword) : bool
     {
         $sql = "UPDATE tbl_usuarios SET usua_password = ?, usua_token_expira = NULL WHERE id_usuario = ?";
         $stmt = $this->pdo->prepare($sql);

@@ -7,6 +7,6 @@
 </head>
 <body>
     <p><?= htmlspecialchars($mensaje) ?></p>
-<a href="index.php">Volver</a>
+<a href="index.php?action=showRecoverForm">Volver</a>
 </body>
 </html>
