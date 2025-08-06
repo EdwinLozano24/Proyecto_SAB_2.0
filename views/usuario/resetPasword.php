@@ -24,7 +24,7 @@
 
 
       <div class="contenedor__reset">
-        <form action="../app/logicamail.php" method="post">
+        <form method="POST" action="../../index.php?action=sendResetLink">
           <h2>Cambiar Contraseña</h2>
           
           <label for="email">Correo Electrónico</label>
