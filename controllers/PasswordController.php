@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../models/UsuarioModel.php';
 require_once __DIR__ . '/../app/services/MailService.php';
+
 use app\services\MailService;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -12,9 +13,8 @@ class PasswordController
     private MailService $mailer;
     private array $config;
 
-    public function __construct()
+    public function __construct(array $config)
     {
-        global $config;
         $this->config = $config;
         $this->usuarioModel = new UsuarioModel();
         $this->mailer = new MailService($this->config);
