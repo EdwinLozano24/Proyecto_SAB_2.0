@@ -1,33 +1,20 @@
-<?php
-session_start();
-if (!isset($_SESSION['paciente_id'])) {
-    $_SESSION['paciente_id'] = 1; // ⚠️ ID de un paciente válido en tu BD
-}
-?>
-
 <!DOCTYPE html>
 <html lang="es">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Agendar Cita - Sistema Odontológico</title>
-    <link rel="stylesheet" href='/proyecto_sab/assets/css/pruebaLayout/nav.css'>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-    <?php
-    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/assets/css/citas/citasAgendar.css';
-    $cssUrl = '/proyecto_sab/assets/css/citas/citasAgendar.css';
-    echo file_exists($cssPath)
-        ? '<link rel="stylesheet" href="' . $cssUrl . '">'
-        : '<p style="color:red">CSS no encontrado: ' . $cssPath . '</p>';
-    ?>
-</head>
-
+    <head>
+        <link rel="stylesheet" href="../../Assets/css/home/dashboard.css">
+        <link rel="stylesheet" href="../../Assets/css/citas/citasAgendar2.css">
+    </head>
 <body>
 <?php
-include '../layouts/prueba/nav.php';
+session_start();
 ?>
-<main class="contenido-principal">
+
+<?php
+include '../layouts/prueba/nav.php';
+include '../layouts/prueba/aside.php';
+?>
+
+<main class="main-content">
     <div class="container">
         <div class="header">
             <div class="logo">🦷</div>
@@ -171,6 +158,7 @@ include '../layouts/prueba/nav.php';
         });
     </script>
 </main>
+<?php 
+include '../layouts/prueba/footer.php';
+?>
 </body>
-
-</html>
