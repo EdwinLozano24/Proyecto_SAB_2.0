@@ -56,7 +56,7 @@ class DiagnosticoController
             'diag_nombre' => $_POST['diag_nombre'] ?? null,
             'diag_descripcion' => $_POST['diag_descripcion'] ?? null,
             'diag_tratamiento' => $_POST['diag_tratamiento'] ?? null,
-            'diag_estado' => $_POST['diag_estado'] ?? null,
+            'diag_estado' => $_POST['diag_estado'] ?? 'Activo',
         ];
 
             try {
