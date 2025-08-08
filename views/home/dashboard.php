@@ -23,7 +23,7 @@ requiereSesion();
 
 <?php 
 include '../layouts/prueba/nav.php';
-include '../layouts/prueba/header.php';
+//include '../layouts/prueba/header.php';
 include '../layouts/prueba/aside.php';
 ?>
 

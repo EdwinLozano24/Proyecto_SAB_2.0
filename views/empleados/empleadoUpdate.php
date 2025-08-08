@@ -8,8 +8,8 @@
     <title>Actualizar Empleado - Sistema Odontológico</title>
     <!-- <link rel="stylesheet" href="styles.css"> -->
     <?php
-    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/assets/css/admin/crudUsuario.css';
-    $cssUrl = '/proyecto_sab/assets/css/admin/crudUsuario.css';
+    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/assets/css/admin/crudPage.css';
+    $cssUrl = '/proyecto_sab/assets/css/admin/crudPage.css';
     if (file_exists($cssPath)) {
         echo '<link rel="stylesheet" href="' . $cssUrl . '">';
     } else {
@@ -46,12 +46,25 @@
                                 <option value="<?= $empleado['empl_usuario'] ?>" <?= $empleado['empl_usuario'] == $cons['empl_usuario'] ? 'selected' : '' ?>>
                                     <?= htmlspecialchars($empleado['empl_usuario']) ?>
                                 </option>
-                            <?php endforeach; ?>
-                        </select>
-
-                    </div>
-
-
+                                <?php endforeach; ?>
+                            </select>
+                            
+                            
+                            <div class="form-group">
+                                <label for="estado">Estado <span class="required">*</span></label>
+                                <select name="empl_estado" id="estado" required>
+                                    <option value="" disabled selected>Seleccionar estado</option>
+                                    <option value="Activo">Activo</option>
+                                    <option value="Inactivo">Inactivo</option>
+                                </select>
+                                
+                                <div class="button-group">
+                                    <button type="button" class="btn-secondary" onclick="window.history.back()">
+                                        ← Cancelar
+                                    </button>
+                                    <input type="submit" id="generar_cita" value="💉 Actualizar Empleado">
+                                </div>
+                            </div>
 
 
 
