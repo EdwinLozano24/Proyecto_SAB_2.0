@@ -34,8 +34,8 @@ $tratamientos = $stmtTratamientos->fetchAll();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Actualizar Diagnóstico</title>
     <?php
-    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/assets/css/admin/crudUsuario.css';
-    $cssUrl = '/proyecto_sab/assets/css/admin/crudUsuario.css';
+    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/assets/css/admin/crudPage.css';
+    $cssUrl = '/proyecto_sab/assets/css/admin/crudPage.css';
     if (file_exists($cssPath)) {
         echo '<link rel="stylesheet" href="' . $cssUrl . '">';
     } else {
@@ -62,7 +62,7 @@ $tratamientos = $stmtTratamientos->fetchAll();
                 </div>
 
                 <div class="form-grid">
-                    <div class="form-group">
+                    <div class="form-group full-width">
                         <label for="nombre">Nombre <span class="required">*</span></label>
                         <input type="text" name="diag_nombre" id="nombre" required value="<?= htmlspecialchars($diagnostico['diag_nombre']) ?>">
                     </div>

@@ -15,8 +15,8 @@ $tratamientos = $stmt->fetchAll();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrar Diagnóstico</title>
     <?php
-    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/assets/css/admin/crudUsuario.css';
-    $cssUrl = '/proyecto_sab/assets/css/admin/crudUsuario.css';
+    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/assets/css/admin/crudPage.css';
+    $cssUrl = '/proyecto_sab/assets/css/admin/crudPage.css';
     if (file_exists($cssPath)) {
         echo '<link rel="stylesheet" href="' . $cssUrl . '">';
     } else {
@@ -40,7 +40,7 @@ $tratamientos = $stmt->fetchAll();
                     Diagnóstico
                 </div>
                 <div class="form-grid">
-                    <div class="form-group">
+                    <div class="form-group full-width">
                         <label for="nombre">Nombre <span class="required">*</span></label>
                         <input type="text" name="diag_nombre" id="nombre" required>
                     </div>
@@ -50,7 +50,7 @@ $tratamientos = $stmt->fetchAll();
                         <input type="text" name="diag_descripcion" id="descripcion">
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group full-width">
                         <label for="tratamiento">Tratamiento asociado <span class="required">*</span></label>
                         <select name="diag_tratamiento" id="tratamiento" required>
                             <option value="" disabled selected>Seleccionar tratamiento...</option>
@@ -62,14 +62,6 @@ $tratamientos = $stmt->fetchAll();
                         </select>
                     </div>
 
-                    <div class="form-group">
-                        <label for="estado">Estado <span class="required">*</span></label>
-                        <select name="diag_estado" id="estado" required>
-                            <option value="" disabled selected>Seleccionar estado</option>
-                            <option value="Activo">Activo</option>
-                            <option value="Inactivo">Inactivo</option>
-                        </select>
-                    </div>
                 </div>
             </div>
 
