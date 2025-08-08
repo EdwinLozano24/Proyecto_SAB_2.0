@@ -1,8 +1,10 @@
 <?php
 require_once '../../../config/auth.php';
+
 requiereSesion();
 $id_usuario = $_SESSION['usuario']['id_usuario'];
 $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
+
 ?>
 
 <!DOCTYPE html>
@@ -29,19 +31,19 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
     <header class="header">
         <div class="header-content">
             <div class="logo">SAB</div>
-            <h1 class="header-title">Sistema de Gestión Odontológica</h1>
+            <h1 class="header-title"></h1>
         </div>
         <a href="/proyecto_sab/controllers/HomeController.php?accion=PacientePerfilView&id_usuario=<?php echo $id_usuario; ?>" class="user-info" style="text-decoration: none; color: inherit;">
             <div class="user-avatar">👤</div>
             <span><?php echo htmlspecialchars($nombreUsuario); ?></span>
         </a>
     </header>
-
+    
     <!-- Navigation -->
     <nav class="nav">
         <ul class="nav-list">
             <li class="nav-item">
-                <a href="/proyecto_sab/controllers/HomeController.php?accion=home" class="nav-link active">
+                <a href="/proyecto_sab/controllers/HomeController.php?accion=homePaciente" class="nav-link active">
                     <div class="nav-icon"></div>
                     Inicio
                 </a>
@@ -78,7 +80,7 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
         <div class="sidebar-section">
             <h3 class="sidebar-title">Navegación Rápida</h3>
             <ul class="sidebar-menu">
-                <li><a href="/proyecto_sab/controllers/HomeController.php?accion=home" class="active">🏠 Inicio</a></li>
+                <li><a href="/proyecto_sab/controllers/HomeController.php?accion=homePaciente" class="active">🏠 Inicio</a></li>
                 <li><a href="#">📆 Tus Citas</a></li>
                 <li><a href="#">👤 Tu Perfil</a></li>
                 <li><a href="#">⚙️ Configuración</a></li>
@@ -86,7 +88,8 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
             <a href="/proyecto_sab/controllers/AuthController.php?accion=Logout" class="btn btn-primary" style="margin-top: 16px;">Cerrar Sesion</a>
         </div>
 
-        <div class="sidebar-section">
+        
+       <!-- <div class="sidebar-section">
             <h3 class="sidebar-title">Herramientas de Administrador</h3>
             <ul class="sidebar-menu">
                 <li><a href="/proyecto_sab/controllers/UsuarioController.php?accion=index">👥 Usuarios</a></li>
@@ -95,7 +98,7 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
                 <li><a href="/proyecto_sab/controllers/HistorialController.php?accion=index">📋 Historial Clinico</a></li>
                 <li><a href="/proyecto_sab/controllers/PqrsController.php?accion=index">📝 Pqrs</a></li>
             </ul>
-        </div>
+        </div> -->
         <!--<div class="info-card">
             <h3>💡 Recuerda</h3>
             <p>Utiliza las herramientas de desarrollo del navegador para inspeccionar y depurar tu código CSS más

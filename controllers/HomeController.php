@@ -12,6 +12,11 @@ switch ($accion) {
         break;
     case 'PacientePerfilView':
         $home->pacientePerfilView($_GET['id_usuario']);
+
+    case 'homePaciente':
+        $home->homePaciente();
+        break;
+
     default:
         $home->home();
         break;
@@ -28,9 +33,19 @@ class HomeController
 
     public function home()
     {
+        
         header('Location: ../views/home/dashboard.php');
         exit;
+    } 
+
+    public function homePaciente()
+    {
+        header('Location: ../views/paciente/home/paciente_dashboard.php');
+        exit;
     }
+   
+
+
 
     public function PacientePerfilView($id_usuario)
     {
