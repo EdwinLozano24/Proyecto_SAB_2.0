@@ -1,8 +1,10 @@
 <?php
 session_start();
+
 if (!isset($_SESSION['paciente_id'])) {
     $_SESSION['paciente_id'] = 1; // ⚠️ ID de un paciente válido en tu BD
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -24,9 +26,7 @@ if (!isset($_SESSION['paciente_id'])) {
 </head>
 
 <body>
-<?php
-include '../layouts/prueba/nav.php';
-?>
+
 <main class="contenido-principal">
     <div class="container">
         <div class="header">
@@ -39,6 +39,9 @@ include '../layouts/prueba/nav.php';
             <?php if (isset($_SESSION['paciente_id'])): ?>
                 <input type="hidden" name="asignacion_automatica" value="1">
                 <input type="hidden" name="cita_hora_fin" id="hora_fin">
+                <!-- Asignar paciente automáticamente desde la sesión -->
+                <input type="hidden" name="cita_paciente" value="<?php echo htmlspecialchars($_SESSION['paciente_id']); ?>">
+
 
                 <div class="form-section">
                     <div class="section-title">📅 Detalles de la Cita</div>

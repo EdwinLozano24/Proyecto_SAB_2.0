@@ -103,6 +103,10 @@ class CitaController
             $cita_turno = 'Otro';
         }
 
+        // ATENCION! NO DEJA AGENDAR CITA AL PACIENTE POR LO QUE NO TIENE HISTORIAL CLINICO
+        // YO SUGIERO QUE CAMBIEMOS ESO POR QUE NO TENDRÍA SENTIDO QUE NO PUDIERA AGENDAR UNA CITA POR NO TENER HISTORIAL CLINICO
+        // att EL JUANOTE MASONOTE
+        // No cambie nada aca
         $historial = $this->HistorialModel->findByPaciente($cita_paciente);
         if (!$historial) {
             echo "Este paciente aún no tiene historial clínico registrado.";
