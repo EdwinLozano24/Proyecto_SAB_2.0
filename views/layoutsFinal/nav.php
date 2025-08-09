@@ -1,14 +1,5 @@
-        <header class="header">
-            <div class="header-content">
-                <div class="logo">SAB</div>
-                <h1 class="header-title">Sistema de Gestión Odontológica</h1>
-            </div>
-            <div class="user-info">
-                <div class="user-avatar">U</div>
-                <span>Administrador</span>
-            </div>
-        </header>
-    <nav class="nav">
+
+<nav class="nav">
         <ul class="nav-list">
             <li class="nav-item">
                 <a href="/proyecto_sab/controllers/HomeController.php?accion=home" class="nav-link active">

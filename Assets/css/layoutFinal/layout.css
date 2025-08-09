@@ -20,8 +20,8 @@ body {
         "footer footer";
     grid-template-columns: 280px 1fr;
     grid-template-rows: auto auto 1fr auto;
-    gap: 20px;
-    padding: 20px;
+    gap: 10px 20px;
+    padding: 12px 20px;
 }
 
 /* --- Header --- */
@@ -144,9 +144,13 @@ body {
     grid-area: sidebar;
     background: white;
     border-radius: 16px;
-    padding: 32px;
+    padding: 32px 32px 40px 32px; /* Igual que main-content */
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     border: 1px solid #e2e8f0;
+    align-self: start; /* Alineación consistente */
+    height: auto;
+    overflow-y: visible;
+    margin-bottom: 10px; /* Igual que main-content */
 }
 
 .sidebar-section {
@@ -195,13 +199,18 @@ body {
 }
 
 /* --- Main Content --- */
+/* --- Main Content --- */
 .main-content {
     grid-area: main;
     background: white;
     border-radius: 16px;
-    padding: 40px;
+    padding: 32px 32px 40px 32px; /* Ajustado para mejor balance */
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     border: 1px solid #e2e8f0;
+    min-height: 60vh;
+    overflow-y: visible;
+    align-self: start; /* Añadido para alineación con aside */
+    margin-bottom: auto; /* Asegura espacio antes del footer */
 }
 
 .content-header {
@@ -315,6 +324,7 @@ body {
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     border: 1px solid #e2e8f0;
     text-align: center;
+    margin-top: auto;
 }
 
 .footer-content {
