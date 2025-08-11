@@ -1,0 +1,281 @@
+/* Archivo: citasAgendar1.css */
+
+/* Contenedor principal */
+.citas-container {
+    width: 100%;
+    max-width: 800px; /* Ajusta según necesites */
+    margin: 0 auto; /* Esto centra el contenedor */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Cabecera del formulario */
+.form-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.form-title {
+    color: #0ea5e9;
+    font-size: 32px;
+    margin-bottom: 15px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.form-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: #0ea5e9;
+}
+
+.form-subtitle {
+    color: #64748b;
+    font-size: 18px;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Tarjeta del formulario */
+.form-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    padding: 30px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Secciones del formulario */
+.form-section {
+    margin-bottom: 30px;
+}
+
+.section-title {
+    color: #0ea5e9;
+    font-size: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Grid de campos del formulario */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+/* Grupos de campos */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+/* Etiquetas y campos */
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #334155;
+    font-weight: 500;
+}
+
+.required {
+    color: #ef4444;
+}
+
+input[type="date"],
+select,
+textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #1e293b;
+    transition: all 0.3s ease;
+    background-color: #f8fafc;
+}
+
+input[type="date"]:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #0ea5e9;
+    background-color: white;
+    box-shadow: 0 2px 15px rgba(14, 165, 233, 0.2);
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* Información de duración */
+.duration-info {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #64748b;
+    padding: 8px 12px;
+    background-color: #f1f5f9;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+/* Tarjeta de información importante */
+.form-info-card {
+    background-color: #f0f9ff;
+    border-left: 4px solid #0ea5e9;
+    padding: 20px;
+    margin: 30px 0;
+    border-radius: 0 8px 8px 0;
+}
+
+.form-info-card h3 {
+    color: #0369a1;
+    margin-top: 0;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-info-card p {
+    margin: 0;
+    color: #334155;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* Grupo de botones */
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    gap: 20px;
+}
+
+.btn-secondary,
+input[type="submit"] {
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-secondary {
+    background-color: #f1f5f9;
+    color: #64748b;
+    border: 1px solid #e2e8f0;
+}
+
+.btn-secondary:hover {
+    background-color: #e2e8f0;
+}
+
+input[type="submit"] {
+    background-color: #0ea5e9;
+    color: white;
+    border: none;
+}
+
+input[type="submit"]:hover {
+    background-color: #0284c7;
+}
+
+/* Mensaje de error */
+.error-message {
+    color: #dc2626;
+    text-align: center;
+    padding: 1rem;
+    background-color: #fef2f2;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .citas-container {
+        padding: 0 20px 30px;
+    }
+    
+    .form-title {
+        font-size: 26px;
+    }
+    
+    .form-subtitle {
+        font-size: 16px;
+    }
+    
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .button-group {
+        flex-direction: column;
+    }
+}body.citas-page {
+    display: flex !important;
+    flex-direction: column;
+    min-height: 100vh;
+    grid-template-areas: none !important;
+    grid-template-columns: none !important;
+    grid-template-rows: none !important;
+}
+
+/* 2. Ajustar el main-content específico para citas */
+.main-content.citas-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 80px; /* Espacio extra para el footer */
+    min-height: auto !important;
+    margin-bottom: 0 !important;
+}
+
+/* 3. Estilos específicos para el footer en citas */
+footer.citas-footer {
+    margin-top: auto;
+    background: white;
+    padding: 24px 40px;
+    border-top: 1px solid #e2e8f0;
+    box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* 4. Asegurar que el formulario ocupe el espacio disponible */
+.form-card {
+    flex: 1;
+    margin-bottom: 40px;
+}
+
+/* 5. Media queries específicas para citas */
+@media (max-width: 768px) {
+    .main-content.citas-container {
+        padding-bottom: 60px;
+    }
+    
+    footer.citas-footer {
+        padding: 20px;
+    }
+}
