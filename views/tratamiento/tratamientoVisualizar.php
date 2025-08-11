@@ -5,16 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catalogo Tratamientos</title>
-    <link rel="stylesheet" href="../../Assets/css/layoutFinal/layout.css">
+    <link rel="stylesheet" href="../../Assets/css/layoutFinal/paciente/layout.css">
     <link rel="stylesheet" href="../../Assets/css/tratamiento/tratamientoVisualizar.css">
 </head>
 
 <body class="catalogo-page">
     <?php
     session_start();
-    include '../layoutsFinal/header.php';
-    include '../layoutsFinal/nav.php';
-    include '../layoutsFinal/aside.php';
+    include '../layoutsFinal/paciente/header.php';
+    include '../layoutsFinal/paciente/nav.php';
+    include '../layoutsFinal/paciente/aside.php';
     ?>
 
     <main class="main-content">
@@ -115,7 +115,7 @@
     </main>
 
     <?php
-    include '../layoutsFinal/footer.php';
+    include '../layoutsFinal/paciente/footer.php';
     ?>
     <script src="../../Assets/js/tratamiento/tratamientoVisualizar.js"></script>
 </body>
