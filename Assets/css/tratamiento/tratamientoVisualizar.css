@@ -1,4 +1,3 @@
-
 /* Sección de tratamientos */
 .tratamientos-section {
     padding: 0 40px 40px;
@@ -25,13 +24,74 @@
     background: #0ea5e9;
 }
 
+/* Añade esto a tu CSS */
+.search-container {
+    margin: -20px auto 30px;
+    /* Ajuste negativo para acercar al título */
+    max-width: 90%;
+    padding: 0 40px;
+    /* Igual que tu .tratamientos-section */
+}
+
+.search-box {
+    position: relative;
+    width: 100%;
+    margin-top: 15px;
+    /* Separación del título */
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 20px 12px 45px;
+    border: 2px solid #e2e8f0;
+    border-radius: 30px;
+    /* Bordes redondeados */
+    font-size: 16px;
+    color: #1e293b;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    background: white;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #0ea5e9;
+    box-shadow: 0 2px 15px rgba(14, 165, 233, 0.2);
+}
+
+.search-icon {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+    font-size: 16px;
+}
+
+.no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    color: #64748b;
+    font-size: 18px;
+    display: none; /* Oculto por defecto */
+}
+
+.no-results.show {
+    display: block; /* Mostrar cuando hay resultados */
+}
+
 .tratamientos-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 30px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
 }
 
-/* Tarjetas de tratamientos */
+/* Asegurar que las tarjetas mantengan proporciones consistentes */
 .tratamiento-card {
     background: white;
     border-radius: 12px;
@@ -41,6 +101,7 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+    min-height: 350px; /* Altura mínima consistente */
 }
 
 .tratamiento-card:hover {
@@ -113,7 +174,8 @@
 
 /* Estilos específicos para el catálogo */
 .catalogo-page .main-content {
-    padding: 0; /* Eliminamos padding para que el carrusel ocupe todo el ancho */
+    padding: 0;
+    /* Eliminamos padding para que el carrusel ocupe todo el ancho */
 }
 
 /* Carrusel */
@@ -123,7 +185,8 @@
     max-height: 250px;
     overflow: hidden;
     border-radius: 12px;
-    margin: 0 auto 30px; /* Cambio clave: margen automático en los lados */
+    margin: 0 auto 30px;
+    /* Cambio clave: margen automático en los lados */
     align-items: center;
 }
 
@@ -145,13 +208,17 @@
 }
 
 .slide-caption {
-    position: absolute; /* Esto es esencial para que aparezca sobre la imagen */
+    position: absolute;
+    /* Esto es esencial para que aparezca sobre la imagen */
     bottom: 12px;
     left: 0;
     right: 0;
-    background: #12adf5; /* Más opaco */
-    color: #ffffff; /* Un negro más suave */
-    padding: 13px 22px; /* Un poco más de espacio */
+    background: #12adf5;
+    /* Más opaco */
+    color: #ffffff;
+    /* Un negro más suave */
+    padding: 13px 22px;
+    /* Un poco más de espacio */
 }
 
 
@@ -206,32 +273,32 @@
     .carrusel-container {
         max-height: 300px;
     }
-    
+
     .carrusel {
         height: 300px;
     }
-    
+
     .slide-caption {
         padding: 15px 20px;
     }
-    
+
     .slide-caption h3 {
         font-size: 22px;
     }
-    
+
     .slide-caption p {
         font-size: 16px;
     }
-    
+
     .tratamientos-section {
         padding: 0 20px 30px;
     }
-    
+
     .section-title {
         font-size: 26px;
         margin-bottom: 30px;
     }
-    
+
     .tratamientos-grid {
         grid-template-columns: 1fr;
         gap: 20px;
