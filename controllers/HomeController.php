@@ -12,6 +12,16 @@ switch ($accion) {
         break;
     case 'PacientePerfilView':
         $home->pacientePerfilView($_GET['id_usuario']);
+        
+
+    case 'homePaciente':
+        $home->homePaciente();
+        break;
+
+    case 'homeAgendarCita':
+        $home->homeAgendarCita();
+        break;
+
     default:
         $home->home();
         break;
@@ -28,9 +38,27 @@ class HomeController
 
     public function home()
     {
+        
         header('Location: ../views/home/dashboard.php');
         exit;
+    } 
+
+    // Vista del home del paciente para que lo mande a esta
+    public function homePaciente()
+    {
+        header('Location: ../views/paciente/home/paciente_dashboard.php');
+        exit;
     }
+
+    // Vista de citaAgendar.php para que cuando el paciente pulse el boton agendar cita lo mande a dicha vista
+    public function homeAgendarCita()
+    {
+        header('Location: ../views/cita/citaAgendar.php');
+        exit;
+    }
+
+
+
 
     public function PacientePerfilView($id_usuario)
     {
