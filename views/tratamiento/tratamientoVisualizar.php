@@ -10,8 +10,8 @@ session_start();
 ?>
 
 <?php
-include '../layouts/prueba/nav.php';
-include '../layouts/prueba/aside.php';
+require_once '../layouts/prueba/nav.php';
+require_once '../layouts/prueba/aside.php';
 ?>
 
 <main class="main-content">
