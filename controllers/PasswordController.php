@@ -2,6 +2,7 @@
 require_once __DIR__ . '/../models/UsuarioModel.php';
 require_once __DIR__ . '/../app/services/MailService.php';
 
+
 use app\services\MailService;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -25,13 +26,14 @@ class PasswordController
         $correo = $_POST['email'] ?? '';
         if (! $correo) {
             $mensaje = "Ingresa un correo válido.";
-            return require __DIR__ . '../../views/.general/password/mensaje.php';
+            return require __DIR__ . '/../views/.general/password/mensaje.php';
         }
 
         $usuario = $this->usuarioModel->findCorreo($correo);
         if (! $usuario) {
             $mensaje = "El correo no existe.";
-            return require __DIR__ . '/../views/password/mensaje.php';
+            require($_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/views/.general/password/mensaje.php');
+            exit;
         }
 
         $token  = bin2hex(random_bytes(32));
@@ -52,13 +54,15 @@ class PasswordController
             ? "Revisa tu correo para restablecer tu contraseña."
             : "No se pudo enviar el correo. Intenta más tarde.";
 
-        require __DIR__ . '/../views/password/mensaje.php';
+        require($_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/views/.general/password/mensaje.php');
+        // require __DIR__ . '/../views/password/mensaje.php';
     }
 
     public function showResetForm()
     {
         $token = $_GET['token'] ?? '';
-        require __DIR__ . '/../views/password/resetear_form.php';
+        require($_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/views/.general/password/resetear_form.php');
+        // require __DIR__ . '/../views/password/resetear_form.php';
     }
 
     public function resetPassword()
@@ -74,13 +78,14 @@ class PasswordController
         $usuario = $this->usuarioModel->findToken($token);
         if (! $usuario) {
             $mensaje = "El token es inválido o ha expirado.";
-            return require __DIR__ . '/../views/password/mensaje.php';
+            require($_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/views/.general/password/mensaje.php');
+            return;
         }
 
         $hash = password_hash($nuevaPassword, PASSWORD_DEFAULT);
         $this->usuarioModel->updatePassword($usuario['id_usuario'], $hash);
 
         $mensaje = "Contraseña actualizada correctamente.";
-        require __DIR__ . '/../views/password/mensaje.php';
+        require($_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/views/.general/password/mensaje.php');
     }
 }

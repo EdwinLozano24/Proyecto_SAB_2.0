@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../config/database.php';
+date_default_timezone_set('America/Bogota');
 class UsuarioModel
 {
     private $pdo;
@@ -123,10 +124,13 @@ class UsuarioModel
     }
 
     public function updatePassword(int $id_usuario, string $newPassword) : bool
-    {
-        $sql = "UPDATE tbl_usuarios SET usua_password = ?, usua_token_expira = NULL WHERE id_usuario = ?";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([$newPassword, $id_usuario]);
-        return $stmt->fetch(PDO::FETCH_ASSOC); 
-    }
+{
+    $sql = "UPDATE tbl_usuarios 
+            SET usua_password = ?, 
+                usua_reset_token = NULL, 
+                usua_token_expira = NULL 
+            WHERE id_usuario = ?";
+    $stmt = $this->pdo->prepare($sql);
+    return $stmt->execute([$newPassword, $id_usuario]);
+}
 }

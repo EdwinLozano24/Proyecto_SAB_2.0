@@ -24,7 +24,7 @@
 
 
       <div class="contenedor__reset">
-        <form method="POST" action="../../index.php?action=sendResetLink">
+        <form method="POST" action="../../../index.php?action=sendResetLink">
           <h2>Cambiar Contraseña</h2>
           
           <label for="email">Correo Electrónico</label>
@@ -33,7 +33,7 @@
 
 
           <button type="submit" name="send">Enviar</button>
-          <a href="../../views/usuario/loginRegister.php" class="link-login">Volver al Login</a>
+          <a href="../usuario/loginRegister.php" class="link-login">Volver al Login</a>
         </form>
       </div>
     </div>

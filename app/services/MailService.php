@@ -35,7 +35,7 @@ class MailService
             // Renderiza la plantilla de correo
             ob_start();
             extract($params, EXTR_SKIP);
-            require __DIR__ . "/../../views/emails/{$view}.php";
+            require __DIR__ . "/../../views/.general/emails/{$view}.php";
             $this->mail->Body = ob_get_clean();
 
             return $this->mail->send();

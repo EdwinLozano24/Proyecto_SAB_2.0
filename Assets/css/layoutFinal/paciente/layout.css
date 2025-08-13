@@ -86,6 +86,28 @@ body {
     font-size: 14px;
 }
 
+.user-name-button {
+            /* Resetear estilos de button por defecto */
+            border: none;
+            background: none;
+            padding: 0;
+            margin: 0;
+            
+            /* Aplicar estilos del span original */
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: inherit;
+            font-weight: inherit;
+            color: inherit;
+            line-height: inherit;
+            text-align: left;
+            
+            /* Añadir cursor pointer para indicar que es clickeable */
+            cursor: pointer;
+            
+            /* Transición suave para hover */
+            transition: color 0.2s ease;
+        }
+
 /* --- Navigation --- */
 .nav {
     grid-area: nav;
