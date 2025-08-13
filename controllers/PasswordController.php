@@ -25,7 +25,7 @@ class PasswordController
         $correo = $_POST['email'] ?? '';
         if (! $correo) {
             $mensaje = "Ingresa un correo válido.";
-            return require __DIR__ . '/../views/password/mensaje.php';
+            return require __DIR__ . '../../views/.general/password/mensaje.php';
         }
 
         $usuario = $this->usuarioModel->findCorreo($correo);

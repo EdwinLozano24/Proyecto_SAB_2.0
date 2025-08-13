@@ -9,7 +9,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../assets/css/user/loginRegister.css">
+    <?php
+    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/assets/css/user/loginRegister.css';
+    $cssUrl = '/proyecto_sab/assets/css/user/loginRegister.css';
+    if (file_exists($cssPath)) {
+        echo '<link rel="stylesheet" href="' . $cssUrl . '">';
+    } else {
+        echo ' CSS File not fount at: ' . $cssPath . '';
+    }
+    ?>
 </head>
 <body>
     <?php if (isset($_GET['exito']) && $_GET['exito'] == 1): ?>
@@ -36,14 +44,14 @@
             <!--Formulario de Login y registro-->
             <div class="contenedor__login-register">
                 <!--Login-->
-                <form id="loginForm" action="../../controllers/authController.php?accion=Login" method="POST" class="formulario__login">
+                <form id="loginForm" action="../../../controllers/authController.php?accion=Login" method="POST" class="formulario__login">
                     <h2>Iniciar Sesión</h2>
                     <input type="hidden" name="origen_formulario" value="Usuario">
                     <input type="text" id="documento" name="usua_documento" placeholder="Número De Documento" required>
                     <input type="password" id="password" name="usua_password" placeholder="Contraseña" required>
                     <div id="error" style="color: blue;"></div>
                     <button type="submit" name="loginUsuario">Entrar</button>
-                    <a href="../../views/password/recuperar_form.php">Olvidaste la contraseña?</a>
+                    <a href="../../../views/.general/password/recuperar_form.php">Olvidaste la contraseña?</a>
                 </form>
 
                 <!--Register-->
@@ -100,7 +108,7 @@
         </div>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../../assets/js/user/loginRespon.js"></script>
+    <script src="../../../assets/js/user/loginRespon.js"></script>
 </body>
 
 </html>

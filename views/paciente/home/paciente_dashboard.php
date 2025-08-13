@@ -19,9 +19,9 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
 
 <body>
     <?php 
-    include '../../layoutsFinal/paciente/header.php';
-    include '../../layoutsFinal/paciente/nav.php';
-    include '../../layoutsFinal/paciente/aside.php';
+    include($_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/views/.general/layoutsFinal/paciente/header.php');
+    include($_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/views/.general/layoutsFinal/paciente/nav.php');
+    include($_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/views/.general/layoutsFinal/paciente/aside.php');
     ?>
 
     <!-- Main Content -->
@@ -54,7 +54,7 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
         </div>
     </main>
 <?php 
-include '../../layoutsFinal/paciente/footer.php';
+include($_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/views/.general/layoutsFinal/paciente/footer.php');
 ?>
 </body>
 

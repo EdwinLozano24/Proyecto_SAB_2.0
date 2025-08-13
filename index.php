@@ -23,7 +23,7 @@ switch ($action) {
         $resetPass->resetPassword();
         break;
     default:
-        header('location: views/usuario/loginRegister.php');
+        header('location: views/.general/usuario/loginRegister.php');
 }
 
 
