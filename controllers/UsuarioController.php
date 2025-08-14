@@ -68,9 +68,9 @@ class UsuarioController
             $this->UsuarioModel->store($data);
             
             if ($origen === 'Administrador') {
-                header('Location: ../views/usuario/usuarioIndex.php');
+                header('Location: ../../views/usuario/usuarioIndex.php');
             } else {
-                header('Location: ../views/usuario/loginRegister.php');
+                header('Location: ../views/.general/usuario/loginRegister.php');
             }
             exit;
         } catch (\Exception $exception) {
