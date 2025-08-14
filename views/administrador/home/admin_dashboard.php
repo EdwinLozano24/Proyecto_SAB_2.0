@@ -16,10 +16,11 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
 </head>
 
 <body>
-    <?php
-    include '../../layoutsFinal/admin/header.php';
-    include '../../layoutsFinal/admin/nav.php';
-    include '../../layoutsFinal/admin/aside.php';
+    <?php 
+    include($_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/views/.general/layoutsFinal/admin/header.php');
+    include($_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/views/.general/layoutsFinal/admin/nav.php');
+    include($_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/views/.general/layoutsFinal/admin/aside.php');
+
     ?>
 
     <!-- Main Content -->
@@ -75,7 +76,7 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
             </div>
     </main>
     <?php
-    include '../../layoutsFinal/admin/footer.php';
+    include($_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/views/.general/layoutsFinal/admin/footer.php');
     ?>
 </body>
 

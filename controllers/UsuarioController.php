@@ -35,7 +35,7 @@ class UsuarioController
     //Redireccion a vista default 'INDEX'
     public function index()
     {
-        header('Location: ../views/usuario/usuarioIndex.php');
+        header('Location: ../views/administrador/usuario/usuarioIndex.php');
         exit;
     }
     //Redireccion a vista crear usuario 'STORE'
@@ -68,7 +68,7 @@ class UsuarioController
             $this->UsuarioModel->store($data);
             
             if ($origen === 'Administrador') {
-                header('Location: ../../views/usuario/usuarioIndex.php');
+                header('Location: ../views/administrador/usuario/usuarioIndex.php');
             } else {
                 header('Location: ../views/.general/usuario/loginRegister.php');
             }

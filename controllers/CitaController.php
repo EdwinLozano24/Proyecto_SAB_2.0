@@ -56,13 +56,13 @@ class CitaController
 
     public function index()
     {
-        header('Location: ../views/cita/citaIndex.php');
+        header('Location: ../views/administrador/cita/citaIndex.php');
         exit;
     }
 
     public function view_store()
     {
-        header('Location: ../views/cita/citaStore.php');
+        header('Location: ../views/administrador/cita/citaStore.php');
         exit;
     }
 
@@ -160,7 +160,7 @@ class CitaController
 
         try {
             $this->CitaModel->store($data);
-            header('Location: ../views/cita/citaIndex.php?mensaje=Cita creada exitosamente');
+            header('Location: ../views/administrador/cita/citaIndex.php?mensaje=Cita creada exitosamente');
             exit;
         } catch (Exception $e) {
             echo "Error al crear la cita: " . $e->getMessage();

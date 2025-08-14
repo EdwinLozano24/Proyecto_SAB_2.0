@@ -39,7 +39,7 @@ class TratamientoController
 
     public function index()
     {
-        header ('Location: ../views/tratamiento/tratamientoIndex.php');
+        header ('Location: ../views/administrador/tratamiento/tratamientoIndex.php');
         exit;
     }
 

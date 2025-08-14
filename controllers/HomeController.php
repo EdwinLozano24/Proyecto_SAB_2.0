@@ -39,7 +39,7 @@ class HomeController
     public function home()
     {
         
-        header('Location: ../views/home/dashboard.php');
+        header('Location: ../views/administrador/home/admin_dashboard.php');
         exit;
     } 
 

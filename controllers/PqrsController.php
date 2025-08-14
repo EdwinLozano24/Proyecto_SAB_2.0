@@ -56,7 +56,7 @@ class PqrsController
 
     public function index(): void
     {
-        header('Location: ../views/pqrs/pqrsIndex.php');
+        header('Location: ../views/administrador/pqrs/pqrsIndex.php');
         exit;
     }
 

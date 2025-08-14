@@ -1,7 +1,7 @@
 <?php
-require_once '../../config/auth.php';
+require_once '../../../config/auth.php';
 requiereSesion();
-require_once __DIR__ . '/../../config/database.php';
+require_once __DIR__ . '/../../../config/database.php';
 $pdo = conectarBD();
 $sql = "SELECT * FROM tbl_tratamientos
         INNER JOIN tbl_categorias_tratamientos ON trat_categoria = id_categoria
