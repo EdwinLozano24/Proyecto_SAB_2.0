@@ -41,7 +41,7 @@ class UsuarioController
     //Redireccion a vista crear usuario 'STORE'
     public function view_store()
     {
-        header('Location: ../views/usuario/usuarioStore.php');
+        header('Location: ../views/administrador/usuario/usuarioStore.php');
         exit;
     }
     //Funcion para generar USUARIO
