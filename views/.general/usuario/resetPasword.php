@@ -7,8 +7,8 @@
   <title>Reset contraseña</title>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
       <?php
-    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/assets/css/user/resetpasword.css';
-    $cssUrl = '/proyecto_sab/assets/css/user/resetpasword.css';
+    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/assets/css/user/resetpasword.css';
+    $cssUrl = '/assets/css/user/resetpasword.css';
     if (file_exists($cssPath)) {
         echo '<link rel="stylesheet" href="' . $cssUrl . '">';
     } else {
@@ -33,7 +33,7 @@
 
 
           <button type="submit" name="send">Enviar</button>
-          <a href="../../views/usuario/loginRegister.php" class="link-login">Volver al Login</a>
+          <a href="/views/.general/usuario/loginRegister.php" class="link-login">Volver al Login</a>
         </form>
       </div>
     </div>
@@ -49,7 +49,7 @@
     </div>
   </div>
 
-  <script src= "../..Assets/js/user/resetPasword.js"> </script>
+  <script src= "/assets/js/user/resetPasword.js"> </script>
 </body>
 </html>
 
