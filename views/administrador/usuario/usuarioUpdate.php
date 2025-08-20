@@ -11,8 +11,8 @@ requiereSesion();
     <title>Actualizar Usuario - Sistema Odontológico</title>
     <!-- <link rel="stylesheet" href="styles.css"> -->
     <?php
-    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/assets/css/admin/crudPage.css';
-    $cssUrl = '/proyecto_sab/assets/css/admin/crudPage.css';
+    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/assets/css/admin/crudPage.css';
+    $cssUrl = '/assets/css/admin/crudPage.css';
     if (file_exists($cssPath)) {
         echo '<link rel="stylesheet" href="' . $cssUrl . '">';
     } else {
@@ -29,7 +29,7 @@ requiereSesion();
             <p class="subtitle">Sistema de Gestión Odontológica</p>
         </div>
 
-        <form action="../controllers/UsuarioController.php?accion=update" method="POST" class="form-card">
+        <form action="/controllers/UsuarioController.php?accion=update" method="POST" class="form-card">
             <input type="hidden" name="id_usuario" value="<?= $usua['id_usuario'] ?>">
 
             <div class="form-section">

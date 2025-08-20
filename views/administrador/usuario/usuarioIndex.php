@@ -37,8 +37,8 @@ $usuarios = $stmt->fetchAll();
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <?php
-    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/assets/css/admin/crudIndex.css';
-    $cssUrl = '/proyecto_sab/assets/css/admin/crudIndex.css';
+    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/assets/css/admin/crudIndex.css';
+    $cssUrl = '/assets/css/admin/crudIndex.css';
     if (file_exists($cssPath)) {
         echo '<link rel="stylesheet" href="' . $cssUrl . '">';
     } else {
@@ -56,7 +56,7 @@ $usuarios = $stmt->fetchAll();
             </div>
             <h2>Usuarios Registrados</h2>
             <p class="subtitle">Gestión completa de usuarios del sistema</p>
-            <a href="/proyecto_sab/controllers/HomeController.php?accion=home" class="btn-custom btn-primary-custom">
+            <a href="/controllers/HomeController.php?accion=home" class="btn-custom btn-primary-custom">
                 <i class="fa-solid fa-rotate-left"></i>
                 Volver
             </a>
@@ -64,7 +64,7 @@ $usuarios = $stmt->fetchAll();
 
         <!-- Botón nuevo usuario -->
         <div class="mb-4 d-flex justify-content-between align-items-center">
-            <a href="/proyecto_sab/controllers/UsuarioController.php?accion=view_store"
+            <a href="/controllers/UsuarioController.php?accion=view_store"
                 class="btn-custom btn-primary-custom">
                 <i class="fa-solid fa-square-plus"></i>
                 Nuevo Usuario
@@ -99,11 +99,11 @@ $usuarios = $stmt->fetchAll();
                         <td><?= htmlspecialchars($usuario['usua_tipo']) ?></td>
                         <td><?= htmlspecialchars($usuario['usua_estado']) ?></td>
                         <td>
-                            <a href="/proyecto_sab/controllers/UsuarioController.php?accion=view_update&id_usuario=<?= $usuario['id_usuario'] ?>"
+                            <a href="/controllers/UsuarioController.php?accion=view_update&id_usuario=<?= $usuario['id_usuario'] ?>"
                                 class="action-btn edit">
                                 <i class="fa-solid fa-pen-to-square"></i>
                             </a>
-                            <a href="/proyecto_sab/controllers/UsuarioController.php?accion=delete&id_usuario=<?= $usuario['id_usuario'] ?>"
+                            <a href="/controllers/UsuarioController.php?accion=delete&id_usuario=<?= $usuario['id_usuario'] ?>"
                                 class="action-btn delete">
                                 <i class="fa-solid fa-trash"></i>
                             </a>
