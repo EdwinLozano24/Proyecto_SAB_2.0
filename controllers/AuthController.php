@@ -54,7 +54,7 @@ class AuthController
 
             switch ($usuario['usua_tipo']) {
                 case 'Administrador':
-                    header('Location: ../views/home/admin_dashboard.php');
+                    header('Location: ../views/administrador/home/admin_dashboard.php');
                     break;
                 case 'Especialista':
                     header('Location: ../views/home/especialista_dashboard.php');
