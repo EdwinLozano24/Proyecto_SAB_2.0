@@ -45,6 +45,7 @@ $empleados = $stmt->fetchAll();
         echo ' CSS File not fount at: ' . $cssPath . '';
     }
     ?>
+    <!-- cambio edwin -->
     <title>Crud Empleados</title>
     <!-- Css -->
     <link href="https://cdn.datatables.net/2.3.1/css/dataTables.bootstrap5.min.css" rel="stylesheet" integrity="sha384-5hBbs6yhVjtqKk08rsxdk9xO80wJES15HnXHglWBQoj3cus3WT+qDJRpvs5rRP2c" crossorigin="anonymous">
