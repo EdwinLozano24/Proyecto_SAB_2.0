@@ -83,7 +83,7 @@ class AuthController
         session_unset();
         session_destroy();
 
-        header('Location: ../views/usuario/loginRegister.php');
+        header('Location: ../views/.general/usuario/loginRegister.php');
         exit;
     }
 }

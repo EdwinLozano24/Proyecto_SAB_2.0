@@ -1,6 +1,6 @@
 <?php
 return [
-  'app_url'      => 'http://localhost/proyecto_sab',
+  'app_url'      => 'https://red-locust-535799.hostingersite.com',
     'app_timezone' => 'America/Bogota',
 
     'smtp' => [
