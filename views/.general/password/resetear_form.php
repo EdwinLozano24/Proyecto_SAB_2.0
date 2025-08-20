@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <?php
-  $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/assets/css/user/resetpasword.css';
-  $cssUrl = '/assets/css/user/resetpasword.css';
+  $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/assets/css/user/resetPasword.css';
+  $cssUrl = '/assets/css/user/resetPasword.css';
   if (file_exists($cssPath)) {
     echo '<link rel="stylesheet" href="' . $cssUrl . '">';
   } else {
