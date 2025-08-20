@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 /* --- Reset y base --- */
+
+html{
+    height: 100%;
+}
 * {
     margin: 0;
     padding: 0;
@@ -19,9 +23,11 @@ body {
         "sidebar main"
         "footer footer";
     grid-template-columns: 280px 1fr;
-    grid-template-rows: auto auto 1fr auto;
+    grid-template-rows: auto auto minmax(0, 1fr) auto; /* Cambio clave */
     gap: 10px 20px;
     padding: 12px 20px;
+    height: 100%;
+    margin: 0;
 }
 
 /* --- Header --- */
@@ -228,10 +234,11 @@ body {
     padding: 32px 32px 40px 32px; /* Ajustado para mejor balance */
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     border: 1px solid #e2e8f0;
-    min-height: 60vh;
+    min-height: calc(100vh - 400px); 
     overflow-y: visible;
-    align-self: start; /* Añadido para alineación con aside */
+    align-self: stretch; /* Añadido para alineación con aside */
     margin-bottom: auto; /* Asegura espacio antes del footer */
+    height: auto !important;
 }
 
 .content-header {
@@ -346,6 +353,10 @@ body {
     border: 1px solid #e2e8f0;
     text-align: center;
     margin-top: auto;
+    align-self: flex-end;
+    position: relative;
+    bottom: 0;
+    width: 100%;
 }
 
 .footer-content {

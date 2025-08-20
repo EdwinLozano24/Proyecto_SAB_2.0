@@ -30,6 +30,9 @@ switch ($accion) {
     case 'delete':
         $cita->delete($_GET['id_cita']);
         break;
+    case 'pacienteAgendar':
+        $cita->pacienteAgendar();
+        break;
     default:
         $cita->index();
         break;
@@ -56,13 +59,13 @@ class CitaController
 
     public function index()
     {
-        header('Location: ../views/cita/citaIndex.php');
+        header('Location: ../views/administrador/cita/citaIndex.php');
         exit;
     }
 
     public function view_store()
     {
-        header('Location: ../views/cita/citaStore.php');
+        header('Location: ../views/administrador/cita/citaStore.php');
         exit;
     }
 
@@ -160,7 +163,7 @@ class CitaController
 
         try {
             $this->CitaModel->store($data);
-            header('Location: ../views/cita/citaIndex.php?mensaje=Cita creada exitosamente');
+            header('Location: ../views/administrador/cita/citaIndex.php?mensaje=Cita creada exitosamente');
             exit;
         } catch (Exception $e) {
             echo "Error al crear la cita: " . $e->getMessage();
@@ -232,5 +235,11 @@ class CitaController
             echo "Error al eliminar la cita: " . $e->getMessage();
             return;
         }
+    }
+
+    public function pacienteAgendar()
+    {
+        header('Location: ../views/paciente/cita/citaAgendar1.php');
+        exit;
     }
 }

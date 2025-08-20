@@ -1,5 +1,5 @@
 <?php
-require_once '../../config/auth.php';
+require_once '../../../config/auth.php';
 requiereSesion();
 ?>
 <!DOCTYPE html>
@@ -29,7 +29,7 @@ requiereSesion();
             <p class="subtitle">Ingresa la información para registrar un nuevo usuario en el sistema</p>
         </div>
 
-        <form id="crearForm" method="POST" action="../../controllers/UsuarioController.php?accion=store" class="form-card">
+        <form id="crearForm" method="POST" action="../../../controllers/UsuarioController.php?accion=store" class="form-card">
             <div class="form-grid">
                 <div class="form-group">
                     <input type="hidden" name="origen_formulario" value="Administrador">

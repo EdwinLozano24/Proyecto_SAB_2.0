@@ -5,17 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catalogo Tratamientos</title>
-    <link rel="stylesheet" href="../../../Assets/css/layoutFinal/paciente/layout.css">
-    <link rel="stylesheet" href="../../../Assets/css/tratamiento/tratamientoVisualizar.css">
+    <link rel="stylesheet" href="/assets/css/layoutFinal/paciente/layout.css">
+    <link rel="stylesheet" href="/assets/css/tratamiento/tratamientoVisualizar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body class="catalogo-page">
     <?php
     session_start();
-    include($_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/views/.general/layoutsFinal/paciente/header.php');
-    include($_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/views/.general/layoutsFinal/paciente/nav.php');
-    include($_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/views/.general/layoutsFinal/paciente/aside.php');
+    include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/paciente/header.php');
+    include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/paciente/nav.php');
+    include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/paciente/aside.php');
     ?>
 
     <main class="main-content">
@@ -32,21 +32,21 @@
                 <section class="carrusel-container">
                     <div class="carrusel">
                         <div class="slide active">
-                            <img src="../../../Assets/img/tratamiento2.jpg" alt="Promoción Blanqueamiento Dental">
+                            <img src="/assets/img/tratamiento2.jpg" alt="Promoción Blanqueamiento Dental">
                             <div class="slide-caption">
                                 <h3>Blanqueamiento Dental Profesional</h3>
                                 <p>30% de descuento este mes</p>
                             </div>
                         </div>
                         <div class="slide">
-                            <img src="../../../Assets/img/tratamiento3.jpg" alt="Ortodoncia Invisible">
+                            <img src="/assets/img/tratamiento3.jpg" alt="Ortodoncia Invisible">
                             <div class="slide-caption">
                                 <h3>Ortodoncia Invisible</h3>
                                 <p>Financiamiento disponible</p>
                             </div>
                         </div>
                         <div class="slide">
-                            <img src="../../../Assets/img/tratamiento1.jpg" alt="Implantes Dentales">
+                            <img src="/assets/img/tratamiento1.jpg" alt="Implantes Dentales">
                             <div class="slide-caption">
                                 <h3>Implantes Dentales</h3>
                                 <p>Recupera tu sonrisa completa</p>
@@ -61,21 +61,7 @@
 
                     <div class="tratamiento-card">
                         <div class="card-image">
-                            <img src="../../../Assets/img/tratamientosVisualizar/blanqueamiento.webp" alt="Blanqueamiento Dental">
-                        </div>
-                        <div class="card-content">
-                            <h3>Blanqueamiento Dental</h3>
-                            <p class="card-desc">Aclara varios tonos tu sonrisa con nuestro tratamiento profesional.</p>
-                            <div class="card-footer">
-                                <span class="card-price">Desde $300.000</span>
-                                <button class="btn btn-vermas">Ver más</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="tratamiento-card">
-                        <div class="card-image">
-                            <img src="../../../Assets/img/tratamientosVisualizar/ortodoncia.png" alt="Ortodoncia">
+                            <img src="/assets/img/tratamientosVisualizar/ortodoncia.png" alt="Ortodoncia">
                         </div>
                         <div class="card-content">
                             <h3>Ortodoncia</h3>
@@ -90,7 +76,7 @@
                     <!-- Tarjeta 3 -->
                     <div class="tratamiento-card">
                         <div class="card-image">
-                            <img src="../../../Assets/img/tratamientosVisualizar/implanteDental.jpg" alt="Implantes Dentales">
+                            <img src="/assets/img/tratamientosVisualizar/implanteDental.jpg" alt="Implantes Dentales">
                         </div>
                         <div class="card-content">
                             <h3>Implantes Dentales</h3>
@@ -103,7 +89,7 @@
                     </div>
                     <div class="tratamiento-card">
                         <div class="card-image">
-                            <img src="../../../Assets/img/tratamientosVisualizar/implanteDental.jpg" alt="Implantes Dentales">
+                            <img src="/assets/img/tratamientosVisualizar/implanteDental.jpg" alt="Implantes Dentales">
                         </div>
                         <div class="card-content">
                             <h3>Implantes Dentales</h3>
@@ -116,7 +102,7 @@
                     </div>
                     <div class="tratamiento-card">
                         <div class="card-image">
-                            <img src="../../../Assets/img/tratamientosVisualizar/blanqueamiento.webp" alt="Blanqueamiento Dental">
+                            <img src="/assets/img/tratamientosVisualizar/blanqueamiento.webp" alt="Blanqueamiento Dental">
                         </div>
                         <div class="card-content">
                             <h3>Blanqueamiento Dental</h3>
@@ -129,7 +115,7 @@
                     </div>
                     <div class="tratamiento-card">
                         <div class="card-image">
-                            <img src="../../../Assets/img/tratamientosVisualizar/implanteDental.jpg" alt="Implantes Dentales">
+                            <img src="/assets/img/tratamientosVisualizar/implanteDental.jpg" alt="Implantes Dentales">
                         </div>
                         <div class="card-content">
                             <h3>Implantes Dentales</h3>
@@ -149,10 +135,10 @@
     </main>
 
     <?php
-include($_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/views/.general/layoutsFinal/paciente/footer.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/paciente/footer.php');
     ?>
-    <script src="../../../Assets/js/tratamiento/tratamientoVisualizarBusqueda.js"></script>
-    <script src="../../../Assets/js/tratamiento/tratamientoVisualizar.js"></script>
+    <script src="/assets/js/tratamiento/tratamientoVisualizarBusqueda.js"></script>
+    <script src="/assets/js/tratamiento/tratamientoVisualizar.js"></script>
 </body>
 
 </html>

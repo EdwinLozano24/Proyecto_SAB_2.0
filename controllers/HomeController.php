@@ -11,9 +11,8 @@ switch ($accion) {
         $home->logout();
         break;
     case 'PacientePerfilView':
-        $home->pacientePerfilView($_GET['id_usuario']);
-        
-
+        $home->PacientePerfilView($_GET['id_usuario']);
+        break;
     case 'homePaciente':
         $home->homePaciente();
         break;
@@ -39,7 +38,7 @@ class HomeController
     public function home()
     {
         
-        header('Location: ../views/home/dashboard.php');
+        header('Location: ../views/administrador/home/admin_dashboard.php');
         exit;
     } 
 
@@ -63,7 +62,7 @@ class HomeController
     public function PacientePerfilView($id_usuario)
     {
         $paciente = $this->UsuarioModel->find($id_usuario);
-        include '../views/paciente/perfil/pacientePerfil.php';
+        require '/../views/.general/perfil/pacientePerfil.php';
         exit;
     }
 }

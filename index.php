@@ -1,8 +1,7 @@
 <?php
-$config = require __DIR__ . '/config/configMailer.php';
+$config = require __DIR__ . '/config/configmailer.php';
 date_default_timezone_set($config['app_timezone'] ?? 'America/Bogota');
-
-require_once 'config/database.php';
+require __DIR__ . '/config/database.php';
 require __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/controllers/PasswordController.php';
 

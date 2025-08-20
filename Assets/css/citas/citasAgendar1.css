@@ -1,30 +1,28 @@
-/* Archivo: citasAgendar1.css */
+/* Estilos generales para la página de citas */
+.citas-page .main-content {
+    padding: 0;
+}
 
-/* Contenedor principal */
 .citas-container {
-    width: 100%;
-    max-width: 800px; /* Ajusta según necesites */
-    margin: 0 auto; /* Esto centra el contenedor */
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
+    padding: 0 40px 40px;
 }
 
-/* Cabecera del formulario */
-.form-header {
+.citas-section {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    margin-top: 30px;
     text-align: center;
-    margin-bottom: 30px;
-}
-
-.form-title {
+    margin-bottom: 15px;
     color: #0ea5e9;
     font-size: 32px;
-    margin-bottom: 15px;
     position: relative;
     padding-bottom: 15px;
 }
 
-.form-title::after {
+.section-title::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -35,183 +33,257 @@
     background: #0ea5e9;
 }
 
-.form-subtitle {
+.section-subtitle {
+    text-align: center;
     color: #64748b;
     font-size: 18px;
-    max-width: 600px;
-    margin: 0 auto;
-    line-height: 1.6;
-}
-
-/* Tarjeta del formulario */
-.form-card {
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    padding: 30px;
-    margin: 0 auto;
-    width: 100%;
-}
-
-/* Secciones del formulario */
-.form-section {
     margin-bottom: 30px;
 }
 
-.section-title {
-    color: #0ea5e9;
-    font-size: 20px;
-    margin-bottom: 20px;
+/* Formulario */
+.form-card {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    margin-top: 30px;
+}
+
+.form-section {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.form-section:last-child {
+    border-bottom: none;
+}
+
+.section-header {
     display: flex;
     align-items: center;
     gap: 10px;
+    margin-bottom: 20px;
 }
 
-/* Grid de campos del formulario */
+.section-header .section-title {
+    font-size: 22px;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    color: #1e293b;
+}
+
+.section-header .section-title::after {
+    display: none;
+}
+
+.section-icon {
+    color: #0ea5e9;
+    font-size: 20px;
+}
+
 .form-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
 }
 
-/* Grupos de campos */
 .form-group {
     margin-bottom: 20px;
 }
 
-.form-group.full-width {
-    grid-column: 1 / -1;
-}
-
-/* Etiquetas y campos */
-label {
+.form-group label {
     display: block;
     margin-bottom: 8px;
-    color: #334155;
     font-weight: 500;
+    color: #1e293b;
 }
 
 .required {
     color: #ef4444;
 }
 
-input[type="date"],
-select,
-textarea {
+.input-with-icon {
+    position: relative;
+}
+
+.input-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+}
+
+.input-with-icon input,
+.input-with-icon select {
     width: 100%;
-    padding: 12px 15px;
+    padding: 12px 20px 12px 45px;
     border: 2px solid #e2e8f0;
     border-radius: 8px;
     font-size: 16px;
     color: #1e293b;
     transition: all 0.3s ease;
-    background-color: #f8fafc;
 }
 
-input[type="date"]:focus,
-select:focus,
-textarea:focus {
+.input-with-icon input:focus,
+.input-with-icon select:focus,
+.input-with-icon textarea:focus {
     outline: none;
     border-color: #0ea5e9;
-    background-color: white;
-    box-shadow: 0 2px 15px rgba(14, 165, 233, 0.2);
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.2);
 }
 
-textarea {
+.input-with-icon select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px;
+}
+
+.textarea-container {
+    position: relative;
+    width: 100%;
+}
+
+.textarea-container textarea {
+    width: 100%;
     min-height: 120px;
     resize: vertical;
+    padding: 15px;
+    font-family: 'Inter', Sans-Serif;
+    line-height: 1.5;
 }
 
-/* Información de duración */
-.duration-info {
-    margin-top: 10px;
-    font-size: 14px;
+.textarea-footer {
+    font-size: 13px;
     color: #64748b;
-    padding: 8px 12px;
-    background-color: #f1f5f9;
-    border-radius: 6px;
-    display: inline-block;
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
-/* Tarjeta de información importante */
+.full-width {
+    grid-column: 1 / -1;
+}
+
+.duration-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    padding: 10px;
+    background: #f0f9ff;
+    border-radius: 6px;
+    color: #0369a1;
+    font-size: 14px;
+}
+
+/* Info card */
 .form-info-card {
-    background-color: #f0f9ff;
-    border-left: 4px solid #0ea5e9;
+    background: #f0f9ff;
+    border: 1px solid #bae6fd;
+    border-radius: 12px;
     padding: 20px;
     margin: 30px 0;
-    border-radius: 0 8px 8px 0;
 }
 
-.form-info-card h3 {
-    color: #0369a1;
-    margin-top: 0;
-    margin-bottom: 15px;
+.info-card-header {
     display: flex;
     align-items: center;
     gap: 10px;
+    margin-bottom: 15px;
+    color: #0c4a6e;
 }
 
-.form-info-card p {
+.info-card-header h3 {
+    font-size: 18px;
     margin: 0;
-    color: #334155;
-    line-height: 1.6;
-    font-size: 0.95rem;
 }
 
-/* Grupo de botones */
+.info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.info-list li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    color: #0369a1;
+}
+
+.info-list li i {
+    margin-top: 3px;
+    flex-shrink: 0;
+}
+
+/* Botones */
 .button-group {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
+    gap: 15px;
     margin-top: 30px;
-    gap: 20px;
 }
 
-.btn-secondary,
-input[type="submit"] {
-    padding: 12px 25px;
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 24px;
     border-radius: 8px;
     font-size: 16px;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
+    border: none;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+    color: white;
+    box-shadow: 0 2px 5px rgba(14, 165, 233, 0.3);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(14, 165, 233, 0.4);
 }
 
 .btn-secondary {
-    background-color: #f1f5f9;
+    background: white;
     color: #64748b;
     border: 1px solid #e2e8f0;
 }
 
 .btn-secondary:hover {
-    background-color: #e2e8f0;
+    background: #f8fafc;
+    color: #0ea5e9;
+    border-color: #bae6fd;
 }
 
-input[type="submit"] {
-    background-color: #0ea5e9;
-    color: white;
-    border: none;
-}
-
-input[type="submit"]:hover {
-    background-color: #0284c7;
-}
-
-/* Mensaje de error */
-.error-message {
-    color: #dc2626;
-    text-align: center;
-    padding: 1rem;
-    background-color: #fef2f2;
+/* Alerta de login */
+.login-alert {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
     border-radius: 8px;
-    margin-bottom: 1.5rem;
+    padding: 20px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
+    gap: 15px;
+    color: #dc2626;
+    margin: 20px 0;
+}
+
+.login-alert i {
+    font-size: 24px;
 }
 
 /* Responsive */
@@ -220,12 +292,16 @@ input[type="submit"]:hover {
         padding: 0 20px 30px;
     }
     
-    .form-title {
+    .section-title {
         font-size: 26px;
     }
     
-    .form-subtitle {
+    .section-subtitle {
         font-size: 16px;
+    }
+    
+    .form-card {
+        padding: 20px;
     }
     
     .form-grid {
@@ -235,47 +311,7 @@ input[type="submit"]:hover {
     .button-group {
         flex-direction: column;
     }
-}body.citas-page {
-    display: flex !important;
-    flex-direction: column;
-    min-height: 100vh;
-    grid-template-areas: none !important;
-    grid-template-columns: none !important;
-    grid-template-rows: none !important;
-}
-
-/* 2. Ajustar el main-content específico para citas */
-.main-content.citas-container {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 80px; /* Espacio extra para el footer */
-    min-height: auto !important;
-    margin-bottom: 0 !important;
-}
-
-/* 3. Estilos específicos para el footer en citas */
-footer.citas-footer {
-    margin-top: auto;
-    background: white;
-    padding: 24px 40px;
-    border-top: 1px solid #e2e8f0;
-    box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1);
-}
-
-/* 4. Asegurar que el formulario ocupe el espacio disponible */
-.form-card {
-    flex: 1;
-    margin-bottom: 40px;
-}
-
-/* 5. Media queries específicas para citas */
-@media (max-width: 768px) {
-    .main-content.citas-container {
-        padding-bottom: 60px;
-    }
     
-    footer.citas-footer {
-        padding: 20px;
-    }
-}
+    .btn {
+        width: 100%;
+    }}

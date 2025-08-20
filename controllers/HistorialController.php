@@ -43,7 +43,7 @@ class HistorialController
 
     public function index()
     {
-        header('Location: ../views/historial/historialIndex.php');
+        header('Location: ../views/administrador/historial/historialIndex.php');
         exit;
     }
 

@@ -1,7 +1,7 @@
 <?php
-require_once '../../config/auth.php';
+require_once '../../../config/auth.php';
 requiereSesion();
-require_once __DIR__ . '/../../config/database.php';
+require_once __DIR__ . '/../../../config/database.php';
 $pdo = conectarBD();
 $sql = "SELECT * FROM tbl_pacientes
     INNER JOIN tbl_usuarios ON paci_usuario = id_usuario

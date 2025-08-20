@@ -39,13 +39,13 @@ class TratamientoController
 
     public function index()
     {
-        header ('Location: ../views/tratamiento/tratamientoIndex.php');
+        header ('Location: ../views/administrador/tratamiento/tratamientoIndex.php');
         exit;
     }
 
     public function view_store()
     {
-        header ('Location: ../views/tratamiento/tratamientoStore.php');
+        header ('Location: ../views/administrador/tratamiento/tratamientoStore.php');
         exit;
     }
 
@@ -78,7 +78,7 @@ class TratamientoController
     {
         $trat = $this->TratamientoModel->find($id_tratamiento);
         $cate = $this->CategoriaModel->findAll();
-        include '../views/tratamiento/tratamientoUpdate.php';
+        include '../views/administrador/tratamiento/tratamientoUpdate.php';
         exit;
     }
 
@@ -111,7 +111,7 @@ class TratamientoController
     {
         try {
             $this->TratamientoModel->delete($id_tratamiento);
-            header('Location: ../views/tratamiento/tratamientoIndex.php');
+            header('Location: ../views/administrador/tratamiento/tratamientoIndex.php');
             exit;
         } catch (\Exception $exception) {
             echo '[Ocurrio un error al ELIMINAR el TRATAMIENTO (Estamos trabajando para soluctionarlo)]';

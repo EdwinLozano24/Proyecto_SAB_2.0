@@ -35,13 +35,13 @@ class UsuarioController
     //Redireccion a vista default 'INDEX'
     public function index()
     {
-        header('Location: ../views/usuario/usuarioIndex.php');
+        header('Location: ../views/administrador/usuario/usuarioIndex.php');
         exit;
     }
     //Redireccion a vista crear usuario 'STORE'
     public function view_store()
     {
-        header('Location: ../views/usuario/usuarioStore.php');
+        header('Location: ../views/administrador/usuario/usuarioStore.php');
         exit;
     }
     //Funcion para generar USUARIO
@@ -68,9 +68,9 @@ class UsuarioController
             $this->UsuarioModel->store($data);
             
             if ($origen === 'Administrador') {
-                header('Location: ../views/usuario/usuarioIndex.php');
+                header('Location: ../views/administrador/usuario/usuarioIndex.php');
             } else {
-                header('Location: ../views/usuario/loginRegister.php');
+                header('Location: ../views/.general/usuario/loginRegister.php');
             }
             exit;
         } catch (\Exception $exception) {

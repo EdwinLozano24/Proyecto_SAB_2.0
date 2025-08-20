@@ -1,7 +1,7 @@
 <?php
-require_once '../../config/auth.php';
+require_once '/../config/auth.php';
 requiereSesion();
-require_once __DIR__ . '/../../config/database.php';
+require_once __DIR__ . '/../config/database.php';
 $pdo = conectarBD();
 $sql = "SELECT * FROM tbl_tratamientos
         INNER JOIN tbl_categorias_tratamientos ON trat_categoria = id_categoria
@@ -34,8 +34,8 @@ $tratamientos = $stmt->fetchAll();
         integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
     <title>Index Tratamientos</title>
     <?php
-    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/assets/css/admin/crudIndex.css';
-    $cssUrl = '/proyecto_sab/assets/css/admin/crudIndex.css';
+    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/assets/css/admin/crudIndex.css';
+    $cssUrl = '/assets/css/admin/crudIndex.css';
     if (file_exists($cssPath)) {
         echo '<link rel="stylesheet" href="' . $cssUrl . '">';
     } else {
