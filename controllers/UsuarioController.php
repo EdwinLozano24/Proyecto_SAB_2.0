@@ -119,7 +119,7 @@ class UsuarioController
     {
         try {
             $this->UsuarioModel->delete($id_usuario);
-            header('Location: ../views/usuario/usuarioIndex.php');
+            header('Location: ../views/administrador/usuario/usuarioIndex.php');
             exit;
         } catch (\Exception $exception) {
             echo '[Ocurrio un error al ELIMINAR el USUARIO (Estamos trabajando para soluctionarlo)]';
