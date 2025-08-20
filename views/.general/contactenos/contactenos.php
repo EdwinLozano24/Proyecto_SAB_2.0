@@ -31,7 +31,7 @@
                         </div>
                         <div class="card-content">
                             <h3>Gmail</h3>
-                            <p class="card-desc">¡Envíanos un mensaje ya PENE PENE PENE PENE!</p>
+                            <p class="card-desc">¡Envíanos un mensaje ya!</p>
                             <div class="card-footer">
                                 <span class="card-username">SaludBenefitt@gmail.com</span>
                                 <a href="mailto:SaludBenefitt@gmail.com" target="_blank" class="btn btn-seguir">
