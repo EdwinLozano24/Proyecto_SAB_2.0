@@ -37,7 +37,7 @@ class AuthController
             $usua_password = trim($_POST['usua_password'] ?? '');
 
             if ($usua_documento === '' || $usua_password === '') {
-                header('Location: ../views/error/acceso_denegado.php');
+                header('Location: ../views/.general/error/acceso_denegado.php');
                 exit;
             }
 
@@ -71,7 +71,7 @@ class AuthController
             }
                 exit;
             } else {
-                header('Location: ../views/error/acceso_denegado.php');
+                header('Location: ../views/.general/error/acceso_denegado.php');
                 exit;
             }
         }
