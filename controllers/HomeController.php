@@ -12,8 +12,7 @@ switch ($accion) {
         break;
     case 'PacientePerfilView':
         $home->pacientePerfilView($_GET['id_usuario']);
-        
-
+        break;
     case 'homePaciente':
         $home->homePaciente();
         break;

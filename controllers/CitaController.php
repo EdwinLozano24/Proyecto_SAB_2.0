@@ -30,6 +30,9 @@ switch ($accion) {
     case 'delete':
         $cita->delete($_GET['id_cita']);
         break;
+    case 'pacienteAgendar':
+        $cita->pacienteAgendar();
+        break;
     default:
         $cita->index();
         break;
@@ -232,5 +235,11 @@ class CitaController
             echo "Error al eliminar la cita: " . $e->getMessage();
             return;
         }
+    }
+
+    public function pacienteAgendar()
+    {
+        header('Location: ../views/paciente/cita/citaAgendar.php');
+        exit;
     }
 }
