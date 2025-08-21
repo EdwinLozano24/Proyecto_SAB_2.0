@@ -217,7 +217,7 @@ class CitaController
 
         try {
             $this->CitaModel->update($data);
-            header('Location: ../views/cita/citaIndex.php');
+            header('Location: ../views/administrador/cita/citaIndex.php');
             exit;
         } catch (Exception $e) {
             echo "Error al actualizar la cita: " . $e->getMessage();
