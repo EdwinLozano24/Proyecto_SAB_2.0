@@ -82,7 +82,7 @@ class UsuarioController
     public function view_update($id_usuario)
     {
         $usua = $this->UsuarioModel->find($id_usuario);
-        include '../views/usuario/usuarioUpdate.php';
+        include '../views/administrador/usuario/usuarioUpdate.php';
         exit;
     }
     //Funcion para actualizar USUARIO
