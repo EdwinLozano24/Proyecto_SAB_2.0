@@ -178,7 +178,7 @@ class CitaController
         $espe = $this->EspecialistaModel->findAll();
         $cons = $this->ConsultorioModel->findAll();
         $trat = $this->TratamientoModel->findAll();
-        include '../views/cita/citaUpdate.php';
+        include '../views/administrador/cita/citaUpdate.php';
         exit;
     }
 
