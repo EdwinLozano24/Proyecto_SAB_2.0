@@ -107,7 +107,7 @@ class UsuarioController
         ];
         try {
             $this->UsuarioModel->update($data);
-            header('Location: ../views/usuario/usuarioIndex.php');
+            header('Location: ../views/administrador/usuario/usuarioIndex.php');
             exit;
         } catch (\Exception $exception) {
             echo '[Ocurrio un error al ACTUALIZAR el USUARIO (Estamos trabajando para soluctionarlo)]';
