@@ -229,7 +229,7 @@ class CitaController
     {
         try {
             $this->CitaModel->delete($id_cita);
-            header('Location: ../views/cita/citaIndex.php');
+            header('Location: ../views/administrador/cita/citaIndex.php');
             exit;
         } catch (Exception $e) {
             echo "Error al eliminar la cita: " . $e->getMessage();
