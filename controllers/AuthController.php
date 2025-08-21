@@ -66,7 +66,7 @@ class AuthController
                     header('Location: ../views/paciente/home/paciente_dashboard.php');
                     break;
                 default:
-                    header('Location: ../views/error/acceso_denegado.php');
+                    header('Location: ../views/.general/error/acceso_denegado.php');
                     break;
             }
                 exit;
