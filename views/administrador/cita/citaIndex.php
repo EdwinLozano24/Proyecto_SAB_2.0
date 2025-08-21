@@ -72,7 +72,7 @@ $citas = $stmt->fetchAll();
 
         <!-- Botón nuevo usuario -->
         <div class="mb-4 d-flex justify-content-between align-items-center">
-            <a href="/proyecto_sab/controllers/CitaController.php?accion=view_store"
+            <a href="/controllers/CitaController.php?accion=view_store"
                 class="btn-custom btn-primary-custom">
                 <i class="fa-solid fa-square-plus"></i>
                 Nueva Cita
@@ -111,11 +111,11 @@ $citas = $stmt->fetchAll();
                         <td><?= htmlspecialchars($cita['cita_observacion']) ?></td>
                         <td><?= htmlspecialchars($cita['cita_estado']) ?></td>
                         <td>
-                            <a href="/proyecto_sab/controllers/CitaController.php?accion=view_update&id_cita=<?= $cita['id_cita'] ?>"
+                            <a href="/controllers/CitaController.php?accion=view_update&id_cita=<?= $cita['id_cita'] ?>"
                                 class="action-btn edit">
                                 <i class="fa-solid fa-pen-to-square"></i>
                             </a>
-                            <a href="/proyecto_sab/controllers/CitaController.php?accion=delete&id_cita=<?= $cita['id_cita'] ?>"
+                            <a href="/controllers/CitaController.php?accion=delete&id_cita=<?= $cita['id_cita'] ?>"
                                 class="action-btn delete">
                                 <i class="fa-solid fa-trash"></i>
                             </a>

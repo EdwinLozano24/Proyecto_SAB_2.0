@@ -30,8 +30,8 @@ switch ($accion) {
     case 'delete':
         $cita->delete($_GET['id_cita']);
         break;
-    case 'pacienteAgendar':
-        $cita->pacienteAgendar();
+    case 'view_agendar':
+        $cita->view_agendar($_GET['id_usuario']);
         break;
     default:
         $cita->index();
@@ -237,9 +237,10 @@ class CitaController
         }
     }
 
-    public function pacienteAgendar()
+    public function view_agendar($id_usuario)
     {
-        header('Location: ../views/paciente/cita/citaAgendar1.php');
+        $paci = $this->PacienteModel->findAll();
+        include '../views/paciente/cita/citaAgendar.php';
         exit;
     }
 }
