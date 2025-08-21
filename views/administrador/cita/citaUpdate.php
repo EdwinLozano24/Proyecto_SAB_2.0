@@ -31,7 +31,7 @@ requiereSesion();
             <p class="subtitle">Sistema de Gestión de Citas Odontológicas</p>
         </div>
 
-        <form id="citaStore" method="POST" action="/proyecto_sab/controllers/CitaController.php?accion=update">
+        <form id="citaStore" method="POST" action="/controllers/CitaController.php?accion=update">
             <input type="hidden" name="id_cita" value="<?= $cita['id_cita'] ?>">
             <div class="form-section">
                 <div class="section-title">
