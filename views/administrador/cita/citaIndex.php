@@ -64,7 +64,7 @@ $citas = $stmt->fetchAll();
             </div>
             <h2>Citas Registradas</h2>
             <p class="subtitle">Gestión completa de las citas del sistema</p>
-            <a href="/proyecto_sab/controllers/HomeController.php?accion=home" class="btn-custom btn-primary-custom">
+            <a href="/controllers/HomeController.php?accion=home" class="btn-custom btn-primary-custom">
                 <i class="fa-solid fa-rotate-left"></i>
                 Volver
             </a>
