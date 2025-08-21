@@ -26,7 +26,7 @@ class AuthController
     //Redireccion a vista default 'INDEX'
     public function index()
     {
-        header('Location: ../views/usuario/loginRegister.php');
+        header('Location: ../views/.general/usuario/loginRegister.php');
         exit;
     }
 
