@@ -75,10 +75,10 @@
 
                         <input type="int" placeholder="Número de Documento" name="usua_documento" id="num_documento" required>
                         <input type="email" placeholder="Correo Electrónico" name="usua_correo_electronico" id="correo" required>
-                        <input type="tel" placeholder="Número de Contacto" name="usua_num_contacto" id="contacto">
-                        <input type="tel" placeholder="Número Secundario / Acudiente" name="usua_num_secundario" id="acudiente">
-                        <input type="text" placeholder="Dirección" name="usua_direccion" id="direccion">
-                        <input type="date" placeholder="Fecha de Nacimiento" name="usua_fecha_nacimiento" id="nacimiento">
+                        <input type="tel" placeholder="Número de Contacto" name="usua_num_contacto" id="contacto" required>
+                        <input type="tel" placeholder="Número Secundario / Acudiente" name="usua_num_secundario" id="acudiente" required>
+                        <input type="text" placeholder="Dirección" name="usua_direccion" id="direccion" required>
+                        <input type="date" placeholder="Fecha de Nacimiento" name="usua_fecha_nacimiento" id="nacimiento" required>
 
                         <select name="usua_sexo" id="sexo" required>
                             <option value=""disabled selected>Sexo</option>
@@ -98,7 +98,7 @@
                             <option value="O-">O-</option>
                         </select>
 
-                        <input type="text" placeholder="EPS" name="usua_eps" id="eps">
+                        <input type="text" placeholder="EPS" name="usua_eps" id="eps" required>
                         <input type="password" placeholder="Contraseña" name="usua_password" id="contrasena" required>
                     </div>
 
