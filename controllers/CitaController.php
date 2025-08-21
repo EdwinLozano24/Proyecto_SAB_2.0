@@ -239,7 +239,7 @@ class CitaController
 
     public function pacienteAgendar()
     {
-        header('Location: ../views/paciente/cita/citaAgendar.php');
+        header('Location: ../views/paciente/cita/citaAgendar1.php');
         exit;
     }
 }

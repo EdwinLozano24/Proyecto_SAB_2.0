@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php
-    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/assets/css/error/acceso_denegado.css';
-    $cssUrl = '/proyecto_sab/assets/css/error/acceso_denegado.css';
+    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/assets/css/error/acceso_denegado.css';
+    $cssUrl = '/assets/css/error/acceso_denegado.css';
     if (file_exists($cssPath)) {
         echo '<link rel="stylesheet" href="' . $cssUrl . '">';
     } else {
@@ -38,10 +38,10 @@
 
         <!-- Botones de acción -->
         <div class="button-group">
-            <a href="/proyecto_sab/controllers/AuthController.php?accion=index" class="btn-custom btn-primary-custom">
+            <a href="/controllers/AuthController.php?accion=index" class="btn-custom btn-primary-custom">
                 ← Volver Atrás
             </a>
-            <a href="/proyecto_sab/controllers/AuthController.php?accion=index" class="btn-custom btn-secondary-custom">
+            <a href="/controllers/AuthController.php?accion=index" class="btn-custom btn-secondary-custom">
                 🏠 Ir al Inicio
             </a>
         </div>

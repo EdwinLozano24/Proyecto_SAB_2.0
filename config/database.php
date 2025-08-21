@@ -3,9 +3,9 @@ date_default_timezone_set('America/Bogota');
 function conectarBD()
 {
     $host = 'localhost';
-    $db = 'proyecto_sab';
-    $user = 'root';
-    $pass = '';
+    $db = 'u562728092_proyecto_sab';
+    $user = 'u562728092_AdminSab';
+    $pass = 'SaludBenefit2025';
     $charset = 'utf8mb4';
 
     $options = [
@@ -22,9 +22,9 @@ function conectarBD()
 function conectarBD_MySQLi()
 {
     $host = 'localhost';
-    $db   = 'proyecto_sab';
-    $user = 'root';
-    $pass = '';
+    $db   = 'u562728092_proyecto_sab';
+    $user = 'u562728092_AdminSab';
+    $pass = 'SaludBenefit2025';
     
     $conn = new mysqli($host, $user, $pass, $db);
     if ($conn->connect_error) {

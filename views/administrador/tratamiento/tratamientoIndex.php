@@ -34,8 +34,8 @@ $tratamientos = $stmt->fetchAll();
         integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
     <title>Index Tratamientos</title>
     <?php
-    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/assets/css/admin/crudIndex.css';
-    $cssUrl = '/proyecto_sab/assets/css/admin/crudIndex.css';
+    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/assets/css/admin/crudIndex.css';
+    $cssUrl = '/assets/css/admin/crudIndex.css';
     if (file_exists($cssPath)) {
         echo '<link rel="stylesheet" href="' . $cssUrl . '">';
     } else {

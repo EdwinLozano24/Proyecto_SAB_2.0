@@ -10,8 +10,8 @@
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <?php
-    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/assets/css/user/loginRegister.css';
-    $cssUrl = '/proyecto_sab/assets/css/user/loginRegister.css';
+    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/assets/css/user/loginRegister.css';
+    $cssUrl = '/assets/css/user/loginRegister.css';
     if (file_exists($cssPath)) {
         echo '<link rel="stylesheet" href="' . $cssUrl . '">';
     } else {
@@ -44,7 +44,7 @@
             <!--Formulario de Login y registro-->
             <div class="contenedor__login-register">
                 <!--Login-->
-                <form id="loginForm" action="../../../controllers/authController.php?accion=Login" method="POST" class="formulario__login">
+                <form id="loginForm" action="/controllers/AuthController.php?accion=Login" method="POST" class="formulario__login">
                     <h2>Iniciar Sesión</h2>
                     <input type="hidden" name="origen_formulario" value="Usuario">
                     <input type="text" id="documento" name="usua_documento" placeholder="Número De Documento" required>
@@ -55,7 +55,7 @@
                 </form>
 
                 <!--Register-->
-                <form id="registerForm" action="../../../controllers/UsuarioController.php?accion=store" method="POST" class="formulario__register">
+                <form id="registerForm" action="/controllers/UsuarioController.php?accion=store" method="POST" class="formulario__register">
                     <h2>Registrarse</h2>
 
                     <!-- Contenedor con scroll -->
@@ -108,7 +108,7 @@
         </div>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../../../assets/js/user/loginRespon.js"></script>
+    <script src="/assets/js/user/loginRespon.js"></script>
 </body>
 
 </html>

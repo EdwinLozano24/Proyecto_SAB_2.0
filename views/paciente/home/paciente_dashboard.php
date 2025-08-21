@@ -13,15 +13,15 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../../Assets/css/layoutFinal/paciente/layout.css">
+    <link rel="stylesheet" href="/assets/css/layoutFinal/paciente/layout.css">
     <title>¡Bienvenido a SAB!</title>
 </head>
 
 <body>
     <?php 
-    include($_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/views/.general/layoutsFinal/paciente/header.php');
-    include($_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/views/.general/layoutsFinal/paciente/nav.php');
-    include($_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/views/.general/layoutsFinal/paciente/aside.php');
+    include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/paciente/header.php');
+    include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/paciente/nav.php');
+    include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/paciente/aside.php');
     ?>
 
     <!-- Main Content -->
@@ -30,7 +30,6 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
             <h2 class="content-title">Bienvenido a SAB</h2>
             <p class="content-subtitle">Explora las diferentes secciones y descubre todo lo que tenemos para ofrecer como sistema de gestión odontológica.</p>
         </div>
-
         <div class="content-grid">
             <div class="content-card">
                 <h3 class="card-title">Agenda Tu Cita</h3>
@@ -54,7 +53,7 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
         </div>
     </main>
 <?php 
-include($_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/views/.general/layoutsFinal/paciente/footer.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/paciente/footer.php');
 ?>
 </body>
 

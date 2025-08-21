@@ -11,15 +11,15 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../../Assets/css/layoutFinal/admin/layout.css">
+    <link rel="stylesheet" href="../../../assets/css/layoutFinal/admin/layout.css">
     <title>¡Bienvenido a SAB!</title>
 </head>
 
 <body>
     <?php 
-    include($_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/views/.general/layoutsFinal/admin/header.php');
-    include($_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/views/.general/layoutsFinal/admin/nav.php');
-    include($_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/views/.general/layoutsFinal/admin/aside.php');
+    include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/admin/header.php');
+    include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/admin/nav.php');
+    include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/admin/aside.php');
 
     ?>
 
@@ -76,7 +76,7 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
             </div>
     </main>
     <?php
-    include($_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/views/.general/layoutsFinal/admin/footer.php');
+    include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/admin/footer.php');
     ?>
 </body>
 

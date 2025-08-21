@@ -10,8 +10,8 @@ requiereSesion();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crear Usuario - Sistema Odontológico</title>
     <?php
-    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/assets/css/admin/crudPage.css';
-    $cssUrl = '/proyecto_sab/assets/css/admin/crudPage.css';
+    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/assets/css/admin/crudPage.css';
+    $cssUrl = '/assets/css/admin/crudPage.css';
     if (file_exists($cssPath)) {
         echo '<link rel="stylesheet" href="' . $cssUrl . '">';
     } else {
@@ -29,7 +29,7 @@ requiereSesion();
             <p class="subtitle">Ingresa la información para registrar un nuevo usuario en el sistema</p>
         </div>
 
-        <form id="crearForm" method="POST" action="../../../controllers/UsuarioController.php?accion=store" class="form-card">
+        <form id="crearForm" method="POST" action="/controllers/UsuarioController.php?accion=store" class="form-card">
             <div class="form-grid">
                 <div class="form-group">
                     <input type="hidden" name="origen_formulario" value="Administrador">

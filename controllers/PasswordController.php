@@ -32,12 +32,12 @@ class PasswordController
         $usuario = $this->usuarioModel->findCorreo($correo);
         if (! $usuario) {
             $mensaje = "El correo no existe.";
-            require($_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/views/.general/password/mensaje.php');
+            require($_SERVER['DOCUMENT_ROOT'] . '/views/.general/password/mensaje.php');
             exit;
         }
 
         $token  = bin2hex(random_bytes(32));
-        $expira = date("Y-m-d H:i:s", strtotime("+1 hour"));
+        $expira = date("Y-m-d H:i:s", strtotime("+8 hour"));
         $this->usuarioModel->saveToken($usuario['id_usuario'], $token, $expira);
 
         $enlace = $this->config['app_url']
@@ -54,14 +54,14 @@ class PasswordController
             ? "Revisa tu correo para restablecer tu contraseña."
             : "No se pudo enviar el correo. Intenta más tarde.";
 
-        require($_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/views/.general/password/mensaje.php');
+        require($_SERVER['DOCUMENT_ROOT'] . '/views/.general/password/mensaje.php');
         // require __DIR__ . '/../views/password/mensaje.php';
     }
 
     public function showResetForm()
     {
         $token = $_GET['token'] ?? '';
-        require($_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/views/.general/password/resetear_form.php');
+        require($_SERVER['DOCUMENT_ROOT'] . '/views/.general/password/resetear_form.php');
         // require __DIR__ . '/../views/password/resetear_form.php';
     }
 
@@ -72,13 +72,13 @@ class PasswordController
 
         if (! $token || ! $nuevaPassword) {
             $mensaje = "Datos incompletos.";
-            return require __DIR__ . '/../views/password/mensaje.php';
+            return require __DIR__ . '/../views/.general/password/mensaje.php';
         }
 
         $usuario = $this->usuarioModel->findToken($token);
         if (! $usuario) {
             $mensaje = "El token es inválido o ha expirado.";
-            require($_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/views/.general/password/mensaje.php');
+            require($_SERVER['DOCUMENT_ROOT'] . '/views/.general/password/mensaje.php');
             return;
         }
 
@@ -86,6 +86,6 @@ class PasswordController
         $this->usuarioModel->updatePassword($usuario['id_usuario'], $hash);
 
         $mensaje = "Contraseña actualizada correctamente.";
-        require($_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/views/.general/password/mensaje.php');
+        require($_SERVER['DOCUMENT_ROOT'] . '/views/.general/password/mensaje.php');
     }
 }
