@@ -1,6 +1,6 @@
 <?php
-require_once '../config/auth.php';
-requiereSesion();
+require_once $_SERVER['DOCUMENT_ROOT'] . '/config/database.php';
+$pdo = conectarBD();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +30,7 @@ requiereSesion();
             <p class="subtitle">Sistema de Gestión Odontológica</p>
         </div>
 
-        <form action="../controllers/HistorialController.php?accion=update" method="POST" class="form-card">
+        <form action="/controllers/HistorialController.php?accion=update" method="POST" class="form-card">
             <input type="hidden" name="id_historial" value="<?= $hist['id_historial'] ?>">
 
             <div class="form-section">
