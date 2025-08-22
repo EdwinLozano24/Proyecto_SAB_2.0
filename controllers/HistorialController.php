@@ -49,7 +49,7 @@ class HistorialController
 
     public function view_store()
     {
-        header('Location: ../views/historial/historialStore.php');
+        header('Location: /views/administrador/historial/historialStore.php');
         exit;
     }
 
@@ -73,7 +73,7 @@ class HistorialController
         ];
         try {
             $this->HistorialModel->store($data);
-            header('Location: ../views/historial/historialIndex.php');
+            header('Location: ../views/administrador/historial/historialIndex.php');
             exit;
         } catch (\Exception $exception) {
             echo '[Ocurrio un error al GENERAR el HISTORIAL CLINICO (Estamos trabajando para soluctionarlo)]';
@@ -116,7 +116,7 @@ class HistorialController
         ];
         try {
             $this->HistorialModel->update($data);
-            header('Location: ../views/historial/historialIndex.php');
+            header('Location: ../views/administrador/historial/historialIndex.php');
             exit;
         } catch (\Exception $e) {
             echo '[Ocurrio un error al ACTUALIZAR el HISTORIAL CLINICO (Estamos trabajando para soluctionarlo)]';
@@ -128,7 +128,7 @@ class HistorialController
     {
         try {
             $this->HistorialModel->delete($id_historial);
-            header('Location: ../views/historial/historialIndex.php');
+            header('Location: ../views/administrador/historial/historialIndex.php');
             exit;
         } catch (\Exception $exception) {
             echo '[Ocurrio un error al ELIMINAR el HISTORIAL CLINICO (Estamos trabajando para soluctionarlo)]';
