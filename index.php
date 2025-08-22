@@ -5,6 +5,7 @@ require __DIR__ . '/vendor/autoload.php';
 
 date_default_timezone_set($config['app_timezone'] ?? 'America/Bogota');
 
+require_once __DIR__ . '/controllers/UsuarioController.php';
 require_once __DIR__ . '/controllers/PasswordController.php';
 
 $pdo = conectarBD();
