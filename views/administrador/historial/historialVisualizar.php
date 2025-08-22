@@ -7,8 +7,8 @@
     <title>Historia Clínica Paciente</title>
     
       <?php
-    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/assets/css/historial/HistorialVisualizar.css';
-    $cssUrl = '/assets/css/historial/HistorialVisualizar.css';
+    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/Assets/css/historial/HistorialVisualizar.css';
+    $cssUrl = '/Assets/css/historial/HistorialVisualizar.css';
     if (file_exists($cssPath)) {
         echo '<link rel="stylesheet" href="' . $cssUrl . '">';
     } else {
