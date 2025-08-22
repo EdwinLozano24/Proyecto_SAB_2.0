@@ -1,7 +1,7 @@
 <?php
-require_once '../../config/auth.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/config/auth.php';
 requiereSesion();
-require_once __DIR__ . '/../../config/database.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/config/database.php';
 $pdo = conectarBD();
 $sql = "SELECT * FROM tbl_usuarios";
 $stmt = $pdo->query($sql);
@@ -25,7 +25,7 @@ $empl = $stmt->fetchAll();
     <!-- <link rel="stylesheet" href="styles.css"> -->
     <?php
     $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/assets/css/admin/crudPage.css';
-    $cssUrl = '/proyecto_sab/assets/css/admin/crudPage.css';
+    $cssUrl = '/assets/css/admin/crudPage.css';
     if (file_exists($cssPath)) {
         echo '<link rel="stylesheet" href="' . $cssUrl . '">';
     } else {
