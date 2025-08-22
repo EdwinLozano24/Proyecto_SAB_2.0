@@ -8,9 +8,6 @@ switch ($accion) {
     case 'view_store':
         $usuario->view_store();
         break;
-    case 'storeUser':
-        $usuario->store();
-        break;
     case 'view_update':
         $usuario->view_update($_GET['id_usuario']);
         break;

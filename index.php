@@ -9,6 +9,7 @@ require_once __DIR__ . '/controllers/UsuarioController.php';
 require_once __DIR__ . '/controllers/PasswordController.php';
 
 $pdo = conectarBD();
+$notificar_usuario = new UsuarioController($config);
 $resetPass = new PasswordController($config);
 $action = $_GET['action'] ?? 'index';
 switch ($action) {
@@ -23,6 +24,9 @@ switch ($action) {
         break;
     case 'resetPassword':
         $resetPass->resetPassword();
+        break;
+    case 'storeUser':
+        $notificar_usuario->store();
         break;
     default:
         header('location: views/.general/usuario/loginRegister.php');
