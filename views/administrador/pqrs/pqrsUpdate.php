@@ -31,7 +31,7 @@ requiereSesion();
             <p class="subtitle">Sistema de Gestión Odontológica</p>
         </div>
 
-        <form id="PqrsUpdate" method="POST" action="/proyecto_sab/controllers/PqrsController.php?accion=update">
+        <form id="PqrsUpdate" method="POST" action="/controllers/PqrsController.php?accion=update">
             <input type="hidden" name="id_pqrs" value="<?= $pqrs['id_pqrs'] ?>">
             <div class="form-section">
                 <div class="section-title">
