@@ -5,14 +5,10 @@ require __DIR__ . '/vendor/autoload.php';
 
 date_default_timezone_set($config['app_timezone'] ?? 'America/Bogota');
 
-require_once __DIR__ . '/controllers/UsuarioController.php';
 require_once __DIR__ . '/controllers/PasswordController.php';
 
 $pdo = conectarBD();
-
-$usua_notificar = new UsuarioController($config);
 $resetPass = new PasswordController($config);
-
 $action = $_GET['action'] ?? 'index';
 switch ($action) {
     case 'showResetForm':
@@ -27,11 +23,8 @@ switch ($action) {
     case 'resetPassword':
         $resetPass->resetPassword();
         break;
-    case 'storeUser':
-        $usua_notificar->store();
-        break;
     default:
-        header('location: /views/.general/usuario/loginRegister.php');
+        header('location: views/.general/usuario/loginRegister.php');
 }
 
 
