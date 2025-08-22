@@ -1,0 +1,178 @@
+/* Los estilos del  formulario_cita.php*/
+body {
+    background-color: rgb(50 159 171);
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+
+/* Estilos para el header */
+/* Encabezado */
+header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 25px 30px;
+    background-color: #90E0F2;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2); /* Sombras */
+}
+
+#logo {
+    display: flex;
+    align-items: center;
+}
+
+#logo img {
+    height: 60px; 
+    margin-right: 10px;
+}
+
+#logo p {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000000;
+}
+
+/* Menú de navegación */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px; /* Espaciado entre elementos */
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: black !important;
+    padding: 8px 16px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+   background-color: #329FAB;
+  color: white !important;
+  transform: scale(1.10);
+}
+
+
+/* FORMULARIO */
+
+#formulario--agendarCita {
+    text-align: center;
+    display: flex;
+    height: 100vh;
+    align-items: center;
+
+    
+}
+
+#formulario--agendarCita form {
+   
+    margin: auto;
+    margin-top: 15px;
+    background: rgb(255, 255, 255);
+    width: 800px;
+    height: 500px;
+    margin-bottom: 15px;
+    
+}
+
+#formulario--agendarCita form label, input, select, option {
+    background-color: transparent;
+   
+
+}
+
+#formulario--agendarCita form label, input, select, option {
+    
+    display: flex;
+    justify-content: center;
+    margin: auto;
+   
+    
+}
+
+#formulario--agendarCita input, option, select{
+    background: rgb(144 224 242);
+    padding: 10px;
+}
+
+
+
+#formulario--agendarCita form label{
+  
+    margin-top: 50px;
+ 
+}
+
+
+#formulario--agendarCita form p {
+    
+    display: flex;
+    background-color: transparent;
+    justify-content: center;
+    margin: auto;
+    margin-top: 10px;
+    text-decoration: underline;
+    color: rgb(85 165 251);
+    
+}
+
+
+#formulario--agendarCita form p a {
+    background-color: rgb(255, 255, 255);
+    color: rgb(85 165 251);
+}
+
+#formulario--agendarCita form button {
+    margin-top: 10px;
+    font-weight: 500;
+    width: 200px;
+    height: 50px;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+
+}
+
+
+
+
+
+
+
+
+/* Estilos para el footer */
+/* Pie de página */
+footer {
+
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+  padding: 15px;
+  background-color: #90E0F2;
+  color: #333333;
+  font-size: 20px;
+    font-family: bold;
+  box-shadow: 0px -3px 6px rgba(0, 0, 0, 0.1);
+
+}
+
+
+
+footer .social-link img {
+  
+  height: 15px;
+  margin: 10px;
+
+}
+
+footer .social-link img:hover {
+  transform: scale(1.3);
+}

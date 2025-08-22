@@ -45,10 +45,10 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
             </div>
 
             <div class="content-card">
-                <h3 class="card-title">Pqrs</h3>
+                <h3 class="card-title">Crear PQR</h3>
                 <p class="card-description">En SAB estamos comprometidos con mejorar cada día.
         Envía tus peticiones, quejas, reclamos o sugerencias y ayúdanos a brindarte una mejor atención.</p>
-                <a href="#" class="btn btn-primary" style="margin-top: 16px;">Ver más</a>
+                <a href="/views/paciente/pqr/crearPQR.php" class="btn btn-primary" style="margin-top: 16px;">Ver mas</a>
             </div>
         </div>
     </main>
