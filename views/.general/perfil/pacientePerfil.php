@@ -1,5 +1,5 @@
 <?php
-require_once '../../../config/auth.php';
+require_once '/config/auth.php';
 requiereSesion();
 function obtenerIniciales($nombreCompleto) {
     $palabras = explode(' ', trim($nombreCompleto));
