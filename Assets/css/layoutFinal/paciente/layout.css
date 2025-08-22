@@ -10,6 +10,7 @@
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    min-height: 100vh;
     color: #334155;
     display: grid;
     grid-template-areas:
@@ -18,11 +19,9 @@ body {
         "sidebar main"
         "footer footer";
     grid-template-columns: 280px 1fr;
-    grid-template-rows: auto auto minmax(0, 1fr) auto; /* Cambio clave */
+    grid-template-rows: auto auto 1fr auto;
     gap: 10px 20px;
     padding: 12px 20px;
-    height: 200%;
-    margin: 0;
 }
 
 /* --- Header --- */
@@ -87,28 +86,6 @@ body {
     font-size: 14px;
 }
 
-.user-name-button {
-            /* Resetear estilos de button por defecto */
-            border: none;
-            background: none;
-            padding: 0;
-            margin: 0;
-            
-            /* Aplicar estilos del span original */
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            font-size: inherit;
-            font-weight: inherit;
-            color: inherit;
-            line-height: inherit;
-            text-align: left;
-            
-            /* Añadir cursor pointer para indicar que es clickeable */
-            cursor: pointer;
-            
-            /* Transición suave para hover */
-            transition: color 0.2s ease;
-        }
-
 /* --- Navigation --- */
 .nav {
     grid-area: nav;
@@ -167,7 +144,7 @@ body {
     grid-area: sidebar;
     background: white;
     border-radius: 16px;
-    padding: 32px 32px 40px 32px; /* Igual que main-content */
+    padding: 32px 32px 107px 32px; /* Igual que main-content */
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     border: 1px solid #e2e8f0;
     align-self: start; /* Alineación consistente */
@@ -222,16 +199,18 @@ body {
 }
 
 /* --- Main Content --- */
-
+/* --- Main Content --- */
 .main-content {
     grid-area: main;
     background: white;
     border-radius: 16px;
-    padding: 32px 32px 40px 32px;
+    padding: 32px 32px 40px 32px; /* Ajustado para mejor balance */
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     border: 1px solid #e2e8f0;
-    align-self: start; /* Para que se alinee con el sidebar */
-    flex-grow: 1;
+    min-height: 60vh;
+    overflow-y: visible;
+    align-self: start; /* Añadido para alineación con aside */
+    margin-bottom: auto; /* Asegura espacio antes del footer */
 }
 
 .content-header {
@@ -345,6 +324,7 @@ body {
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     border: 1px solid #e2e8f0;
     text-align: center;
+    margin-top: auto;
 }
 
 .footer-content {
