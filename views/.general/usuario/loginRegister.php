@@ -55,7 +55,7 @@
                 </form>
 
                 <!--Register-->
-                <form id="registerForm" action="/controllers/UsuarioController.php?accion=store" method="POST" class="formulario__register">
+                <form id="registerForm" action="../../../index.php?action=storeUser" method="POST" class="formulario__register">
                     <h2>Registrarse</h2>
 
                     <!-- Contenedor con scroll -->
