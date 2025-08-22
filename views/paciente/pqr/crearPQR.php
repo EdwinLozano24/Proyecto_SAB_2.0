@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="/assets/css/layoutFinal/paciente/layout.css">
     <
         <?php
-        $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/Assets/css/pqr/pqrCrear.css';
-        $cssUrl = '/Assets/css/pqr/pqrCrear.css';
+        $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/assets/css/pqr/pqrCrear.css';
+        $cssUrl = '/assets/css/pqr/pqrCrear.css';
         if (file_exists($cssPath)) {
             echo '<link rel="stylesheet" href="' . $cssUrl . '">';
         } else {
