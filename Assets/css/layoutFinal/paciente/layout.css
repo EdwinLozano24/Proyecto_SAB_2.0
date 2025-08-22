@@ -10,6 +10,7 @@
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    height: auto !important;
     min-height: unset !important;
     color: #334155;
     display: grid;
@@ -22,7 +23,6 @@ body {
     grid-template-rows: auto auto minmax(0, 1fr) auto; /* Cambio clave */
     gap: 10px 20px;
     padding: 12px 20px;
-    height: auto !important;
     margin: 0;
 }
 
