@@ -90,7 +90,7 @@ class HistorialController
         $espe = $this->EspecialistaModel->findAll();
         $paci = $this->PacienteModel->findAll();
         $diag = $this->DiagnosticoModel->findAll();
-        include '../views/historial/historialUpdate.php';
+        include '../views/administrador/historial/historialUpdate.php';
         exit;
     }
 
