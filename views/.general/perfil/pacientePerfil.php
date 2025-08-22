@@ -70,6 +70,7 @@ function obtenerIniciales($nombreCompleto) {
             <div class="form-grid">
                 <div class="form-group">
                     <label>Nombre Completo</label>
+                    <input type="hidden" name="id_usuario" id="id_usuario" value="<?= $paciente['id_usuario'] ?>" required>
                     <div class="data-field"><?= $paciente['usua_nombre']?></div>
                 </div>
                 <div class="form-group">
