@@ -1,7 +1,7 @@
 <?php
-require_once '../../../config/auth.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/config/auth.php';
 requiereSesion();
-require_once __DIR__ . '/../../../config/database.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/config/database.php';
 $pdo = conectarBD();
 $sql = "SELECT 
     c.*, 
