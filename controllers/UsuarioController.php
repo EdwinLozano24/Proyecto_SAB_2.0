@@ -143,7 +143,7 @@ class UsuarioController
             if ($origen === 'Administrador') {
             header('Location: ../views/administrador/usuario/usuarioIndex.php');
         } else {
-            header('Location: ../views/.general/perfil/pacientePerfil.php');
+            header('Location: ../views/paciente/home/paciente_dashboard.php');
         }
         exit;
 
