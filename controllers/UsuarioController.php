@@ -85,7 +85,7 @@ class UsuarioController
         $origen = $_POST['origen_formulario'] ?? 'Usuario';
         try {
             $this->UsuarioModel->store($data);
-                $usuarioGuardado = $this->usuarioModel->findCorreo($data['usua_correo_electronico']);
+                $usuarioGuardado = $this->UsuarioModel->findCorreo($data['usua_correo_electronico']);
                     if ($usuarioGuardado) {
                         $this->mailer->send(
                             $data['usua_correo_electronico'],
