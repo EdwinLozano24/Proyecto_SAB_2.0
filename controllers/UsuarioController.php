@@ -2,7 +2,7 @@
 require_once __DIR__ . '/../models/UsuarioModel.php';
 //Variables para recibir 'accion'
 $usuario = new UsuarioController();
-$accion = $_GET['accion'] ?? 'index';
+$accion = $_GET['accion'] ?? 'Login';
 
 switch ($accion) {
     case 'view_store':
@@ -19,6 +19,9 @@ switch ($accion) {
         break;
     case 'delete':
         $usuario->delete($_GET['id_usuario']);
+    case 'Login':
+        $usuario->login();
+        break;
     default:
         $usuario->index();
         break;
@@ -36,6 +39,11 @@ class UsuarioController
     public function index()
     {
         header('Location: ../views/administrador/usuario/usuarioIndex.php');
+        exit;
+    }
+    public function login()
+    {
+        header('Location: ../views/.general/usuario/loginRegister.php');
         exit;
     }
     //Redireccion a vista crear usuario 'STORE'
