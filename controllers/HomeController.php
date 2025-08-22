@@ -62,7 +62,7 @@ class HomeController
     public function PacientePerfilView($id_usuario)
     {
         $paciente = $this->UsuarioModel->find($id_usuario);
-        require '/views/.general/perfil/pacientePerfil.php';
+        include '../views/.general/perfil/pacientePerfil.php';
         exit;
     }
 }
