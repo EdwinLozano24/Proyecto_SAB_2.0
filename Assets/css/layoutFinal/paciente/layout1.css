@@ -71,11 +71,9 @@ body {
     background: #f8fafc;
     border-radius: 8px;
     border: 1px solid #e2e8f0;
-}
+    color: #000;          /* Cambia a negro */
+  text-decoration: none;
 
-.user-info a {
-    color: #000; 
-    text-decoration: none;
 }
 
 
