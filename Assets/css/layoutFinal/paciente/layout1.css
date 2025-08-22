@@ -67,7 +67,7 @@ body {
 .user-name-button {
     color: #334155;        /* color de texto */
     text-decoration: none; /* quita el subrayado */
-    font-weight: 500;
+    font-weight: 400;
     font-size: 14px;
     transition: color 0.2s ease;
 }
