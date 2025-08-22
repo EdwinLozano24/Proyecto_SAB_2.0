@@ -1,5 +1,9 @@
 <?php
+require_once __DIR__ . '/../app/services/MailService.php';
 require_once __DIR__ . '/../models/UsuarioModel.php';
+
+use app\services\MailService;
+
 //Variables para recibir 'accion'
 $usuario = new UsuarioController();
 $accion = $_GET['accion'] ?? 'Login';
@@ -7,6 +11,9 @@ $accion = $_GET['accion'] ?? 'Login';
 switch ($accion) {
     case 'view_store':
         $usuario->view_store();
+        break;
+    case 'store':
+        $usuario->store();
         break;
     case 'view_update':
         $usuario->view_update($_GET['id_usuario']);
@@ -27,10 +34,16 @@ switch ($accion) {
 class UsuarioController
 {
     protected $UsuarioModel;
+    private MailService $mailer;
+    private array $config;
     //Definimos el modelo
     public function __construct()
     {
+        $this->config = require __DIR__ . '/../config/configmailer.php';
+        date_default_timezone_set($this->config['app_timezone'] ?? 'America/Bogota');
         $this->UsuarioModel = new UsuarioModel();
+        $this->mailer = new MailService($this->config);
+
     }
     //Redireccion a vista default 'INDEX'
     public function index()
@@ -40,7 +53,7 @@ class UsuarioController
     }
     public function login()
     {
-        header('Location: ../views/.general/usuario/loginRegister.php');
+        header('Location: ../views/.general/usuario/LoginRegister.php');
         exit;
     }
     //Redireccion a vista crear usuario 'STORE'
@@ -71,17 +84,23 @@ class UsuarioController
         $origen = $_POST['origen_formulario'] ?? 'Usuario';
         try {
             $this->UsuarioModel->store($data);
-            
-            if ($origen === 'Administrador') {
-                header('Location: ../views/administrador/usuario/usuarioIndex.php');
-            } else {
-                header('Location: ../views/.general/usuario/loginRegister.php');
-            }
-            exit;
-        } catch (\Exception $exception) {
-            echo '[Ocurrio un error al CREAR el USUARIO (Estamos trabajando para soluctionarlo)]';
-            return;
+                $usuarioGuardado = $this->usuarioModel->findCorreo($data['usua_correo_electronico']);
+                    if ($usuarioGuardado) {
+                        $this->mailer->send(
+                            $data['usua_correo_electronico'],
+                            'Bienvenido',
+                            'welcome_user',
+                            ['usuario' => $usuarioGuardado, 'app_url' => $this->config['app_url']]
+                            );
+                    }   
+                    header('Location: ../views/.general/usuario/loginRegister.php');
+                    exit;
+
+        } catch (\Exception $e) {
+            error_log("Error al registrar usuario: " . $e->getMessage());
+            echo "Ocurrió un error al registrar el usuario.";
         }
+    
     }
     //Redireccion a vista editar usuario 'UPDATE'
     public function view_update($id_usuario)
