@@ -73,6 +73,12 @@ body {
     border: 1px solid #e2e8f0;
 }
 
+.user-info a {
+    color: #000; 
+    text-decoration: none;
+}
+
+
 .user-avatar {
     width: 32px;
     height: 32px;
