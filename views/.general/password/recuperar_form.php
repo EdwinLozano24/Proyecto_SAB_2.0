@@ -7,8 +7,8 @@
   <title>Reset contraseña</title>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
       <?php
-    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/assets/css/user/resetpasword.css';
-    $cssUrl = '/assets/css/user/resetpasword.css';
+    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/assets/css/user/resetPasword.css';
+    $cssUrl = '/assets/css/user/resetPasword.css';
     if (file_exists($cssPath)) {
         echo '<link rel="stylesheet" href="' . $cssUrl . '">';
     } else {

@@ -1,11 +1,15 @@
 <?php
 $config = require __DIR__ . '/config/configmailer.php';
-date_default_timezone_set($config['app_timezone'] ?? 'America/Bogota');
 require __DIR__ . '/config/database.php';
 require __DIR__ . '/vendor/autoload.php';
+
+date_default_timezone_set($config['app_timezone'] ?? 'America/Bogota');
+
+require_once __DIR__ . '/controllers/UsuarioController.php';
 require_once __DIR__ . '/controllers/PasswordController.php';
 
 $pdo = conectarBD();
+$notificar_usuario = new UsuarioController($config);
 $resetPass = new PasswordController($config);
 $action = $_GET['action'] ?? 'index';
 switch ($action) {
@@ -21,8 +25,11 @@ switch ($action) {
     case 'resetPassword':
         $resetPass->resetPassword();
         break;
+    case 'storeUser':
+        $notificar_usuario->store();
+        break;
     default:
-        header('location: views/.general/usuario/loginRegister.php');
+        header('location: views/.general/usuario/loginRegiste.php');
 }
 
 

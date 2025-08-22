@@ -37,7 +37,7 @@ class PasswordController
         }
 
         $token  = bin2hex(random_bytes(32));
-        $expira = date("Y-m-d H:i:s", strtotime("+1 hour"));
+        $expira = date("Y-m-d H:i:s", strtotime("+8 hour"));
         $this->usuarioModel->saveToken($usuario['id_usuario'], $token, $expira);
 
         $enlace = $this->config['app_url']

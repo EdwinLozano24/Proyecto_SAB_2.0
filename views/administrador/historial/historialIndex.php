@@ -1,7 +1,7 @@
 <?php
-require_once '../../../config/auth.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/config/auth.php';
 requiereSesion();
-require_once __DIR__ . '/../../../config/database.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/config/database.php';
 $pdo = conectarBD();
 $sql = "CALL ObtenerHistorialClinico";
 $stmt = $pdo->query($sql);
@@ -27,8 +27,8 @@ $historias = $stmt->fetchAll();
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <?php
-    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/assets/css/admin/crudIndex.css';
-    $cssUrl = '/proyecto_sab/assets/css/admin/crudIndex.css';
+    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/assets/css/admin/crudIndex.css';
+    $cssUrl = '/assets/css/admin/crudIndex.css';
     if (file_exists($cssPath)) {
         echo '<link rel="stylesheet" href="' . $cssUrl . '">';
     } else {
@@ -47,7 +47,7 @@ $historias = $stmt->fetchAll();
             </div>
             <h2>Historiales Clinicos Registrados</h2>
             <p class="subtitle">Gestión completa de los historiales clinicos del sistema</p>
-            <a href="/proyecto_sab/controllers/HomeController.php?accion=home" class="btn-custom btn-primary-custom">
+            <a href="/controllers/HomeController.php?accion=home" class="btn-custom btn-primary-custom">
                 <i class="fa-solid fa-rotate-left"></i>
                 Volver
             </a>
@@ -55,7 +55,7 @@ $historias = $stmt->fetchAll();
 
         <!-- Botón nuevo historial -->
         <div class="mb-4 d-flex justify-content-between align-items-center">
-            <a href="/proyecto_sab/controllers/HistorialController.php?accion=view_store"
+            <a href="/controllers/HistorialController.php?accion=view_store"
                 class="btn-custom btn-primary-custom">
                 <i class="fa-solid fa-square-plus"></i>
                 Nuevo Historial Clinico
@@ -109,11 +109,11 @@ $historias = $stmt->fetchAll();
                         <td><?= htmlspecialchars($historia['hist_sensibilidad_dental']) ?></td>
                         <td><?= htmlspecialchars($historia['hist_estado']) ?></td>
                         <td>
-                            <a href="/proyecto_sab/controllers/HistorialController.php?accion=view_update&id_historial=<?= $historia['id_historial'] ?>"
+                            <a href="/controllers/HistorialController.php?accion=view_update&id_historial=<?= $historia['id_historial'] ?>"
                                 class="action-btn edit">
                                 <i class="fa-solid fa-pen-to-square"></i>
                             </a>
-                            <a href="/proyecto_sab/controllers/HistorialController.php?accion=delete&id_historial=<?= $historia['id_historial'] ?>"
+                            <a href="/controllers/HistorialController.php?accion=delete&id_historial=<?= $historia['id_historial'] ?>"
                                 class="action-btn delete">
                                 <i class="fa-solid fa-trash"></i>
                             </a>

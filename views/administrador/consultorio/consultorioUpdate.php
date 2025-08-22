@@ -7,8 +7,8 @@
     <title>Editar Consultorio</title>
     <!-- <link rel="stylesheet" href="styles.css"> -->
     <?php
-    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/assets/css/admin/crudCitas.css';
-    $cssUrl = '/proyecto_sab/assets/css/admin/crudCitas.css';
+    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/assets/css/admin/crudCitas.css';
+    $cssUrl = '/assets/css/admin/crudCitas.css';
     if (file_exists($cssPath)) {
         echo '<link rel="stylesheet" href="' . $cssUrl . '">';
     } else {

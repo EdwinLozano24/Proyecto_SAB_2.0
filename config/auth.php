@@ -14,7 +14,7 @@ function confirmarLogin() {
 
 function requiereSesion() {
     if(!confirmarLogin()) {
-        header('Location: ../../views/error/acceso_denegado.php');
+        header('Location: /views/.general/error/acceso_denegado.php');
         exit;
     }
 }
@@ -32,7 +32,7 @@ function requiereTipo($role) {
 
 function requireVariosTipos(array $roles) {
     if (!confirmarLogin() || !in_array(obtenerTipo(), $roles)) {
-        header('Location: .././error/acceso_denegado.php');
+        header('Location: ../././general/error/acceso_denegado.php');
         exit;
     }
 }

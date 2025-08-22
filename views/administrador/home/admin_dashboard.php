@@ -1,5 +1,5 @@
 <?php
-require_once '../../../config/auth.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/config/auth.php';
 requiereSesion();
 $id_usuario = $_SESSION['usuario']['id_usuario'];
 $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
@@ -11,7 +11,7 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../../Assets/css/layoutFinal/admin/layout.css">
+    <link rel="stylesheet" href="../../../assets/css/layoutFinal/admin/layout.css">
     <title>¡Bienvenido a SAB!</title>
 </head>
 
@@ -34,12 +34,12 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
             <div class="content-card">
                 <h3 class="card-title">Gestionar usuarios</h3>
                 <p class="card-description"></p>
-                <a href="#" class="btn btn-primary" style="margin-top: 16px;">Ir</a>
+                <a href="/controllers/UsuarioController.php?accion=index" class="btn btn-primary" style="margin-top: 16px;">Ir</a>
             </div>
             <div class="content-card">
                 <h3 class="card-title">Gestionar citas</h3>
                 <p class="card-description"></p>
-                <a href="#" class="btn btn-primary" style="margin-top: 16px;">Ir</a>
+                <a href="/controllers/CitaController.php?accion=index" class="btn btn-primary" style="margin-top: 16px;">Ir</a>
             </div>
         </div>
 

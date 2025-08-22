@@ -1,5 +1,5 @@
 <?php
-require_once '../config/auth.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/config/auth.php';
 requiereSesion();
 ?>
 <!DOCTYPE html>
@@ -13,8 +13,8 @@ requiereSesion();
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <!-- <link rel="stylesheet" href="styles.css"> -->
     <?php
-    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/assets/css/admin/crudPage.css';
-    $cssUrl = '/proyecto_sab/assets/css/admin/crudPage.css';
+    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/assets/css/admin/crudPage.css';
+    $cssUrl = '/assets/css/admin/crudPage.css';
     if (file_exists($cssPath)) {
         echo '<link rel="stylesheet" href="' . $cssUrl . '">';
     } else {
@@ -31,7 +31,7 @@ requiereSesion();
             <p class="subtitle">Sistema de Gestión de Citas Odontológicas</p>
         </div>
 
-        <form id="citaStore" method="POST" action="/proyecto_sab/controllers/CitaController.php?accion=update">
+        <form id="citaStore" method="POST" action="/controllers/CitaController.php?accion=update">
             <input type="hidden" name="id_cita" value="<?= $cita['id_cita'] ?>">
             <div class="form-section">
                 <div class="section-title">

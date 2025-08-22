@@ -13,8 +13,8 @@ $diagnosticos = $stmt->fetchAll();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php
-        $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/assets/css/admin/usuario.css';
-        $cssUrl = '/proyecto_sab/assets/css/admin/usuario.css';
+        $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/assets/css/admin/usuario.css';
+        $cssUrl = '/assets/css/admin/usuario.css';
         if (file_exists($cssPath)) {
             echo '<link rel="stylesheet" href="' . $cssUrl . '">';
         } else {

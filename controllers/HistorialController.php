@@ -1,8 +1,9 @@
 <?php
-require_once __DIR__ . '/../models/HistorialModel.php';
-require_once __DIR__ . '/../models/PacienteModel.php';
-require_once __DIR__ . '/../models/EspecialistaModel.php';
-require_once __DIR__ . '/../models/DiagnosticoModel.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/models/HistorialModel.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/models/PacienteModel.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/models/EspecialistaModel.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/models/DiagnosticoModel.php';
+
 $historial = new HistorialController();
 $accion = $_GET['accion'] ?? 'index';
 
@@ -49,7 +50,7 @@ class HistorialController
 
     public function view_store()
     {
-        header('Location: ../views/historial/historialStore.php');
+        header('Location: /views/administrador/historial/historialStore.php');
         exit;
     }
 
@@ -73,7 +74,7 @@ class HistorialController
         ];
         try {
             $this->HistorialModel->store($data);
-            header('Location: ../views/historial/historialIndex.php');
+            header('Location: ../views/administrador/historial/historialIndex.php');
             exit;
         } catch (\Exception $exception) {
             echo '[Ocurrio un error al GENERAR el HISTORIAL CLINICO (Estamos trabajando para soluctionarlo)]';
@@ -90,7 +91,7 @@ class HistorialController
         $espe = $this->EspecialistaModel->findAll();
         $paci = $this->PacienteModel->findAll();
         $diag = $this->DiagnosticoModel->findAll();
-        include '../views/historial/historialUpdate.php';
+        include '../views/administrador/historial/historialUpdate.php';
         exit;
     }
 
@@ -116,7 +117,7 @@ class HistorialController
         ];
         try {
             $this->HistorialModel->update($data);
-            header('Location: ../views/historial/historialIndex.php');
+            header('Location: ../views/administrador/historial/historialIndex.php');
             exit;
         } catch (\Exception $e) {
             echo '[Ocurrio un error al ACTUALIZAR el HISTORIAL CLINICO (Estamos trabajando para soluctionarlo)]';
@@ -128,7 +129,7 @@ class HistorialController
     {
         try {
             $this->HistorialModel->delete($id_historial);
-            header('Location: ../views/historial/historialIndex.php');
+            header('Location: ../views/administrador/historial/historialIndex.php');
             exit;
         } catch (\Exception $exception) {
             echo '[Ocurrio un error al ELIMINAR el HISTORIAL CLINICO (Estamos trabajando para soluctionarlo)]';

@@ -2,14 +2,11 @@
 require_once __DIR__ . '/../models/UsuarioModel.php';
 //Variables para recibir 'accion'
 $usuario = new UsuarioController();
-$accion = $_GET['accion'] ?? 'index';
+$accion = $_GET['accion'] ?? 'Login';
 
 switch ($accion) {
     case 'view_store':
         $usuario->view_store();
-        break;
-    case 'store':
-        $usuario->store();
         break;
     case 'view_update':
         $usuario->view_update($_GET['id_usuario']);
@@ -19,6 +16,9 @@ switch ($accion) {
         break;
     case 'delete':
         $usuario->delete($_GET['id_usuario']);
+    case 'Login':
+        $usuario->login();
+        break;
     default:
         $usuario->index();
         break;
@@ -36,6 +36,11 @@ class UsuarioController
     public function index()
     {
         header('Location: ../views/administrador/usuario/usuarioIndex.php');
+        exit;
+    }
+    public function login()
+    {
+        header('Location: ../views/.general/usuario/loginRegister.php');
         exit;
     }
     //Redireccion a vista crear usuario 'STORE'
@@ -82,7 +87,7 @@ class UsuarioController
     public function view_update($id_usuario)
     {
         $usua = $this->UsuarioModel->find($id_usuario);
-        include '../views/usuario/usuarioUpdate.php';
+        include '../views/administrador/usuario/usuarioUpdate.php';
         exit;
     }
     //Funcion para actualizar USUARIO
@@ -107,7 +112,7 @@ class UsuarioController
         ];
         try {
             $this->UsuarioModel->update($data);
-            header('Location: ../views/usuario/usuarioIndex.php');
+            header('Location: ../views/administrador/usuario/usuarioIndex.php');
             exit;
         } catch (\Exception $exception) {
             echo '[Ocurrio un error al ACTUALIZAR el USUARIO (Estamos trabajando para soluctionarlo)]';

@@ -1,6 +1,6 @@
 <?php
-require_once '../config/auth.php';
-requiereSesion();
+require_once $_SERVER['DOCUMENT_ROOT'] . '/config/database.php';
+$pdo = conectarBD();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,8 +12,8 @@ requiereSesion();
     <!-- CSS de Select2 -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <?php
-    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/proyecto_sab/assets/css/admin/crudPage.css';
-    $cssUrl = '/proyecto_sab/assets/css/admin/crudPage.css';
+    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/assets/css/admin/crudPage.css';
+    $cssUrl = '/assets/css/admin/crudPage.css';
     if (file_exists($cssPath)) {
         echo '<link rel="stylesheet" href="' . $cssUrl . '">';
     } else {
@@ -30,7 +30,7 @@ requiereSesion();
             <p class="subtitle">Sistema de Gestión Odontológica</p>
         </div>
 
-        <form action="../controllers/HistorialController.php?accion=update" method="POST" class="form-card">
+        <form action="/controllers/HistorialController.php?accion=update" method="POST" class="form-card">
             <input type="hidden" name="id_historial" value="<?= $hist['id_historial'] ?>">
 
             <div class="form-section">

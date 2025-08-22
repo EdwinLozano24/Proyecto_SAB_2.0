@@ -99,7 +99,7 @@ class TratamientoController
         ];
         try {
             $this->TratamientoModel->update($data);
-            header('Location: ../controllers/tratamientoController.php?accion=index');
+            header('Location: ../controllers/TratamientoController.php?accion=index');
             exit;
         } catch (\Exception $e) {
             echo '[Ocurrio un error al ACTUALIZAR el TRATAMIENTO (Estamos trabajando para soluctionarlo)]';
