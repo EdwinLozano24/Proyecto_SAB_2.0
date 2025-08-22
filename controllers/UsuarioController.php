@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../app/services/MailService.php';
 require_once __DIR__ . '/../models/UsuarioModel.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
 use app\services\MailService;
 
