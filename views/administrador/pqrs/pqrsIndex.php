@@ -58,7 +58,7 @@ $pqrs = $stmt->fetchAll();
 
         <!-- Botón nuevo pqrs -->
         <div class="mb-4 d-flex justify-content-between align-items-center">
-            <a href="/proyecto_sab/controllers/PqrsController.php?accion=view_store"
+            <a href="/controllers/PqrsController.php?accion=view_store"
                 class="btn-custom btn-primary-custom">
                 <i class="fa-solid fa-square-plus"></i>
                 Nuevo Pqrs
