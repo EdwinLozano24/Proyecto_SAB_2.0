@@ -50,7 +50,7 @@ $pqrs = $stmt->fetchAll();
             </div>
             <h2>Pqrs Registrados</h2>
             <p class="subtitle">Gestión completa de los pqrs del sistema</p>
-            <a href="/proyecto_sab/controllers/HomeController.php?accion=home" class="btn-custom btn-primary-custom">
+            <a href="/controllers/HomeController.php?accion=home" class="btn-custom btn-primary-custom">
                 <i class="fa-solid fa-rotate-left"></i>
                 Volver
             </a>
@@ -95,11 +95,11 @@ $pqrs = $stmt->fetchAll();
                         <td><?= htmlspecialchars($pqr['nombre_usuario']) ?></td>
                         <td><?= htmlspecialchars($pqr['nombre_empleado'] ?? 'Sin asignar') ?></td>
                         <td>
-                            <a href="/proyecto_sab/controllers/PqrsController.php?accion=view_update&id_pqrs=<?= $pqr['id_pqrs'] ?>"
+                            <a href="/controllers/PqrsController.php?accion=view_update&id_pqrs=<?= $pqr['id_pqrs'] ?>"
                                 class="action-btn edit">
                                 <i class="fa-solid fa-pen-to-square"></i>
                             </a>
-                            <a href="/proyecto_sab/controllers/PqrsController.php?accion=delete&id_pqrs=<?= $pqr['id_pqrs'] ?>"
+                            <a href="/controllers/PqrsController.php?accion=delete&id_pqrs=<?= $pqr['id_pqrs'] ?>"
                                 class="action-btn delete">
                                 <i class="fa-solid fa-trash"></i>
                             </a>
