@@ -93,9 +93,13 @@ class UsuarioController
                             'welcome_user',
                             ['usuario' => $usuarioGuardado, 'app_url' => $this->config['app_url']]
                             );
-                    }   
-                    header('Location: ../views/.general/usuario/loginRegister.php');
-                    exit;
+                    }
+     if ($origen === 'Administrador') {
+            header('Location: ../views/administrador/usuario/usuarioIndex.php');
+        } else {
+            header('Location: ../views/.general/usuario/loginRegister.php');
+        }
+        exit;
 
         } catch (\Exception $e) {
             error_log("Error al registrar usuario: " . $e->getMessage());
