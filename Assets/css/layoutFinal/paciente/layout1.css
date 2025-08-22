@@ -63,6 +63,7 @@ body {
     letter-spacing: -0.025em;
 }
 
+
 .user-name-button {
     color: #334155;        /* color de texto */
     text-decoration: none; /* quita el subrayado */
@@ -74,7 +75,6 @@ body {
 .user-name-button:hover {
     color: #0ea5e9;        /* cambia color al pasar el mouse */
 }
-
 
 .user-info {
     display: flex;
