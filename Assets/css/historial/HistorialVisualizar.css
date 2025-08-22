@@ -24,8 +24,8 @@ body {
     border-radius: 16px;
     padding: 40px;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    max-width: 800px;
-    width: 100%;
+    max-width: 9000px;
+    width: 70%;
     border: 1px solid #e2e8f0;
 }
 
