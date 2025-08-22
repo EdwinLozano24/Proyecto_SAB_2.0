@@ -1,8 +1,9 @@
 <?php
-require_once '../config/auth.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/config/auth.php';
 requiereSesion();
 require_once $_SERVER['DOCUMENT_ROOT'] . '/config/database.php';
 $pdo = conectarBD();
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
