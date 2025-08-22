@@ -1,0 +1,306 @@
+/* Sección de tratamientos */
+.tratamientos-section {
+    padding: 0 40px 40px;
+}
+
+.section-title {
+    margin-top: 30px;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #0ea5e9;
+    font-size: 32px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: #0ea5e9;
+}
+
+/* Añade esto a tu CSS */
+.search-container {
+    margin: -20px auto 30px;
+    /* Ajuste negativo para acercar al título */
+    max-width: 90%;
+    padding: 0 40px;
+    /* Igual que tu .tratamientos-section */
+}
+
+.search-box {
+    position: relative;
+    width: 100%;
+    margin-top: 15px;
+    /* Separación del título */
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 20px 12px 45px;
+    border: 2px solid #e2e8f0;
+    border-radius: 30px;
+    /* Bordes redondeados */
+    font-size: 16px;
+    color: #1e293b;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    background: white;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #0ea5e9;
+    box-shadow: 0 2px 15px rgba(14, 165, 233, 0.2);
+}
+
+.search-icon {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+    font-size: 16px;
+}
+
+.no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    color: #64748b;
+    font-size: 18px;
+    display: none; /* Oculto por defecto */
+}
+
+.no-results.show {
+    display: block; /* Mostrar cuando hay resultados */
+}
+
+.tratamientos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+}
+
+/* Asegurar que las tarjetas mantengan proporciones consistentes */
+.tratamiento-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 350px; /* Altura mínima consistente */
+}
+
+.tratamiento-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.card-image {
+    height: 100px;
+    overflow: hidden;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.tratamiento-card:hover .card-image img {
+    transform: scale(1.05);
+}
+
+.card-content {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-content h3 {
+    color: #1e293b;
+    margin-bottom: 12px;
+    font-size: 20px;
+}
+
+.card-desc {
+    color: #64748b;
+    margin-bottom: 20px;
+    line-height: 1.5;
+    flex-grow: 1;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.card-price {
+    font-weight: 600;
+    color: #0ea5e9;
+    font-size: 18px;
+}
+
+.btn-vermas {
+    background: #0ea5e9;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-vermas:hover {
+    background: #0284c7;
+}
+
+/* Estilos específicos para el catálogo */
+.catalogo-page .main-content {
+    padding: 0;
+    /* Eliminamos padding para que el carrusel ocupe todo el ancho */
+}
+
+/* Carrusel */
+.carrusel-container {
+    position: relative;
+    width: 99%;
+    max-height: 250px;
+    overflow: hidden;
+    border-radius: 12px;
+    margin: 0 auto 30px;
+    /* Cambio clave: margen automático en los lados */
+    align-items: center;
+}
+
+.carrusel {
+    display: flex;
+    transition: transform 0.5s ease;
+    height: 400px;
+}
+
+.slide {
+    min-width: 100%;
+    position: relative;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slide-caption {
+    position: absolute;
+    /* Esto es esencial para que aparezca sobre la imagen */
+    bottom: 12px;
+    left: 0;
+    right: 0;
+    background: #12adf5;
+    /* Más opaco */
+    color: #ffffff;
+    /* Un negro más suave */
+    padding: 13px 22px;
+    /* Un poco más de espacio */
+}
+
+
+.slide-caption h3 {
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.slide-caption p {
+    font-size: 18px;
+    opacity: 0.9;
+}
+
+.carrusel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.3);
+    border: none;
+    color: white;
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carrusel-btn:hover {
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.prev {
+    left: 20px;
+}
+
+.next {
+    right: 20px;
+}
+
+.carrusel-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .carrusel-container {
+        max-height: 300px;
+    }
+
+    .carrusel {
+        height: 300px;
+    }
+
+    .slide-caption {
+        padding: 15px 20px;
+    }
+
+    .slide-caption h3 {
+        font-size: 22px;
+    }
+
+    .slide-caption p {
+        font-size: 16px;
+    }
+
+    .tratamientos-section {
+        padding: 0 20px 30px;
+    }
+
+    .section-title {
+        font-size: 26px;
+        margin-bottom: 30px;
+    }
+
+    .tratamientos-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}

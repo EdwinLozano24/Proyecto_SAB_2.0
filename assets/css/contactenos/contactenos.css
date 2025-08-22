@@ -1,0 +1,201 @@
+/* Estilos generales para la sección */
+.redes-section {
+    padding: 0 40px 40px;
+}
+
+.section-title {
+    margin-top: 10px;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #0ea5e9;
+    font-size: 32px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: #0ea5e9;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: #64748b;
+    font-size: 18px;
+    margin-bottom: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Grid de redes sociales */
+.redes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+}
+
+/* Tarjetas de redes sociales */
+.redes-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 280px;
+}
+
+.redes-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.redes-card.email {
+    border-top: 5px solid #db4a39;
+}
+.redes-card.whatsapp {
+    border-top: 5px solid #25d366;
+}
+.redes-card.instagram {
+    border-top: 5px solid #E1306C;
+}
+.redes-card.tiktok {
+    border-top: 5px solid #000000;
+}
+.redes-card.youtube {
+    border-top: 5px solid #FF0000;
+}
+.redes-card.facebook {
+    border-top: 5px solid #1877F2;
+}
+
+
+/* Iconos */
+.card-icon {
+    padding: 30px 0;
+    text-align: center;
+    font-size: 50px;
+}
+
+
+.redes-card.email .card-icon {
+    color: #db4a39;
+}
+
+.redes-card.whatsapp .card-icon {
+    color: #25d366;
+}
+
+.redes-card.instagram .card-icon {
+    color: #E1306C;
+}
+
+.redes-card.tiktok .card-icon {
+    color: #000000;
+}
+
+.redes-card.youtube .card-icon {
+    color: #FF0000;
+}
+
+.redes-card.facebook .card-icon {
+    color: #1877F2;
+}
+
+/* Contenido de la tarjeta */
+.card-content {
+    padding: 0 25px 25px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-content h3 {
+    color: #1e293b;
+    margin-bottom: 12px;
+    font-size: 22px;
+    text-align: center;
+}
+
+.card-desc {
+    color: #64748b;
+    margin-bottom: 20px;
+    line-height: 1.5;
+    text-align: center;
+    flex-grow: 1;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.card-username {
+    font-weight: 600;
+    color: #1e293b;
+    font-size: 20px;    
+    margin-right: 10px;   /* Deja un espacio con el botón */
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.btn-seguir {
+    background: #0ea5e9;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    font-size: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-seguir:hover {
+    background: #0284c7;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .redes-section {
+        padding: 0 20px 30px;
+    }
+    
+    .section-title {
+        font-size: 26px;
+        margin-bottom: 15px;
+    }
+    
+    .section-subtitle {
+        font-size: 16px;
+        margin-bottom: 30px;
+    }
+    
+    .redes-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .card-icon {
+        font-size: 40px;
+        padding: 20px 0;
+    }
+}
