@@ -10,7 +10,7 @@
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-    min-height: 100vh;
+    min-height: unset !important;
     color: #334155;
     display: grid;
     grid-template-areas:
@@ -22,6 +22,7 @@ body {
     grid-template-rows: auto auto minmax(0, 1fr) auto; /* Cambio clave */
     gap: 10px 20px;
     padding: 12px 20px;
+    height: auto !important;
     margin: 0;
 }
 
@@ -231,6 +232,7 @@ body {
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     border: 1px solid #e2e8f0;
     align-self: start; /* Para que se alinee con el sidebar */
+    flex-grow: 1;
 }
 
 .content-header {
