@@ -1,0 +1,85 @@
+/* Estilos generales para la sección */
+.container-about {
+    background: #0ea5e9;
+
+}
+
+.container-about h2 {
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.section-title {
+    margin-top: 30px;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #0ea5e9;
+    font-size: 32px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+
+
+
+
+.form-section {
+
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-section label {
+    color: #64748b;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px;
+    font-size: 18px;
+
+
+
+}
+
+
+
+#form-label-descripcion {
+
+    margin-bottom: 20px;
+}
+
+
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: center;
+
+
+}
+
+.form-group select {
+
+    width: 200px;
+}
+
+.form-group option {
+
+    text-align: center;
+}
+
+.full-width input {
+
+    width: 200px;
+
+}
+
+.form-group.full-width textarea {
+    width: 800px;
+    height: 95px;
+    resize: none;
+
+}
