@@ -14,7 +14,7 @@ function confirmarLogin() {
 
 function requiereSesion() {
     if(!confirmarLogin()) {
-        header('Location: ../../views/.general/error/acceso_denegado.php');
+        header('Location: /views/.general/error/acceso_denegado.php');
         exit;
     }
 }
