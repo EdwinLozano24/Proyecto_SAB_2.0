@@ -414,3 +414,34 @@ BEGIN
         END IF;
     END IF;
 END$$
+
+DELIMITER $$
+
+CREATE TRIGGER after_paciente_insert
+AFTER INSERT ON tbl_pacientes
+FOR EACH ROW
+BEGIN
+    INSERT INTO tbl_historial_clinico (
+        hist_paciente,
+        hist_antecedentes_personales,
+        hist_antecedentes_familiares,
+        hist_medicamentos_actuales,
+        hist_alergias,
+        hist_diagnostico,
+        hist_fecha_registro,
+        hist_creado_por,
+        hist_estado
+    ) VALUES (
+        NEW.id_paciente,        -- Relación con usuario recién creado
+        'N/A',                 -- Valor por defecto
+        'N/A',                 -- Valor por defecto
+        'N/A',                 -- Valor por defecto
+        'N/A',                 -- Valor por defecto
+        1,                     -- Diagnóstico inicial (ejemplo, ajusta según tu lógica)
+        NOW(),                 -- Fecha de registro
+        1,        -- Usuario que lo creó (puedes ajustar si tienes otro campo)
+        'Activo'               -- Estado por defecto
+    );
+END$$
+
+DELIMITER ;
