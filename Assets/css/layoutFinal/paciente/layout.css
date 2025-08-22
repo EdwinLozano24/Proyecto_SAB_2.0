@@ -10,8 +10,8 @@
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-    height: auto !important;
-    min-height: unset !important;
+    height: auto !important;       
+    min-height: auto !important;
     color: #334155;
     display: grid;
     grid-template-areas:
