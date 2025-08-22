@@ -72,30 +72,38 @@ function obtenerIniciales($nombreCompleto) {
             <form action="/controllers/UsuarioController.php?accion=update" method="POST">
                     <label>Nombre Completo</label>
                     <input type="hidden" name="id_usuario" id="id_usuario" value="<?= $paciente['id_usuario'] ?>" required>
+                    <input type="hidden" name="usua_nombre" id="usua_nombre" value="<?= $paciente['usua_nombre'] ?>" required>
                     <div class="data-field"><?= $paciente['usua_nombre']?></div>
                 </div>
                 <div class="form-group">
                     <label>Documento de Identidad</label>
+                    <input type="hidden" name="usua_documento" id="usua_documento" value="<?= $paciente['usua_documento'] ?>" required>
                     <div class="data-field"><?= $paciente['usua_documento']?></div>
                 </div>
                 <div class="form-group">
                     <label>Tipo de Documento</label>
+                    <input type="hidden" name="usua_tipo_documento" id="usua_tipo_documento" value="<?= $paciente['usua_tipo_documento'] ?>" required>
                     <div class="data-field"><?= $paciente['usua_tipo_documento']?></div>
                 </div>
                 <div class="form-group">
                     <label>Fecha de Nacimiento</label>
+                    <input type="hidden" name="usua_fecha_nacimiento" id="usua_fecha_nacimiento" value="<?= $paciente['usua_fecha_nacimiento'] ?>" required>
                     <div class="data-field"><?= $paciente['usua_fecha_nacimiento']?></div>
                 </div>
                 <div class="form-group">
                     <label>Sexo</label>
+                    <input type="hidden" name="usua_sexo" id="usua_sexo" value="<?= $paciente['usua_sexo'] ?>" required>
                     <div class="data-field"><?= $paciente['usua_sexo']?></div>
                 </div>
                 <div class="form-group">
                     <label>Rh</label>
+                    <input type="hidden" name="usua_rh" id="usua_rh" value="<?= $paciente['usua_rh'] ?>" required>
                     <div class="data-field"><?= $paciente['usua_rh']?></div>
                 </div>
                 <div class="form-group">
                     <label>Eps</label>
+                    <input type="hidden" name="usua_password" id="usua_password" value="<?= $paciente['usua_password'] ?>" required>
+                    <input type="hidden" name="usua_eps" id="usua_eps" value="<?= $paciente['usua_eps'] ?>" required>
                     <div class="data-field"><input type="text" name="usua_eps" id="usua_eps" value="<?= $paciente['usua_eps'] ?>" required></div>
                 </div>
             </div>
