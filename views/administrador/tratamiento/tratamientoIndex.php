@@ -53,7 +53,7 @@ $tratamientos = $stmt->fetchAll();
             </div>
             <h2>Tratamientos Registrados</h2>
             <p class="subtitle">Gestión completa de los tratamientos del sistema</p>
-            <a href="/proyecto_sab/controllers/HomeController.php?accion=home" class="btn-custom btn-primary-custom">
+            <a href="/controllers/HomeController.php?accion=home" class="btn-custom btn-primary-custom">
                 <i class="fa-solid fa-rotate-left"></i>
                 Volver
             </a>
@@ -96,11 +96,11 @@ $tratamientos = $stmt->fetchAll();
                         <td><?= htmlspecialchars($tratamiento['trat_complejidad']) ?></td>
                         <td><?= htmlspecialchars($tratamiento['trat_estado']) ?></td>
                         <td>
-                            <a href="/proyecto_sab/controllers/TratamientoController.php?accion=view_update&id_tratamiento=<?= $tratamiento['id_tratamiento'] ?>"
+                            <a href="/controllers/TratamientoController.php?accion=view_update&id_tratamiento=<?= $tratamiento['id_tratamiento'] ?>"
                                 class="action-btn edit">
                                 <i class="fa-solid fa-pen-to-square"></i>
                             </a>
-                            <a href="/proyecto_sab/controllers/TratamientoController.php?accion=delete&id_tratamiento=<?= $tratamiento['id_tratamiento'] ?>"
+                            <a href="/controllers/TratamientoController.php?accion=delete&id_tratamiento=<?= $tratamiento['id_tratamiento'] ?>"
                                 class="action-btn delete">
                                 <i class="fa-solid fa-trash"></i>
                             </a>
