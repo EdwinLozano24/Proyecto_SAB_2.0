@@ -69,7 +69,9 @@ function obtenerIniciales($nombreCompleto) {
             </div>
             <div class="form-grid">
                 <div class="form-group">
+            <form action="/controllers/UsuarioController.php?accion=update" method="POST">
                     <label>Nombre Completo</label>
+                    <input type="hidden" name="id_usuario" id="id_usuario" value="<?= $paciente['id_usuario'] ?>" required>
                     <div class="data-field"><?= $paciente['usua_nombre']?></div>
                 </div>
                 <div class="form-group">
@@ -134,7 +136,9 @@ function obtenerIniciales($nombreCompleto) {
                 <button type="button" class="btn-custom btn-primary-custom" onclick="window.history.back()">
                     <i class="fa-solid fa-rotate-left"></i> Volver</a>
                 </button>
+                <input type="submit" value="Actualizar">
             </div>
+            </form>
     </div>
 
     </div>
