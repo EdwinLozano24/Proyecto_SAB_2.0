@@ -35,7 +35,7 @@ $categorias = $stmt->fetchAll();
             <p class="subtitle">Sistema de Gestión Odontológica</p>
         </div>
 
-        <form action="../../controllers/TratamientoController.php?accion=store" method="POST" class="form-card">
+        <form action="/controllers/TratamientoController.php?accion=store" method="POST" class="form-card">
             <div class="form-section">
                 <div class="section-title">
                     <div class="section-icon">💊</div>
