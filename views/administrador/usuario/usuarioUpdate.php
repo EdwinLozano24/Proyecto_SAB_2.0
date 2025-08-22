@@ -39,6 +39,7 @@ requiereSesion();
                 </div>
                 <div class="form-grid">
                     <div class="form-group">
+                        <input type="hidden" name="origen_formulario" id="origen_formulario" value="Administrador" required>
                         <label for="nombre">Nombre Completo <span class="required">*</span></label>
                         <input type="text" name="usua_nombre" id="nombre" value="<?= $usua['usua_nombre'] ?>" required>
                     </div>

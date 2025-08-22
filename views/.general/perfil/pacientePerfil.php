@@ -71,6 +71,7 @@ function obtenerIniciales($nombreCompleto) {
                 <div class="form-group">
             <form action="/controllers/UsuarioController.php?accion=update" method="POST">
                     <label>Nombre Completo</label>
+                    <input type="hidden" name="origen_formulario" id="origen_formulario" value="Usuario" required>
                     <input type="hidden" name="id_usuario" id="id_usuario" value="<?= $paciente['id_usuario'] ?>" required>
                     <input type="hidden" name="usua_nombre" id="usua_nombre" value="<?= $paciente['usua_nombre'] ?>" required>
                     <div class="data-field"><?= $paciente['usua_nombre']?></div>

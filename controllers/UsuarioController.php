@@ -134,10 +134,19 @@ class UsuarioController
             'usua_estado' => $_POST['usua_estado'] ?? null,
             'id_usuario' => $_POST['id_usuario'] ?? null,
         ];
+
+        $origen = $_POST['origen_formulario'] ?? 'Usuario';
+
         try {
             $this->UsuarioModel->update($data);
+
+            if ($origen === 'Administrador') {
             header('Location: ../views/administrador/usuario/usuarioIndex.php');
-            exit;
+        } else {
+            header('Location: ../views/.general/perfil/pacientePerfil.php');
+        }
+        exit;
+
         } catch (\Exception $exception) {
             echo '[Ocurrio un error al ACTUALIZAR el USUARIO (Estamos trabajando para soluctionarlo)]';
             return;
