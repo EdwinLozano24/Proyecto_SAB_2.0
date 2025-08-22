@@ -8,7 +8,7 @@ switch ($accion) {
     case 'view_store':
         $usuario->view_store();
         break;
-    case 'store':
+    case 'storeUser':
         $usuario->store();
         break;
     case 'view_update':
