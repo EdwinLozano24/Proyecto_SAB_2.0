@@ -70,7 +70,7 @@ function obtenerIniciales($nombreCompleto) {
             <div class="form-grid">
                 <div class="form-group">
                     <label>Nombre Completo</label>
-                    <div class="data-field"><input type="text" name="usua_nombre" id="nombre" value="<?= $paciente['usua_nombre'] ?>" required></div>
+                    <div class="data-field"><?= $paciente['usua_nombre']?></div>
                 </div>
                 <div class="form-group">
                     <label>Documento de Identidad</label>
@@ -94,7 +94,7 @@ function obtenerIniciales($nombreCompleto) {
                 </div>
                 <div class="form-group">
                     <label>Eps</label>
-                    <div class="data-field"><?= $paciente['usua_eps']?></div>
+                    <div class="data-field"><input type="text" name="usua_eps" id="usua_eps" value="<?= $paciente['usua_eps'] ?>" required></div>
                 </div>
             </div>
         </div>
@@ -108,19 +108,19 @@ function obtenerIniciales($nombreCompleto) {
             <div class="form-grid">
                 <div class="form-group">
                     <label>Correo Electrónico</label>
-                    <div class="data-field"><?= $paciente['usua_correo_electronico']?></div>
+                    <div class="data-field"><input type="text" name="usua_correo_electronico" id="usua_correo_electronico" value="<?= $paciente['usua_correo_electronico'] ?>" required></div>
                 </div>
                 <div class="form-group">
                     <label>Dirección</label>
-                    <div class="data-field"><?= $paciente['usua_direccion']?></div>
+                    <div class="data-field"><input type="text" name="usua_direccion" id="usua_direccion" value="<?= $paciente['usua_correo_electronico'] ?>" required></div>
                 </div>
                 <div class="form-group">
                     <label>Teléfono</label>
-                    <div class="data-field"><?= $paciente['usua_num_contacto']?></div>
+                    <div class="data-field"><input type="text" name="usua_num_contacto" id="usua_num_contacto" value="<?= $paciente['usua_num_contacto'] ?>" required></div>
                 </div>
                 <div class="form-group">
                     <label>Teléfono Secundario</label>
-                    <div class="data-field"><?= $paciente['usua_num_secundario']?></div>
+                    <div class="data-field"><input type="text" name="usua_num_secundario" id="usua_num_secundario" value="<?= $paciente['usua_num_secundario'] ?>" required></div>
                 </div>
             </div>
         </div>
