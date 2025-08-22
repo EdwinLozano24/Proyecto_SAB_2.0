@@ -1,0 +1,315 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* --- Reset y base --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    color: #334155;
+}
+
+/* --- Contenedor principal del formulario --- */
+.container {
+    background: white;
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    max-width: 800px;
+    width: 100%;
+    border: 1px solid #e2e8f0;
+}
+
+/* --- Encabezado del formulario --- */
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.logo {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    font-size: 24px;
+    color: white;
+    font-weight: 600;
+}
+
+h1 {
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    unicode-bidi: isolate;
+    margin-bottom: 10px;
+}
+
+h2 {
+    color: #1e293b;
+    font-weight: 600;
+    font-size: 24px;
+    margin-bottom: 8px;
+    letter-spacing: -0.025em;
+}
+
+.subtitle {
+    color: #64748b;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+/* --- Secciones y grupos de formulario --- */
+.form-section {
+    margin-bottom: 32px;
+}
+
+.section-title {
+    color: #1e293b;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.section-icon {
+    width: 20px;
+    height: 20px;
+    background: #0ea5e9;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 12px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.form-group {
+    position: relative;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+label {
+    display: block;
+    color: #374151;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    letter-spacing: -0.025em;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1.5px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.2s ease;
+    background: white;
+    color: #374151;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #0ea5e9;
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+}
+
+input:hover,
+select:hover,
+textarea:hover {
+    border-color: #9ca3af;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #9ca3af;
+    font-weight: 400;
+}
+
+select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="%239ca3af"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+}
+
+select option {
+    background: white;
+    color: #374151;
+    padding: 8px;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.required {
+    color: #ef4444;
+}
+
+/* Diseño de la cuadrícula de tiempo */
+.time-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* Grupo de botones */
+.button-group {
+    display: flex;
+    gap: 16px;
+    justify-content: flex-end;
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid #e2e8f0;
+}
+
+button,
+input[type="submit"],
+.btn-link {
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    letter-spacing: -0.025em;
+    border: none;
+}
+
+input[type="submit"] {
+    background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+    color: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+input[type="submit"]:hover {
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+    transform: translateY(-1px);
+}
+
+input[type="submit"]:active {
+    transform: translateY(0);
+}
+
+.btn-secondary {
+    background: white;
+    color: #64748b;
+    border: 1.5px solid #d1d5db;
+}
+
+.btn-secondary:hover {
+    background: #f8fafc;
+    border-color: #9ca3af;
+    color: #374151;
+}
+
+/* Tarjeta de información */
+.info-card {
+    background: #f0f9ff;
+    border: 1px solid #bae6fd;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 20px;
+}
+
+.info-card h3 {
+    color: #0c4a6e;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.info-card p {
+    color: #0369a1;
+    font-size: 13px;
+    margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 24px;
+        margin: 10px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .time-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .button-group {
+        flex-direction: column-reverse;
+    }
+
+    input[type="submit"],
+    .btn-secondary {
+        justify-content: center;
+    }
+}
+
+/* Animaciones */
+.container {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
