@@ -34,7 +34,8 @@ switch ($action) {
         header('location: views/.general/usuario/loginRegister.php');
         break;
     default:
-        header('location: views/.general/error/acceso_denegado.php');
+        header('location: views/.general/usuario/loginRegister.php');
+        break;
 }
 
 
