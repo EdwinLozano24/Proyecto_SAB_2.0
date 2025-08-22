@@ -26,7 +26,7 @@ class AuthController
     //Redireccion a vista default 'INDEX'
     public function index()
     {
-        header('Location: ../views/usuario/loginRegister.php');
+        header('Location: ../views/.general/usuario/loginRegister.php');
         exit;
     }
 
@@ -37,7 +37,7 @@ class AuthController
             $usua_password = trim($_POST['usua_password'] ?? '');
 
             if ($usua_documento === '' || $usua_password === '') {
-                header('Location: ../views/error/acceso_denegado.php');
+                header('Location: ../views/.general/error/acceso_denegado.php');
                 exit;
             }
 
@@ -66,12 +66,12 @@ class AuthController
                     header('Location: ../views/paciente/home/paciente_dashboard.php');
                     break;
                 default:
-                    header('Location: ../views/error/acceso_denegado.php');
+                    header('Location: ../views/.general/error/acceso_denegado.php');
                     break;
             }
                 exit;
             } else {
-                header('Location: ../views/error/acceso_denegado.php');
+                header('Location: ../views/.general/error/acceso_denegado.php');
                 exit;
             }
         }

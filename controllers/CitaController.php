@@ -30,8 +30,8 @@ switch ($accion) {
     case 'delete':
         $cita->delete($_GET['id_cita']);
         break;
-    case 'pacienteAgendar':
-        $cita->pacienteAgendar();
+    case 'view_agendar':
+        $cita->view_agendar($_GET['id_usuario']);
         break;
     default:
         $cita->index();
@@ -178,7 +178,7 @@ class CitaController
         $espe = $this->EspecialistaModel->findAll();
         $cons = $this->ConsultorioModel->findAll();
         $trat = $this->TratamientoModel->findAll();
-        include '../views/cita/citaUpdate.php';
+        include '../views/administrador/cita/citaUpdate.php';
         exit;
     }
 
@@ -217,7 +217,7 @@ class CitaController
 
         try {
             $this->CitaModel->update($data);
-            header('Location: ../views/cita/citaIndex.php');
+            header('Location: ../views/administrador/cita/citaIndex.php');
             exit;
         } catch (Exception $e) {
             echo "Error al actualizar la cita: " . $e->getMessage();
@@ -229,7 +229,7 @@ class CitaController
     {
         try {
             $this->CitaModel->delete($id_cita);
-            header('Location: ../views/cita/citaIndex.php');
+            header('Location: ../views/administrador/cita/citaIndex.php');
             exit;
         } catch (Exception $e) {
             echo "Error al eliminar la cita: " . $e->getMessage();
@@ -237,9 +237,10 @@ class CitaController
         }
     }
 
-    public function pacienteAgendar()
+    public function view_agendar($id_usuario)
     {
-        header('Location: ../views/paciente/cita/citaAgendar1.php');
+        $paci = $this->PacienteModel->findAll();
+        include '../views/paciente/cita/citaAgendar.php';
         exit;
     }
 }

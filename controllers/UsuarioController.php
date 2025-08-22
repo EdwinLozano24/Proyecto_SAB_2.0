@@ -82,7 +82,7 @@ class UsuarioController
     public function view_update($id_usuario)
     {
         $usua = $this->UsuarioModel->find($id_usuario);
-        include '../views/usuario/usuarioUpdate.php';
+        include '../views/administrador/usuario/usuarioUpdate.php';
         exit;
     }
     //Funcion para actualizar USUARIO
@@ -107,7 +107,7 @@ class UsuarioController
         ];
         try {
             $this->UsuarioModel->update($data);
-            header('Location: ../views/usuario/usuarioIndex.php');
+            header('Location: ../views/administrador/usuario/usuarioIndex.php');
             exit;
         } catch (\Exception $exception) {
             echo '[Ocurrio un error al ACTUALIZAR el USUARIO (Estamos trabajando para soluctionarlo)]';
