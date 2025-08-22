@@ -103,6 +103,8 @@ function obtenerIniciales($nombreCompleto) {
                 <div class="form-group">
                     <label>Eps</label>
                     <input type="hidden" name="usua_password" id="usua_password" value="<?= $paciente['usua_password'] ?>" required>
+                    <input type="hidden" name="usua_tipo" id="usua_tipo" value="<?= $paciente['usua_tipo'] ?>" required>
+                    <input type="hidden" name="usua_estado" id="usua_estado" value="<?= $paciente['usua_estado'] ?>" required>
                     <input type="hidden" name="usua_eps" id="usua_eps" value="<?= $paciente['usua_eps'] ?>" required>
                     <div class="data-field"><input type="text" name="usua_eps" id="usua_eps" value="<?= $paciente['usua_eps'] ?>" required></div>
                 </div>
