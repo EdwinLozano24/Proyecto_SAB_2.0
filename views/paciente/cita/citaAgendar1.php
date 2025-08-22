@@ -6,9 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agendar Cita</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/Assets/css/layoutFinal/paciente/layout1.css">
     <link rel="stylesheet" href="/assets/css/citas/citasAgendar1.css">
-    <link rel="stylesheet" href="/assets/css/layoutFinal/paciente/layout1.css">
-
 
 </head>
 
@@ -26,7 +25,7 @@
             <section class="citas-section">
                 <h2 class="section-title">Agendar Nueva Cita</h2>
                 <p class="section-subtitle">Programa tu cita odontológica seleccionando la fecha, hora y motivo de consulta</p>
-                
+
 
                 <form id="crearCitaForm" method="POST" action="/../controllers/CitaController.php?accion=store" class="form-card">
                     <?php if (isset($_SESSION['paciente_id'])): ?>
@@ -99,15 +98,15 @@
 
                         <div class="form-group full-width">
                             <label for="observacion">Observaciones <span class="required">*</span></label>
-                                <div class="textarea-container">
-                                <textarea name="cita_observacion" id="observacion" required 
+                            <div class="textarea-container">
+                                <textarea name="cita_observacion" id="observacion" required
                                     placeholder="Describe el motivo de tu cita con más detalle..."
                                     rows="5"></textarea>
-                                 <div class="textarea-footer">
-                                     <i class="fas fa-info-circle"></i> Sé lo más específico posible
+                                <div class="textarea-footer">
+                                    <i class="fas fa-info-circle"></i> Sé lo más específico posible
+                                </div>
                             </div>
-                                            </div>
-                                            </div>
+                        </div>
 
                         <div class="form-info-card">
                             <div class="info-card-header">
@@ -149,7 +148,7 @@
     <?php
     include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/paciente/footer.php');
     ?>
-    
+
     <script src="/assets/js/cita/citaAgendar.js"></script>
 </body>
 
