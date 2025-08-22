@@ -29,7 +29,7 @@ switch ($action) {
         $notificar_usuario->store();
         break;
     default:
-        header('location: views/.general/usuario/loginRegister.php');
+        header('location: views/.general/usuario/loginRegiste.php');
 }
 
 
