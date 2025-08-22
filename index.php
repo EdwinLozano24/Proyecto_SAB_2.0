@@ -30,12 +30,8 @@ switch ($action) {
     case 'storeUser':
         $usua_notificar->store();
         break;
-    case 'index':
-        header('location: views/.general/usuario/loginRegister.php');
-        break;
     default:
         header('location: views/.general/usuario/loginRegister.php');
-        break;
 }
 
 
