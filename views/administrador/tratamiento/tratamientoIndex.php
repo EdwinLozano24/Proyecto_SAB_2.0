@@ -61,7 +61,7 @@ $tratamientos = $stmt->fetchAll();
 
         <!-- Botón nuevo usuario -->
         <div class="mb-4 d-flex justify-content-between align-items-center">
-            <a href="/proyecto_sab/controllers/TratamientoController.php?accion=view_store"
+            <a href="/controllers/TratamientoController.php?accion=view_store"
                 class="btn-custom btn-primary-custom">
                 <i class="fa-solid fa-square-plus"></i>
                 Nuevo Tratamiento
