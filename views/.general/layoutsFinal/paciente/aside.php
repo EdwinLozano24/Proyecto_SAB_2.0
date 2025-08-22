@@ -11,5 +11,4 @@
             <a href="/controllers/AuthController.php?accion=Logout" class="btn btn-primary" style="margin-top: 16px;">Cerrar Sesion</a>
         </div>
 
-
     </aside>

@@ -62,7 +62,7 @@ class PqrsController
 
     public function view_store(): void
     {
-        header('Location: ../views/pqrs/pqrsStore.php');
+        header('Location: ../views/administrador/pqrs/pqrsStore.php');
         exit;
     }
 
@@ -75,7 +75,7 @@ class PqrsController
         $pqrs = $this->pqrsModel->find($id_pqrs);
         $empl = $this->EmpleadoModel->findAll();
         $usua = $this->UsuarioModel->findAll();
-        include '../views/pqrs/pqrsUpdate.php';
+        include '../views/administrador/pqrs/pqrsUpdate.php';
         exit;
     }
 
@@ -97,7 +97,7 @@ class PqrsController
 
         try {
             $this->pqrsModel->store($data);
-            header('Location: ../views/pqrs/pqrsIndex.php');
+            header('Location: ../views/administrador/pqrs/pqrsIndex.php');
             exit;
         } catch (\Throwable $e) {
             echo '[Ocurrió un error al CREAR la PQR. Estamos trabajando para solucionarlo]';
@@ -126,7 +126,7 @@ class PqrsController
 
         try {
             $this->pqrsModel->update($data);
-            header('Location: ../views/pqrs/pqrsIndex.php');
+            header('Location: ../views/administrador/pqrs/pqrsIndex.php');
             exit;
         } catch (\Throwable $e) {
             echo '[Ocurrió un error al ACTUALIZAR la PQR. Estamos trabajando para solucionarlo]';
@@ -141,7 +141,7 @@ class PqrsController
 
         try {
             $this->pqrsModel->delete($id_pqrs);
-            header('Location: ../views/pqrs/pqrsIndex.php');
+            header('Location: ../views/administrador/pqrs/pqrsIndex.php');
             exit;
         } catch (\Throwable $e) {
             echo '[Ocurrió un error al ELIMINAR la PQR. Estamos trabajando para solucionarlo]';
