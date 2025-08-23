@@ -129,7 +129,7 @@
 
         /* ESTILOS MEJORADOS PARA INPUTS */
         .input{
-            background: red;
+            background: red !important;
         }
 
         /* Estilos para campos de solo lectura */
