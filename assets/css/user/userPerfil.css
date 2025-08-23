@@ -128,7 +128,7 @@
         }
 
         /* ESTILOS MEJORADOS PARA INPUTS */
-        input{
+        .input{
             background: red !important;
         }
 
