@@ -127,9 +127,21 @@
             letter-spacing: -0.025em;
         }
 
-        /* ESTILOS MEJORADOS PARA INPUTS */
-        .input{
-            background: red;
+        input {
+            width: 100%;
+            border: none;
+            outline: none;
+            background: transparent;
+            font-size: 14px;
+            color: #374151;
+            font-family: "Inter", sans-serif;
+        }
+
+        /* Para cuando el input está en focus */
+        input:focus {
+            outline: none;
+            box-shadow: none;
+            background: transparent;
         }
 
         /* Estilos para campos de solo lectura */
