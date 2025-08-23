@@ -127,22 +127,28 @@
             letter-spacing: -0.025em;
         }
 
-.data-field input {
-    width: 100%;
-    border: none;
-    outline: none;
-    background: transparent;
-    font-size: 14px;
-    color: #374151;
-    font-family: "Inter", sans-serif;
-}
+        .data-field input {
+            border: none;
+            outline: none;
+            background-color: transparent;
+            font-size: 14px;
+            color: inherit;
+            /* usa el mismo color del contenedor */
+            width: 100%;
+            font-family: inherit;
+            padding: 0;
+            /* para que no se vea raro dentro del data-field */
+            margin: 0;
+        }
 
-/* Para cuando el input está en focus */
-.data-field input:focus {
-    outline: none;
-    box-shadow: none;
-    background: transparent;
-}
+        /* Cuando haces clic, no debe aparecer borde ni sombra */
+        input:focus {
+            border: none;
+            outline: none;
+            box-shadow: none;
+            background-color: transparent;
+        }
+
 
         .data-field.empty {
             color: #9ca3af;
