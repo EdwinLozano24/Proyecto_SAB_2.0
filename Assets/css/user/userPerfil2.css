@@ -128,9 +128,20 @@
         }
 
         /* ESTILOS MEJORADOS PARA INPUTS */
-        input{
-            background: red;
+        .data-field input {
+            border: none;
+            outline: none;
+            background-color: transparent;
         }
+
+        /* Cuando haces clic, no debe aparecer borde ni sombra */
+        .data-field input:focus {
+            border: none;
+            outline: none;
+            box-shadow: none;
+            background-color: transparent;
+        }
+
 
         /* Estilos para campos de solo lectura */
         .data-field {
