@@ -24,8 +24,8 @@ function obtenerIniciales($nombreCompleto) {
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <?php
-    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/Assets/css/user/userPerfil2.css';
-    $cssUrl = '/Assets/css/user/userPerfil2.css';
+    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/assets/css/user/userPerfil2.css';
+    $cssUrl = '/assets/css/user/userPerfil2.css';
     if (file_exists($cssPath)) {
         echo '<link rel="stylesheet" href="' . $cssUrl . '">';
     } else {
