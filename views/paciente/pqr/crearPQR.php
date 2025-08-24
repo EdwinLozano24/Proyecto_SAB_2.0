@@ -76,7 +76,7 @@ $empl = $stmt->fetchAll();
                             <input type="text" name="pqrs_asunto" id="pqrs_asunto" required>
                         </div>
 
-                        < <div class="form-group full-width">
+                        <div class="form-group full-width">
                         <label for="pqrs_descripcion">Descripcion<span class="required">*</span></label>
                         <textarea name="pqrs_descripcion" id="pqrs_descripcion" maxlength="255"
                             placeholder="Escriba su Pqrs..."></textarea>
