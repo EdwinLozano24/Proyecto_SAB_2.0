@@ -19,9 +19,4 @@
                 <li><a href="/controllers/PqrsController.php?accion=index">📝 Pqrs</a></li>
             </ul>
         </div>
-        <!--<div class="info-card">
-            <h3>💡 Recuerda</h3>
-            <p>Utiliza las herramientas de desarrollo del navegador para inspeccionar y depurar tu código CSS más
-                fácilmente.</p>
-        </div> -->
     </aside>

@@ -1,0 +1,133 @@
+/* Contenedor principal */
+.somos-section {
+    padding: 0 40px 40px;
+}
+
+/* Títulos */
+.section-title {
+    margin-top: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #0ea5e9;
+    font-size: 32px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: #0ea5e9;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: #64748b;
+    font-size: 18px;
+    margin-bottom: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Misión / Visión */
+.mision-vision {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+    gap: 20px;
+}
+
+.mision, .vision {
+    flex: 1;
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+/* Valores */
+.valores {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.valores ul {
+    list-style: none;
+    padding: 0;
+}
+
+.valores li {
+    margin: 8px 0;
+    color: #475569;
+}
+
+/* Grid del equipo */
+.equipo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 30px;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Tarjeta miembro */
+.equipo-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.equipo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
+
+/* Imagen circular */
+.card-img {
+    padding: 20px 0;
+}
+
+.card-img img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #0ea5e9;
+}
+
+/* Contenido tarjeta */
+.card-content {
+    padding: 0 20px 20px;
+}
+
+.card-content h4 {
+    color: #1e293b;
+    margin: 10px 0 5px;
+    font-size: 20px;
+}
+
+.card-content p {
+    color: #64748b;
+    font-size: 16px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .mision-vision {
+        flex-direction: column;
+    }
+    
+    .equipo-grid {
+        grid-template-columns: 1fr;
+    }
+}
