@@ -59,7 +59,7 @@
                         <!-- Miembro 1 -->
                         <div class="equipo-card">
                             <div class="card-img">
-                                <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/cristiano-ronaldo-cr7%3A-limited-special-editio-design-template-1ade76990ca076687849a104fb3d70b1_screen.jpg?ts=1733770873" alt="Foto Santiago">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqJbQWzmgkP5pCCxaYoibNCIb31tpkRBEEzQ&s" alt="Foto Santiago">
                             </div>
                             <div class="card-content">
                                 <h4>Santiago Carranza</h4>
