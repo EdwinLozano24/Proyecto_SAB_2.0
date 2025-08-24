@@ -8,7 +8,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/proyecto_sab/controllers/HomeController.php?accion=cita" class="nav-link">
+                <a href="/controllers/CitaController.php?accion=pacienteAgendar" class="nav-link">
                     <div class="nav-icon"></div>
                     Agenda tu Cita
                 </a>
@@ -20,15 +20,15 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="/views/paciente/pqr/crearPQR.php" class="nav-link">
                     <div class="nav-icon"></div>
-                    Sobre Nosotros
+                    Crear Pqrs
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="/views/.general/contactenos/contactenos.php" class="nav-link">
                     <div class="nav-icon"></div>
-                    Contactanos
+                    Contáctanos
                 </a>
             </li>
         </ul>
