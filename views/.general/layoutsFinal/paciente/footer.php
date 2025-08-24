@@ -5,7 +5,7 @@
             </div>
             <div class="footer-links">
                 <a href="#">Términos y condiciones</a>
-                <a href="#">Sobre nosotros</a>
+                <a href="/views/.general/sobreNosotros/sobreNosotros.php">Sobre nosotros</a>
                 <a href="#">Soporte</a>
             </div>
         </div>
