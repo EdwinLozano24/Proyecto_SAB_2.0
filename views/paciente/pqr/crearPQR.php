@@ -56,7 +56,6 @@ function obtenerIniciales($nombreCompleto) {
                     <input type="hidden" name="origen_formulario" id="origen_formulario" value="Usuario" required>
                     <input type="hidden" name="id_usuario" id="id_usuario" value="<?= $paciente['id_usuario'] ?>" required>
                     <input type="hidden" name="usua_nombre" id="usua_nombre" value="<?= $paciente['usua_nombre'] ?>" required>
-                    <div class="data-field"><?= $paciente['usua_nombre']?></div>
                 </div>
                 <label for="pqrs_tipo">Tipo de PQR</label>
                 <select name="pqrs_tipo" id="pqrs_tipo" required>
