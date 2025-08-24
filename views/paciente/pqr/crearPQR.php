@@ -23,6 +23,7 @@ $empl = $stmt->fetchAll();
     <!-- CSS de Select2 -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <!-- <link rel="stylesheet" href="styles.css"> -->
+    <link rel="stylesheet" href="/Assets/css/layoutFinal/paciente/layout1.css">
     <?php
     $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/Assets/css/pqr/pqrCrear2.css';
     $cssUrl = '/Assets/css/pqr/pqrCrear2.css';
