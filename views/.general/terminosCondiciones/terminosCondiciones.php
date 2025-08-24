@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
     <!-- Enlace a los estilos específicos de términos -->
     <link rel="stylesheet" href="/assets/css/terminosCondiciones/terminosCondiciones.css">
 </head>
+
 <body>
     <?php
     session_start();
@@ -26,21 +28,21 @@
                     <p class="content-subtitle">Por favor, lee atentamente nuestros términos antes de utilizar nuestros servicios</p>
                 </div>
 
-                <div class="last-updated">
+                <div class="info-card last-updated">
                     <p><strong>Última actualización:</strong> 24 de Agosto, 2025</p>
                 </div>
 
                 <div class="terminos-content">
-                    <!-- Sección 1: Aceptación de Términos -->
-                    <div class="terminos-item">
-                        <h2><i class="fas fa-user-check"></i> Aceptación de Términos</h2>
-                        <p>Al acceder y utilizar los servicios de SAB, usted acepta estar legalmente obligado por estos Términos y Condiciones. Si no está de acuerdo con alguno de estos términos, le recomendamos que no utilice nuestros servicios.</p>
+                    <!-- Sección 1 -->
+                    <div class="content-card terminos-item">
+                        <h2 class="card-title"><i class="fas fa-user-check"></i> Aceptación de Términos</h2>
+                        <p>Al acceder y utilizar los servicios de SAB, usted acepta estar legalmente obligado por estos Términos y Condiciones...</p>
                     </div>
 
-                    <!-- Sección 2: Servicios Odontológicos -->
-                    <div class="terminos-item">
-                        <h2><i class="fas fa-teeth-open"></i> Servicios </h2>
-                        <p>Nuestra Software ofrece los siguientes servicios:</p>
+                    <!-- Sección 2 -->
+                    <div class="content-card terminos-item">
+                        <h2 class="card-title"><i class="fas fa-teeth-open"></i> Servicios</h2>
+                        <p>Nuestro software ofrece los siguientes servicios:</p>
                         <ul>
                             <li>Gestión de Usuarios</li>
                             <li>Gestión de Citas</li>
@@ -48,15 +50,14 @@
                             <li>Gestión de Pqrs</li>
                             <li>Gestión de Historial Clínico</li>
                         </ul>
-                        <p>Los tratamientos específicos serán explicados en detalle durante la consulta y podrían requerir consentimiento informado por separado.</p>
                     </div>
 
-                    <!-- Sección 3: Sistema de Citas -->
-                    <div class="terminos-item">
-                        <h2><i class="fas fa-calendar-check"></i> Sistema de Citas</h2>
-                        <p>Para agendar una cita, los pacientes pueden utilizar nuestro sistema en línea. Las citas están sujetas a disponibilidad.</p>
-                        <div class="highlight-box">
-                            <p><strong>Política de cancelación:</strong> Las citas deben cancelarse con al menos 12 horas de antelación. Las cancelaciones con menos de 24 horas pueden incurrir en un cargo por falta de asistencia.</p>
+                    <!-- Sección 3 -->
+                    <div class="content-card terminos-item">
+                        <h2 class="card-title"><i class="fas fa-calendar-check"></i> Sistema de Citas</h2>
+                        <p>Para agendar una cita, los pacientes pueden utilizar nuestro sistema en línea...</p>
+                        <div class="info-card highlight-box">
+                            <p><strong>Política de cancelación:</strong> Las citas deben cancelarse con al menos 12 horas de antelación...</p>
                         </div>
                     </div>
 
@@ -94,9 +95,11 @@
 
                     <!-- Información de contacto -->
                     <div class="contact-info">
-                        <h3><i class="fas fa-question-circle"></i> ¿Tienes preguntas sobre nuestros Términos y Condiciones?</h3>
+                        <h3><i class="fas fa-question-circle"></i> ¿Tienes preguntas?</h3>
                         <p>No dudes en contactarnos si necesitas aclaraciones o tienes inquietudes.</p>
-                        <a href="/views/.general/contactenos/contactenos.php" class="btn btn-primary"><i class="fas fa-envelope"></i> Contáctanos</a>
+                        <a href="/views/.general/contactenos/contactenos.php" class="btn btn-primary">
+                            <i class="fas fa-envelope"></i> Contáctanos
+                        </a>
                     </div>
                 </div>
             </section>
@@ -105,4 +108,5 @@
 
     <?php include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/paciente/footer.php'); ?>
 </body>
+
 </html>
