@@ -45,7 +45,6 @@ class AuthController
             
 
             if ($usuario && password_verify($usua_password, $usuario['usua_password'])) {
-                var_dump($usuario['usua_password']); exit;
                 session_start();
                 $_SESSION['usuario'] = [
                 'id_usuario' => $usuario['id_usuario'],
@@ -53,6 +52,7 @@ class AuthController
                 'usua_documento' => $usuario['usua_documento'],
                 'usua_tipo' => $usuario['usua_tipo']
             ];
+            var_dump($usuario['usua_tipo']); exit;
 
             switch ($usuario['usua_tipo']) {
                 case 'Administrador':
