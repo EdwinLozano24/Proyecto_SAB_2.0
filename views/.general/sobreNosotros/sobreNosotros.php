@@ -1,4 +1,24 @@
-<main class="main-content">
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre nosotros</title>
+    <link rel="stylesheet" href="/Assets/css/layoutFinal/paciente/layout1.css">
+    <link rel="stylesheet" href="/assets/css/sobreNosotros/sobreNosotros.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <?php
+    session_start();
+    include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/paciente/header.php');
+    include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/paciente/nav.php');
+    include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/paciente/aside.php');
+    ?>
+
+    <main class="main-content">
     <div class="somos-container">
         <section class="somos-section">
             <h2 class="section-title">Sobre nosotros</h2>
@@ -112,3 +132,9 @@
         </section>
     </div>
 </main>
+
+
+    <?php include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/paciente/footer.php'); ?>
+</body>
+
+</html>
