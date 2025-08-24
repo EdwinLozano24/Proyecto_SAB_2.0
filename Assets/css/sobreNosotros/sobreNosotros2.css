@@ -162,7 +162,7 @@
 .somos-section .btn-doc:hover {
     background: #5aadd7;
     transform: translateY(-1px);
-    box-shadow: 0 6px 16px rgba(220, 38, 38, .25);
+    box-shadow: 0 6px 16px rgba(69, 123, 238, 0.25);
 }
 
 /* ======= Equipo ======= */

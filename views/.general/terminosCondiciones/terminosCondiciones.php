@@ -9,7 +9,7 @@
     <!-- Enlace a tu layout principal -->
     <link rel="stylesheet" href="/Assets/css/layoutFinal/paciente/layout1.css">
     <!-- Enlace a los estilos específicos de términos -->
-    <link rel="stylesheet" href="/assets/css/terminosCondiciones/terminosCondiciones.css">
+    <link rel="stylesheet" href="/Assets/css/terminosCondiciones/terminosCondiciones.css">
 </head>
 
 <body>
