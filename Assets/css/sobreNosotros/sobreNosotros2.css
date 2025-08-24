@@ -106,7 +106,8 @@
 
 .somos-section .valores h3 {
     color: #0ea5e9;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    margin-top: 20px;
     font-size: 18px;
 }
 
@@ -148,7 +149,7 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: #dc2626;
+    background: #0ea5e9;
     color: #fff;
     padding: 12px 18px;
     border-radius: 10px;
@@ -159,7 +160,7 @@
 }
 
 .somos-section .btn-doc:hover {
-    background: #b91c1c;
+    background: #5aadd7;
     transform: translateY(-1px);
     box-shadow: 0 6px 16px rgba(220, 38, 38, .25);
 }
