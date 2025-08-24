@@ -67,9 +67,20 @@ class PqrsModel
         return $stmt->execute($data);
     }
 
-public function delete($id_pqrs)
-{
-    $stmt = $this->pdo->prepare("UPDATE tbl_pqrs SET pqrs_estado = 'Cerrado' WHERE id_pqrs = :id_pqrs");
-    return $stmt->execute([':id_pqrs' => $id_pqrs]);
-}
+    public function delete($id_pqrs)
+    {
+        $stmt = $this->pdo->prepare("UPDATE tbl_pqrs SET pqrs_estado = 'Cerrado' WHERE id_pqrs = :id_pqrs");
+        return $stmt->execute([':id_pqrs' => $id_pqrs]);
+    }
+    public function crearPqrUsuario($usuarioId, $tipo, $asunto, $descripcion)
+    {
+        $sql = "INSERT INTO tbl_pqrs (pqrs_tipo, pqrs_asunto, pqrs_descripcion, pqrs_usuario, pqrs_estado) 
+            VALUES (:tipo, :asunto, :descripcion, :usuarioId, 'Pendiente')";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':tipo', $tipo);
+        $stmt->bindParam(':asunto', $asunto);
+        $stmt->bindParam(':descripcion', $descripcion);
+        $stmt->bindParam(':usuarioId', $usuarioId);
+        return $stmt->execute();
+    }
 }

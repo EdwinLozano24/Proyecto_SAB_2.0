@@ -1,18 +1,12 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/config/auth.php';
 requiereSesion();
-require_once $_SERVER['DOCUMENT_ROOT'] . '/config/database.php';
-$pdo = conectarBD();
-$sql = "SELECT * FROM tbl_usuarios";
-$stmt = $pdo->query($sql);
-$usua = $stmt->fetchAll();
+session_start();
 
-$sql = "SELECT * FROM tbl_empleados
-    INNER JOIN tbl_usuarios ON empl_usuario = id_usuario";
-$stmt = $pdo->query($sql);
-$empl = $stmt->fetchAll();
+// Traemos al usuario de la sesión
+$idUsuario = $_SESSION['id_usuario'];
+$nombreUsuario = $_SESSION['usua_nombre'];
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -36,63 +30,52 @@ $empl = $stmt->fetchAll();
     <link rel="stylesheet" href="/Assets/css/layoutFinal/paciente/layout1.css">
 </head>
 
-
-
 <body>
     <?php
     include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/paciente/header.php');
     include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/paciente/nav.php');
     include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/paciente/aside.php');
     ?>
-
     <main class="main-content">
         <div class="container-about">
-                <h2 class="section-title">Crear PQR</h2>
-                <form action="">
-                </form>
-            </section>
+            <h2 class="section-title">Crear PQR</h2>
+            <p>Usuario responsable: <strong><?= $nombreUsuario ?></strong></p>
         </div>
-        <div class="container">
 
+        <form action="/controllers/PqrsController.php?accion=storeUser" method="POST">
+            <!-- ID oculto del usuario logueado -->
+            <input type="hidden" name="pqrs_usuario" value="<?= $idUsuario ?>">
 
-            <form id="PqrsStore" method="POST" action="/controllers/PqrsController.php?accion=store">
-                <div class="form-section">
-
-                    <div class="form-grid">
-
-                        <div class="form-group">
-                            <label for="pqrs_tipo">Tipo de Pqrs</label>
-                            <select name="pqrs_tipo" id="pqrs_tipo" required>
-                                <option value="" disabled selected>Seleccionar tipo...</option>
-                                <option value="Petición">Petición</option>
-                                <option value="Queja">Queja</option>
-                                <option value="Reclamo">Reclamo</option>
-                                <option value="Sugerencia">Sugerencia</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group full-width">
-                            <label for="pqrs_asunto">Asunto</label>
-                            <input type="text" name="pqrs_asunto" id="pqrs_asunto" required>
-                        </div>
-
-                        <div class="form-group full-width">
-                        <label for="pqrs_descripcion">Descripcion<span class="required">*</span></label>
-                        <textarea name="pqrs_descripcion" id="pqrs_descripcion" maxlength="255"
-                            placeholder="Escriba su Pqrs..."></textarea>
-                    </div>
-                </div>
+            <div class="form-group">
+                <label for="pqrs_tipo">Tipo de PQR</label>
+                <select name="pqrs_tipo" id="pqrs_tipo" required>
+                    <option value="" disabled selected>Seleccionar tipo...</option>
+                    <option value="Petición">Petición</option>
+                    <option value="Queja">Queja</option>
+                    <option value="Reclamo">Reclamo</option>
+                    <option value="Sugerencia">Sugerencia</option>
+                </select>
             </div>
+
+            <div class="form-group">
+                <label for="pqrs_asunto">Asunto</label>
+                <input type="text" name="pqrs_asunto" id="pqrs_asunto" required>
+            </div>
+
+            <div class="form-group">
+                <label for="pqrs_descripcion">Descripción</label>
+                <textarea name="pqrs_descripcion" id="pqrs_descripcion" maxlength="255" required></textarea>
+            </div>
+
             <div class="button-group">
-                    <button type="button" class="btn-secondary" onclick="window.history.back()">
-                    ← Cancelar
-                </button>
-                <input type="submit" id="generar_cita" value="⚠️ Registrar Pqrs">
+                <button type="button" onclick="window.history.back()">← Cancelar</button>
+                <button type="submit">⚠️ Registrar PQR</button>
             </div>
         </form>
-    </div>
+        </div>
+
     </main>
-        <!-- JS de jQuery y Select2 -->
+    <!-- JS de jQuery y Select2 -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <!-- <script src="script.js"></script> -->
@@ -104,6 +87,7 @@ $empl = $stmt->fetchAll();
     </script>
 
     <?php include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/paciente/footer.php'); ?>
+
 </body>
 
 </html>

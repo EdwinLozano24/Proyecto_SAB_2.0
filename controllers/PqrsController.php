@@ -90,7 +90,7 @@ class PqrsController
             'pqrs_estado'         => $_POST['pqrs_estado']      ?? 'Pendiente',
             'pqrs_fecha_envio'    => date('Y-m-d'),
             'pqrs_respuesta'      => null,
-            'pqrs_fecha_respuesta'=> null,
+            'pqrs_fecha_respuesta' => null,
             'pqrs_usuario'        => $_POST['pqrs_usuario']     ?? null,
             'pqrs_empleado'       => $_POST['pqrs_empleado'] !== "" ? $_POST['pqrs_empleado'] : null,
         ];
@@ -146,5 +146,22 @@ class PqrsController
         } catch (\Throwable $e) {
             echo '[Ocurrió un error al ELIMINAR la PQR. Estamos trabajando para solucionarlo]';
         }
+    }
+    public function storeUser()
+    {
+        session_start();
+        if (!isset($_SESSION['id_usuario'])) {
+            header("Location: /views/login.php");
+            exit();
+        }
+
+        $tipo = $_POST['pqrs_tipo'];
+        $asunto = $_POST['pqrs_asunto'];
+        $descripcion = $_POST['pqrs_descripcion'];
+        $usuarioId = $_SESSION['id_usuario'];
+
+        $this->pqrsModel->crearPqrUsuario($usuarioId, $tipo, $asunto, $descripcion);
+
+        header("Location: /views/administrador/pqrs/pqrsIndex.php"); // redirigir a la lista del usuario
     }
 }
