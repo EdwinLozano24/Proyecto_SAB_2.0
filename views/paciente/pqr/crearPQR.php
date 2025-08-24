@@ -38,7 +38,6 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
     <main class="main-content">
         <div class="container-about">
             <h2 class="section-title">Crear PQR</h2>
-            <p>Usuario responsable: <strong><?= $nombreUsuario ?></strong></p>
         </div>
 
         <form action="/controllers/PqrsController.php?accion=store" method="POST">
