@@ -92,13 +92,17 @@ class PqrsController
             'pqrs_respuesta'      => null,
             'pqrs_fecha_respuesta' => null,
             'pqrs_usuario'        => $_POST['pqrs_usuario']     ?? null,
-            'pqrs_empleado'       => $_POST['pqrs_empleado'] !== "" ? $_POST['pqrs_empleado'] : null,
+            'pqrs_empleado'       => $_POST['pqrs_empleado'] ?? null,
         ];
-
+        $origen = $_POST['origen_formulario'] ?? 'Usuario';
         try {
             $this->pqrsModel->store($data);
+            if ($origen === 'Administrador') {
             header('Location: ../views/administrador/pqrs/pqrsIndex.php');
-            exit;
+        } else {
+            header('Location: ../views/paciente/home/paciente_dashboard.php');
+        }
+        exit;
         } catch (\Throwable $e) {
             echo '[Ocurrió un error al CREAR la PQR. Estamos trabajando para solucionarlo]';
         }

@@ -38,12 +38,12 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
     <main class="main-content">
         <div class="container-about">
             <h2 class="section-title">Crear PQR</h2>
-            <p>Usuario responsable: <strong><?= $nombreUsuario ?></strong></p>
         </div>
 
-        <form action="/controllers/PqrsController.php?accion=storeUser" method="POST">
+        <form action="/controllers/PqrsController.php?accion=store" method="POST">
             <!-- ID oculto del usuario logueado -->
-            <input type="text" name="pqrs_usuario" value="<?php echo $_SESSION['usuario']['id_usuario']; ?>">
+            <input type="hidden" name="origen_formulario" value="Usuario">
+            <input type="hidden" name="pqrs_usuario" value="<?php echo $_SESSION['usuario']['id_usuario']; ?>">
 
 
             <div class="form-group">

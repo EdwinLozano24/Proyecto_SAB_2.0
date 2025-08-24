@@ -50,6 +50,7 @@ $empl = $stmt->fetchAll();
                 </div>
                 <div class="form-grid">
                     <div class="form-group">
+                        <input type="hidden" name="origen_formulario" value="Administrador">
                         <label for="pqrs_usuario">Usuario Responsable<span class="required">*</span></label>
                         <select name="pqrs_usuario" id="pqrs_usuario" class="form-control select2" required>
                             <option value="" selected disabled>Seleccionar un usuario...</option>
