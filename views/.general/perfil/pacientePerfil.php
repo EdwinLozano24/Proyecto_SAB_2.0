@@ -1,16 +1,19 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/config/auth.php';
 requiereSesion();
-function obtenerIniciales($nombreCompleto) {
-    $palabras = explode(' ', trim($nombreCompleto));
-    $iniciales = '';
-    foreach ($palabras as $palabra) {
-        if (!empty($palabra)) {
-            $iniciales .= strtoupper($palabra[0]);
-        }
-    }
-    return $iniciales;
+require_once $_SERVER['DOCUMENT_ROOT'] . '/config/database.php';
+
+$pdo = conectarBD();
+
+// Obtener el id del usuario logueado desde la sesión
+$id_usuario = $_SESSION['id_usuario'] ?? null;
+
+if ($id_usuario) {
+    $stmt = $pdo->prepare("SELECT * FROM tbl_usuarios WHERE id_usuario = :id_usuario");
+    $stmt->execute([':id_usuario' => $id_usuario]);
+    $paciente = $stmt->fetch(PDO::FETCH_ASSOC);
 }
+?>
 ?>
 <!DOCTYPE html>
 <html lang="es">
