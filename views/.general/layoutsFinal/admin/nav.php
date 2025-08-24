@@ -20,7 +20,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/views/paciente/pqr/crearPQR.php" class="nav-link">
+                <a href="/views/paciente/pqr/creapqr2.php" class="nav-link">
                     <div class="nav-icon"></div>
                     Crear Pqrs
                 </a>
