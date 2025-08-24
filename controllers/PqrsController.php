@@ -147,21 +147,5 @@ class PqrsController
             echo '[Ocurrió un error al ELIMINAR la PQR. Estamos trabajando para solucionarlo]';
         }
     }
-    public function storeUser()
-    {
-        session_start();
-        if (!isset($_SESSION['id_usuario'])) {
-            header("Location: /views/login.php");
-            exit();
-        }
 
-        $tipo = $_POST['pqrs_tipo'];
-        $asunto = $_POST['pqrs_asunto'];
-        $descripcion = $_POST['pqrs_descripcion'];
-        $usuarioId = $_SESSION['id_usuario'];
-
-        $this->pqrsModel->crearPqrUsuario($usuarioId, $tipo, $asunto, $descripcion);
-
-        header("Location: /views/administrador/pqrs/pqrsIndex.php"); // redirigir a la lista del usuario
-    }
 }

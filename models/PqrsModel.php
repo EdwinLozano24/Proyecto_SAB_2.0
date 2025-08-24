@@ -10,10 +10,9 @@ class PqrsModel
         $this->pdo = conectarBD();
     }
 
-    public function store(array $data)
-
-    {
-        $sql = "INSERT INTO tbl_pqrs (
+  public function store(array $data)
+{
+    $sql = "INSERT INTO tbl_pqrs (
                 pqrs_tipo,
                 pqrs_asunto,
                 pqrs_descripcion,
@@ -35,9 +34,20 @@ class PqrsModel
                 :pqrs_empleado
             )";
 
-        $stmt = $this->pdo->prepare($sql);
-        return $stmt->execute($data);
-    }
+    $stmt = $this->pdo->prepare($sql);
+
+    return $stmt->execute([
+        ':pqrs_tipo'           => $data['pqrs_tipo'],
+        ':pqrs_asunto'         => $data['pqrs_asunto'],
+        ':pqrs_descripcion'    => $data['pqrs_descripcion'],
+        ':pqrs_estado'         => $data['pqrs_estado'],
+        ':pqrs_fecha_envio'    => $data['pqrs_fecha_envio'],
+        ':pqrs_respuesta'      => $data['pqrs_respuesta'],
+        ':pqrs_fecha_respuesta'=> $data['pqrs_fecha_respuesta'],
+        ':pqrs_usuario'        => $data['pqrs_usuario'],
+        ':pqrs_empleado'       => $data['pqrs_empleado'],
+    ]);
+}
 
     public function find($id_pqrs)
     {
@@ -72,15 +82,5 @@ class PqrsModel
         $stmt = $this->pdo->prepare("UPDATE tbl_pqrs SET pqrs_estado = 'Cerrado' WHERE id_pqrs = :id_pqrs");
         return $stmt->execute([':id_pqrs' => $id_pqrs]);
     }
-    public function crearPqrUsuario($usuarioId, $tipo, $asunto, $descripcion)
-    {
-        $sql = "INSERT INTO tbl_pqrs (pqrs_tipo, pqrs_asunto, pqrs_descripcion, pqrs_usuario, pqrs_estado) 
-            VALUES (:tipo, :asunto, :descripcion, :usuarioId, 'Pendiente')";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(':tipo', $tipo);
-        $stmt->bindParam(':asunto', $asunto);
-        $stmt->bindParam(':descripcion', $descripcion);
-        $stmt->bindParam(':usuarioId', $usuarioId);
-        return $stmt->execute();
-    }
+
 }

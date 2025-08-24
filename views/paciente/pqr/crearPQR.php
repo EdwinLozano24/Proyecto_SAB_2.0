@@ -1,11 +1,16 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/config/auth.php';
 requiereSesion();
-session_start();
-
-// Traemos al usuario de la sesión
-$idUsuario = $_SESSION['id_usuario'];
-$nombreUsuario = $_SESSION['usua_nombre'];
+function obtenerIniciales($nombreCompleto) {
+    $palabras = explode(' ', trim($nombreCompleto));
+    $iniciales = '';
+    foreach ($palabras as $palabra) {
+        if (!empty($palabra)) {
+            $iniciales .= strtoupper($palabra[0]);
+        }
+    }
+    return $iniciales;
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -47,6 +52,12 @@ $nombreUsuario = $_SESSION['usua_nombre'];
             <input type="hidden" name="pqrs_usuario" value="<?= $idUsuario ?>">
 
             <div class="form-group">
+                <label>Nombre Completo</label>
+                    <input type="hidden" name="origen_formulario" id="origen_formulario" value="Usuario" required>
+                    <input type="hidden" name="id_usuario" id="id_usuario" value="<?= $paciente['id_usuario'] ?>" required>
+                    <input type="hidden" name="usua_nombre" id="usua_nombre" value="<?= $paciente['usua_nombre'] ?>" required>
+                    <div class="data-field"><?= $paciente['usua_nombre']?></div>
+                </div>
                 <label for="pqrs_tipo">Tipo de PQR</label>
                 <select name="pqrs_tipo" id="pqrs_tipo" required>
                     <option value="" disabled selected>Seleccionar tipo...</option>
