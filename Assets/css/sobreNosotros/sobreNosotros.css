@@ -78,14 +78,18 @@
 }
 
 /* Tarjeta miembro */
-.equipo-card {
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-align: center;
+.equipo-card img {
+    width: 120px;       /* recorta a 120px */
+    height: 120px;      /* asegura altura fija */
+    object-fit: cover;  /* recorte para que no se deforme */
+    border-radius: 50%; /* redondas */
+    border: 3px solid #0ea5e9;
+    margin-bottom: 12px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
+
 
 .equipo-card:hover {
     transform: translateY(-5px);
