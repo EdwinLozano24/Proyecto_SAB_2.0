@@ -53,7 +53,7 @@
                         <!-- Miembro 1 -->
                         <div class="equipo-card">
                             <div class="card-img">
-                                <img src="https://i.pinimg.com/736x/47/ee/fc/47eefce858d691fcb8443e3852324577.jpg" alt="Foto de Angelo">
+                                <img src="" alt="Foto de Angelo">
                             </div>
                             <div class="card-content">
                                 <h4>Angelo Gonzalez</h4>
@@ -63,7 +63,7 @@
                         <!-- Miembro 2 -->
                         <div class="equipo-card">
                             <div class="card-img">
-                                <img src="https://preview.redd.it/i-have-seen-a-debate-about-ngolo-kante-recently-in-your-v0-dfqwx5gblwic1.jpeg?auto=webp&s=0e19539dc00ab85267bda548570a486038f682c0" alt="Foto integrante">
+                                <img src="" alt="Foto integrante">
                             </div>
                             <div class="card-content">
                                 <h4>Nombre Apellido</h4>
@@ -73,7 +73,7 @@
                         <!-- Miembro 3 -->
                         <div class="equipo-card">
                             <div class="card-img">
-                                <img src="https://ih1.redbubble.net/image.4983152228.3248/flat,750x,075,f-pad,750x1000,f8f8f8.u1.jpg" alt="Foto integrante">
+                                <img src="" alt="Foto integrante">
                             </div>
                             <div class="card-content">
                                 <h4>Nombre Apellido</h4>
@@ -83,7 +83,7 @@
                         <!-- Miembro 4 -->
                         <div class="equipo-card">
                             <div class="card-img">
-                                <img src="https://thumbs.dreamstime.com/b/vector-de-perfil-avatar-predeterminado-foto-usuario-medios-sociales-icono-183042379.jpg" alt="Foto integrante">
+                                <img src="" alt="Foto integrante">
                             </div>
                             <div class="card-content">
                                 <h4>Nombre Apellido</h4>
@@ -93,7 +93,7 @@
                         <!-- Miembro 5 -->
                         <div class="equipo-card">
                             <div class="card-img">
-                                <img src="https://i.ytimg.com/vi_webp/US3EeHQTLkc/maxresdefault.webp" alt="Foto integrante">
+                                <img src="" alt="Foto integrante">
                             </div>
                             <div class="card-content">
                                 <h4>Nombre Apellido</h4>
