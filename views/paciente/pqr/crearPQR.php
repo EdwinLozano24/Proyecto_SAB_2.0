@@ -76,7 +76,7 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
 
     </main>
     <?php 
-        include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/paciente/aside.php');
+        include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/paciente/footer.php');
         ?>
 </body>
 
