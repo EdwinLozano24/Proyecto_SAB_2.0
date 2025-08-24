@@ -5,7 +5,7 @@ session_start();
 
 // Traemos al usuario de la sesión
 $idUsuario = $_SESSION['id_usuario'];
-$nombreUsuario = $_SESSION['nombre'];
+$nombreUsuario = $_SESSION['usua_nombre'];
 ?>
 <!DOCTYPE html>
 <html lang="es">
