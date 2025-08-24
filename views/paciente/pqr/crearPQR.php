@@ -9,15 +9,36 @@ $nombreUsuario = $_SESSION['usua_nombre'];
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
-    <title>Crear PQR</title>
-    <link rel="stylesheet" href="/Assets/css/pqr/pqrCrear2.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generar Pqrs - Sistema Odontológico</title>
+    <!-- CSS de Select2 -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+
+    <?php
+    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/Assets/css/pqr/pqrCrear2.css';
+    $cssUrl = '/Assets/css/pqr/pqrCrear2.css';
+    if (file_exists($cssPath)) {
+        echo '<link rel="stylesheet" href="' . $cssUrl . '">';
+    } else {
+        echo ' CSS File not fount at: ' . $cssPath . '';
+    }
+    ?>
+    <link rel="stylesheet" href="/Assets/css/layoutFinal/paciente/layout1.css">
 </head>
+
 <body>
-    <div class="container">
-        <div class="header">
-            <h2>Crear PQR</h2>
+    <?php
+    include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/paciente/header.php');
+    include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/paciente/nav.php');
+    include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/paciente/aside.php');
+    ?>
+    <main class="main-content">
+        <div class="container-about">
+            <h2 class="section-title">Crear PQR</h2>
             <p>Usuario responsable: <strong><?= $nombreUsuario ?></strong></p>
         </div>
 
@@ -51,6 +72,10 @@ $nombreUsuario = $_SESSION['usua_nombre'];
                 <button type="submit">⚠️ Registrar PQR</button>
             </div>
         </form>
-    </div>
+        </div>
+
+    </main>
+    
 </body>
+
 </html>
