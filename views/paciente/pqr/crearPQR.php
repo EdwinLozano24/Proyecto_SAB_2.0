@@ -5,6 +5,18 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/config/database.php';
 
 $pdo = conectarBD();
 
+// 🔹 Función para generar iniciales
+function obtenerIniciales($nombreCompleto) {
+    $palabras = explode(' ', trim($nombreCompleto));
+    $iniciales = '';
+    foreach ($palabras as $palabra) {
+        if (!empty($palabra)) {
+            $iniciales .= strtoupper($palabra[0]);
+        }
+    }
+    return $iniciales;
+}
+
 // Obtener el id del usuario logueado desde la sesión
 $id_usuario = $_SESSION['id_usuario'] ?? null;
 
@@ -50,17 +62,6 @@ if ($id_usuario) {
         </div>
             <div class="container">
 
-
-        <!-- Información del Avatar -->
-        <div class="avatar-container">
-            <div class="avatar"><?= obtenerIniciales($paciente['usua_nombre']) ?></div>
-            <div class="avatar-info">
-                <h2><?= $paciente['usua_nombre']?></h2>
-                <h3></h3> <p><?= $paciente['usua_tipo'] ?>
-                
-                <span class="status-badge status-active">● <?= $paciente['usua_estado'] ?></span>
-            </div>
-        </div>
 
         <!-- Información Personal -->
         <div class="form-section">
