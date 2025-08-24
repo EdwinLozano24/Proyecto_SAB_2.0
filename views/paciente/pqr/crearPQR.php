@@ -43,7 +43,8 @@ requiereSesion();
 
         <form action="/controllers/PqrsController.php?accion=storeUser" method="POST">
             <!-- ID oculto del usuario logueado -->
-            <input type="hidden" name="pqrs_usuario" value="<?= $idUsuario ?>">
+            <input type="hidden" name="pqrs_usuario" value="<?= $nombreUsuario?>">
+
 
             <div class="form-group">
                 <label for="pqrs_tipo">Tipo de PQR</label>
