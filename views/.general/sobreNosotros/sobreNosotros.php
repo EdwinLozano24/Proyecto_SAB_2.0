@@ -65,7 +65,7 @@
             <div class="documento-proyecto">
                 <h3>Documentación del Proyecto</h3>
                 <p>Consulta el documento general del proyecto, con los diagramas, modelos de datos y análisis completo del sistema.</p>
-                <a href="/Assets/docs/Proyecto_SAB.pdf" target="_blank" class="btn-doc">
+                <a href="/assets/docs/dGeneral.pdf" target="_blank" class="btn-doc">
                     <i class="fa-solid fa-file-pdf"></i> Ver Documento Completo
                 </a>
             </div>
