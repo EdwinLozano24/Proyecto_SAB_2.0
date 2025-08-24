@@ -42,10 +42,10 @@ class AuthController
             }
 
             $usuario = $this->AuthModel->getUser($usua_documento);
-            var_dump($usuario); exit;
-            //hola
+            
 
             if ($usuario && password_verify($usua_password, $usuario['usua_password'])) {
+                var_dump($usua_password); exit;
                 session_start();
                 $_SESSION['usuario'] = [
                 'id_usuario' => $usuario['id_usuario'],
