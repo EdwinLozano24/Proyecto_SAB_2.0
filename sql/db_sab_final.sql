@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS tbl_usuarios (
     usua_rh ENUM('O+','O-','A+','A-','B+','B-','AB+','AB-'),
     usua_eps VARCHAR(100) NOT NULL,
     usua_password VARCHAR(255) NOT NULL UNIQUE,
-    usua_tipo ENUM('Paciente','Empleado','Especialista','Administrador') DEFAULT 'Paciente',
+    usua_tipo ENUM('Paciente','Empleado','Especialista','Administrador') DEFAULT 'Paciente' NOT NULL,
     usua_estado ENUM('Activo','Inactivo') NOT NULL DEFAULT 'Activo',
     usua_reset_token VARCHAR(255),
     usua_token_expira DATETIME

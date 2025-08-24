@@ -52,7 +52,6 @@ class AuthController
                 'usua_documento' => $usuario['usua_documento'],
                 'usua_tipo' => $usuario['usua_tipo']
             ];
-            var_dump($usuario['usua_tipo']); exit;
 
             switch ($usuario['usua_tipo']) {
                 case 'Administrador':
