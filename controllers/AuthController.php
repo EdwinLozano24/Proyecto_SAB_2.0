@@ -45,7 +45,7 @@ class AuthController
             
 
             if ($usuario && password_verify($usua_password, $usuario['usua_password'])) {
-                var_dump($usua_password); exit;
+                var_dump($usuario['usua_password']);
                 session_start();
                 $_SESSION['usuario'] = [
                 'id_usuario' => $usuario['id_usuario'],
