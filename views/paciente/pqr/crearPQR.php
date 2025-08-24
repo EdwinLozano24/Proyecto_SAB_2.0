@@ -2,10 +2,10 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/config/auth.php';
 requiereSesion();
 
-// Traemos al usuario de la sesión
+$id_usuario = $_SESSION['usuario']['id_usuario'];
 // $idUsuario = $_SESSION['id_usuario'];
-// $nombreUsuario = $_SESSION['usua_nombre'];
-// ?>
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -43,7 +43,7 @@ requiereSesion();
 
         <form action="/controllers/PqrsController.php?accion=storeUser" method="POST">
             <!-- ID oculto del usuario logueado -->
-            <input type="hidden" name="pqrs_usuario" value="<?= $nombreUsuario?>">
+            <input type="text" name="pqrs_usuario" value="<?php echo $_SESSION['usuario']['id_usuario']; ?>">
 
 
             <div class="form-group">
