@@ -1,113 +1,114 @@
-<!DOCTYPE html>
-<html lang="es">
+<main class="main-content">
+    <div class="somos-container">
+        <section class="somos-section">
+            <h2 class="section-title">Sobre nosotros</h2>
+            <p class="section-subtitle">Un grupo de aprendices comprometidos con la innovación</p>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre nosotros</title>
-    <link rel="stylesheet" href="/Assets/css/layoutFinal/paciente/layout1.css">
-    <link rel="stylesheet" href="/assets/css/sobreNosotros/sobreNosotros.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
+            <!-- Objetivos del proyecto -->
+            <div class="objetivos">
+                <h3>Objetivo General</h3>
+                <p>Desarrollar un sistema web para la gestión de citas en una clínica odontológica privada, optimizando los procesos administrativos y mejorando la experiencia de los pacientes.</p>
 
-<body>
-    <?php
-    session_start();
-    include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/paciente/header.php');
-    include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/paciente/nav.php');
-    include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/paciente/aside.php');
-    ?>
+                <h3>Objetivos Específicos</h3>
+                <ul>
+                    <li>Analizar los procesos actuales de agendamiento de citas en el sector odontológico privado.</li>
+                    <li>Diseñar un modelo de datos que garantice la seguridad y organización de la información.</li>
+                    <li>Implementar módulos para la gestión de citas, tratamientos y usuarios.</li>
+                    <li>Validar el funcionamiento del sistema mediante pruebas de usabilidad y seguridad.</li>
+                </ul>
+            </div>
 
-    <main class="main-content">
-        <div class="somos-container">
-            <section class="somos-section">
-                <h2 class="section-title">Sobre nosotros</h2>
-                <p class="section-subtitle">Un grupo de aprendices comprometidos con la innovación</p>
-
-                <div class="mision-vision">
-                    <div class="mision">
-                        <h3>Misión</h3>
-                        <p>Nuestra misión es desarrollar soluciones digitales que mejoren la gestión de citas y procesos en el sector odontológico privado.</p>
-                    </div>
-                    <div class="vision">
-                        <h3>Visión</h3>
-                        <p>Ser un equipo reconocido por crear software innovador, accesible y seguro para el sector salud y otros ámbitos.</p>
-                    </div>
+            <!-- Misión y Visión -->
+            <div class="mision-vision">
+                <div class="mision">
+                    <h3>Misión</h3>
+                    <p>Nuestra misión es crear soluciones digitales que faciliten la gestión de citas y mejoren la relación entre clínicas odontológicas y pacientes.</p>
                 </div>
-
-                <div class="valores">
-                    <h3>Valores</h3>
-                    <ul>
-                        <li>Innovación</li>
-                        <li>Compromiso</li>
-                        <li>Responsabilidad</li>
-                        <li>Trabajo en equipo</li>
-                    </ul>
+                <div class="vision">
+                    <h3>Visión</h3>
+                    <p>Ser un equipo reconocido por la creación de software accesible, seguro e innovador para el sector salud y otras áreas relacionadas.</p>
                 </div>
+            </div>
 
-                <div class="equipo">
-                    <h3 class="section-title">Nuestro equipo</h3>
-                    <p class="section-subtitle">Conoce a los aprendices que hicieron realidad este proyecto</p>
+            <!-- Valores -->
+            <div class="valores">
+                <h3>Valores</h3>
+                <ul>
+                    <li>Innovación</li>
+                    <li>Compromiso</li>
+                    <li>Responsabilidad</li>
+                    <li>Trabajo en equipo</li>
+                </ul>
+            </div>
 
-                    <div class="equipo-grid">
-                        <!-- Miembro 1 -->
-                        <div class="equipo-card">
-                            <div class="card-img">
-                                <img src="" alt="Foto de Angelo">
-                            </div>
-                            <div class="card-content">
-                                <h4>Angelo Gonzalez</h4>
-                                <p>Desarrollador Backend</p>
-                            </div>
+            <!-- Documento general del proyecto -->
+            <div class="documento-proyecto">
+                <h3>Documentación del Proyecto</h3>
+                <p>Consulta el documento general del proyecto, con los diagramas, modelos de datos y análisis completo del sistema.</p>
+                <a href="/Assets/docs/Proyecto_SAB.pdf" target="_blank" class="btn-doc">
+                    <i class="fa-solid fa-file-pdf"></i> Ver Documento Completo
+                </a>
+            </div>
+
+            <!-- Equipo -->
+            <div class="equipo">
+                <h3 class="section-title">Nuestro equipo</h3>
+                <p class="section-subtitle">Conoce a los aprendices que hicieron realidad este proyecto</p>
+
+                <div class="equipo-grid">
+                    <!-- Miembro 1 -->
+                    <div class="equipo-card">
+                        <div class="card-img">
+                            <img src="" alt="Foto de Angelo">
                         </div>
-                        <!-- Miembro 2 -->
-                        <div class="equipo-card">
-                            <div class="card-img">
-                                <img src="" alt="Foto integrante">
-                            </div>
-                            <div class="card-content">
-                                <h4>Nombre Apellido</h4>
-                                <p>Frontend Developer</p>
-                            </div>
-                        </div>
-                        <!-- Miembro 3 -->
-                        <div class="equipo-card">
-                            <div class="card-img">
-                                <img src="" alt="Foto integrante">
-                            </div>
-                            <div class="card-content">
-                                <h4>Nombre Apellido</h4>
-                                <p>Analista de Requerimientos</p>
-                            </div>
-                        </div>
-                        <!-- Miembro 4 -->
-                        <div class="equipo-card">
-                            <div class="card-img">
-                                <img src="" alt="Foto integrante">
-                            </div>
-                            <div class="card-content">
-                                <h4>Nombre Apellido</h4>
-                                <p>QA Tester</p>
-                            </div>
-                        </div>
-                        <!-- Miembro 5 -->
-                        <div class="equipo-card">
-                            <div class="card-img">
-                                <img src="" alt="Foto integrante">
-                            </div>
-                            <div class="card-content">
-                                <h4>Nombre Apellido</h4>
-                                <p>Diseñador UI/UX</p>
-                            </div>
+                        <div class="card-content">
+                            <h4>Angelo Gonzalez</h4>
+                            <p>Desarrollador Backend</p>
                         </div>
                     </div>
+                    <!-- Miembro 2 -->
+                    <div class="equipo-card">
+                        <div class="card-img">
+                            <img src="" alt="Foto integrante">
+                        </div>
+                        <div class="card-content">
+                            <h4>Nombre Apellido</h4>
+                            <p>Frontend Developer</p>
+                        </div>
+                    </div>
+                    <!-- Miembro 3 -->
+                    <div class="equipo-card">
+                        <div class="card-img">
+                            <img src="" alt="Foto integrante">
+                        </div>
+                        <div class="card-content">
+                            <h4>Nombre Apellido</h4>
+                            <p>Analista de Requerimientos</p>
+                        </div>
+                    </div>
+                    <!-- Miembro 4 -->
+                    <div class="equipo-card">
+                        <div class="card-img">
+                            <img src="" alt="Foto integrante">
+                        </div>
+                        <div class="card-content">
+                            <h4>Nombre Apellido</h4>
+                            <p>QA Tester</p>
+                        </div>
+                    </div>
+                    <!-- Miembro 5 -->
+                    <div class="equipo-card">
+                        <div class="card-img">
+                            <img src="" alt="Foto integrante">
+                        </div>
+                        <div class="card-content">
+                            <h4>Nombre Apellido</h4>
+                            <p>Diseñador UI/UX</p>
+                        </div>
+                    </div>
                 </div>
+            </div>
 
-            </section>
-        </div>
-    </main>
-
-    <?php include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/paciente/footer.php'); ?>
-</body>
-
-</html>
+        </section>
+    </div>
+</main>
