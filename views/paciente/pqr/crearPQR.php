@@ -3,9 +3,9 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/config/auth.php';
 requiereSesion();
 
 // Traemos al usuario de la sesión
-$idUsuario = $_SESSION['id_usuario'];
-$nombreUsuario = $_SESSION['usua_nombre'];
-?>
+// $idUsuario = $_SESSION['id_usuario'];
+// $nombreUsuario = $_SESSION['usua_nombre'];
+// ?>
 <!DOCTYPE html>
 <html lang="es">
 
