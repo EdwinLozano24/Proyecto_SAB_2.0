@@ -89,7 +89,7 @@
                     <!-- Miembro 2 -->
                     <div class="equipo-card">
                         <div class="card-img">
-                            <img src="" alt="Foto Angelo">
+                            <img src="https://img.chelseafc.com/image/upload/f_auto,w_1440,c_fill,g_faces,q_90/editorial/news/2023/06/20/Kante_PL_trophy_2016_GettyImages-686388948.jpg" alt="Foto Angelo">
                         </div>
                         <div class="card-content">
                             <h4>Angelo Gonzalez</h4>
@@ -99,7 +99,7 @@
                     <!-- Miembro 3 -->
                     <div class="equipo-card">
                         <div class="card-img">
-                            <img src="" alt="Foto Edwin">
+                            <img src="https://thumbs.dreamstime.com/b/lionel-messi-22716478.jpg" alt="Foto Edwin">
                         </div>
                         <div class="card-content">
                             <h4>Edwin Lozano</h4>
@@ -109,7 +109,7 @@
                     <!-- Miembro 4 -->
                     <div class="equipo-card">
                         <div class="card-img">
-                            <img src="" alt="Foto Juan">
+                            <img src="https://thumbs.dreamstime.com/b/vector-de-perfil-avatar-predeterminado-foto-usuario-medios-sociales-icono-183042379.jpg" alt="Foto Juan">
                         </div>
                         <div class="card-content">
                             <h4>Juan Castro</h4>
@@ -119,7 +119,7 @@
                     <!-- Miembro 5 -->
                     <div class="equipo-card">
                         <div class="card-img">
-                            <img src="" alt="Foto Agnel">
+                            <img src="https://thumbs.dreamstime.com/b/vector-de-perfil-avatar-predeterminado-foto-usuario-medios-sociales-icono-183042379.jpg" alt="Foto Agnel">
                         </div>
                         <div class="card-content">
                             <h4>Agnel Tinoco</h4>
