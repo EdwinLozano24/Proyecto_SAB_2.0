@@ -122,7 +122,7 @@
                         <h3>Documentación del Proyecto</h3>
                         <p>Consulta el documento general del proyecto, con los diagramas, modelos de datos y análisis completo del sistema.</p>
                         <a href="https://docs.google.com/document/d/1QPj8asAXbAwXNvvhILz0kmkowixvlbXu/edit" target="_blank" class="btn-doc">
-                            <i class="fa-solid fa-file-pdf"></i> Ver Documento Completo
+                            <i class="fa-regular fa-file-word"></i> Ver Documento Completo
                         </a>
                     </div>
                 </div>
