@@ -79,50 +79,50 @@
                     <!-- Miembro 1 -->
                     <div class="equipo-card">
                         <div class="card-img">
-                            <img src="" alt="Foto de Angelo">
+                            <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/cristiano-ronaldo-cr7%3A-limited-special-editio-design-template-1ade76990ca076687849a104fb3d70b1_screen.jpg?ts=1733770873" alt="Foto Santiago">
                         </div>
                         <div class="card-content">
-                            <h4>Angelo Gonzalez</h4>
+                            <h4>Santiago Carranza</h4>
                             <p>Desarrollador Backend</p>
                         </div>
                     </div>
                     <!-- Miembro 2 -->
                     <div class="equipo-card">
                         <div class="card-img">
-                            <img src="" alt="Foto integrante">
+                            <img src="" alt="Foto Angelo">
                         </div>
                         <div class="card-content">
-                            <h4>Nombre Apellido</h4>
-                            <p>Frontend Developer</p>
+                            <h4>Angelo Gonzalez</h4>
+                            <p>Analista de Requerimientos</p>
                         </div>
                     </div>
                     <!-- Miembro 3 -->
                     <div class="equipo-card">
                         <div class="card-img">
-                            <img src="" alt="Foto integrante">
+                            <img src="" alt="Foto Edwin">
                         </div>
                         <div class="card-content">
-                            <h4>Nombre Apellido</h4>
-                            <p>Analista de Requerimientos</p>
+                            <h4>Edwin Lozano</h4>
+                            <p>Frontend Developer</p>
                         </div>
                     </div>
                     <!-- Miembro 4 -->
                     <div class="equipo-card">
                         <div class="card-img">
-                            <img src="" alt="Foto integrante">
+                            <img src="" alt="Foto Juan">
                         </div>
                         <div class="card-content">
-                            <h4>Nombre Apellido</h4>
+                            <h4>Juan Castro</h4>
                             <p>QA Tester</p>
                         </div>
                     </div>
                     <!-- Miembro 5 -->
                     <div class="equipo-card">
                         <div class="card-img">
-                            <img src="" alt="Foto integrante">
+                            <img src="" alt="Foto Agnel">
                         </div>
                         <div class="card-content">
-                            <h4>Nombre Apellido</h4>
+                            <h4>Agnel Tinoco</h4>
                             <p>Diseñador UI/UX</p>
                         </div>
                     </div>
