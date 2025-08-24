@@ -46,10 +46,36 @@ function obtenerIniciales($nombreCompleto) {
             <h2 class="section-title">Crear PQR</h2>
             <p>Usuario responsable: <strong><?= $nombreUsuario ?></strong></p>
         </div>
+            <div class="container">
 
+
+        <!-- Información del Avatar -->
+        <div class="avatar-container">
+            <div class="avatar"><?= obtenerIniciales($paciente['usua_nombre']) ?></div>
+            <div class="avatar-info">
+                <h2><?= $paciente['usua_nombre']?></h2>
+                <h3></h3> <p><?= $paciente['usua_tipo'] ?>
+                
+                <span class="status-badge status-active">● <?= $paciente['usua_estado'] ?></span>
+            </div>
+        </div>
+
+        <!-- Información Personal -->
+        <div class="form-section">
+            <div class="section-title">
+                <div class="section-icon">👤</div>
+                Información Personal
+            </div>
+            <div class="form-grid">
+                <div class="form-group">
         <form action="/controllers/PqrsController.php?accion=storeUser" method="POST">
-            <!-- ID oculto del usuario logueado -->
-            <input type="hidden" name="pqrs_usuario" value="<?= $idUsuario ?>">
+                    <label>Nombre Completo</label>
+                    <input type="hidden" name="origen_formulario" id="origen_formulario" value="Usuario" required>
+                    <input type="hidden" name="id_usuario" id="id_usuario" value="<?= $paciente['id_usuario'] ?>" required>
+                    <input type="hidden" name="usua_nombre" id="usua_nombre" value="<?= $paciente['usua_nombre'] ?>" required>
+                    <div class="data-field"><?= $paciente['usua_nombre']?></div>
+                </div>
+            
 
             <div class="form-group">
                 <label>Nombre Completo</label>
