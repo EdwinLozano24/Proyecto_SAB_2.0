@@ -66,10 +66,17 @@ $historias = $stmt->fetchAll();
         <table id="HistorialDatatable" class="table-custom">
             <thead>
                 <tr>
+                    <th>Id</th>
                     <th>Paciente</th>
+                    <th>Antecedentes Personales</th>
+                    <th>Antecedentes Familiares</th>
                     <th>Medicamentos Actuales</th>
                     <th>Alergias</th>
                     <th>Diagnostico</th>
+                    <th>Fecha Registro</th>
+                    <th>Fecha Actualizacion</th>
+                    <th>Creado Por</th>
+                    <th>Actualizado Por</th>
                     <th>Odontograma</th>
                     <th>Indice DMFT</th>
                     <th>Frecuencia De Cepillado</th>
@@ -83,10 +90,17 @@ $historias = $stmt->fetchAll();
             <tbody>
                 <?php foreach ($historias as $historia): ?>
                     <tr>
+                        <td><?= htmlspecialchars($historia['id_historial']) ?></td>
                         <td><?= htmlspecialchars($historia['hist_paciente']) ?></td>
+                        <td><?= htmlspecialchars($historia['hist_antecedentes_personales']) ?></td>
+                        <td><?= htmlspecialchars($historia['hist_antecedentes_familiares']) ?></td>
                         <td><?= htmlspecialchars($historia['hist_medicamentos_actuales']) ?></td>
                         <td><?= htmlspecialchars($historia['hist_alergias']) ?></td>
                         <td><?= htmlspecialchars($historia['hist_diagnostico']) ?></td>
+                        <td><?= htmlspecialchars($historia['hist_fecha_registro']) ?></td>
+                        <td><?= htmlspecialchars($historia['hist_fecha_actualizacion']) ?></td>
+                        <td><?= htmlspecialchars($historia['hist_creado_por']) ?></td>
+                        <td><?= htmlspecialchars($historia['hist_actualizado_por']) ?></td>
                         <td><?= htmlspecialchars($historia['hist_odontograma']) ?></td>
                         <td><?= htmlspecialchars($historia['hist_indice_dmft']) ?></td>
                         <td><?= htmlspecialchars($historia['hist_frecuencia_cepillado']) ?></td>
