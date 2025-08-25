@@ -1,3 +1,9 @@
+<?php
+require_once $_SERVER['DOCUMENT_ROOT'] . '/config/auth.php';
+requiereSesion();
+
+$id_usuario = $_SESSION['usuario']['id_usuario'];
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -9,6 +15,7 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
     <?php
+    // Usar el CSS estilizado para PQRS
     $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/assets/css/pqr/pqrCrear.css';
     $cssUrl = '/assets/css/pqr/pqrCrear.css';
     if (file_exists($cssPath)) {
@@ -50,53 +57,51 @@
                             <h3 class="section-title">Detalles del PQRS</h3>
                         </div>
 
-
-                            <!-- Tipo de PQRS -->
-                            <div class="form-group">
-                                <label for="pqrs_tipo">
-                                    Tipo de PQRS <span class="required">*</span>
-                                </label>
-                                <div class="input-with-icon">
-                                    <span class="input-icon">📝</span>
-                                    <select name="pqrs_tipo" id="pqrs_tipo" required>
-                                        <option value="" disabled selected>Seleccionar tipo</option>
-                                        <option value="Petición">Petición</option>
-                                        <option value="Queja">Queja</option>
-                                        <option value="Reclamo">Reclamo</option>
-                                        <option value="Sugerencia">Sugerencia</option>
-                                    </select>
-                                </div>
-                                <a href="#" class="motivo-link">
-                                    ⚠️ Selecciona un tipo para ver la información
-                                </a>
+                        <!-- Tipo de PQRS -->
+                        <div class="form-group">
+                            <label for="pqrs_tipo">
+                                Tipo de PQRS <span class="required">*</span>
+                            </label>
+                            <div class="input-with-icon">
+                                <span class="input-icon">📝</span>
+                                <select name="pqrs_tipo" id="pqrs_tipo" required>
+                                    <option value="" disabled selected>Seleccionar tipo</option>
+                                    <option value="Petición">Petición</option>
+                                    <option value="Queja">Queja</option>
+                                    <option value="Reclamo">Reclamo</option>
+                                    <option value="Sugerencia">Sugerencia</option>
+                                </select>
                             </div>
+                            <a href="#" class="motivo-link">
+                                ⚠️ Selecciona un tipo para ver la información
+                            </a>
+                        </div>
 
-                            <!-- Asunto -->
-                            <div class="form-group">
-                                <label for="pqrs_asunto">
-                                    Asunto <span class="required">*</span>
-                                </label>
-                                <div class="input-with-icon">
-                                    <span class="input-icon">📄</span>
-                                    <input type="text" name="pqrs_asunto" id="pqrs_asunto"
-                                        placeholder="Ingrese el asunto" required>
-                                </div>
+                        <!-- Asunto -->
+                        <div class="form-group">
+                            <label for="pqrs_asunto">
+                                Asunto <span class="required">*</span>
+                            </label>
+                            <div class="input-with-icon">
+                                <span class="input-icon">📄</span>
+                                <input type="text" name="pqrs_asunto" id="pqrs_asunto"
+                                    placeholder="Ingrese el asunto" required>
                             </div>
+                        </div>
 
-                            <!-- Descripción -->
-                            <div class="form-group full-width">
-                                <label for="pqrs_descripcion">
-                                    Descripción <span class="required">*</span>
-                                </label>
-                                <div class="textarea-container">
-                                    <textarea name="pqrs_descripcion" id="pqrs_descripcion"
-                                        maxlength="255"
-                                        placeholder="Describe el motivo de tu PQRS con más detalle..."
-                                        required></textarea>
-                                    <div class="textarea-footer">
-                                        <span>💬</span>
-                                        <span>Sé lo más específico posible</span>
-                                    </div>
+                        <!-- Descripción -->
+                        <div class="form-group full-width">
+                            <label for="pqrs_descripcion">
+                                Descripción <span class="required">*</span>
+                            </label>
+                            <div class="textarea-container">
+                                <textarea name="pqrs_descripcion" id="pqrs_descripcion"
+                                    maxlength="255"
+                                    placeholder="Describe el motivo de tu PQRS con más detalle..."
+                                    required></textarea>
+                                <div class="textarea-footer">
+                                    <span>💬</span>
+                                    <span>Sé lo más específico posible</span>
                                 </div>
                             </div>
                         </div>
@@ -156,7 +161,7 @@
     <script>
         $(document).ready(function() {
             // Inicializar Select2
-            $('#pqrs_usuario_responsable, #pqrs_tipo').select2({
+            $('#pqrs_tipo').select2({
                 width: '100%'
             });
 
