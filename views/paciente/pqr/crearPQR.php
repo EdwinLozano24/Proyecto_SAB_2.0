@@ -18,8 +18,8 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
     <!-- <link rel="stylesheet" href="styles.css"> -->
 
     <?php
-    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/Assets/css/pqr/pqrCrear.css';
-    $cssUrl = '/Assets/css/pqr/pqrCrear.css';
+    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/assets/css/admin/crudPage.css';
+    $cssUrl = '/assets/css/admin/crudPage.css';
     if (file_exists($cssPath)) {
         echo '<link rel="stylesheet" href="' . $cssUrl . '">';
     } else {
