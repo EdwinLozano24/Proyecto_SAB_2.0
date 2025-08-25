@@ -16,7 +16,7 @@
     }
     ?>
   </head>
-  <main>
+  <main class="main">
     <div class="container">
         <!-- Encabezado -->
         <div class="header">
