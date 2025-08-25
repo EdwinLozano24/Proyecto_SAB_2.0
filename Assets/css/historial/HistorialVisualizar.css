@@ -192,9 +192,15 @@ textarea {
     gap: 20px;
 }
 
+button {
+    all: unset; /* elimina padding, borde, color default */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
 /* Grupo de botones */
 .button-group {
-    all: unset;
     display: flex;
     gap: 16px;
     justify-content: flex-end;
