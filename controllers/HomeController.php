@@ -22,7 +22,7 @@ switch ($accion) {
         break;
 
     default:
-        $home->home();
+        $home->homeAdministrador();
         break;
 }
 
@@ -35,7 +35,7 @@ class HomeController
         $this->UsuarioModel = new UsuarioModel();
     }
 
-    public function home()
+    public function homeAdministrador()
     {
         
         header('Location: ../views/administrador/home/admin_dashboard.php');
