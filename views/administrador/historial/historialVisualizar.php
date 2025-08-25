@@ -21,7 +21,7 @@
     ?>
   </head>
   <body>
-    <div class="container">
+<div class="container">
         <!-- Encabezado -->
         <div class="header">
             <div class="logo">🏥</div>
@@ -40,7 +40,7 @@
         <div class="info-card">
             <p><strong>Nota:</strong> Los campos marcados con <span class="required">*</span> son obligatorios.</p>
         </div>
-        
+
         <form id="historiaClinica">
             <!-- Información del Paciente -->
             <div class="form-section">
@@ -48,6 +48,7 @@
                     <div class="section-icon">👤</div>
                     Información del Paciente
                 </div>
+                
                 <div style="display: grid; grid-template-columns: 150px 1fr; gap: 20px;">
                     <div class="form-group">
                         <label for="id">ID <span class="required">*</span></label>
