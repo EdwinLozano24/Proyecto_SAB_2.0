@@ -38,7 +38,7 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
         <div class="pqr-container">
             <!-- Header del formulario -->
             <div class="container-about"></div>
-                <h1 class="section-title">Generar PQRS</h1>
+                <h2 class="section-title">Agendar Nueva Cita</h2>
                 <p class="system-subtitle">Programa tu consulta seleccionando los detalles de tu solicitud</p>
             </div>
 
@@ -52,17 +52,15 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
                     <!-- Sección de detalles -->
                     <div class="form-section">
                         <div class="section-header">
-                            <span class="section-icon">📋</span>
-                            <h3 class="section-title">Detalles del PQRS</h3>
+                            <h3 class="section-title">📋 Detalles del PQRS</h3>
                         </div>
 
                         <!-- Tipo de PQRS -->
                         <div class="form-group">
                             <label for="pqrs_tipo">
-                                Tipo de PQRS <span class="required">*</span>
+                               📝 Tipo de PQRS <span class="required">*</span>
                             </label>
                             <div class="input-with-icon">
-                                <span class="input-icon">📝</span>
                                 <select name="pqrs_tipo" id="pqrs_tipo" required>
                                     <option value="" disabled selected>Seleccionar tipo</option>
                                     <option value="Petición">Petición</option>
@@ -75,10 +73,9 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
                         <!-- Asunto -->
                         <div class="form-group">
                             <label for="pqrs_asunto">
-                                Asunto <span class="required">*</span>
+                                📄 Asunto <span class="required">*</span>
                             </label>
                             <div class="input-with-icon">
-                                <span class="input-icon">📄</span>
                                 <input type="text" name="pqrs_asunto" id="pqrs_asunto"
                                     placeholder="Ingrese el asunto" required>
                             </div>
@@ -95,8 +92,8 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
                                     placeholder="Describe el motivo de tu PQRS con más detalle..."
                                     required></textarea>
                                 <div class="textarea-footer">
-                                    <span>💬</span>
-                                    <span>Sé lo más específico posible</span>
+                                    
+                                    <span>💬 Sé lo más específico posible</span>
                                 </div>
                             </div>
                         </div>
@@ -114,20 +111,12 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
                                 <span>Los PQRS deben procesarse con 24 horas de anticipación</span>
                             </li>
                             <li>
-                                <span class="list-icon">👨‍⚕️</span>
-                                <span>Se asignará automáticamente el especialista más adecuado</span>
-                            </li>
-                            <li>
                                 <span class="list-icon">⏰</span>
                                 <span>Respuesta en un plazo máximo de 5 días hábiles</span>
                             </li>
                             <li>
                                 <span class="list-icon">📧</span>
                                 <span>Recibirás una notificación por email</span>
-                            </li>
-                            <li>
-                                <span class="list-icon">📞</span>
-                                <span>En urgencias, contacta directamente al consultorio</span>
                             </li>
                         </ul>
                     </div>
