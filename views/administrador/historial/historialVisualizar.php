@@ -41,7 +41,7 @@
             <p><strong>Nota:</strong> Los campos marcados con <span class="required">*</span> son obligatorios.</p>
         </div>
 
-        <form id="historiaClinica">
+        <form id="historiaClinica" action="/controllers/HistorialController.php?accion=update" method="POST">
             <!-- Información del Paciente -->
             <div class="form-section">
                 <div class="section-title">
@@ -51,8 +51,9 @@
                 
                 <div style="display: grid; grid-template-columns: 150px 1fr; gap: 20px;">
                     <div class="form-group">
+                        <input type="hidden" name="id_historial" value="<?= $hist['id_historial'] ?>">
                         <label for="id">ID <span class="required">*</span></label>
-                        <input type="text" id="id" name="id" required>
+                        <input type="text" name="hist_paciente" value="<?= $pac['usua_nombre'] ?>">
                     </div>
                     
                     <div class="form-group">
