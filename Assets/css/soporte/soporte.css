@@ -1,55 +1,119 @@
-/* --- Estilos para soporte --- */
+/* Estilos generales para la página de soporte */
+.soporte-page .main-content {
+    padding: 0;
+}
+
 .soporte-container {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+    padding: 0 40px 40px;
 }
 
-/* Tarjetas de contenido */
-.soporte-section .content-card {
-    text-align: left;
-    align-items: flex-start;
+.soporte-section {
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-/* Iconos en títulos */
-.soporte-section .card-title i {
-    margin-right: 8px;
+/* Título principal */
+.soporte-title {
+    margin-top: 30px;
+    text-align: center;
+    margin-bottom: 15px;
     color: #0ea5e9;
-}
-
-/* Listas de FAQ y documentación */
-.soporte-section ul {
-    margin-top: 12px;
-    padding-left: 20px;
-    list-style: none;
-}
-
-.soporte-section ul li {
-    margin-bottom: 10px;
-    padding-left: 20px;
+    font-size: 32px;
     position: relative;
-    font-size: 14px;
-    line-height: 1.5;
-    color: #475569;
+    padding-bottom: 15px;
 }
 
-.soporte-section ul li::before {
-    content: "•";
+.soporte-title::after {
+    content: '';
     position: absolute;
-    left: 0;
-    color: #0ea5e9;
-    font-weight: bold;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: #0ea5e9;
 }
 
-/* Descripción */
-.soporte-section .card-description {
-    margin-top: 8px;
+.soporte-subtitle {
+    text-align: center;
+    color: #64748b;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+/* Tarjetas de soporte */
+.soporte-card {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    margin-top: 30px;
+}
+
+.soporte-card h2 {
+    font-size: 22px;
+    margin: 0 0 15px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #1e293b;
+}
+
+.soporte-card h2 i {
+    color: #0ea5e9;
+}
+
+/* Listas dentro de soporte */
+.soporte-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.soporte-card ul li {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
     color: #475569;
-    font-size: 14px;
+    font-size: 15px;
     line-height: 1.6;
 }
 
-/* Botones dentro de soporte */
-.soporte-section .btn {
+.soporte-card ul li::before {
+    content: "•";
+    color: #0ea5e9;
+    font-weight: bold;
+    margin-right: 6px;
+}
+
+/* Texto dentro de tarjetas */
+.soporte-card p {
+    color: #475569;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* Botones coherentes con citas */
+.soporte-card .btn {
     margin-top: 16px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .soporte-container {
+        padding: 0 20px 30px;
+    }
+
+    .soporte-title {
+        font-size: 26px;
+    }
+
+    .soporte-subtitle {
+        font-size: 16px;
+    }
+
+    .soporte-card {
+        padding: 20px;
+    }
 }
