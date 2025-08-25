@@ -300,6 +300,27 @@ input[type="submit"]:active {
     animation: fadeInUp 0.5s ease-out;
 }
 
+.info-card {
+    background: #f0f9ff;
+    border: 1px solid #bae6fd;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 20px;
+}
+
+.info-card h3 {
+    color: #0c4a6e;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.info-card p {
+    color: #0369a1;
+    font-size: 13px;
+    margin: 0;
+}
+
 @keyframes fadeInUp {
     from {
         opacity: 0;

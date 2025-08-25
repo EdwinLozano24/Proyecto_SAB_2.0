@@ -25,10 +25,13 @@
             <p class="subtitle">Formulario de registro médico del paciente</p>
         </div>
 
+        <div class="info-card">
+            <p><strong>Nota:</strong> Los campos marcados con <span class="required">*</span> son obligatorios.</p>
+        </div>
+        
         <form id="historiaClinica">
             <!-- Información del Paciente -->
             <div class="form-section">
-              <label for="Info">Los campos marcados con * son obligatorios.</label>
                 <div class="section-title">
                     <div class="section-icon">👤</div>
                     Información del Paciente
