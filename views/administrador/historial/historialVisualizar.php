@@ -23,7 +23,9 @@
             <div class="logo">🏥</div>
             <h2>Historia Clínica</h2>
             <p class="subtitle">Formulario de registro médico del paciente</p>
-             <div style="margin-top: 20px;">
+            
+            <!-- Botón de Citas Relacionadas -->
+            <div style="margin-top: 20px;">
                 <button type="button" class="btn-citas">
                     <i class="fa-solid fa-eye"></i>
                     Citas Relacionadas
