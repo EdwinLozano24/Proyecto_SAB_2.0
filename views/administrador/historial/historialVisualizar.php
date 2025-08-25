@@ -29,10 +29,10 @@
             <!-- Información del Paciente -->
             <div class="form-section">
                 <div class="section-title">
+                  <label for="Info">Los campos marcados con * son obligatorios.</label>
                     <div class="section-icon">👤</div>
                     Información del Paciente
                 </div>
-                <label for="Info">Los campos marcados con "*" son obligatorios.</label>
                 <div style="display: grid; grid-template-columns: 150px 1fr; gap: 20px;">
                     <div class="form-group">
                         <label for="id">ID <span class="required">*</span></label>
