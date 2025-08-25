@@ -221,13 +221,13 @@
 
             <!-- Botones -->
             <div class="button-group">
-                <button type="button" class="btn-base btn-secondary">
+                <button type="button" class="btn-base btn-secondary" onclick="window.history.back()">
                     <i class="fa-solid fa-times"></i>
                     Cancelar
                 </button>
                 <button type="submit" class="btn-base btn-primary">
                     <i class="fa-solid fa-save"></i>
-                    Guardar Historia Clínica
+                    Actualizar Historia Clínica
                 </button>
             </div>
         </form>
