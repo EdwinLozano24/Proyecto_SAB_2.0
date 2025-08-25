@@ -30,7 +30,7 @@
             
             <!-- Botón de Citas Relacionadas -->
             <div style="margin-top: 20px;">
-                <button type="button" class="btn-citas">
+                <button type="button" class="btn-base btn-citas">
                     <i class="fa-solid fa-eye"></i>
                     Citas Relacionadas
                 </button>
@@ -221,8 +221,8 @@
 
             <!-- Botones -->
             <div class="button-group">
-                <button type="button" class="btn-secondary">Cancelar</button>
-                <input type="submit" value="Guardar Historia Clínica">
+                <button type="button" class="btn-base btn-secondary">Cancelar</button>
+                <button type="submit" class="btn-base btn-primary">Guardar Historia Clínica</button>
             </div>
         </form>
     </div>
