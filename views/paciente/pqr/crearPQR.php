@@ -37,8 +37,7 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
     <main class="main-content">
         <div class="pqr-container">
             <!-- Header del formulario -->
-            <div class="container-about">
-                <div class="dental-logo"></div>
+            <div class="container-about"></div>
                 <h1 class="section-title">Generar PQRS</h1>
                 <p class="system-subtitle">Programa tu consulta seleccionando los detalles de tu solicitud</p>
             </div>
