@@ -248,28 +248,6 @@ input[type="submit"]:active {
     color: #374151;
 }
 
-/* Tarjeta de información */
-.info-card {
-    background: #f0f9ff;
-    border: 1px solid #bae6fd;
-    border-radius: 8px;
-    padding: 16px;
-    margin-bottom: 20px;
-}
-
-.info-card h3 {
-    color: #0c4a6e;
-    font-size: 14px;
-    font-weight: 600;
-    margin-bottom: 8px;
-}
-
-.info-card p {
-    color: #0369a1;
-    font-size: 13px;
-    margin: 0;
-}
-
 .btn-citas {
     background: #0ea5e9;
     color: white;
@@ -295,6 +273,28 @@ input[type="submit"]:active {
 
 .btn-citas:active {
     transform: translateY(0);
+}
+
+/* Tarjeta de información */
+.info-card {
+    background: #f0f9ff;
+    border: 1px solid #bae6fd;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 20px;
+}
+
+.info-card h3 {
+    color: #0c4a6e;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.info-card p {
+    color: #0369a1;
+    font-size: 13px;
+    margin: 0;
 }
 
 /* Responsive */
