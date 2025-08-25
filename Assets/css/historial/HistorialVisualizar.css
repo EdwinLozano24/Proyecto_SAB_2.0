@@ -194,6 +194,7 @@ textarea {
 
 /* Grupo de botones */
 .button-group {
+    all: unset;
     display: flex;
     gap: 16px;
     justify-content: flex-end;
