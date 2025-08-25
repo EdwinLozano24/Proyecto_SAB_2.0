@@ -221,8 +221,14 @@
 
             <!-- Botones -->
             <div class="button-group">
-                <button type="button" class="btn-base btn-secondary">Cancelar</button>
-                <button type="submit" class="btn-base btn-primary">Guardar Historia Clínica</button>
+                <button type="button" class="btn-base btn-secondary">
+                    <i class="fa-solid fa-times"></i>
+                    Cancelar
+                </button>
+                <button type="submit" class="btn-base btn-primary">
+                    <i class="fa-solid fa-save"></i>
+                    Guardar Historia Clínica
+                </button>
             </div>
         </form>
     </div>
