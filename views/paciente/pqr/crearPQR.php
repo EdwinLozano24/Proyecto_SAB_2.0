@@ -72,10 +72,6 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
                                     <option value="Sugerencia">Sugerencia</option>
                                 </select>
                             </div>
-                            <a href="#" class="motivo-link">
-                                ⚠️ Selecciona un tipo para ver la información
-                            </a>
-                        </div>
 
                         <!-- Asunto -->
                         <div class="form-group">
