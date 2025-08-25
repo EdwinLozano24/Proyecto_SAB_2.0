@@ -16,7 +16,7 @@
     }
     ?>
   </head>
-  <body>
+  <main>
     <div class="container">
         <!-- Encabezado -->
         <div class="header">
@@ -28,7 +28,7 @@
         <div class="info-card">
             <p><strong>Nota:</strong> Los campos marcados con <span class="required">*</span> son obligatorios.</p>
         </div>
-        
+
         <form id="historiaClinica">
             <!-- Información del Paciente -->
             <div class="form-section">
@@ -214,5 +214,5 @@
         </form>
     </div>
 
-  </body>
+  </main>
 </html>
