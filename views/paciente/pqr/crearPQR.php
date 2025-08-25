@@ -16,8 +16,8 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     
     <?php
-    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/assets/css/admin/pqrCrear.css';
-    $cssUrl = '/assets/css/admin/pqrCrear.css';
+    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/Assets/css/admin/pqrCrear.css';
+    $cssUrl = '/Assets/css/admin/pqrCrear.css';
     if (file_exists($cssPath)) {
         echo '<link rel="stylesheet" href="' . $cssUrl . '">';
     } else {
