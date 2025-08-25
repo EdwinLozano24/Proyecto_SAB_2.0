@@ -97,7 +97,7 @@ $historias = $stmt->fetchAll();
                         <td>
                             <a href="/controllers/HistorialController.php?accion=view_update&id_historial=<?= $historia['id_historial'] ?>"
                                 class="action-btn edit">
-                                <i class="fa-solid fa-pen-to-square"></i>
+                                <i class="fa-solid fa-eye"></i>
                             </a>
                             <a href="/controllers/HistorialController.php?accion=delete&id_historial=<?= $historia['id_historial'] ?>"
                                 class="action-btn delete">
