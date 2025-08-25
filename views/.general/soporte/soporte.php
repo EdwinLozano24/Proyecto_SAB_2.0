@@ -32,7 +32,7 @@
                 <div class="content-card">
                     <h2 class="card-title"><i class="fas fa-question-circle"></i> Preguntas Frecuentes</h2>
                     <ul class="card-description">
-                        <li><strong>¿Cómo agendar una cita?</strong> Ingresa a la sección "Citas" desde el menú y selecciona el día y la hora disponible.</li>
+                        <li><strong>¿Cómo agendar una cita?</strong> Ingresa a la sección "Agendar cita" desde el menú y selecciona el día y la hora disponible.</li>
                         <li><strong>¿Cómo cancelar o reprogramar?</strong> Ve a "Mis citas", selecciona la cita y haz clic en cancelar o reprogramar.</li>
                         <li><strong>¿Qué hago si olvidé mi contraseña?</strong> Utiliza la opción "Recuperar contraseña" en la pantalla de inicio de sesión.</li>
                         <li><strong>¿Los precios son definitivos?</strong> No, los valores mostrados son aproximados, la clínica te confirmará el costo final.</li>
@@ -43,7 +43,7 @@
                 <div class="content-card">
                     <h2 class="card-title"><i class="fas fa-book-open"></i> Guía de Uso Rápida</h2>
                     <p class="card-description">Descarga nuestro manual de usuario para conocer paso a paso cómo utilizar SAB.</p>
-                    <a href="/assets/manuales/manual_usuario.pdf" target="_blank" class="btn btn-primary">
+                    <a href="" target="_blank" class="btn btn-primary">
                         <i class="fas fa-download"></i> Descargar Manual
                     </a>
                 </div>
