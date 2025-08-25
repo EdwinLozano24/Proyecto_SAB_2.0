@@ -30,7 +30,7 @@
             
             <!-- Botón de Citas Relacionadas -->
             <div style="margin-top: 20px;">
-                <button type="button" class="btn-base btn-citas">
+                <button type="button" class="btn-primary-custom">
                     <i class="fa-solid fa-eye"></i>
                     Citas Relacionadas
                 </button>
