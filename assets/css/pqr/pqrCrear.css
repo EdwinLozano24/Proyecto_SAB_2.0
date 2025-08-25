@@ -12,24 +12,20 @@
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     background: #f8fafc;
     min-height: 100vh;
-    padding: 0;
+    padding: 40px 20px;
     color: #334155;
 }
 
 /* --- Container principal --- */
 .pqr-container {
-    padding: 0 40px 40px;
-}
-
-.pqr-section {
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
 /* --- Encabezado principal --- */
 .container-about {
     text-align: center;
-    padding: 40px 0 20px;
+    margin-bottom: 40px;
 }
 
 .dental-logo {
@@ -40,7 +36,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 20px;
+    margin: 0 auto 24px;
     font-size: 32px;
     box-shadow: 0 4px 6px rgba(14, 165, 233, 0.3);
 }
@@ -50,264 +46,276 @@
 }
 
 .section-title {
-    margin: 0;
-    text-align: center;
-    margin-bottom: 15px;
     color: #0ea5e9;
-    font-size: 32px;
+    font-size: 36px;
+    font-weight: 400;
+    margin-bottom: 12px;
     position: relative;
-    padding-bottom: 15px;
-    font-weight: 600;
 }
 
 .section-title::after {
     content: '';
     position: absolute;
-    bottom: 0;
+    bottom: -8px;
     left: 50%;
     transform: translateX(-50%);
-    width: 80px;
+    width: 60px;
     height: 3px;
     background: #0ea5e9;
 }
 
 .system-subtitle {
-    text-align: center;
     color: #64748b;
-    font-size: 18px;
-    margin-bottom: 30px;
+    font-size: 16px;
     font-weight: 400;
+    margin-top: 16px;
 }
 
 /* --- Formulario principal --- */
 .form-card {
     background: white;
-    border-radius: 12px;
+    border-radius: 16px;
     padding: 40px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    margin-top: 30px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     border: 1px solid #e2e8f0;
+    margin-top: 0;
 }
 
-/* --- Sección de información --- */
+/* --- Sección del formulario --- */
 .form-section {
-    margin-bottom: 30px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #e2e8f0;
-}
-
-.form-section:last-child {
-    border-bottom: none;
     margin-bottom: 0;
-    padding-bottom: 0;
 }
 
 .section-header {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 25px;
+    gap: 12px;
+    margin-bottom: 32px;
+    color: #1e293b;
+}
+
+.section-icon {
+    color: #0ea5e9;
+    font-size: 20px;
 }
 
 .section-header .section-title {
     font-size: 20px;
-    margin: 0;
-    padding: 0;
-    text-align: left;
     color: #1e293b;
-    font-weight: 600;
+    margin: 0;
+    font-weight: 500;
+    position: relative;
 }
 
 .section-header .section-title::after {
     display: none;
 }
 
-.section-icon {
-    color: #0ea5e9;
-    font-size: 20px;
-    width: 24px;
-    height: 24px;
-    background: #0ea5e9;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 14px;
-    font-weight: 600;
-}
-
-/* --- Grid de formulario --- */
+/* --- Grid del formulario --- */
 .form-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 24px;
 }
 
 .form-group {
-    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 .form-group.full-width {
     grid-column: 1 / -1;
 }
 
+/* --- Labels --- */
 .form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 500;
-    color: #1e293b;
+    color: #374151;
     font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
 }
 
 .form-group label .required {
     color: #ef4444;
-    margin-left: 4px;
+    font-size: 14px;
 }
 
-/* --- Inputs con iconos --- */
-.input-with-icon {
-    position: relative;
-}
-
-.input-icon {
-    position: absolute;
-    left: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #94a3b8;
-    font-size: 16px;
-    z-index: 2;
-}
-
-.input-with-icon input,
-.input-with-icon select {
-    width: 100%;
-    padding: 14px 20px 14px 45px;
-    border: 2px solid #e2e8f0;
-    border-radius: 8px;
-    font-size: 16px;
-    color: #1e293b;
-    transition: all 0.3s ease;
-    background: white;
-    font-family: 'Inter', sans-serif;
-}
-
-/* Inputs sin iconos */
+/* --- Inputs base --- */
 input[type="text"],
+input[type="date"],
 select,
 textarea {
     width: 100%;
-    padding: 14px 20px;
+    padding: 12px 16px;
     border: 2px solid #e2e8f0;
     border-radius: 8px;
-    font-size: 16px;
+    font-size: 14px;
     color: #1e293b;
-    transition: all 0.3s ease;
     background: white;
     font-family: 'Inter', sans-serif;
+    transition: all 0.2s ease;
+    outline: none;
 }
 
+/* --- Estados focus y hover --- */
 input[type="text"]:focus,
+input[type="date"]:focus,
 select:focus,
-textarea:focus,
-.input-with-icon input:focus,
-.input-with-icon select:focus {
-    outline: none;
+textarea:focus {
     border-color: #0ea5e9;
-    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.2);
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
 }
 
 input[type="text"]:hover:not(:focus),
+input[type="date"]:hover:not(:focus),
 select:hover:not(:focus),
-textarea:hover:not(:focus),
-.input-with-icon input:hover:not(:focus),
-.input-with-icon select:hover:not(:focus) {
+textarea:hover:not(:focus) {
     border-color: #94a3b8;
-}
-
-/* --- Select específico --- */
-select,
-.input-with-icon select {
-    appearance: none;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-    background-repeat: no-repeat;
-    background-position: right 15px center;
-    background-size: 16px;
-    cursor: pointer;
-}
-
-.input-with-icon select {
-    background-position: right 15px center, left 15px center;
-}
-
-select option {
-    background: white;
-    color: #1e293b;
-    padding: 12px;
-}
-
-/* --- Textarea específico --- */
-.textarea-container {
-    position: relative;
-    width: 100%;
-}
-
-textarea,
-.textarea-container textarea {
-    width: 100%;
-    min-height: 120px;
-    resize: vertical;
-    padding: 15px 20px;
-    font-family: 'Inter', sans-serif;
-    line-height: 1.5;
-    border: 2px solid #e2e8f0;
-    border-radius: 8px;
-    font-size: 16px;
-    color: #1e293b;
-    transition: all 0.3s ease;
-}
-
-.textarea-footer {
-    font-size: 13px;
-    color: #64748b;
-    margin-top: 5px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
 }
 
 /* --- Placeholders --- */
 input::placeholder,
 textarea::placeholder {
-    color: #94a3b8;
+    color: #9ca3af;
     font-weight: 400;
 }
 
-/* --- Campos ocultos --- */
-input[type="hidden"] {
-    display: none;
+/* --- Selects con iconos --- */
+.input-with-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon {
+    position: absolute;
+    left: 12px;
+    color: #9ca3af;
+    font-size: 16px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.input-with-icon input,
+.input-with-icon select {
+    padding-left: 40px;
+}
+
+select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 12px center;
+    background-repeat: no-repeat;
+    background-size: 16px;
+    cursor: pointer;
+}
+
+.input-with-icon select {
+    background-position: right 12px center;
+}
+
+/* --- Input date específico --- */
+input[type="date"] {
+    position: relative;
+    color: #9ca3af;
+}
+
+input[type="date"]:focus,
+input[type="date"]:valid {
+    color: #1e293b;
+}
+
+/* Icono de calendario personalizado */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+    position: absolute;
+    right: 12px;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+input[type="date"] {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%239ca3af'%3e%3cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z'/%3e%3c/svg%3e");
+    background-position: right 12px center;
+    background-repeat: no-repeat;
+    background-size: 16px;
+}
+
+/* --- Textarea --- */
+.textarea-container {
+    position: relative;
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+    font-family: 'Inter', sans-serif;
+    line-height: 1.5;
+}
+
+.textarea-footer {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+    font-size: 12px;
+    color: #64748b;
+}
+
+/* --- Link especial --- */
+.motivo-link {
+    color: #0ea5e9;
+    font-size: 12px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 8px;
+    cursor: pointer;
+}
+
+.motivo-link:hover {
+    text-decoration: underline;
 }
 
 /* --- Info card --- */
 .form-info-card {
     background: #f0f9ff;
-    border: 1px solid #bae6fd;
+    border: 1px solid #e0f2fe;
     border-radius: 12px;
-    padding: 20px;
-    margin: 30px 0;
+    padding: 24px;
+    margin-top: 32px;
 }
 
 .info-card-header {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 16px;
     color: #0c4a6e;
 }
 
+.info-card-header .info-icon {
+    background: #0ea5e9;
+    color: white;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 600;
+}
+
 .info-card-header h3 {
-    font-size: 18px;
+    font-size: 16px;
+    font-weight: 600;
     margin: 0;
 }
 
@@ -318,24 +326,33 @@ input[type="hidden"] {
 }
 
 .info-list li {
-    margin-bottom: 10px;
     display: flex;
     align-items: flex-start;
-    gap: 10px;
+    gap: 12px;
+    margin-bottom: 12px;
     color: #0369a1;
+    font-size: 14px;
 }
 
-.info-list li i {
-    margin-top: 3px;
+.info-list li:last-child {
+    margin-bottom: 0;
+}
+
+.info-list li .list-icon {
+    color: #0ea5e9;
+    font-size: 16px;
+    margin-top: 1px;
     flex-shrink: 0;
 }
 
-/* --- Grupo de botones --- */
+/* --- Botones --- */
 .button-group {
     display: flex;
     justify-content: flex-end;
-    gap: 15px;
-    margin-top: 30px;
+    gap: 16px;
+    margin-top: 40px;
+    padding-top: 32px;
+    border-top: 1px solid #f1f5f9;
 }
 
 .btn,
@@ -346,50 +363,54 @@ button {
     gap: 8px;
     padding: 12px 24px;
     border-radius: 8px;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     border: none;
     font-family: 'Inter', sans-serif;
-    min-width: 140px;
+    text-decoration: none;
 }
 
-/* Botón secundario (cancelar) */
+/* Botón cancelar */
 .btn-secondary,
 button[type="button"] {
     background: white;
     color: #64748b;
     border: 1px solid #e2e8f0;
+    padding: 12px 20px;
 }
 
 .btn-secondary:hover,
 button[type="button"]:hover {
     background: #f8fafc;
-    color: #0ea5e9;
-    border-color: #bae6fd;
-    transform: translateY(-1px);
+    color: #374151;
+    border-color: #d1d5db;
 }
 
-/* Botón primario (registrar) */
+/* Botón principal */
 .btn-primary,
 button[type="submit"] {
-    background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+    background: #0ea5e9;
     color: white;
-    box-shadow: 0 2px 5px rgba(14, 165, 233, 0.3);
+    padding: 12px 24px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .btn-primary:hover,
 button[type="submit"]:hover {
-    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(14, 165, 233, 0.4);
+    background: #0284c7;
+    box-shadow: 0 4px 6px rgba(14, 165, 233, 0.2);
 }
 
 .btn-primary:active,
 button[type="submit"]:active {
     transform: translateY(0);
-    box-shadow: 0 2px 5px rgba(14, 165, 233, 0.3);
+}
+
+/* --- Campos ocultos --- */
+input[type="hidden"] {
+    display: none;
 }
 
 /* --- Estados de validación --- */
@@ -397,19 +418,19 @@ button[type="submit"]:active {
 .form-group.error select,
 .form-group.error textarea {
     border-color: #ef4444;
-    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
 }
 
 .form-group.success input,
 .form-group.success select,
 .form-group.success textarea {
     border-color: #10b981;
-    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
 }
 
 .error-message {
     color: #ef4444;
-    font-size: 13px;
+    font-size: 12px;
     margin-top: 6px;
     display: flex;
     align-items: center;
@@ -422,66 +443,102 @@ button[type="submit"]:active {
 }
 
 .select2-container--default .select2-selection--single {
-    height: 52px !important;
-    padding: 14px 20px !important;
+    height: 44px !important;
+    padding: 12px 16px !important;
     border: 2px solid #e2e8f0 !important;
     border-radius: 8px !important;
-    font-size: 16px;
-    font-family: 'Inter', sans-serif;
-    color: #1e293b;
+    font-size: 14px;
     background: white !important;
-    transition: all 0.3s ease;
-    line-height: 24px !important;
-}
-
-.select2-container--default .select2-selection--single:hover {
-    border-color: #94a3b8 !important;
+    line-height: 20px !important;
 }
 
 .select2-container--default.select2-container--focus .select2-selection--single {
     border-color: #0ea5e9 !important;
-    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.2) !important;
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1) !important;
 }
 
 .select2-container--default .select2-selection--single .select2-selection__rendered {
     color: #1e293b;
     padding: 0;
-    line-height: 24px;
+    line-height: 20px;
 }
 
 .select2-container--default .select2-selection--single .select2-selection__placeholder {
-    color: #94a3b8;
+    color: #9ca3af;
 }
 
 .select2-container--default .select2-selection--single .select2-selection__arrow {
     top: 50%;
     transform: translateY(-50%);
-    right: 15px;
-    height: 24px;
+    right: 12px;
+    height: 20px;
 }
 
 .select2-container--default .select2-results__option {
-    font-size: 16px;
-    padding: 12px 20px;
+    font-size: 14px;
+    padding: 10px 16px;
     color: #1e293b;
 }
 
 .select2-container--default .select2-results__option--highlighted {
-    background: #e0f2fe !important;
+    background: #f0f9ff !important;
     color: #0369a1 !important;
 }
 
 .select2-dropdown {
     border: 2px solid #e2e8f0 !important;
     border-radius: 8px !important;
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    .main-content {
+        padding: 20px 10px;
+    }
+
+    .form-card {
+        padding: 24px 20px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .button-group {
+        flex-direction: column-reverse;
+        gap: 12px;
+    }
+
+    .btn,
+    button {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .section-title {
+        font-size: 28px;
+    }
+
+    .dental-logo {
+        width: 56px;
+        height: 56px;
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 640px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* --- Animaciones --- */
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(10px);
     }
     to {
         opacity: 1;
@@ -490,104 +547,29 @@ button[type="submit"]:active {
 }
 
 .form-card {
-    animation: fadeIn 0.5s ease-out;
+    animation: fadeIn 0.3s ease-out;
 }
 
 /* --- Loading states --- */
-.loading {
-    opacity: 0.6;
-    pointer-events: none;
-}
-
 .loading button[type="submit"] {
     position: relative;
+    pointer-events: none;
+    opacity: 0.7;
 }
 
 .loading button[type="submit"]::after {
     content: '';
     position: absolute;
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     border: 2px solid transparent;
     border-top: 2px solid white;
     border-radius: 50%;
     animation: spin 1s linear infinite;
-    right: 16px;
+    right: 12px;
 }
 
 @keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-/* --- Responsive Design --- */
-@media (max-width: 768px) {
-    .pqr-container {
-        padding: 0 20px 30px;
-    }
-    
-    .section-title {
-        font-size: 26px;
-    }
-    
-    .system-subtitle {
-        font-size: 16px;
-    }
-    
-    .form-card {
-        padding: 20px;
-        margin-top: 20px;
-    }
-    
-    .form-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .button-group {
-        flex-direction: column;
-        gap: 12px;
-    }
-    
-    .btn,
-    button {
-        width: 100%;
-        min-width: auto;
-    }
-
-    .dental-logo {
-        width: 56px;
-        height: 56px;
-        font-size: 28px;
-    }
-
-    input[type="text"],
-    select,
-    textarea,
-    .input-with-icon input,
-    .input-with-icon select {
-        font-size: 16px;
-    }
-}
-
-/* --- Mejoras visuales adicionales --- */
-.form-group:hover label {
-    color: #0ea5e9;
-    transition: color 0.3s ease;
-}
-
-/* Separación visual entre secciones */
-.form-card {
-    border: 1px solid #e2e8f0;
-}
-
-/* Focus ring más suave */
-input:focus,
-select:focus,
-textarea:focus {
-    border-color: #0ea5e9;
-    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.2);
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
