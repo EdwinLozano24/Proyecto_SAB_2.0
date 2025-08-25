@@ -270,6 +270,33 @@ input[type="submit"]:active {
     margin: 0;
 }
 
+.btn-citas {
+    background: #0ea5e9;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    letter-spacing: -0.025em;
+}
+
+.btn-citas:hover {
+    background: #0284c7;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+}
+
+.btn-citas:active {
+    transform: translateY(0);
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .container {
@@ -298,6 +325,27 @@ input[type="submit"]:active {
 /* Animaciones */
 .container {
     animation: fadeInUp 0.5s ease-out;
+}
+
+.info-card {
+    background: #f0f9ff;
+    border: 1px solid #bae6fd;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 20px;
+}
+
+.info-card h3 {
+    color: #0c4a6e;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.info-card p {
+    color: #0369a1;
+    font-size: 13px;
+    margin: 0;
 }
 
 @keyframes fadeInUp {
