@@ -28,8 +28,8 @@
         <form id="historiaClinica">
             <!-- Información del Paciente -->
             <div class="form-section">
+              <label for="Info">Los campos marcados con * son obligatorios.</label>
                 <div class="section-title">
-                  <label for="Info">Los campos marcados con * son obligatorios.</label>
                     <div class="section-icon">👤</div>
                     Información del Paciente
                 </div>
