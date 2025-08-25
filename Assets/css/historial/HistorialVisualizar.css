@@ -21,8 +21,8 @@ body {
     border-radius: 16px;
     padding: 40px;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    max-width: 8000px;
-    width: 80%;
+    max-width: 800px;
+    width: 100%;
     border: 1px solid #e2e8f0;
 }
 
@@ -76,7 +76,7 @@ h2 {
 
 /* --- Secciones y grupos de formulario --- */
 .form-section {
-    margin-bottom: 16px;
+    margin-bottom: 32px;
 }
 
 .section-title {
@@ -123,7 +123,6 @@ label {
     font-size: 14px;
     font-weight: 500;
     margin-bottom: 6px;
-    margin-top: 6px;
     letter-spacing: -0.025em;
 }
 
@@ -325,27 +324,6 @@ input[type="submit"]:active {
 /* Animaciones */
 .container {
     animation: fadeInUp 0.5s ease-out;
-}
-
-.info-card {
-    background: #f0f9ff;
-    border: 1px solid #bae6fd;
-    border-radius: 8px;
-    padding: 16px;
-    margin-bottom: 20px;
-}
-
-.info-card h3 {
-    color: #0c4a6e;
-    font-size: 14px;
-    font-weight: 600;
-    margin-bottom: 8px;
-}
-
-.info-card p {
-    color: #0369a1;
-    font-size: 13px;
-    margin: 0;
 }
 
 @keyframes fadeInUp {
