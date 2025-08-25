@@ -38,7 +38,7 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
         <div class="pqr-container">
             <!-- Header del formulario -->
             <div class="container-about"></div>
-                <h1 class="section-title">Generar PQRS</h1>
+                <h2 class="section-title">Agendar Nueva Cita</h2>
                 <p class="system-subtitle">Programa tu consulta seleccionando los detalles de tu solicitud</p>
             </div>
 
