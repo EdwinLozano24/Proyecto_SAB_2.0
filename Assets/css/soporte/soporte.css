@@ -1,0 +1,55 @@
+/* --- Estilos para soporte --- */
+.soporte-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Tarjetas de contenido */
+.soporte-section .content-card {
+    text-align: left;
+    align-items: flex-start;
+}
+
+/* Iconos en títulos */
+.soporte-section .card-title i {
+    margin-right: 8px;
+    color: #0ea5e9;
+}
+
+/* Listas de FAQ y documentación */
+.soporte-section ul {
+    margin-top: 12px;
+    padding-left: 20px;
+    list-style: none;
+}
+
+.soporte-section ul li {
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #475569;
+}
+
+.soporte-section ul li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #0ea5e9;
+    font-weight: bold;
+}
+
+/* Descripción */
+.soporte-section .card-description {
+    margin-top: 8px;
+    color: #475569;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Botones dentro de soporte */
+.soporte-section .btn {
+    margin-top: 16px;
+}

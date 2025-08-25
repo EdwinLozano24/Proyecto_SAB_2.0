@@ -6,7 +6,7 @@
             <div class="footer-links">
                 <a href="/views/.general/terminosCondiciones/terminosCondiciones.php">Términos y condiciones</a>
                 <a href="/views/.general/sobreNosotros/sobreNosotros.php">Sobre nosotros</a>
-                <a href="#">Soporte</a>
+                <a href="/views/.general/soporte/soporte.php">Soporte</a>
             </div>
         </div>
     </footer>
