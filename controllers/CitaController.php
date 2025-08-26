@@ -250,8 +250,8 @@ class CitaController
     {
         $id_especialista = $this->EspecialistaModel->findCita($id_usuario);
         $cita = $this->CitaModel->findEspecialista($id_especialista);
-        var_dump($id_especialista);
-        var_dump($cita); exit;
+        var_dump($id_especialista); exit;
+        // var_dump($cita); exit;
 
 
     }
