@@ -151,4 +151,17 @@ class CitaModel
         $count = $stmt->fetchColumn();
         return $count == 0;
     }
+
+    public function findEspecialista($id_especialista)
+{
+    $sql = "SELECT * 
+            FROM tbl_citas
+            WHERE cita_especialista = :id_especialista";
+
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->bindParam(':id_especialista', $id_especialista, PDO::PARAM_INT);
+    $stmt->execute();
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC); // todas las citas
+}
 }

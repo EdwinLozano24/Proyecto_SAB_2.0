@@ -249,6 +249,9 @@ class CitaController
     public function especialistaCitaView($id_usuario)
     {
         $id_especialista = $this->EspecialistaModel->findCita($id_usuario);
-        var_dump($id_especialista); exit;
+        $cita = $this->CitaModel->findEspecialista($id_especialista);
+        var_dump($cita); exit;
+
+
     }
 }
