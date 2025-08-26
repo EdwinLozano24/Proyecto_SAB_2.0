@@ -49,9 +49,28 @@ class HistorialModel
     }
     public function find($id_historial)
     {
-        $stmt = $this->pdo->prepare("SELECT * FROM tbl_historial_clinico WHERE id_historial = :id_historial");
-        $stmt->execute([':id_historial' => $id_historial]);
-        return $stmt->fetch();
+    $sql = "
+        SELECT 
+            h.*,
+            up.usua_nombre      AS paciente_nombre,
+            up.id_usuario       AS paciente_id_usuario,
+            d.diag_nombre       AS diagnostico_nombre,
+            e.id_especialista   AS especialista_id,
+            ue.usua_nombre      AS especialista_nombre,
+            ue.id_usuario       AS especialista_id_usuario
+        FROM tbl_historial_clinico h
+        LEFT JOIN tbl_pacientes p ON h.hist_paciente = p.id_paciente
+        LEFT JOIN tbl_usuarios up ON p.paci_usuario = up.id_usuario
+        LEFT JOIN tbl_diagnosticos d ON h.hist_diagnostico = d.id_diagnostico
+        LEFT JOIN tbl_especialistas e ON h.hist_creado_por = e.id_especialista
+        LEFT JOIN tbl_usuarios ue ON e.espe_usuario = ue.id_usuario
+        WHERE h.id_historial = :id_historial
+        LIMIT 1
+    ";
+
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->execute([':id_historial' => $id_historial]);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
     }
     public function update(array $data)
     {
