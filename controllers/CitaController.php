@@ -254,6 +254,8 @@ class CitaController
 
         $cita = $this->CitaModel->findCita($id_especialista);
 
+        include '../views/especialista/cita/citaEspecialista.php';
+        exit;
 
 
     }
