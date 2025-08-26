@@ -22,7 +22,7 @@ switch ($accion) {
     case 'pacientePerfil':
         $home->pacientePerfil($_GET['id_usuario']);
         break;
-    case 'especialistaPerfilView':
+    case 'especialistaPerfil':
         $home->especialistaPerfil($_GET['id_usuario']);
         break;
     default:
