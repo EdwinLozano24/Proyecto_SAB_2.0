@@ -159,9 +159,9 @@ class CitaModel
             WHERE cita_especialista = :id_especialista";
 
     $stmt = $this->pdo->prepare($sql);
-    $stmt->bindParam(':id_especialista', $id_especialista, PDO::PARAM_INT);
+    $stmt->bindValue(':id_especialista', $id_especialista, PDO::PARAM_INT); // <-- bindValue mejor aquí
     $stmt->execute();
 
-    return $stmt->fetchAll(PDO::FETCH_ASSOC); // todas las citas
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 }
