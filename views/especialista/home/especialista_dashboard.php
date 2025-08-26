@@ -11,7 +11,7 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../../assets/css/layoutFinal/admin/layout.css">
+    <link rel="stylesheet" href="/Assets/css/layoutFinal/paciente/layout1.css">
     <title>¡Bienvenido a SAB!</title>
 </head>
 
@@ -78,7 +78,7 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
     <?php
     include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/admin/footer.php');
     ?>
-    
+
 </body>
 
 </html>
