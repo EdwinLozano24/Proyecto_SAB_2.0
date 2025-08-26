@@ -101,7 +101,6 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="hist_frecuencia">Frecuencia de Cepillado</label>
                         <label for="frecuencia_de_cepillado">Frecuencia de Cepillado<span class="required">*</span></label>
                         <select name="hist_frecuencia_cepillado" id="hist_frecuencia_cepillado" required>
                             <option value="" disabled>¿Frecuencia de Cepillado?</option>
