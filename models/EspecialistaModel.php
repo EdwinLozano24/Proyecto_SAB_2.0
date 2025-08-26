@@ -18,17 +18,17 @@ class EspecialistaModel
     }
 
     public function findCita($id_usuario)
-{
-    $sql = "SELECT *
+    {
+    $sql = "SELECT * 
             FROM tbl_especialistas
-            WHERE id_usuario = :id_usuario
+            WHERE espe_usuario = :id_usuario
             LIMIT 1";
 
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
     $stmt->execute();
-    
-    return $stmt->fetch(PDO::FETCH_ASSOC); // Solo uno
-}
+
+    return $stmt->fetch(PDO::FETCH_ASSOC); // false si no encuentra nada
+    }
 
 }
