@@ -51,9 +51,8 @@
                 
                 <div style="display: grid; grid-template-columns: 150px 1fr; gap: 20px;">
                     <div class="form-group">
-                        <input type="hidden" name="id_historial" value="<?= $hist['id_historial'] ?>">
                         <label for="id">ID <span class="required">*</span></label>
-                        <input type="text" name="hist_paciente" value="<?= $pac['usua_nombre'] ?>">
+                        <input type="text" name="hist_paciente" value="<?= $hist['id_historial'] ?>">
                     </div>
                     
                     <div class="form-group">
