@@ -19,10 +19,9 @@ class EspecialistaModel
 
     public function findCita($id_usuario)
 {
-    $sql = "SELECT e.*, u.*
-            FROM tbl_especialistas e
-            INNER JOIN tbl_usuarios u ON e.espe_usuario = u.id_usuario
-            WHERE u.id_usuario = :id_usuario
+    $sql = "SELECT *
+            FROM tbl_especialistas
+            WHERE id_usuario = :id_usuario
             LIMIT 1";
 
     $stmt = $this->pdo->prepare($sql);
