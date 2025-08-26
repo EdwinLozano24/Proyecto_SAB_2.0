@@ -54,12 +54,12 @@
                 <div style="display: grid; grid-template-columns: 150px 1fr; gap: 20px;">
                     <div class="form-group">
                         <label for="id">ID <span class="required">*</span></label>
-                        <input type="text" name="hist_paciente" value="<?= $hist['id_historial'] ?>">
+                        <input type="text" name="hist_paciente" value="<?= $hist['id_historial']?>" readonly>
                     </div>
                     
                     <div class="form-group">
                         <label for="hist_paciente">Historia del Paciente</label>
-                        <input type="text" id="hist_paciente" name="hist_paciente" value="<?= $hist['paciente_nombre'] ?? '' ?>" readonly>
+                        <input type="text" id="hist_paciente" name="hist_paciente" value="<?= $hist['paciente_nombre']?>" readonly>
                     </div>
                 </div>
             </div>
@@ -73,12 +73,12 @@
                 
                 <div class="form-group full-width">
                     <label for="hist_antecedentes_personales">Antecedentes Personales</label>
-                    <textarea id="hist_antecedentes_personales" name="hist_antecedentes_personales" rows="4"><?=htmlspecialchars($hist['hist_antecedentes_personales'] ?? '', ENT_QUOTES, 'UTF-8')?></textarea>
+                    <textarea id="hist_antecedentes_personales" name="hist_antecedentes_personales" rows="4" required><?=htmlspecialchars($hist['hist_antecedentes_personales'] ?? '', ENT_QUOTES, 'UTF-8')?></textarea>
                 </div>
                 
                 <div class="form-group full-width">
-                    <label for="hist_antecedentes_fam">Antecedentes Familiares</label>
-                    <textarea id="hist_antecedentes_fam" name="hist_antecedentes_fam" rows="4" placeholder="Describa los antecedentes familiares..."></textarea>
+                    <label for="hist_antecedentes_familiares">Antecedentes Familiares</label>
+                    <textarea id="hist_antecedentes_familiares" name="hist_antecedentes_personales" rows="4" required><?=htmlspecialchars($hist['hist_antecedentes_familiares'] ?? '', ENT_QUOTES, 'UTF-8')?></textarea>
                 </div>
             </div>
 
@@ -92,17 +92,24 @@
                 <div class="form-grid">
                     <div class="form-group">
                         <label for="hist_odontograma">Odontograma</label>
-                        <input type="text" id="hist_odontograma" name="hist_odontograma">
+                        <input type="text" id="hist_odontograma" name="hist_odontograma" value="<?= $hist['hist_odontograma']?>">
                     </div>
                     
                     <div class="form-group">
                         <label for="hist_indice_dmft">Índice DMFT</label>
-                        <input type="text" id="hist_indice_dmft" name="hist_indice_dmft">
+                        <input type="text" id="hist_indice_dmft" name="hist_indice_dmft" value="<?= $hist['hist_indice_dmft']?>">
                     </div>
                     
                     <div class="form-group">
-                        <label for="hist_frecuencia">Frecuencia</label>
-                        <input type="text" id="hist_frecuencia" name="hist_frecuencia">
+                        <label for="hist_frecuencia">Frecuencia de Cepillado</label>
+                        <label for="frecuencia_de_cepillado">Frecuencia de Cepillado<span class="required">*</span></label>
+                        <select name="hist_frecuencia_cepillado" id="hist_frecuencia_cepillado" required>
+                            <option value="" disabled>¿Frecuencia de Cepillado?</option>
+                            <option value="1 vez/dia" <?= ($hist['hist_frecuencia_cepillado'] == "1 vez/dia") ? 'selected' : '' ?>>Una vez al dia</option>
+                            <option value="2 veces/dia" <?= ($hist['hist_frecuencia_cepillado'] == "2 veces/dia") ? 'selected' : '' ?>>Dos veces al dia</option>
+                            <option value=">2 veces/dia" <?= ($hist['hist_frecuencia_cepillado'] == ">2 veces/dia") ? 'selected' : '' ?>>Mas de dos veces al dia</option>
+                            <option value="Ocasional" <?= ($hist['hist_frecuencia_cepillado'] == "Ocasional") ? 'selected' : '' ?>>Ocasionalmente</option>
+                        </select>
                     </div>
                     
                     <div class="form-group">
