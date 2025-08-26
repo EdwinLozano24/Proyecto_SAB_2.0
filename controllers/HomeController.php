@@ -76,7 +76,6 @@ class HomeController
     public function especialistaPerfil($id_usuario)
     {
         $paciente = $this->UsuarioModel->find($id_usuario);
-        var_dump($paciente); exit;
         include '../views/.general/perfil/especialistaPerfil.php';
         exit;
     }
