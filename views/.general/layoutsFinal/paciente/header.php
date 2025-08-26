@@ -1,5 +1,5 @@
 <?php
-$nombreUsuario = $_SESSION['usuario']['usua_nombre'];
+$usua_nombre = $_SESSION['usuario']['usua_nombre'];
 $id_usuario = $_SESSION['usuario']['id_usuario'];
 ?>
     <header class="header">
@@ -11,6 +11,6 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
             
             <div class="user-info">
                 <div class="user-avatar">U</div>
-                <a href="/controllers/HomeController.php?accion=PacientePerfilView&id_usuario=<?php echo $_SESSION['usuario']['id_usuario']; ?>" class="user-name-button"><?php echo htmlspecialchars($nombreUsuario); ?></a>
+                <a href="/controllers/HomeController.php?accion=PacientePerfilView&id_usuario=<?php echo $_SESSION['usuario']['id_usuario']; ?>" class="user-name-button"><?php echo htmlspecialchars($usua_nombre); ?></a>
             </div>
         </header>

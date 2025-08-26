@@ -58,7 +58,7 @@ class AuthController
                     header('Location: ../views/administrador/home/admin_dashboard.php');
                     break;
                 case 'Especialista':
-                    header('Location: ../views/home/especialista_dashboard.php');
+                    header('Location: ../views/especialista/home/especialista_dashboard.php');
                     break;
                 case 'Empleado':
                     header('Location: ../views/home/empleado_dashboard.php');
