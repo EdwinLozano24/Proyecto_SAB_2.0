@@ -19,7 +19,7 @@ class EspecialistaModel
 
     public function findCita($id_usuario)
     {
-        $sql = "SELECT * 
+        $sql = "SELECT id_especialista 
                 FROM tbl_especialistas
                 WHERE espe_usuario = :id_usuario
                 LIMIT 1";
