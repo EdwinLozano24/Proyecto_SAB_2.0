@@ -1,3 +1,11 @@
+<?php
+require_once $_SERVER['DOCUMENT_ROOT'] . '/config/database.php';
+$pdo = conectarBD();
+$sql = "CALL ObtenerHistorialClinico";
+$stmt = $pdo->query($sql);
+$historias = $stmt->fetchAll();
+?>
+
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -52,12 +60,12 @@
                 <div style="display: grid; grid-template-columns: 150px 1fr; gap: 20px;">
                     <div class="form-group">
                         <label for="id">ID <span class="required">*</span></label>
-                        <input type="text" name="hist_paciente" value="<?= $hist['id_historial'] ?>">
+                        <input type="text" name="hist_paciente" value="<?= $historias['id_historial'] ?>">
                     </div>
                     
                     <div class="form-group">
                         <label for="hist_paciente">Historia del Paciente</label>
-                        <input type="text" id="hist_paciente" name="hist_paciente" value="<?= $hist['usua_nombre'] ?? '' ?>" readonly>
+                        <input type="text" id="hist_paciente" name="hist_paciente" value="<?= $historias['hist_paciente'] ?? '' ?>" readonly>
                     </div>
                 </div>
             </div>
