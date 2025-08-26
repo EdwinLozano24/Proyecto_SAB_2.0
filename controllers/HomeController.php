@@ -10,17 +10,21 @@ switch ($accion) {
     case 'Logout':
         $home->logout();
         break;
-    case 'PacientePerfilView':
-        $home->PacientePerfilView($_GET['id_usuario']);
-        break;
     case 'homePaciente':
         $home->homePaciente();
         break;
-
+    case 'homeEspecialista':
+        $home->homeEspecialista();
+        break;
     case 'homeAgendarCita':
         $home->homeAgendarCita();
         break;
-
+    case 'pacientePerfil':
+        $home->pacientePerfil($_GET['id_usuario']);
+        break;
+    case 'especialistaPerfilView':
+        $home->especialistaPerfil($_GET['id_usuario']);
+        break;
     default:
         $home->homeAdministrador();
         break;
@@ -49,20 +53,33 @@ class HomeController
         exit;
     }
 
+    public function homeEspecialista()
+    {
+        header('Location: ../views/especialista/home/especialista_dashboard.php');
+        exit;
+    }
+
     // Vista de citaAgendar.php para que cuando el paciente pulse el boton agendar cita lo mande a dicha vista
     public function homeAgendarCita()
     {
         header('Location: ../views/cita/citaAgendar.php');
         exit;
     }
-
-
-
-
-    public function PacientePerfilView($id_usuario)
+    
+    public function pacientePerfil($id_usuario)
     {
         $paciente = $this->UsuarioModel->find($id_usuario);
         include '../views/.general/perfil/pacientePerfil.php';
         exit;
     }
+
+    public function especialistaPerfil($id_usuario)
+    {
+        $paciente = $this->UsuarioModel->find($id_usuario);
+        include '../views/.general/perfil/especialistaPerfil.php';
+        exit;
+    }
+
+
+
 }
