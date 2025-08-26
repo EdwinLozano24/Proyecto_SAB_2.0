@@ -76,7 +76,7 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
     </main>
 
     <?php
-    include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/admin/footer.php');
+    include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/especialista/footer.php');
     ?>
 
 </body>
