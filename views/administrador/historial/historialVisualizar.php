@@ -73,7 +73,7 @@
                 
                 <div class="form-group full-width">
                     <label for="hist_antecedentes_personales">Antecedentes Personales</label>
-                    <textarea id="hist_antecedentes_personales" name="hist_antecedentes_personales" rows="4" placeholder="Describa los antecedentes personales del paciente..."></textarea>
+                    <textarea id="hist_antecedentes_personales" name="hist_antecedentes_personales" rows="4"><?=htmlspecialchars($hist['hist_antecedentes_personales'] ?? '', ENT_QUOTES, 'UTF-8')?></textarea>
                 </div>
                 
                 <div class="form-group full-width">
