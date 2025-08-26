@@ -64,6 +64,7 @@ $historias = $stmt->fetchAll();
 
         <div class="table-responsive">
         <table id="HistorialDatatable" class="table-custom">
+            <input type="hidden" value="<?= htmlspecialchars($historia['id_historial']) ?>">
             <thead>
                 <tr>
                     <th>Paciente</th>
