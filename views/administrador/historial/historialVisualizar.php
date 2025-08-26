@@ -57,7 +57,7 @@
                     
                     <div class="form-group">
                         <label for="hist_paciente">Historia del Paciente</label>
-                        <input type="text" id="hist_paciente" name="hist_paciente">
+                        <input type="text" id="hist_paciente" name="hist_paciente" value="<?= $hist['usua_nombre'] ?? '' ?>" readonly>
                     </div>
                 </div>
             </div>
