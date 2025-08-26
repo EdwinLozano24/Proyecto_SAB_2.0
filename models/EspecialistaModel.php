@@ -17,7 +17,7 @@ class EspecialistaModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function findCita($id_usuario)
+    public function findEspecialista($id_usuario)
     {
         $sql = "SELECT id_especialista 
                 FROM tbl_especialistas

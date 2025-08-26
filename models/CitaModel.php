@@ -152,7 +152,7 @@ class CitaModel
         return $count == 0;
     }
 
-    public function findEspecialista($id_especialista)
+    public function findCita($id_especialista)
 {
     $sql = "SELECT * 
             FROM tbl_citas
