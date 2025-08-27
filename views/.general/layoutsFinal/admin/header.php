@@ -1,11 +1,11 @@
-<?php
+<a?php
 $usua_nombre = $_SESSION['usuario']['usua_nombre'];
 $id_usuario = $_SESSION['usuario']['id_usuario'];
 ?>
     <header class="header">
         <input type="hidden" name="id_usuario" value="<?php echo htmlspecialchars($id_usuario); ?>">
             <div class="header-content">
-                <div class="logo">SAB</div>
+                <a href="/controllers/HomeController.php?accion=home" class="logo">SAB</a>
                 <h1 class="header-title">Sistema de Gestión Odontológica</h1>
             </div>
             
