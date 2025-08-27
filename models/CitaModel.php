@@ -190,7 +190,7 @@ LEFT JOIN tbl_especialistas e ON c.cita_especialista = e.id_especialista
 LEFT JOIN tbl_usuarios u_e ON e.espe_usuario = u_e.id_usuario
 
 -- Consultorio
-LEFT JOIN tbl_consultorio cons ON c.cita_consultorio = cons.id_consultorio
+LEFT JOIN tbl_consultorios cons ON c.cita_consultorio = cons.id_consultorio
 
 WHERE c.cita_especialista = :id_especialista";
 
