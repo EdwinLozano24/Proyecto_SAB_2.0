@@ -199,8 +199,8 @@ WHERE c.cita_especialista = :id_especialista
         WHEN c.cita_estado = 'Proceso' THEN 0
         ELSE 1
     END,
-    c.cita_fecha ASC,
-    c.cita_hora_inicio ASC";
+    c.cita_fecha DESC,
+    c.cita_hora_inicio DESC";
 
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindValue(':id_especialista', $id_especialista, PDO::PARAM_INT);
