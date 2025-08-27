@@ -182,7 +182,7 @@ public function findCita($id_especialista)
             INNER JOIN tbl_historial_clinico h ON c.cita_historial = h.id_historial
             INNER JOIN tbl_especialistas e ON c.cita_especialista = e.id_especialista
             INNER JOIN tbl_usuarios u_e ON e.espe_usuario = u_e.id_usuario
-            INNER JOIN tbl_consultorio cons ON c.cita_consultorio = cons.id_consultorio
+            INNER JOIN tbl_consultorios cons ON c.cita_consultorio = cons.id_consultorio
             WHERE c.cita_especialista = :id_especialista";
 
     $stmt = $this->pdo->prepare($sql);
