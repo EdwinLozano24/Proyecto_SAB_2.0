@@ -10,7 +10,8 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../../Assets/css/layoutFinal/especialista/layout1.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <title>Atender Citas</title>
     <!-- Css -->
     <link href="https://cdn.datatables.net/2.3.1/css/dataTables.bootstrap5.min.css" rel="stylesheet"
@@ -33,7 +34,7 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
         echo ' CSS File not fount at: ' . $cssPath . '';
     }
     ?>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
 </head>
 <body>
     <?php 
