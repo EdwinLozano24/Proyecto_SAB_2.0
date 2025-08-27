@@ -20,7 +20,7 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
         include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/especialista/asideCita.php');
     ?>
     <main class="main-content">
-
+        
     </main>
     <?php
         include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/especialista/footer.php');
