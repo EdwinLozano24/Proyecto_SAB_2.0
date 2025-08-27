@@ -72,11 +72,11 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
                         <td>
                             <a href="/controllers/CitaController.php?accion=view_update&id_cita=<?= $cit['id_cita'] ?>"
                                 class="action-btn edit">
-                                <i class="fa-solid fa-list-check"></i>
+                                <i class="fa-solid fa-eye"></i>
                             </a>
                             <a href="/controllers/CitaController.php?accion=delete&id_cita=<?= $cit['id_cita'] ?>"
-                                class="action-btn delete">
-                                <i class="fa-solid fa-trash"></i>
+                                class="action-btn edit">
+                                <i class="fa-solid fa-check"></i>
                             </a>
                         </td>
                     </tr>
