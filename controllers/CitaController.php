@@ -253,7 +253,7 @@ class CitaController
         $id_especialista = $especialista['id_especialista'];
 
         $cita = $this->CitaModel->findCita($id_especialista);
-
+        var_dump($cita); exit;
         include '../views/especialista/cita/citaEspecialista.php';
         exit;
 
