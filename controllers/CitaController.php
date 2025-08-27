@@ -36,6 +36,9 @@ switch ($accion) {
     case 'especialistaCitaView':
         $cita->especialistaCitaView($_GET['id_usuario']);
         break;
+    case 'citaDiagnosticoView':
+        $cita->citaDiagnosticoView($_GET['id_cita']);
+        break;
     default:
         $cita->index();
         break;
@@ -258,5 +261,11 @@ class CitaController
         exit;
 
 
+    }
+
+    public function citaDiagnosticoView($id_cita)
+    {
+        include '../views/especialista/cita/citaDiagnostico.php';
+        exit;
     }
 }

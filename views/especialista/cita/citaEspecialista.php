@@ -10,7 +10,7 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../../Assets/css/layoutFinal/admin/layout1.css">
+    <link rel="stylesheet" href="../../../Assets/css/layoutFinal/especialista/layout1.css">
     <title>Atender Citas</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <!-- Css -->
@@ -74,7 +74,7 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
                                 class="action-btn edit">
                                 <i class="fa-solid fa-list-check"></i>
                             </a>
-                            <a href="/controllers/CitaController.php?accion=delete&id_cita=<?= $cit['id_cita'] ?>"
+                            <a href="/controllers/CitaController.php?accion=citaDiagnosticoView&id_cita=<?= $cit['id_cita'] ?>"
                                 class="action-btn edit">
                                 <i class="fa-solid fa-check"></i>
                             </a>
