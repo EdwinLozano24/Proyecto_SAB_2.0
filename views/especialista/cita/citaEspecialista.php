@@ -38,7 +38,7 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
             <tbody>
                 <?php foreach ($cita as $cit): ?>
                     <tr>
-                        <td><?= htmlspecialchars($cit['cita_paciente']) ?></td>
+                        <td><?= htmlspecialchars($cit['paciente_nombre']) ?></td>
                         <td><?= htmlspecialchars($cit['cita_fecha']) ?></td>
                         <td><?= htmlspecialchars($cit['cita_hora_inicio']) ?></td>
                         <td><?= htmlspecialchars($cit['cita_hora_fin']) ?></td>
