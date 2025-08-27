@@ -9,6 +9,7 @@ require_once __DIR__ . '/../models/PacienteModel.php';
 require_once __DIR__ . '/../models/EspecialistaModel.php';
 require_once __DIR__ . '/../models/ConsultorioModel.php';
 require_once __DIR__ . '/../models/TratamientoModel.php';
+require_once __DIR__ . '/../models/DiagnosticoModel.php';
 require_once __DIR__ . '/../models/HistorialModel.php';
 
 $cita = new CitaController();
@@ -52,6 +53,7 @@ class CitaController
     protected $ConsultorioModel;
     protected $TratamientoModel;
     protected $HistorialModel;
+    protected $DiagnosticoModel;
 
     public function __construct()
     {
@@ -61,6 +63,7 @@ class CitaController
         $this->ConsultorioModel = new ConsultorioModel();
         $this->TratamientoModel = new TratamientoModel();
         $this->HistorialModel = new HistorialModel();
+        $this->DiagnosticoModel = new DiagnosticoModel();
     }
 
     public function index()
@@ -266,6 +269,7 @@ class CitaController
     public function citaDiagnosticoView($id_cita)
     {
         $cita = $this->CitaModel->find($id_cita);
+        $diag = $this->DiagnosticoModel->findAll();
         include '../views/especialista/cita/citaDiagnostico.php';
         exit;
     }

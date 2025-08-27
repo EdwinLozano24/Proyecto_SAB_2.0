@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Resultado Cita</title>
     <?php
     $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/assets/css/admin/crudPage.css';
     $cssUrl = '/assets/css/admin/crudPage.css';
@@ -25,7 +25,7 @@
         <form id="registroForm" action="#" method="POST">
             <div class="info-card">
                 <h3>Información importante</h3>
-                <p>Los campos marcados con asterisco (*) son obligatorios. Asegúrese de completar toda la información requerida antes de enviar.</p>
+                <p>Los campos marcados con asterisco " * " son obligatorios. Asegúrese de completar toda la información requerida antes de enviar.</p>
             </div>
 
             <div class="form-section">
@@ -47,7 +47,14 @@
 
                     <div class="form-group">
                         <label for="ct_diagnostico">Código de Diagnóstico</label>
-                        <input type="number" id="ct_diagnostico" name="ct_diagnostico" placeholder="Ingrese el código de diagnóstico" min="1">
+                        <select name="cita_paciente" id="cita_paciente" class="form-control select2" required>
+                            <option value="" disabled selected>Seleccionar un paciente..</option>
+                                <?php foreach ($pacientes as $paciente): ?>
+                                    <option value="<?= $paciente['id_paciente'] ?>">
+                                        <?= $paciente['usua_nombre'] ?>
+                                    </option>
+                                <?php endforeach; ?>
+                        </select>
                     </div>
                 </div>
             </div>
