@@ -155,35 +155,44 @@ class CitaModel
 public function findCita($id_especialista)
 {
     $sql = "SELECT 
-                c.id_cita,
-                c.cita_fecha,
-                c.cita_hora_inicio,
-                c.cita_hora_fin,
-                c.cita_turno,
-                c.cita_duracion,
-                c.cita_motivo,
-                c.cita_observacion,
-                c.cita_estado,
+    c.id_cita,
+    c.cita_fecha,
+    c.cita_hora_inicio,
+    c.cita_hora_fin,
+    c.cita_turno,
+    c.cita_duracion,
+    c.cita_motivo,
+    c.cita_observacion,
+    c.cita_estado,
 
-                p.id_paciente,
-                u_p.usua_nombre AS paciente_nombre,
+    p.id_paciente,
+    u_p.usua_nombre AS paciente_nombre,
 
-                h.id_historial,
+    h.id_historial,
 
-                e.id_especialista,
-                u_e.usua_nombre AS especialista_nombre,
+    e.id_especialista,
+    u_e.usua_nombre AS especialista_nombre,
 
-                cons.id_consultorio,
-                cons.cons_numero
+    cons.id_consultorio,
+    cons.cons_numero
 
-            FROM tbl_citas c
-            INNER JOIN tbl_pacientes p ON c.cita_paciente = p.id_paciente
-            INNER JOIN tbl_usuarios u_p ON p.paci_usuario = u_p.id_usuario
-            INNER JOIN tbl_historial_clinico h ON c.cita_historial = h.id_historial
-            INNER JOIN tbl_especialistas e ON c.cita_especialista = e.id_especialista
-            INNER JOIN tbl_usuarios u_e ON e.espe_usuario = u_e.id_usuario
-            INNER JOIN tbl_consultorios cons ON c.cita_consultorio = cons.id_consultorio
-            WHERE c.cita_especialista = :id_especialista";
+FROM tbl_citas c
+
+-- Pacientes
+LEFT JOIN tbl_pacientes p ON c.cita_paciente = p.id_paciente
+LEFT JOIN tbl_usuarios u_p ON p.paci_usuario = u_p.id_usuario
+
+-- Historial
+LEFT JOIN tbl_historial_clinico h ON c.cita_historial = h.id_historial
+
+-- Especialista
+LEFT JOIN tbl_especialistas e ON c.cita_especialista = e.id_especialista
+LEFT JOIN tbl_usuarios u_e ON e.espe_usuario = u_e.id_usuario
+
+-- Consultorio
+LEFT JOIN tbl_consultorio cons ON c.cita_consultorio = cons.id_consultorio
+
+WHERE c.cita_especialista = :id_especialista";
 
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindValue(':id_especialista', $id_especialista, PDO::PARAM_INT);
