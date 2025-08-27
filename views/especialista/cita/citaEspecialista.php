@@ -277,7 +277,7 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
                 "<'row mt-3'<'col-sm-6'i><'col-sm-6 d-flex justify-content-end'p>>",
 
                 lengthMenu: [10, 20, 50, 100],
-
+                order: [],
                 language: {
                     processing: "Procesando...",
                     lengthMenu: "Mostrar _MENU_ registros",
