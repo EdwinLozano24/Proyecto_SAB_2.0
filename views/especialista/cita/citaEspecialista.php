@@ -10,7 +10,8 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../../Assets/css/layoutFinal/especialista/layout1.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <title>Atender Citas</title>
     <!-- Css -->
     <link href="https://cdn.datatables.net/2.3.1/css/dataTables.bootstrap5.min.css" rel="stylesheet"
@@ -25,15 +26,15 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
     integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
     <?php
-    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/assets/css/especialista/crudIndex.css';
-    $cssUrl = '/assets/css/especialista/crudIndex.css';
+    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/assets/css/admin/crudIndex.css';
+    $cssUrl = '/assets/css/admin/crudIndex.css';
     if (file_exists($cssPath)) {
         echo '<link rel="stylesheet" href="' . $cssUrl . '">';
     } else {
         echo ' CSS File not fount at: ' . $cssPath . '';
     }
     ?>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
 </head>
 <body>
     <?php 
@@ -72,9 +73,9 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
                         <td>
                             <a href="/controllers/CitaController.php?accion=view_update&id_cita=<?= $cit['id_cita'] ?>"
                                 class="action-btn edit">
-                                <i class="fa-solid fa-list-check"></i>
+                                <i class="fa-solid fa-eye"></i>
                             </a>
-                            <a href="/controllers/CitaController.php?accion=citaDiagnosticoView&id_cita=<?= $cit['id_cita'] ?>"
+                            <a href="/controllers/CitaController.php?accion=delete&id_cita=<?= $cit['id_cita'] ?>"
                                 class="action-btn edit">
                                 <i class="fa-solid fa-check"></i>
                             </a>

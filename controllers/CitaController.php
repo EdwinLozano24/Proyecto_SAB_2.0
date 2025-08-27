@@ -1,4 +1,4 @@
-<?php
+q<?php
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -36,9 +36,6 @@ switch ($accion) {
         break;
     case 'especialistaCitaView':
         $cita->especialistaCitaView($_GET['id_usuario']);
-        break;
-    case 'citaDiagnosticoView':
-        $cita->citaDiagnosticoView($_GET['id_cita']);
         break;
     default:
         $cita->index();
@@ -265,6 +262,7 @@ class CitaController
 
 
     }
+<<<<<<< HEAD
 
     public function citaDiagnosticoView($id_cita)
     {
@@ -273,4 +271,6 @@ class CitaController
         include '../views/especialista/cita/citaDiagnostico.php';
         exit;
     }
+=======
+>>>>>>> c3bcfe2c98e9ea2f359b15676c3f494fc6c189f9
 }
