@@ -192,7 +192,8 @@ LEFT JOIN tbl_usuarios u_e ON e.espe_usuario = u_e.id_usuario
 -- Consultorio
 LEFT JOIN tbl_consultorios cons ON c.cita_consultorio = cons.id_consultorio
 
-WHERE c.cita_especialista = :id_especialista";
+WHERE c.cita_especialista = :id_especialista
+  AND c.cita_estado <> 'Cumplida'";
 
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindValue(':id_especialista', $id_especialista, PDO::PARAM_INT);
