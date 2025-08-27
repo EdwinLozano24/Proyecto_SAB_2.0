@@ -18,7 +18,7 @@
     <div class="container">
         <div class="header">
             <div class="logo">📋</div>
-            <h1>Nuevo Registro</h1>
+            <h1>Resultado de la Cita</h1>
             <p class="subtitle">Complete la información para crear un nuevo registro en el sistema</p>
         </div>
 
@@ -38,19 +38,16 @@
                     <div class="form-group">
                         <label for="nombre">Nombre <span class="required">*</span></label>
                         <input type="text" id="nombre" name="nombre" placeholder="Ingrese el nombre" required>
-                        <div class="error-message">Este campo es obligatorio</div>
                     </div>
 
                     <div class="form-group">
                         <label for="ct_cita">Código de Cita</label>
                         <input type="number" id="ct_cita" name="ct_cita" placeholder="Ingrese el código de cita" min="1">
-                        <div class="error-message">Ingrese un número válido</div>
                     </div>
 
                     <div class="form-group">
                         <label for="ct_diagnostico">Código de Diagnóstico</label>
                         <input type="number" id="ct_diagnostico" name="ct_diagnostico" placeholder="Ingrese el código de diagnóstico" min="1">
-                        <div class="error-message">Ingrese un número válido</div>
                     </div>
                 </div>
             </div>
@@ -73,13 +70,11 @@
                     <div class="form-group full-width">
                         <label for="ct_observaciones">Observaciones <span class="required">*</span></label>
                         <textarea id="ct_observaciones" name="ct_observaciones" placeholder="Ingrese las observaciones detalladas..." required></textarea>
-                        <div class="error-message">Este campo es obligatorio</div>
                     </div>
 
                     <div class="form-group">
                         <label for="ct_fecha_aplicacion">Fecha de Aplicación <span class="required">*</span></label>
                         <input type="date" id="ct_fecha_aplicacion" name="ct_fecha_aplicacion" required>
-                        <div class="error-message">Seleccione una fecha válida</div>
                     </div>
                 </div>
             </div>

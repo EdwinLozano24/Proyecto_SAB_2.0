@@ -265,6 +265,7 @@ class CitaController
 
     public function citaDiagnosticoView($id_cita)
     {
+        $cita = $this->CitaModel->find($id_cita);
         include '../views/especialista/cita/citaDiagnostico.php';
         exit;
     }
