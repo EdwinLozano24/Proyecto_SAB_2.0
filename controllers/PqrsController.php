@@ -32,9 +32,9 @@ switch ($action) {
     case 'visualizarPqrs':
         $controller->visualizarPqrs();
         break;
-    case 'responderPqrs':
-        $controller->responderPqrs($_GET['id_pqrs']);
-        break;
+    // case 'responderPqrs':
+    //     $controller->responderPqrs($_GET['id_pqrs']);
+    //     break;
     default:
         $controller->index();
         break;
@@ -113,7 +113,7 @@ class PqrsController
     public function update(): void
     {
         $data = [
-            'id_pqrs'             => $id_pqrs,
+            'id_pqrs'             => $_POST['id_pqrs'] ?? null,
             'pqrs_tipo'           => $_POST['pqrs_tipo']        ?? null,
             'pqrs_asunto'         => $_POST['pqrs_asunto']      ?? null,
             'pqrs_descripcion'    => $_POST['pqrs_descripcion'] ?? null,
