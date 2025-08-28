@@ -47,28 +47,18 @@ requiereSesion();
 
                     <div class="form-group">
                         <label for="pqrs_tipo">Tipo de Pqrs<span class="required">*</span></label>
-                        <select name="pqrs_tipo" id="pqrs_tipo" required>
-                            <option value="" disabled selected>Seleccionar Tipo...</option>
-                            <option value="Petición" <?= ($pqrs['pqrs_tipo'] == "Petición") ? 'selected' : '' ?>>Petición
-                            </option>
-                            <option value="Queja" <?= ($pqrs['pqrs_tipo'] == "Queja") ? 'selected' : '' ?>>Queja</option>
-                            <option value="Reclamo" <?= ($pqrs['pqrs_tipo'] == "Reclamo") ? 'selected' : '' ?>>Reclamo
-                            </option>
-                            <option value="Sugerencia" <?= ($pqrs['pqrs_tipo'] == "Sugerencia") ? 'selected' : '' ?>>
-                                Sugerencia</option>
-                        </select>
+                        <input type="text" id="pqrs_tipo" name="pqrs_tipo" value="<?= htmlspecialchars($pqrs['pqrs_tipo']) ?>" readonly>
                     </div>
 
                     <div class="form-group full-width">
                         <label for="pqrs_asunto">Asunto<span class="required">*</span></label>
                         <input type="text" name="pqrs_asunto" id="pqrs_asunto" required
-                            value="<?= htmlspecialchars($pqrs['pqrs_asunto']) ?>">
+                            value="<?= htmlspecialchars($pqrs['pqrs_asunto']) ?>" readonly>
                     </div>
 
                     <div class="form-group full-width">
                         <label for="pqrs_descripcion">Descripcion<span class="required">*</span></label>
-                        <textarea name="pqrs_descripcion" id="pqrs_descripcion" maxlength="255"
-                            placeholder="Escriba su Pqrs..."><?= htmlspecialchars($pqrs['pqrs_descripcion']) ?: 'N/A' ?></textarea>
+                        <textarea name="pqrs_descripcion" id="pqrs_descripcion" maxlength="255" readonly><?= htmlspecialchars($pqrs['pqrs_descripcion']) ?: 'N/A' ?></textarea>
                     </div>
                 </div>
             </div>
