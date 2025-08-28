@@ -26,8 +26,8 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
     integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
     <?php
-    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/assets/css/especialista/citasAtender.css';
-    $cssUrl = '/assets/css/especialsita/CitasAtender.css';
+    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/Assets/css/especialista/citasAtender.css';
+    $cssUrl = '/Assets/css/especialsita/CitasAtender.css';
     if (file_exists($cssPath)) {
         echo '<link rel="stylesheet" href="' . $cssUrl . '">';
     } else {
