@@ -93,6 +93,13 @@ WHERE p.pqrs_estado = 'Pendiente';
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    } 
+    }
+    
+    public function findResponder($id_pqrs)
+    {
+      $stmt = $this->pdo->prepare("SELECT p.*, u.usua_ FROM tbl_pqrs WHERE id_pqrs = :id_pqrs");
+        $stmt->execute([':id_pqrs' => $id_pqrs]);
+        return $stmt->fetch();  
+    }
 
 }

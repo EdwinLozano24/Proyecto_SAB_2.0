@@ -32,6 +32,8 @@ switch ($action) {
     case 'visualizarPqrs':
         $controller->visualizarPqrs();
         break;
+    case 'responderPqrs':
+        $controller->view_update($id_pqrs,$origen);
     default:
         $controller->index();
         break;
@@ -68,12 +70,9 @@ class PqrsController
         exit;
     }
 
-    public function view_update(?int $id_pqrs): void
+    public function view_update($id_pqrs,$origen)
     {
-        if (!$id_pqrs) {
-            $this->index();
-        }
-
+        var_dump($id_pqrs,$origen); exit;
         $pqrs = $this->pqrsModel->find($id_pqrs);
         $empl = $this->EmpleadoModel->findAll();
         $usua = $this->UsuarioModel->findAll();
