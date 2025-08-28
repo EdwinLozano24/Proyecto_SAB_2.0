@@ -19,7 +19,7 @@
         <div class="header">
             <div class="logo">📋</div>
             <h1>Resultado de la Cita</h1>
-            <p class="subtitle">Complete la información para crear un nuevo registro en el sistema</p>
+            <p class="subtitle">Complete la información para atender la cita</p>
         </div>
 
         <form id="registroForm" action="#" method="POST">
@@ -29,33 +29,30 @@
             </div>
 
             <div class="form-section">
+
                 <div class="section-title">
                     <div class="section-icon">1</div>
-                    Información Básica
+                    Información de la Cita
                 </div>
                 
                 <div class="form-grid">
+
                     <div class="form-group">
-                        <label for="nombre">Nombre <span class="required">*</span></label>
-                        <input type="text" id="nombre" name="nombre" placeholder="Ingrese el nombre" required>
+                        <label for="nombre">Id</label>
+                        <input type="text" id="id_cita" name="id_cita" value="" readonly>
                     </div>
 
                     <div class="form-group">
-                        <label for="ct_cita">Código de Cita</label>
-                        <input type="number" id="ct_cita" name="ct_cita" placeholder="Ingrese el código de cita" min="1">
+                        <label for="ct_cita">Nombre del Paciente</label>
+                        <input type="text" id="cita_paciente" name="cita_paciente" value="" readonly>
                     </div>
 
-                    <div class="form-group">
-                        <label for="ct_diagnostico">Código de Diagnóstico</label>
-                        <select name="cita_paciente" id="cita_paciente" class="form-control select2" required>
-                            <option value="" disabled selected>Seleccionar un paciente..</option>
-                                <?php foreach ($pacientes as $paciente): ?>
-                                    <option value="<?= $paciente['id_paciente'] ?>">
-                                        <?= $paciente['usua_nombre'] ?>
-                                    </option>
-                                <?php endforeach; ?>
-                        </select>
+                    <div class="form-group full-width">
+                        <label for="ct_cita">Nombre del Paciente</label>
+                        <input type="text" id="cita_paciente" name="cita_paciente" value="" readonly>
                     </div>
+
+                    
                 </div>
             </div>
 
