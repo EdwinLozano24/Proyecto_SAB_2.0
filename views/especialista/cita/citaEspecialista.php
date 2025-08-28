@@ -126,9 +126,7 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
         $(document).ready(function() {
             // 1) Inicializo DataTable con TODAS las opciones
             const table = $('#EspecialistaCitas').DataTable({
-                    buttons: [
-                    ],
-
+                    buttons: [],
                 // Ubicación del contenedor de botones (sólo genera el <div> aquí,
                 // luego lo moveremos al .mb-4)
                 dom:
