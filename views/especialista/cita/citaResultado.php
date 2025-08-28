@@ -59,7 +59,7 @@
             <div class="form-section">
                 <div class="section-title">
                     <div class="section-icon">2</div>
-                    Detalles del Registro
+                    Resultado de la Cita
                 </div>
                 
                 <!-- <div class="info-card">
@@ -72,8 +72,8 @@
 
                 <div class="form-grid">
                     <div class="form-group full-width">
-                        <label for="ct_observaciones">Observaciones <span class="required">*</span></label>
-                        <textarea id="ct_observaciones" name="ct_observaciones" placeholder="Ingrese las observaciones detalladas..." required></textarea>
+                        <label for="ct_observaciones">Detalles<span class="required">*</span></label>
+                        <textarea id="resu_detalle" name="resu_detalle" placeholder="Ingrese los detalles de la cita tan claros como sean posibles..." required></textarea>
                     </div>
 
                     <div class="form-group">
