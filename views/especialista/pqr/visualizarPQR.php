@@ -41,30 +41,20 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
         <table id="EspecialistaCitas" class="table-custom daTatable">
             <thead>
                 <tr>
-                    <th>Usuario Solicitante</th>
-                    <th>Fecha</th>
-                    <th>Hora Inicio</th>
-                    <th>Hora Fin</th>
-                    <th>Turno</th>
-                    <th>Duracion</th>
-                    <th>Consultorio Asignado</th>
-                    <th>Motivo</th>
-                    <th>Estado</th>
+                    <th>Usuario Responsable</th>
+                    <th>Tipo</th>
+                    <th>Asunto</th>
+                    <th>Fecha de Envio</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($cita as $cit): ?>
+                <?php foreach ($pendientes as $pendiente): ?>
                     <tr>
-                        <td><?= htmlspecialchars($cit['paciente_nombre']) ?></td>
+                        <td><?= htmlspecialchars($pendiente['pqrs_usuario']) ?></td>
                         <td><?= htmlspecialchars($cit['cita_fecha']) ?></td>
                         <td><?= htmlspecialchars($cit['cita_hora_inicio']) ?></td>
                         <td><?= htmlspecialchars($cit['cita_hora_fin']) ?></td>
-                        <td><?= htmlspecialchars($cit['cita_turno']) ?></td>
-                        <td><?= htmlspecialchars($cit['cita_duracion']) ?></td>
-                        <td><?= htmlspecialchars($cit['cons_numero']) ?></td>
-                        <td><?= htmlspecialchars($cit['cita_motivo']) ?></td>
-                        <td><?= htmlspecialchars($cit['cita_estado']) ?></td>
                         <td>
                             <a href="/controllers/CitaController.php?accion=view_resultado_cita=<?= $cit['id_cita'] ?>"
                                 class="action-btn edit">

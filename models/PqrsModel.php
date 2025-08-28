@@ -85,7 +85,11 @@ class PqrsModel
 
     public function findPendientes()
     {
-        $sql = "SELECT * FROM tbl_pqrs WHERE pqrs_estado = 'Pendiente'";
+        $sql = "SELECT p.*, u.usua_nombre
+FROM tbl_pqrs p
+INNER JOIN tbl_usuarios u ON p.pqrs_usuario = u.id_usuario
+WHERE p.pqrs_estado = 'Pendiente';
+";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
