@@ -37,6 +37,9 @@ switch ($accion) {
     case 'especialistaCitaView':
         $cita->especialistaCitaView($_GET['id_usuario']);
         break;
+    case 'view_resultado_cita':
+        $cita->view_resultado($_GET['id_cita']);
+        break;
     default:
         $cita->index();
         break;
@@ -249,6 +252,7 @@ class CitaController
         include '../views/paciente/cita/citaAgendar.php';
         exit;
     }
+
     public function especialistaCitaView($id_usuario)
     {
         $especialista = $this->EspecialistaModel->findEspecialista($id_usuario);
@@ -261,5 +265,10 @@ class CitaController
         exit;
 
 
+    }
+
+    public function view_resultado($id_cita)
+    {
+        
     }
 }

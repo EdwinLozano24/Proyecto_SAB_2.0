@@ -66,7 +66,7 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
                         <td><?= htmlspecialchars($cit['cita_motivo']) ?></td>
                         <td><?= htmlspecialchars($cit['cita_estado']) ?></td>
                         <td>
-                            <a href="/controllers/CitaController.php?accion=view_update&id_cita=<?= $cit['id_cita'] ?>"
+                            <a href="/controllers/CitaController.php?accion=view_resultado_cita=<?= $cit['id_cita'] ?>"
                                 class="action-btn edit">
                                 <i class="fa-solid fa-eye"></i>
                             </a>
