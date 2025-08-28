@@ -79,6 +79,20 @@ class PqrsController
         exit;
     }
 
+    public function view_responder(?int $id_pqrs): void
+    {
+        if (!$id_pqrs) {
+            header('Location: /views/especialista/pqr/visualizarPQR.php');
+            exit;
+        }
+
+        $pqrs = $this->pqrsModel->find($id_pqrs);
+        $empl = $this->EmpleadoModel->findAll();
+        $usua = $this->UsuarioModel->findAll();
+        include __DIR__ . '/../views/especialista/pqr/responderPQR.php';
+        exit;
+    }
+
     /* ---------- ACCIONES ---------- */
 
     public function store(): void

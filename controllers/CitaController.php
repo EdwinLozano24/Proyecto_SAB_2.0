@@ -262,15 +262,4 @@ class CitaController
 
 
     }
-<<<<<<< HEAD
-
-    public function citaDiagnosticoView($id_cita)
-    {
-        $cita = $this->CitaModel->find($id_cita);
-        $diag = $this->DiagnosticoModel->findAll();
-        include '../views/especialista/cita/citaDiagnostico.php';
-        exit;
-    }
-=======
->>>>>>> c3bcfe2c98e9ea2f359b15676c3f494fc6c189f9
 }
