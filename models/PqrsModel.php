@@ -107,7 +107,7 @@ INNER JOIN tbl_usuarios u
 INNER JOIN tbl_empleados e 
     ON p.pqrs_empleado = e.id_empleado
 INNER JOIN tbl_usuarios ue 
-    ON e.id_usuario = ue.id_usuario
+    ON e.empl_usuario = ue.id_usuario
 WHERE p.id_pqrs = :id_pqrs");
         $stmt->execute([':id_pqrs' => $id_pqrs]);
         return $stmt->fetch();  
