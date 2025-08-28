@@ -41,15 +41,7 @@ requiereSesion();
                 <div class="form-grid">
                     <div class="form-group">
                         <label for="pqrs_usuario">Usuario Responsable<span class="required">*</span></label>
-                        <select name="pqrs_usuario" id="pqrs_usuario" class="form-control select2" required>
-                            <option value="" selected disabled>Seleccionar un paciente...</option>
-                            <?php foreach ($usua as $usu): ?>
-                                <option value="<?= htmlspecialchars($usu['id_usuario']) ?>"
-                                    <?= $usu['id_usuario'] == $pqrs['pqrs_usuario'] ? 'selected' : '' ?>>
-                                    <?= htmlspecialchars($usu['usua_nombre']) ?>
-                                </option>
-                            <?php endforeach; ?>
-                        </select>
+                        <input type="text" id="pqrs_usuario" name="pqrs_usuario" value="<?= htmlspecialchars($pqrs['usuario_nombre']) ?>">
                     </div>
 
                     <div class="form-group">
