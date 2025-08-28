@@ -95,7 +95,7 @@ $pqrs = $stmt->fetchAll();
                         <td><?= htmlspecialchars($pqr['nombre_usuario']) ?></td>
                         <td><?= htmlspecialchars($pqr['nombre_empleado'] ?? 'Sin asignar') ?></td>
                         <td>
-                            <a href="/controllers/PqrsController.php?accion=view_responder&id_pqrs=<?= $pqr['id_pqrs'] ?>"
+                            <a href="/controllers/PqrsController.php?accion=view_update&id_pqrs=<?= $pqr['id_pqrs'] ?>"
                                 class="action-btn edit">
                                 <i class="fa-solid fa-pen-to-square"></i>
                             </a>

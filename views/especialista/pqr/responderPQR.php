@@ -116,23 +116,15 @@ requiereSesion();
 
                     <div class="form-group">
                         <label for="pqrs_empleado">Empleado Encargado<span class="required">*</span></label>
-                        <?php
-                        $id_usuario_session = $_SESSION['usuario']['id_usuario'];
-                        $nombre_usuario_session = $_SESSION['usuario']['usua_nombre'];
-                        $id_empleado_session = null;
-
-                        // Buscar el id_empleado correspondiente al usuario de la sesión
-                        if (isset($empl) && is_array($empl)) {
-                            foreach ($empl as $emp) {
-                                if (isset($emp['empl_usuario']) && $emp['empl_usuario'] == $id_usuario_session) {
-                                    $id_empleado_session = $emp['id_empleado'];
-                                    break;
-                                }
-                            }
-                        }
-                        ?>
-                        <input type="text" id="pqrs_empleado_nombre" name="pqrs_empleado_nombre" class="form-control" value="<?= htmlspecialchars($nombre_usuario_session) ?>" disabled>
-                        <input type="hidden" name="pqrs_empleado" id="pqrs_empleado" value="<?= htmlspecialchars($id_empleado_session) ?>">
+                        <select name="pqrs_empleado" id="pqrs_empleado" class="form-control select2">
+                            <option value="">Seleccionar empleado...</option>
+                            <?php foreach ($empl as $emp): ?>
+                                <option value="<?= htmlspecialchars($emp['id_empleado']) ?>"
+                                    <?= $emp['id_empleado'] == $pqrs['pqrs_empleado'] ? 'selected' : '' ?>>
+                                    <?= htmlspecialchars($emp['usua_nombre']) ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
                     </div>
 
                     <div class="form-group full-width">
