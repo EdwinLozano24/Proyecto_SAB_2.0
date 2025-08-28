@@ -87,7 +87,7 @@
                     <h3 style="color: #a16207;">⚠️ Aviso Importante</h3>
                     <p style="color: #a16207;">
                         El estado del proceso es crucial para el seguimiento del registro. 
-                        Cambie el estado a "Cumplida" si desea finalizar definitivamente la cita.
+                        Cambie el estado a "Cumplida" si desea finalizar definitivamente la cita (Esto la eliminara de sus citas pendientes).
                     </p>
                 </div>
                 
