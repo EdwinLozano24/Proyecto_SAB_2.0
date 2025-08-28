@@ -83,7 +83,7 @@ requiereSesion();
                     <div class="form-group full-width">
                         <label for="pqrs_respuesta">Respuesta<span class="required"> *</span></label>
                         <textarea name="pqrs_respuesta" id="pqrs_respuesta" maxlength="255"
-                            placeholder="Escriba su Respuesta..." readonly><?= htmlspecialchars($pqrs['pqrs_respuesta']) ?: 'N/A' ?></textarea>
+                            placeholder="Escriba su Respuesta..."><?= htmlspecialchars($pqrs['pqrs_respuesta']) ?: 'N/A' ?></textarea>
                     </div>
 
                     <div class="form-group">
