@@ -534,3 +534,81 @@ body {
     color: #374151;
     vertical-align: middle;
 }
+.dt-buttons {
+    margin-bottom: 20px;
+}
+
+.dt-buttons .btn {
+    margin-right: 8px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border: none;
+}
+
+.dt-buttons .btn-success {
+    background: #0ea5e9;
+    border-color: #0ea5e9;
+}
+
+.dt-buttons .btn-success:hover {
+    background: #0284c7;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+}
+
+.dt-buttons .btn-danger {
+    background: #ef4444;
+    border-color: #ef4444;
+}
+
+.dt-buttons .btn-danger:hover {
+    background: #dc2626;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+.dt-buttons .btn-warning {
+    background: #f59e0b;
+    border-color: #f59e0b;
+}
+
+.dt-buttons .btn-warning:hover {
+    background: #d97706;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+}
+
+/* --- Paginación personalizada --- */
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    padding: 8px 12px;
+    margin: 0 2px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    background: white;
+    color: #374151;
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background: #f8fafc;
+    border-color: #0ea5e9;
+    color: #0ea5e9;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+    border-color: #0ea5e9;
+    color: white;
+}
+
+/* --- Info y estado --- */
+.dataTables_info {
+    color: #64748b;
+    font-size: 14px;
+    padding: 16px 0;
+}
