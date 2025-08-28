@@ -340,26 +340,9 @@ input[type="submit"]:active {
     }
 }
 
-/* Centrar contenido en la columna de acciones */
-.table td.acciones,
-.table th.acciones {
-    text-align: center;       /* centra horizontal */
-    vertical-align: middle;   /* centra vertical */
+td th{
+    text-align: center;
 }
-
-/* Estilo del icono */
-.table td.acciones i {
-    font-size: 18px;
-    color: #0284c7;  /* azul corporativo */
-    cursor: pointer;
-    margin: 0 6px;   /* espacio entre iconos */
-    transition: 0.3s;
-}
-
-.table td.acciones i:hover {
-    color: #0369a1;  /* azul más oscuro al pasar el mouse */
-}
-
 
 /* Validación visual */
 .form-group.error input,
