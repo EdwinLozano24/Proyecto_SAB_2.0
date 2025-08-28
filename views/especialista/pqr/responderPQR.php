@@ -41,7 +41,7 @@ requiereSesion();
                 <div class="form-grid">
                     <div class="form-group">
                         <label for="pqrs_usuario">Usuario Responsable<span class="required">*</span></label>
-                        <input type="text" id="pqrs_usuario" name="pqrs_usuario" value="<?= htmlspecialchars($pqrs['usuario_nombre']) ?>" readonly>
+                        <input type="text" id="pqrs_usuario" name="pqrs_usuario" value="<?= htmlspecialchars($pqrs['pqrs_usuario']) ?>" readonly>
                         <input type="text" id="usuario_nombre" name="usuario_nombre" value="<?= htmlspecialchars($pqrs['usuario_nombre']) ?>" readonly>
                     </div>
 
