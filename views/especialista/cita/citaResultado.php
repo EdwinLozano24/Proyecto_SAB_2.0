@@ -38,24 +38,24 @@
                 <div class="form-grid">
 
                     <div class="form-group">
-                        <label for="nombre">Id</label>
-                        <input type="text" id="id_cita" name="id_cita" value="" readonly>
+                        <label for="nombre">Nombre del Paciente</label>
+                        <input type="text" id="cita_paciente" name="cita_paciente" value="" readonly>
                     </div>
 
                     <div class="form-group">
-                        <label for="ct_cita">Nombre del Paciente</label>
-                        <input type="text" id="cita_paciente" name="cita_paciente" value="" readonly>
+                        <label for="ct_cita">Motivo de la Cita</label>
+                        <input type="text" id="cita_motivo" name="cita_motivo" value="" readonly>
                     </div>
 
                     <div class="form-group full-width">
-                        <label for="ct_cita">Nombre del Paciente</label>
-                        <input type="text" id="cita_paciente" name="cita_paciente" value="" readonly>
+                        <label for="ct_cita">Observaciones</label>
+                        <input type="text" id="cita_observacion" name="cita_observacion" value="" readonly>
                     </div>
 
-                    
                 </div>
-            </div>
 
+            </div>
+            
             <div class="form-section">
                 <div class="section-title">
                     <div class="section-icon">2</div>
