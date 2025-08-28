@@ -58,7 +58,7 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
                         <td>
                             <a href="/controllers/CitaController.php?accion=delete&id_cita=<?= $cit['id_cita'] ?>"
                                 class="action-btn edit">
-                                <i class="fa-solid fa-check"></i>
+                                <i class="fa-solid fa-file-pen"></i>
                             </a>
                         </td>
                     </tr>
