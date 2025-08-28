@@ -61,16 +61,9 @@
                     <div class="section-icon">2</div>
                     Resultado de la Cita
                 </div>
-                
-                <!-- <div class="info-card">
-                    <h3>Información editable</h3>
-                    <p class="editable-info">
-                        Aquí puede agregar información adicional que considere relevante para este registro. 
-                        Este texto es completamente editable - haga clic para modificarlo según sus necesidades.
-                    </p>
-                </div> -->
 
                 <div class="form-grid">
+
                     <div class="form-group full-width">
                         <label for="resu_detalle">Detalles de la Cita<span class="required"> *</span></label>
                         <textarea id="resu_detalle" name="resu_detalle" placeholder="Ingrese los detalles de la cita tan claros como sean posibles..." required></textarea>
@@ -81,11 +74,6 @@
                         <textarea id="resu_detalle" name="resu_detalle" placeholder="Ingrese las recomendaciones tan claras como sean posibles..." required></textarea>
                     </div>
 
-
-                    <div class="form-group">
-                        <label for="ct_fecha_aplicacion">Fecha de Aplicación <span class="required">*</span></label>
-                        <input type="date" id="ct_fecha_aplicacion" name="ct_fecha_aplicacion" required>
-                    </div>
                 </div>
             </div>
 
@@ -99,7 +87,7 @@
                     <h3 style="color: #a16207;">⚠️ Aviso Importante</h3>
                     <p style="color: #a16207;">
                         El estado del proceso es crucial para el seguimiento del registro. 
-                        Asegúrese de seleccionar el estado correcto según el avance actual del procedimiento.
+                        Cambie el estado a "Cumplida" si desea finalizar definitivamente la cita.
                     </p>
                 </div>
                 
