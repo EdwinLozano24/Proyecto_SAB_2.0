@@ -55,7 +55,7 @@
                 </div>
 
             </div>
-            
+
             <div class="form-section">
                 <div class="section-title">
                     <div class="section-icon">2</div>
@@ -64,7 +64,7 @@
                 
                 <div class="info-card">
                     <h3>Información editable</h3>
-                    <p contenteditable="true" class="editable-info">
+                    <p class="editable-info">
                         Aquí puede agregar información adicional que considere relevante para este registro. 
                         Este texto es completamente editable - haga clic para modificarlo según sus necesidades.
                     </p>
