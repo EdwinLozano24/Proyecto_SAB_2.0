@@ -80,8 +80,14 @@ requiereSesion();
 
                     <input type="hidden" name="pqrs_empleado" id="pqrs_empleado" required value="<?= htmlspecialchars($pqrs['pqrs_empleado']) ?>" readonly>
 
+                    <div class="form-group full-width">
+                        <label for="pqrs_respuesta">Respuesta<span class="required"> *</span></label>
+                        <textarea name="pqrs_respuesta" id="pqrs_respuesta" maxlength="255"
+                            placeholder="Escriba su Respuesta..." readonly><?= htmlspecialchars($pqrs['pqrs_respuesta']) ?: 'N/A' ?></textarea>
+                    </div>
+
                     <div class="form-group">
-                        <label for="pqrs_estado">Estado de Pqrs<span class="required">*</span></label>
+                        <label for="pqrs_estado">Estado de Pqrs<span class="required"> *</span></label>
                         <select name="pqrs_estado" id="pqrs_estado" required>
                             <option value="" disabled selected>Seleccionar estado...</option>
                             <option value="Pendiente" <?= ($pqrs['pqrs_estado'] == "Pendiente") ? 'selected' : '' ?>>
@@ -91,17 +97,10 @@ requiereSesion();
                         </select>
                     </div>
 
-
-
-
-                    <div class="form-group full-width">
-                        <label for="pqrs_respuesta">Respuesta<span class="required">*</span></label>
-                        <textarea name="pqrs_respuesta" id="pqrs_respuesta" maxlength="255"
-                            placeholder="Escriba su Respuesta..." readonly><?= htmlspecialchars($pqrs['pqrs_respuesta']) ?: 'N/A' ?></textarea>
-                    </div>
-
                 </div>
+
             </div>
+            
             <div class="button-group">
                     <button type="button" class="btn-secondary" onclick="window.history.back()">
                     ← Cancelar
