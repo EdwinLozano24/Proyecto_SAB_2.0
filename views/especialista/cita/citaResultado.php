@@ -72,12 +72,12 @@
 
                 <div class="form-grid">
                     <div class="form-group full-width">
-                        <label for="resu_detalle">Detalles de la Cita<span class="required">*</span></label>
+                        <label for="resu_detalle">Detalles de la Cita<span class="required"> *</span></label>
                         <textarea id="resu_detalle" name="resu_detalle" placeholder="Ingrese los detalles de la cita tan claros como sean posibles..." required></textarea>
                     </div>
 
                     <div class="form-group full-width">
-                        <label for="resu_recomendacion">Recomendaciones<span class="required">*</span></label>
+                        <label for="resu_recomendacion">Recomendaciones<span class="required"> *</span></label>
                         <textarea id="resu_detalle" name="resu_detalle" placeholder="Ingrese las recomendaciones tan claras como sean posibles..." required></textarea>
                     </div>
 
