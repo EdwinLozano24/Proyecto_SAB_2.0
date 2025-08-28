@@ -156,7 +156,7 @@ class PqrsController
 
     public function visualizarPqrs()
     {
-        $pendientes = $this->findPendientes();
+        $pendientes = $this->pqrsModel->findPendientes();
         var_dump($pendientes); exit;
         include '../views/especialista/pqr/visualizarPQR.php';
         exit;
