@@ -124,7 +124,7 @@ class PqrsController
             'pqrs_empleado'       => $_POST['pqrs_empleado']    ?? null,
         ];
         var_dump($data['pqrs_empleado']); exit;
-        $origen = $_POST['origen_formulario'] ?? 'responder';
+        $origen = $_POST['origen_formulario'] ?? 'Administrador';
 
         try {
             $this->pqrsModel->update($data);
