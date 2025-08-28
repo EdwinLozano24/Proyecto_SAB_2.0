@@ -83,4 +83,12 @@ class PqrsModel
         return $stmt->execute([':id_pqrs' => $id_pqrs]);
     }
 
+    public function findPendientes()
+    {
+        $sql = "SELECT * FROM tbl_pqrs WHERE pqrs_estado = 'Pendiente'";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } 
+
 }

@@ -29,7 +29,9 @@ switch ($action) {
     case 'delete':
         $controller->delete($_GET['id_pqrs'] ?? null);
         break;
-
+    case 'visualizarPqrs':
+        $controller->visualizarPqrs();
+        break;
     default:
         $controller->index();
         break;
@@ -150,6 +152,14 @@ class PqrsController
         } catch (\Throwable $e) {
             echo '[Ocurrió un error al ELIMINAR la PQR. Estamos trabajando para solucionarlo]';
         }
+    }
+
+    public function visualizarPqrs()
+    {
+        $pendientes = $this->findPendientes();
+        var_dump($pendientes); exit;
+        include '../views/especialista/pqr/visualizarPQR.php';
+        exit;
     }
 
 }
