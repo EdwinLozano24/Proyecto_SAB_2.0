@@ -27,7 +27,7 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
     crossorigin="anonymous" referrerpolicy="no-referrer" />
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/Assets/css/layoutFinal/admin/layout1.css?v=20250830">
+    <link rel="stylesheet" href="/Assets/css/layoutFinal/admin/layout1.css?v=20250831">
 </head>
 <body>
     <?php 
