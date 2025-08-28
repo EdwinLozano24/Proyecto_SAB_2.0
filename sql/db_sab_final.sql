@@ -183,6 +183,17 @@ CREATE TABLE IF NOT EXISTS tbl_pqrs (
     FOREIGN KEY (pqrs_empleado) REFERENCES tbl_empleados(id_empleado)
 );
 
+CREATE TABLE IF NOT EXISTS tbl_citas_resultados (
+    id_resultado INT AUTO_INCREMENT PRIMARY KEY,
+    resu_cita INT NOT NULL,
+    resu_detalles TEXT NOT NULL, 
+    resu_prescripcion TEXT, 
+    resu_recomendaciones TEXT, 
+    resu_fecha DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (resu_cita) REFERENCES tbl_citas(id_cita)
+);
+
+
 INSERT INTO tbl_usuarios (usua_nombre, usua_documento, usua_tipo_documento, usua_correo_electronico, usua_direccion, usua_num_contacto, usua_num_secundario, usua_fecha_nacimiento, usua_sexo, usua_rh, usua_eps, usua_password, usua_tipo, usua_estado) VALUES
 ('Juan Pérez',       1001001001, 'Cédula de ciudadanía',      'juan.perez@email.com',     'Calle 123 #45-67', '3100000001', '3200000001', '1990-05-10', 'Masculino', 'O+', 'Sura',         'passJuan123', 'Paciente',     'Activo'),
 ('María Gómez',      1001001002, 'Tarjeta de identidad',      'maria.gomez@email.com',    'Cra 5 #12-34',     '3100000002', NULL,          '1995-07-20', 'Femenino',  'A+', 'Nueva EPS',     'passMaria123', 'Paciente',     'Activo'),
