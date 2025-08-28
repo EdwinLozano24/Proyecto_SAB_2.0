@@ -240,12 +240,14 @@ body {
     font-size: 28px;
     margin-bottom: 8px;
     letter-spacing: -0.025em;
+    text-align: center;
 }
 
 .content-subtitle {
     color: #64748b;
     font-size: 16px;
     font-weight: 400;
+    text-align: center;
 }
 
 .content-grid {
