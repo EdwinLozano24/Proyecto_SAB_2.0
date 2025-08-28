@@ -12,12 +12,10 @@
 
         <div class="sidebar-section">
             <h3 class="sidebar-title">Herramientas de Administrador</h3>
-            <ul class="sidebar-menu">
-                <li><a href="/controllers/UsuarioController.php?accion=index">👥 Usuarios</a></li>
-                <li><a href="/controllers/CitaController.php?accion=index">📆 Citas</a></li>
-                <li><a href="/controllers/TratamientoController.php?accion=index">💉 Tratamientos</a></li>
+                <ul class="sidebar-menu">
+                <li><a href="/controllers/UsuarioController.php?accion=index">📆 Agendar Cita</a></li>
+                <li><a href="/controllers/PqrsController.php?accion=visualizarPqrs">📝 Responder Pqrs </a></li>
                 <li><a href="/controllers/HistorialController.php?accion=index">🏥 Historial Clinico</a></li>
-                <li><a href="/controllers/PqrsController.php?accion=index">📝 Pqrs</a></li>
             </ul>
         </div>
     </aside>
