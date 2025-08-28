@@ -187,7 +187,6 @@ CREATE TABLE IF NOT EXISTS tbl_citas_resultados (
     id_resultado INT AUTO_INCREMENT PRIMARY KEY,
     resu_cita INT NOT NULL,
     resu_detalle TEXT NOT NULL, 
-    resu_prescripcion TEXT, 
     resu_recomendacion TEXT, 
     resu_fecha DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (resu_cita) REFERENCES tbl_citas(id_cita)

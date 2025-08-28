@@ -38,17 +38,17 @@
                 <div class="form-grid">
 
                     <div class="form-group">
-                        <label for="nombre">Nombre del Paciente</label>
+                        <label for="cita_paciente">Nombre del Paciente</label>
                         <input type="text" id="cita_paciente" name="cita_paciente" value="" readonly>
                     </div>
 
                     <div class="form-group">
-                        <label for="ct_cita">Motivo de la Cita</label>
+                        <label for="cita_motivo">Motivo de la Cita</label>
                         <input type="text" id="cita_motivo" name="cita_motivo" value="" readonly>
                     </div>
 
                     <div class="form-group full-width">
-                        <label for="ct_cita">Observaciones</label>
+                        <label for="cita_observacion">Observaciones</label>
                         <input type="text" id="cita_observacion" name="cita_observacion" value="" readonly>
                     </div>
 
@@ -72,9 +72,15 @@
 
                 <div class="form-grid">
                     <div class="form-group full-width">
-                        <label for="ct_observaciones">Detalles<span class="required">*</span></label>
+                        <label for="resu_detalle">Detalles de la Cita<span class="required">*</span></label>
                         <textarea id="resu_detalle" name="resu_detalle" placeholder="Ingrese los detalles de la cita tan claros como sean posibles..." required></textarea>
                     </div>
+
+                    <div class="form-group full-width">
+                        <label for="resu_recomendacion">Recomendaciones<span class="required">*</span></label>
+                        <textarea id="resu_detalle" name="resu_detalle" placeholder="Ingrese las recomendaciones tan claras como sean posibles..." required></textarea>
+                    </div>
+
 
                     <div class="form-group">
                         <label for="ct_fecha_aplicacion">Fecha de Aplicación <span class="required">*</span></label>
