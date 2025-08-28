@@ -53,7 +53,7 @@ class AuthController
                 'usua_documento' => $usuario['usua_documento'],
                 'usua_tipo' => $usuario['usua_tipo']
             ];
-
+            var_dump($_SESSION); exit;
             switch ($usuario['usua_tipo']) {
                 case 'Administrador':
                     header('Location: ../views/administrador/home/admin_dashboard.php');
@@ -68,7 +68,7 @@ class AuthController
                     header('Location: ../views/paciente/home/paciente_dashboard.php');
                     break;
                 default:
-                    header('Location: ../views/.general/error/acceso_denegados.php');
+                    header('Location: ../views/.general/error/acceso_denegado.php');
                     break;
             }
                 exit;
