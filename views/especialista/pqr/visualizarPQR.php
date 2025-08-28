@@ -51,10 +51,10 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
             <tbody>
                 <?php foreach ($pendientes as $pendiente): ?>
                     <tr>
-                        <td><?= htmlspecialchars($pendiente['pqrs_usuario']) ?></td>
-                        <td><?= htmlspecialchars($cit['cita_fecha']) ?></td>
-                        <td><?= htmlspecialchars($cit['cita_hora_inicio']) ?></td>
-                        <td><?= htmlspecialchars($cit['cita_hora_fin']) ?></td>
+                        <td><?= htmlspecialchars($pendiente['usua_nombre']) ?></td>
+                        <td><?= htmlspecialchars($pendiente['pqrs_tipo']) ?></td>
+                        <td><?= htmlspecialchars($pendiente['pqrs_asunto']) ?></td>
+                        <td><?= htmlspecialchars($pendiente['pqrs_fecha_envio']) ?></td>
                         <td>
                             <a href="/controllers/CitaController.php?accion=view_resultado_cita=<?= $cit['id_cita'] ?>"
                                 class="action-btn edit">
