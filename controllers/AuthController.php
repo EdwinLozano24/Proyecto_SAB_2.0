@@ -42,6 +42,7 @@ class AuthController
             }
 
             $usuario = $this->AuthModel->getUser($usua_documento);
+            var_dump($usuario); exit;
             
 
             if ($usuario && password_verify($usua_password, $usuario['usua_password'])) {
