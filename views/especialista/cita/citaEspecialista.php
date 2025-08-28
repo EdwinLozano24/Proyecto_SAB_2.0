@@ -36,6 +36,9 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
     ?>
 
 </head>
+<style>
+table.table-custom thead th { background: red; color: white; }
+</style>
 <body>
     <?php 
         include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/especialista/header.php');
