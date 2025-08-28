@@ -78,7 +78,7 @@ requiereSesion();
 
                     <input type="hidden" name="pqrs_fecha_envio" id="pqrs_fecha_envio" required min="2024-01-01" value="<?= htmlspecialchars($pqrs['pqrs_fecha_envio']) ?>">
 
-                    <input type="hidden" name="pqrs_empleado" id="pqrs_empleado" required value="<?= htmlspecialchars($pqrs['pqrs_empleado']) ?>" readonly>
+                    <input type="hidden" name="pqrs_empleado" id="pqrs_empleado" required value="<?php echo $_SESSION['usuario']['id_usuario']; ?>" readonly>
 
                     <div class="form-group full-width">
                         <label for="pqrs_respuesta">Respuesta<span class="required"> *</span></label>
@@ -100,7 +100,7 @@ requiereSesion();
                 </div>
 
             </div>
-            
+
             <div class="button-group">
                     <button type="button" class="btn-secondary" onclick="window.history.back()">
                     ← Cancelar

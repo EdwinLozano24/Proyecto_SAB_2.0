@@ -58,9 +58,6 @@ class PqrsModel
 
     public function update(array $data)
     {
-        if (!isset($data['id_pqrs'])) {
-            throw new InvalidArgumentException("[El ID de la PQR es obligatorio para ACTUALIZAR]");
-        }
 
         $sql = "UPDATE tbl_pqrs SET
             pqrs_tipo = :pqrs_tipo,

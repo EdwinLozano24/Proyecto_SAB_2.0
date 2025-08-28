@@ -112,12 +112,6 @@ class PqrsController
 
     public function update(): void
     {
-        $id_pqrs = $_POST['id_pqrs'] ?? null;
-        if (!$id_pqrs) {
-            echo '[Falta el ID de la PQR]';
-            return;
-        }
-
         $data = [
             'id_pqrs'             => $id_pqrs,
             'pqrs_tipo'           => $_POST['pqrs_tipo']        ?? null,
@@ -125,15 +119,23 @@ class PqrsController
             'pqrs_descripcion'    => $_POST['pqrs_descripcion'] ?? null,
             'pqrs_estado'         => $_POST['pqrs_estado']      ?? 'Pendiente',
             'pqrs_respuesta'      => $_POST['pqrs_respuesta']   ?? null,
-            'pqrs_fecha_respuesta' => $_POST['pqrs_fecha_respuesta'] ?? null,
+            'pqrs_fecha_respuesta' => $_POST['pqrs_fecha_respuesta'] ?? date("Y-m-d H:i:s"),
             'pqrs_usuario' => $_POST['pqrs_usuario'] ?? null,
             'pqrs_empleado'       => $_POST['pqrs_empleado']    ?? null,
         ];
+        var_dump($data['pqrs_empleado']); exit;
+        $origen = $_POST['origen_formulario'] ?? 'responder';
 
         try {
             $this->pqrsModel->update($data);
+
+            if ($origen === 'Administrador') {
             header('Location: ../views/administrador/pqrs/pqrsIndex.php');
-            exit;
+        } else {
+            header('Location: ../views/especialista/pqr/visualizarPQR.php');
+        }
+
+        exit;
         } catch (\Throwable $e) {
             echo '[Ocurrió un error al ACTUALIZAR la PQR. Estamos trabajando para solucionarlo]';
         }
