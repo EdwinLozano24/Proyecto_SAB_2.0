@@ -1,7 +1,5 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/config/auth.php';
-var_dump($_SESSION);
-exit;
 requiereSesion();
 $id_usuario = $_SESSION['usuario']['id_usuario'];
 $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
