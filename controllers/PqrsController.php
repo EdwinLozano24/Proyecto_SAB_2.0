@@ -164,7 +164,6 @@ class PqrsController
     public function responderPqrs($id_pqrs)
     {
         $pqrs = $this->pqrsModel->findResponder($id_pqrs);
-        var_dump($pqrs); exit;
         include '../views/especialista/pqr/responderPQR.php';
         exit;
     }
