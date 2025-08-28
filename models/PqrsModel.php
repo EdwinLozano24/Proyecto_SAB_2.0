@@ -97,6 +97,7 @@ WHERE p.pqrs_estado = 'Pendiente';
     
     public function findResponder($id_pqrs)
     {
+    var_dump($id_pqrs); exit;
       $stmt = $this->pdo->prepare("SELECT 
     p.*,
     u.usua_nombre AS usuario_nombre,
