@@ -36,8 +36,8 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
         include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/especialista/asideResponder.php');
     ?>
     <main class="main-content">
-            <h2 class="content-title">Tus Citas Asignadas</h2>
-            <p class="content-subtitle">Recuerda verificar el estado de las citas antes de realizar algun procedimiento</p>
+            <h2 class="content-title">Pqrs Pendientes</h2>
+            <p class="content-subtitle">A continuación se muestran las pqrs pendientes registradas</p>
         <table id="EspecialistaCitas" class="table-custom daTatable">
             <thead>
                 <tr>
