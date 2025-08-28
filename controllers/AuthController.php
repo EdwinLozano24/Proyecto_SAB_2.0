@@ -42,7 +42,7 @@ class AuthController
             }
 
             $usuario = $this->AuthModel->getUser($usua_documento);
-            var_dump($usuario); exit;
+            
             
 
             if ($usuario && password_verify($usua_password, $usuario['usua_password'])) {
@@ -73,7 +73,7 @@ class AuthController
             }
                 exit;
             } else {
-                header('Location: ../views/.general/error/acceso_denegado.php');
+                header('Location: ../views/.general/error/acceso_denegados.php');
                 exit;
             }
         }
