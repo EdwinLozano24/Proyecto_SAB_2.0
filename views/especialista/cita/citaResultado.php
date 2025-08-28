@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resultado Cita</title>
     <?php
-    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/assets/css/especialista/citaResultado.css';
-    $cssUrl = '/assets/css/especialista/citaResultado.css';
+    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/Assets/css/especialista/citaResultado.css';
+    $cssUrl = '/Assets/css/especialista/citaResultado.css';
     if (file_exists($cssPath)) {
         echo '<link rel="stylesheet" href="' . $cssUrl . '">';
     } else {
