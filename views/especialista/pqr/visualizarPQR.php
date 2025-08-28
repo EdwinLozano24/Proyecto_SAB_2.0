@@ -56,7 +56,7 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
                         <td><?= htmlspecialchars($pendiente['pqrs_asunto']) ?></td>
                         <td><?= htmlspecialchars($pendiente['pqrs_fecha_envio']) ?></td>
                         <td>
-                            <a href="/controllers/PqrsController.php?accion=responderPqrs&id_pqrs=<?= $pendiente['id_pqrs'] ?>&origen='Responder'"
+                            <a href="/controllers/PqrsController.php?accion=responderPqrs&id_pqrs=<?= $pendiente['id_pqrs'] ?>"
                                 class="action-btn edit">
                                 <i class="fa-solid fa-file-pen"></i>
                             </a>

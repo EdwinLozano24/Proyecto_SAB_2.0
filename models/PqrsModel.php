@@ -97,7 +97,18 @@ WHERE p.pqrs_estado = 'Pendiente';
     
     public function findResponder($id_pqrs)
     {
-      $stmt = $this->pdo->prepare("SELECT p.*, u.usua_ FROM tbl_pqrs WHERE id_pqrs = :id_pqrs");
+      $stmt = $this->pdo->prepare("SELECT 
+    p.*,
+    u.usua_nombre AS usuario_nombre,
+    ue.usua_nombre AS empleado_nombre
+FROM tbl_pqrs p
+INNER JOIN tbl_usuarios u 
+    ON p.pqrs_usuario = u.id_usuario
+INNER JOIN tbl_empleados e 
+    ON p.pqrs_empleado = e.id_empleado
+INNER JOIN tbl_usuarios ue 
+    ON e.id_usuario = ue.id_usuario
+WHERE p.id_pqrs = :id_pqrs");
         $stmt->execute([':id_pqrs' => $id_pqrs]);
         return $stmt->fetch();  
     }

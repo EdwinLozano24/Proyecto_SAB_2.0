@@ -33,7 +33,8 @@ switch ($action) {
         $controller->visualizarPqrs();
         break;
     case 'responderPqrs':
-        $controller->view_update($id_pqrs,$origen);
+        $controller->responderPqrs($id_pqrs);
+        break;
     default:
         $controller->index();
         break;
@@ -157,6 +158,14 @@ class PqrsController
     {
         $pendientes = $this->pqrsModel->findPendientes();
         include '../views/especialista/pqr/visualizarPQR.php';
+        exit;
+    }
+
+    public function responderPqrs($id_pqrs)
+    {
+        $pqrs = $this->pqrsModel->findResponder($id_pqrs);
+        var_dump($pqrs); exit;
+        include '../views/especialista/pqr/responderPQR.php';
         exit;
     }
 
