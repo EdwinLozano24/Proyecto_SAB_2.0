@@ -70,44 +70,16 @@ requiereSesion();
                 </div>
 
                 <div class="form-grid">
-                    <div class="form-group">
-                        <label for="pqrs_fecha_envio">Fecha de Envio<span class="required">*</span></label>
-                        <input type="date" name="pqrs_fecha_envio" id="pqrs_fecha_envio" required min="2024-01-01"
+                        <input type="hidden" name="pqrs_fecha_envio" id="pqrs_fecha_envio" required min="2024-01-01"
                             value="<?= htmlspecialchars($pqrs['pqrs_fecha_envio']) ?>">
-                    </div>
 
-                    <div class="form-group">
-                        <label for="pqrs_estado">Estado de Pqrs<span class="required">*</span></label>
-                        <select name="pqrs_estado" id="pqrs_estado" required>
-                            <option value="" disabled selected>Seleccionar estado...</option>
-                            <option value="Pendiente" <?= ($pqrs['pqrs_estado'] == "Pendiente") ? 'selected' : '' ?>>
-                                Pendiente</option>
-                            <option value="En proceso" <?= ($pqrs['pqrs_estado'] == "En proceso") ? 'selected' : '' ?>>En
-                                proceso</option>
-                            <option value="Respondido" <?= ($pqrs['pqrs_estado'] == "Respondido") ? 'selected' : '' ?>>
-                                Respondido</option>
-                            <option value="Cerrado" <?= ($pqrs['pqrs_estado'] == "Cerrado") ? 'selected' : '' ?>>Cerrado
-                            </option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="pqrs_fecha_respuesta">Fecha de Respuesta<span class="required">*</span></label>
-                        <input type="date" name="pqrs_fecha_respuesta" id="pqrs_fecha_respuesta"
-                            value="<?= htmlspecialchars($pqrs['pqrs_fecha_respuesta']) ?>">
-                    </div>
+                        <input type="hidden" name="pqrs_estado" id="pqrs_estado" required
+                            value="<?= htmlspecialchars($pqrs['pqrs_estado']) ?>" readonly>
 
                     <div class="form-group">
                         <label for="pqrs_empleado">Empleado Encargado<span class="required">*</span></label>
-                        <select name="pqrs_empleado" id="pqrs_empleado" class="form-control select2">
-                            <option value="">Seleccionar empleado...</option>
-                            <?php foreach ($empl as $emp): ?>
-                                <option value="<?= htmlspecialchars($emp['id_empleado']) ?>"
-                                    <?= $emp['id_empleado'] == $pqrs['pqrs_empleado'] ? 'selected' : '' ?>>
-                                    <?= htmlspecialchars($emp['usua_nombre']) ?>
-                                </option>
-                            <?php endforeach; ?>
-                        </select>
+                        <input type="hidden" name="pqrs_empleado" id="pqrs_empleado" required
+                                value="<?= htmlspecialchars($pqrs['pqrs_empleado']) ?>" readonly>
                     </div>
 
                     <div class="form-group full-width">
