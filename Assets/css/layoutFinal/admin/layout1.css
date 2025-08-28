@@ -451,3 +451,13 @@ body {
         transform: translateY(0);
     }
 }
+
+.table-custom {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 0;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}

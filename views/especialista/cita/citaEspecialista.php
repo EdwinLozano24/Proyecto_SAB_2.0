@@ -43,7 +43,7 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
         include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/especialista/asideCita.php');
     ?>
     <main class="main-content">
-        <table id="EspecialistaCitas" class="table-custom">
+        <table id="EspecialistaCitas" class="table-custom daTatable">
             <thead>
                 <tr>
                     <th>Usuario Solicitante</th>
