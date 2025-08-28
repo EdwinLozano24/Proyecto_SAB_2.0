@@ -62,13 +62,13 @@
                     Detalles del Registro
                 </div>
                 
-                <div class="info-card">
+                <!-- <div class="info-card">
                     <h3>Información editable</h3>
                     <p class="editable-info">
                         Aquí puede agregar información adicional que considere relevante para este registro. 
                         Este texto es completamente editable - haga clic para modificarlo según sus necesidades.
                     </p>
-                </div>
+                </div> -->
 
                 <div class="form-grid">
                     <div class="form-group full-width">
