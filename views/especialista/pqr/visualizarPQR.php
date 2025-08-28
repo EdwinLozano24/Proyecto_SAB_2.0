@@ -56,10 +56,6 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
                         <td><?= htmlspecialchars($pendiente['pqrs_asunto']) ?></td>
                         <td><?= htmlspecialchars($pendiente['pqrs_fecha_envio']) ?></td>
                         <td>
-                            <a href="/controllers/CitaController.php?accion=view_resultado_cita=<?= $cit['id_cita'] ?>"
-                                class="action-btn edit">
-                                <i class="fa-solid fa-eye"></i>
-                            </a>
                             <a href="/controllers/CitaController.php?accion=delete&id_cita=<?= $cit['id_cita'] ?>"
                                 class="action-btn edit">
                                 <i class="fa-solid fa-check"></i>
