@@ -4,7 +4,6 @@ requiereSesion();
 $id_usuario = $_SESSION['usuario']['id_usuario'];
 $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
