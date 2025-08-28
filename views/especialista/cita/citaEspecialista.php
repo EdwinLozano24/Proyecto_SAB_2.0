@@ -29,7 +29,6 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/Assets/css/layoutFinal/admin/layout1.css?v=20250828">
 </head>
-
 <body>
     <?php 
         // include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/especialista/header.php');
