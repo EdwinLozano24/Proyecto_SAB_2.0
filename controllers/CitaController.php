@@ -296,7 +296,7 @@ class CitaController
         try {
             $this->CitaModel->storeResultado($dataResultado);
             $this->CitaModel->cambiarEstado($dataEstado);
-            header('Location: ../views/administrador/cita/citaIndex.php');
+            header('Location: ../views/especialista/home/especialista_dashboard.php');
             exit;
         } catch (\Exception $e) {
             error_log("Error al registrar el resultado de la cita: " . $e->getMessage());

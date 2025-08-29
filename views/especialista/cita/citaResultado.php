@@ -26,6 +26,7 @@
 
         <form id="registroForm" action="/controllers/HomeController.php?accion=store_resultado_cita" method="POST">
             <input type="hidden" name="resu_cita" value="<?= htmlspecialchars($cita['id_cita']) ?>">
+            <input type="hidden" name="id_cita" value="<?= htmlspecialchars($cita['id_cita']) ?>">
             <div class="info-card">
                 <h3>Información importante</h3>
                 <p>Los campos marcados con asterisco " * " son obligatorios. Asegúrese de completar toda la información requerida antes de enviar.</p>
@@ -74,7 +75,7 @@
 
                     <div class="form-group full-width">
                         <label for="resu_recomendacion">Recomendaciones<span class="required"> *</span></label>
-                        <textarea id="resu_detalle" name="resu_detalle" placeholder="Ingrese las recomendaciones tan claras como sean posibles..." required></textarea>
+                        <textarea id="resu_detalle" name="resu_recomendacion" placeholder="Ingrese las recomendaciones tan claras como sean posibles..." required></textarea>
                     </div>
 
                     <div class="form-group">

@@ -248,7 +248,7 @@ WHERE id_cita = :id_cita
     )";
     $stmt = $this->pdo->prepare($sql);
         $params = [];
-        foreach ($data as $key => $value) {
+        foreach ($dataResultado as $key => $value) {
             $params[":$key"] = $value;
         }
         return $stmt->execute($params);
