@@ -280,6 +280,27 @@ class CitaController
 
     public function store_resultado()
     {
-        
+        $dataResultado = [
+            'resu_cita' => $_POST['resu_cita'] ?? null,
+            'resu_diagnostico' => $_POST['resu_diagnostico'] ?? null,
+            'resu_detalle' => $_POST['resu_detalle'] ?? null,
+            'resu_recomendacion' => $_POST['resu_recomendacion'] ?? null,
+            'resu_fecha' => $_POST['resu_fecha'] ?? date("Y-m-d H:i:s"),
+        ];
+
+        $dataEstado = [
+            'id_cita' => $_POST['id_cita'], 
+            'cita_estado' => $_POST['cita_estado']
+        ];
+
+        try {
+            $this->CitaModel->storeResultado($dataResultado);
+            $this->CitaModel->cambiarEstado($dataEstado);
+            header('Location: ../views/administrador/cita/citaIndex.php');
+            exit;
+        } catch (\Exception $e) {
+            error_log("Error al registrar el resultado de la cita: " . $e->getMessage());
+            echo "Ocurrió un error al registrar el resultado de la cita.";
+        }
     }
 }

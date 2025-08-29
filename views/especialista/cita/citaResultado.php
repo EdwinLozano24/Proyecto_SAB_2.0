@@ -25,6 +25,7 @@
         </div>
 
         <form id="registroForm" action="/controllers/HomeController.php?accion=store_resultado_cita" method="POST">
+            <input type="hidden" name="resu_cita" value="<?= htmlspecialchars($cita['id_cita']) ?>">
             <div class="info-card">
                 <h3>Información importante</h3>
                 <p>Los campos marcados con asterisco " * " son obligatorios. Asegúrese de completar toda la información requerida antes de enviar.</p>
@@ -107,8 +108,8 @@
                 
                 <div class="form-grid">
                     <div class="form-group">
-                        <label for="estado">Estado del Proceso <span class="required"> *</span></label>
-                        <select id="estado" name="estado" required>
+                        <label for="cita_estado">Estado del Proceso <span class="required"> *</span></label>
+                        <select id="cita_estado" name="cita_estado" required>
                             <option value="Proceso">En Proceso</option>
                             <option value="Cumplida">Cumplida</option>
                         </select>

@@ -231,4 +231,41 @@ WHERE id_cita = :id_cita
     return $stmt->fetch(PDO::FETCH_ASSOC);
     }   
 
+    public function storeResultado(array $dataResultado)
+    {
+        $sql = "INSERT INTO tbl_citas_resultados (
+        resu_cita,
+        resu_diagnostico,
+        resu_detalle,
+        resu_recomendacion,
+        resu_fecha,
+    ) VALUES (
+        :resu_cita,
+        :resu_diagnostico,
+        :resu_detalle,
+        :resu_recomendacion,
+        :resu_fecha
+    )";
+    $stmt = $this->pdo->prepare($sql);
+        $params = [];
+        foreach ($data as $key => $value) {
+            $params[":$key"] = $value;
+        }
+        return $stmt->execute($params);
+    }
+
+    public function cambiarEstado(array $dataEstado)
+    {
+    $sql = "UPDATE tbl_citas 
+            SET cita_estado = :cita_estado 
+            WHERE id_cita = :id_cita";
+
+    $stmt = $this->pdo->prepare($sql);
+
+    $stmt->bindParam(':cita_estado', $dataEstado['cita_estado'], PDO::PARAM_STR);
+    $stmt->bindParam(':id_cita', $dataEstado['id_cita'], PDO::PARAM_INT);
+
+    return $stmt->execute();
+    }
+
 }
