@@ -44,6 +44,7 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
                     <th>Estado</th>
                     <th>Tipo</th>
                     <th>Asunto</th>
+                    <th>Fecha de Creación</th>
                     <th>Fecha de Respuesta</th>
                     <th>Respuesta</th>
                     <th>Responsable</th>
@@ -56,6 +57,7 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
                         <td><?= htmlspecialchars($pqr['pqrs_estado']) ?></td>
                         <td><?= htmlspecialchars($pqr['pqrs_tipo']) ?></td>
                         <td><?= htmlspecialchars($pqr['pqrs_asunto']) ?></td>
+                        <td><?= htmlspecialchars($pqr['pqrs_fecha_envio']) ?></td>
                         <td><?= htmlspecialchars($pqr['pqrs_fecha_respuesta']) ?></td>
                         <td><?= htmlspecialchars($pqr['pqrs_respuesta']) ?></td>
                         <td><?= htmlspecialchars($pqr['empleado_nombre']) ?></td>
