@@ -71,9 +71,8 @@ class PqrsController
         exit;
     }
 
-    public function view_update($id_pqrs,$origen)
+    public function view_update($id_pqrs)
     {
-        var_dump($id_pqrs,$origen); exit;
         $pqrs = $this->pqrsModel->find($id_pqrs);
         $empl = $this->EmpleadoModel->findAll();
         $usua = $this->UsuarioModel->findAll();
