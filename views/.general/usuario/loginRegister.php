@@ -44,6 +44,7 @@
 
                     <label for="usua_documento">Numero de Documento</label>
                     <input type="text" id="documento" name="usua_documento" placeholder="Número De Documento" required>
+                    <label for="usua_documento">Contraseña</label>
                     <input type="password" id="password" name="usua_password" placeholder="Contraseña" required>
                     <div id="error" style="color: blue;"></div>
                     <button type="submit" name="loginUsuario">Entrar</button>
