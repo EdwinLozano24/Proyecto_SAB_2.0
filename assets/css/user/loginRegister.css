@@ -124,6 +124,7 @@ main{
     cursor: pointer;
     color: #fff;
     outline: none;
+    border-radius: 5px;
 }
 #doc_tipo{
     width: 100%;
