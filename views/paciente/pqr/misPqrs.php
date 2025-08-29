@@ -58,7 +58,7 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
                         <td><?= htmlspecialchars($pqr['pqrs_asunto']) ?></td>
                         <td><?= htmlspecialchars($pqr['pqrs_fecha_respuesta']) ?></td>
                         <td><?= htmlspecialchars($pqr['pqrs_respuesta']) ?></td>
-                        <td><?= htmlspecialchars($pqr['pqrs_empleado']) ?></td>
+                        <td><?= htmlspecialchars($pqr['empleado_nombre']) ?></td>
                         <td>
                             <a href="/controllers/PqrsController.php?accion=delete&id_pqrs=<?= $pqr['id_pqrs'] ?>"
                                 class="action-btn edit">
