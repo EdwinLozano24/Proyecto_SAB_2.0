@@ -120,11 +120,6 @@ WHERE p.id_pqrs = :id_pqrs");
     public function findUsuario($id_usuario)
     {
         $stmt = $this->pdo->prepare("SELECT 
-    p.*, 
-    .usua_nombre
-FROM tbl_pqrs p
-INNER JOIN tbl_usuarios u 
-    ON p.pqrs_usuario = u.id_usuarioSELECT 
     p.*,
     u.usua_nombre AS usuario_nombre,
     ue.usua_nombre AS empleado_nombre
