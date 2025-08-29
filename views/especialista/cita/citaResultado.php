@@ -44,12 +44,12 @@
 
                     <div class="form-group">
                         <label for="cita_motivo">Motivo de la Cita</label>
-                        <input type="text" id="cita_motivo" name="cita_motivo" value="" readonly>
+                        <input type="text" id="cita_motivo" name="cita_motivo" value="<?= htmlspecialchars($cita['cita_motivo']) ?>" readonly>
                     </div>
 
                     <div class="form-group full-width">
                         <label for="cita_observacion">Observaciones</label>
-                        <input type="text" id="cita_observacion" name="cita_observacion" value="" readonly>
+                        <input type="text" id="cita_observacion" name="cita_observacion" value="<?= htmlspecialchars($cita['cita_observacion']) ?>" readonly>
                     </div>
 
                 </div>
