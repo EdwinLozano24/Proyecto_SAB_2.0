@@ -70,7 +70,7 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
                                 class="action-btn edit">
                                 <i class="fa-solid fa-eye"></i>
                             </a>
-                            <a href="/controllers/CitaController.php?accion=delete&id_cita=<?= $cit['id_cita'] ?>"
+                            <a href="/controllers/CitaController.php?accion=view_resultado_cita&id_cita=<?= $cit['id_cita'] ?>"
                                 class="action-btn edit">
                                 <i class="fa-solid fa-check"></i>
                             </a>

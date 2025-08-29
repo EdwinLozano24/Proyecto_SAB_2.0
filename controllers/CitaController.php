@@ -269,6 +269,6 @@ class CitaController
 
     public function view_resultado($id_cita)
     {
-        
+        echo('Hola');
     }
 }
