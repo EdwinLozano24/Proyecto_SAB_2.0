@@ -9,8 +9,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <link rel="stylesheet" href="/assets/css/user/loginRegister.php?v=20250830">
+    <?php
+    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/assets/css/user/loginRegister.css?';
+    $cssUrl = '/assets/css/user/loginRegister.css?';
+    if (file_exists($cssPath)) {
+        echo '<link rel="stylesheet" href="' . $cssUrl . '">';
+    } else {
+        echo ' CSS File not fount at: ' . $cssPath . '';
+    }
+    ?>
+    <link rel="stylesheet" href="/assets/css/loginRegister.php?v=20250830">
 </head>
 <body>
     <?php if (isset($_GET['exito']) && $_GET['exito'] == 1): ?>
