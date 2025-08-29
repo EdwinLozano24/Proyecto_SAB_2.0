@@ -181,7 +181,8 @@ class PqrsController
     public function pacientePqrs($id_usuario)
     {
         $pqrs = $this->pqrsModel->findUsuario($id_usuario);
-        var_dump($pqrs); exit;
+        include '../views/paciente/pqr/misPqrs.php';
+        exit;
     }
 
 }
