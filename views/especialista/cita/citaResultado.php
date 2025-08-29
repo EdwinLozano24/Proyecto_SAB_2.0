@@ -74,6 +74,11 @@
                         <textarea id="resu_detalle" name="resu_detalle" placeholder="Ingrese las recomendaciones tan claras como sean posibles..." required></textarea>
                     </div>
 
+                    <div class="form-group">
+                        <label for="resu_diagnostico">Diagnostico<span class="required"> *</span></label>
+                        <textarea id="resu_detalle" name="resu_detalle" placeholder="Ingrese los detalles de la cita tan claros como sean posibles..." required></textarea>
+                    </div>
+
                 </div>
             </div>
 
@@ -102,7 +107,6 @@
                             <option value="pendiente">Pendiente</option>
                             <option value="cancelada">Cancelada</option>
                         </select>
-                        <div class="error-message">Debe seleccionar un estado</div>
                     </div>
 
                     <div class="form-group">
