@@ -57,7 +57,7 @@
 
                     <!-- Contenedor con scroll -->
                     <div class="form-scroll-inner">
-                        
+                        <label for="usua_tipo_documento">Tipo de Documento</label>
                         <select name="usua_tipo_documento" id="doc_tipo" required>
                             <option value="" disabled selected>Tipo de Documento</option>
                             <option value="Cédula de ciudadanía">Cédula</option>
@@ -68,8 +68,11 @@
                             <option value="Número de identificación tributaria">Número de Identificación Tributaria</option>
                             <option value="Otro">Otro</option>
                         </select>
-                        
+
+                        <label for="usua_tipo_documento">Número de Documento</label>
                         <input type="int" placeholder="Número de Documento" name="usua_documento" id="num_documento" required>
+
+                        <label for="usua_tipo_documento">Nombre Completo</label>
                         <input type="text" placeholder="Nombre Completo" name="usua_nombre" id="nombre" required>
                         
                         <input type="email" placeholder="Correo Electrónico" name="usua_correo_electronico" id="correo" required>
