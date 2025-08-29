@@ -10,7 +10,7 @@
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     
-    <link rel="stylesheet" href="/assets/css/loginRegister.php?v=20250830">
+    <link rel="stylesheet" href="/Assets/css/user/loginRegister.php?v=20250830">
 </head>
 <body>
     <?php if (isset($_GET['exito']) && $_GET['exito'] == 1): ?>
