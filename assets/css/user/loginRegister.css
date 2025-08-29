@@ -106,7 +106,8 @@ main{
 
 .contenedor__login-register form input{
     width: 100%;
-    margin-top: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     padding: 10px;
     border: none;
     background: #f2f2f2;
