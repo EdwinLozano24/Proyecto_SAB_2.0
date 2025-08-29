@@ -40,6 +40,9 @@ switch ($accion) {
     case 'view_resultado_cita':
         $cita->view_resultado($_GET['id_cita']);
         break;
+    case 'store_resultado_cita':
+        $cita->store_resultado();
+        break;
     default:
         $cita->index();
         break;
@@ -270,7 +273,13 @@ class CitaController
     public function view_resultado($id_cita)
     {
         $cita = $this->CitaModel->findResultado($id_cita);
+        $diags = $this->DiagnosticoModel->findAll();
         include '../views/especialista/cita/citaResultado.php';
         exit;
+    }
+
+    public function store_resultado()
+    {
+        
     }
 }

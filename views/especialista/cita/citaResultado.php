@@ -22,7 +22,7 @@
             <p class="subtitle">Complete la información para atender la cita</p>
         </div>
 
-        <form id="registroForm" action="#" method="POST">
+        <form id="registroForm" action="/controllers/HomeController.php?accion=store_resultado_cita" method="POST">
             <div class="info-card">
                 <h3>Información importante</h3>
                 <p>Los campos marcados con asterisco " * " son obligatorios. Asegúrese de completar toda la información requerida antes de enviar.</p>
@@ -76,7 +76,14 @@
 
                     <div class="form-group">
                         <label for="resu_diagnostico">Diagnostico<span class="required"> *</span></label>
-                        <textarea id="resu_detalle" name="resu_detalle" placeholder="Ingrese los detalles de la cita tan claros como sean posibles..." required></textarea>
+                        <select name="resu_diagnostico" id="resu_diagnostico" class="form-control select2" required>
+                            <option value="" disabled selected>Seleccionar diagnostico...</option>
+                                <?php foreach ($diags as $diag): ?>
+                                    <option value="<?= $diag['id_diagnostico'] ?>">
+                                        <?= $consultorio['diag_nombre'] ?>
+                                    </option>
+                            <?php endforeach; ?>
+                        </select>
                     </div>
 
                 </div>
