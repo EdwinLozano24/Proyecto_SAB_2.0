@@ -18,7 +18,7 @@
         echo ' CSS File not fount at: ' . $cssPath . '';
     }
     ?>
-    <link rel="stylesheet" href="/assets/css/loginRegister.php?v=20250830">
+    <link rel="stylesheet" href="/assets/css/user/loginRegister.css?v=20250830">
 </head>
 <body>
     <?php if (isset($_GET['exito']) && $_GET['exito'] == 1): ?>
@@ -47,7 +47,9 @@
                 <!--Login-->
                 <form id="loginForm" action="/controllers/AuthController.php?accion=Login" method="POST" class="formulario__login">
                     <h2>Iniciar Sesión</h2>
+
                     <input type="hidden" name="origen_formulario" value="Usuario">
+
                     <input type="text" id="documento" name="usua_documento" placeholder="Número De Documento" required>
                     <input type="password" id="password" name="usua_password" placeholder="Contraseña" required>
                     <div id="error" style="color: blue;"></div>
