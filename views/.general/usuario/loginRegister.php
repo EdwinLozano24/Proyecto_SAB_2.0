@@ -42,6 +42,7 @@
 
                     <input type="hidden" name="origen_formulario" value="Usuario">
 
+                    <label for="usua_documento">Numero de Documento</label>
                     <input type="text" id="documento" name="usua_documento" placeholder="Número De Documento" required>
                     <input type="password" id="password" name="usua_password" placeholder="Contraseña" required>
                     <div id="error" style="color: blue;"></div>
