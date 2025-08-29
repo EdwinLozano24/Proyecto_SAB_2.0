@@ -41,22 +41,26 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
         <table id="EspecialistaCitas" class="table-custom daTatable">
             <thead>
                 <tr>
-                    <th>Usuario Responsable</th>
+                    <th>Estado</th>
                     <th>Tipo</th>
                     <th>Asunto</th>
-                    <th>Fecha de Envio</th>
+                    <th>Fecha de Respuesta</th>
+                    <th>Respuesta</th>
+                    <th>Responsable</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($pendientes as $pendiente): ?>
+                <?php foreach ($pqrs as $pqr): ?>
                     <tr>
-                        <td><?= htmlspecialchars($pendiente['usua_nombre']) ?></td>
-                        <td><?= htmlspecialchars($pendiente['pqrs_tipo']) ?></td>
-                        <td><?= htmlspecialchars($pendiente['pqrs_asunto']) ?></td>
-                        <td><?= htmlspecialchars($pendiente['pqrs_fecha_envio']) ?></td>
+                        <td><?= htmlspecialchars($pqr['pqrs_estado']) ?></td>
+                        <td><?= htmlspecialchars($pqr['pqrs_tipo']) ?></td>
+                        <td><?= htmlspecialchars($pqr['pqrs_asunto']) ?></td>
+                        <td><?= htmlspecialchars($pqr['pqrs_fecha_respuesta']) ?></td>
+                        <td><?= htmlspecialchars($pqr['pqrs_respuesta']) ?></td>
+                        <td><?= htmlspecialchars($pqr['pqrs_empleado']) ?></td>
                         <td>
-                            <a href="/controllers/PqrsController.php?accion=responderPqrs&id_pqrs=<?= $pendiente['id_pqrs'] ?>"
+                            <a href="/controllers/PqrsController.php?accion=delete&id_pqrs=<?= $pqr['id_pqrs'] ?>"
                                 class="action-btn edit">
                                 <i class="fa-solid fa-file-pen"></i>
                             </a>

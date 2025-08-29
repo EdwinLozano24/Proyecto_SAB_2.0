@@ -121,10 +121,21 @@ WHERE p.id_pqrs = :id_pqrs");
     {
         $stmt = $this->pdo->prepare("SELECT 
     p.*, 
-    u.usua_nombre
+    .usua_nombre
+FROM tbl_pqrs p
+INNER JOIN tbl_usuarios u 
+    ON p.pqrs_usuario = u.id_usuarioSELECT 
+    p.*,
+    u.usua_nombre AS usuario_nombre,
+    ue.usua_nombre AS empleado_nombre
 FROM tbl_pqrs p
 INNER JOIN tbl_usuarios u 
     ON p.pqrs_usuario = u.id_usuario
+INNER JOIN tbl_empleados e 
+    ON p.pqrs_empleado = e.id_empleado
+INNER JOIN tbl_usuarios ue 
+    ON e.empl_usuario = ue.id_usuario;
+
     WHERE pqrs_usuario = :id_usuario");
         $stmt->execute([':id_usuario' => $id_usuario]);
         return $stmt->fetchAll();
