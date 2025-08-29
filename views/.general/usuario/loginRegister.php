@@ -57,8 +57,7 @@
 
                     <!-- Contenedor con scroll -->
                     <div class="form-scroll-inner">
-                        <input type="text" placeholder="Nombre Completo" name="usua_nombre" id="nombre" required>
-
+                        
                         <select name="usua_tipo_documento" id="doc_tipo" required>
                             <option value="" disabled selected>Tipo de Documento</option>
                             <option value="Cédula de ciudadanía">Cédula</option>
@@ -69,8 +68,10 @@
                             <option value="Número de identificación tributaria">Número de Identificación Tributaria</option>
                             <option value="Otro">Otro</option>
                         </select>
-
+                        
                         <input type="int" placeholder="Número de Documento" name="usua_documento" id="num_documento" required>
+                        <input type="text" placeholder="Nombre Completo" name="usua_nombre" id="nombre" required>
+                        
                         <input type="email" placeholder="Correo Electrónico" name="usua_correo_electronico" id="correo" required>
                         <input type="tel" placeholder="Número de Contacto" name="usua_num_contacto" id="contacto" required>
                         <input type="tel" placeholder="Número Secundario / Acudiente" name="usua_num_secundario" id="acudiente" required>
