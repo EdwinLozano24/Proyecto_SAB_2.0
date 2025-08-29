@@ -27,7 +27,7 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
     crossorigin="anonymous" referrerpolicy="no-referrer" />
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/Assets/css/layoutFinal/admin/layout1.css?v=20250831">
+    <link rel="stylesheet" href="/Assets/css/layoutFinal/admin/layout1.css?v=20250832">
 </head>
 <body>
     <?php 
@@ -61,7 +61,7 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
                         <td><?= htmlspecialchars($pqr['empleado_nombre']) ?></td>
                         <td>
                             <a href="/controllers/PqrsController.php?accion=delete&id_pqrs=<?= $pqr['id_pqrs'] ?>"
-                                class="action-btn edit">
+                                class="action-btn delete">
                                 <i class="fa-solid fa-file-pen"></i>
                             </a>
                         </td>
