@@ -9,7 +9,7 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responder Pqrs</title>
+    <title>Mis Pqrs</title>
     
     <!-- Boostrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -36,8 +36,8 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
         include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/paciente/asideMisPqrs.php');
     ?>
     <main class="main-content">
-            <h2 class="content-title">Pqrs Pendientes</h2>
-            <p class="content-subtitle">A continuación se muestran las pqrs pendientes registradas</p>
+            <h2 class="content-title">Tus Pqrs</h2>
+            <p class="content-subtitle">A continuación se muestran tus pqrs si tienes alguna registrada</p>
         <table id="EspecialistaCitas" class="table-custom daTatable">
             <thead>
                 <tr>
