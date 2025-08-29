@@ -238,7 +238,7 @@ WHERE id_cita = :id_cita
         resu_diagnostico,
         resu_detalle,
         resu_recomendacion,
-        resu_fecha,
+        resu_fecha
     ) VALUES (
         :resu_cita,
         :resu_diagnostico,
