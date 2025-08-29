@@ -270,8 +270,7 @@ class CitaController
     public function view_resultado($id_cita)
     {
         $cita = $this->CitaModel->findResultado($id_cita);
-        var_dump($cita); exit;
-        include '../views/especialista/cita/citaEspecialista.php';
+        include '../views/especialista/cita/citaResultado.php';
         exit;
     }
 }
