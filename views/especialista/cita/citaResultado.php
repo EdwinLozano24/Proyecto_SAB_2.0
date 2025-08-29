@@ -109,7 +109,7 @@
                     <div class="form-group">
                         <label for="estado">Estado del Proceso <span class="required"> *</span></label>
                         <select id="estado" name="estado" required>
-                            <option value="">Seleccione un estado</option>
+                            <option value="">Seleccionar estado...</option>
                             <option value="Proceso">En Proceso</option>
                             <option value="Cumplida">Cumplida</option>
                             <option value="Incumplida">Incumplida</option>
