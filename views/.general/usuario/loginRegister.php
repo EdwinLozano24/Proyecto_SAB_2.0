@@ -46,7 +46,7 @@
                     <input type="password" id="password" name="usua_password" placeholder="Contraseña" required>
                     <div id="error" style="color: blue;"></div>
                     <button type="submit" name="loginUsuario">Entrar</button>
-                    <a href="../../../views/.general/password/recuperar_form.php" style="text-decoration: none;">Olvidaste la contraseña?</a>
+                    <a href="../../../views/.general/password/recuperar_form.php" style="text-decoration: none; padding-left: 10px;">Olvidaste la contraseña?</a>
                 </form>
 
                 <!--Register-->
