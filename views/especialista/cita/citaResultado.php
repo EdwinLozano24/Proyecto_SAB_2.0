@@ -107,44 +107,23 @@
                 
                 <div class="form-grid">
                     <div class="form-group">
-                        <label for="estado">Estado del Proceso <span class="required">*</span></label>
+                        <label for="estado">Estado del Proceso <span class="required"> *</span></label>
                         <select id="estado" name="estado" required>
                             <option value="">Seleccione un estado</option>
-                            <option value="proceso">En Proceso</option>
-                            <option value="cumplida">Cumplida</option>
-                            <option value="incumplida">Incumplida</option>
-                            <option value="pendiente">Pendiente</option>
-                            <option value="cancelada">Cancelada</option>
+                            <option value="Proceso">En Proceso</option>
+                            <option value="Cumplida">Cumplida</option>
+                            <option value="Incumplida">Incumplida</option>
+                            <option value="Cancelada">Cancelada</option>
                         </select>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="status-preview" id="statusPreview" style="margin-top: 28px;">
-                            <span class="status-indicator status-proceso" style="display: none;">
-                                🔄 En Proceso
-                            </span>
-                            <span class="status-indicator status-cumplida" style="display: none;">
-                                ✅ Cumplida
-                            </span>
-                            <span class="status-indicator status-incumplida" style="display: none;">
-                                ❌ Incumplida
-                            </span>
-                            <span class="status-indicator" style="display: none; background: #f3f4f6; color: #6b7280;">
-                                ⏳ Pendiente
-                            </span>
-                            <span class="status-indicator" style="display: none; background: #fef2f2; color: #991b1b;">
-                                🚫 Cancelada
-                            </span>
-                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="button-group">
-                <button type="button" class="btn-secondary" onclick="limpiarFormulario()">
-                    Limpiar
+                <button type="button" class="btn-secondary" onclick="window.history.back()">
+                    ← Cancelar
                 </button>
-                <input type="submit" value="Guardar Registro">
+                <input type="submit" value="Guardar Resultado">
             </div>
         </form>
     </div>
