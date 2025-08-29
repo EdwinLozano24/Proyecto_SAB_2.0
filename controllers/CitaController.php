@@ -300,7 +300,7 @@ class CitaController
             exit;
         } catch (\Exception $e) {
             error_log("Error al registrar el resultado de la cita: " . $e->getMessage());
-            echo "Ocurrió un error al registrar el resultado de la cita.";
+            echo "Ocurrió un error al registrar el resultado de la cita. $e";
         }
     }
 }
