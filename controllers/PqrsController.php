@@ -114,7 +114,7 @@ class PqrsController
     {
         $id_usuario = $_POST['pqrs_empleado'] ?? null;
         $empleado = $this->pqrsModel->findEmpleado($id_usuario);
-
+        var_dump($empleado); exit;
         $data = [
             'id_pqrs'             => $_POST['id_pqrs'] ?? null,
             'pqrs_tipo'           => $_POST['pqrs_tipo']        ?? null,
@@ -126,7 +126,7 @@ class PqrsController
             'pqrs_usuario' => $_POST['pqrs_usuario'] ?? null,
             'pqrs_empleado'       => $empleado,
         ];
-        var_dump($data['pqrs_empleado']); exit;
+
         $origen = $_POST['origen_formulario'] ?? 'Administrador';
 
         try {
