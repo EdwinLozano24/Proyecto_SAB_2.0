@@ -29,6 +29,10 @@ switch ($action) {
     case 'delete':
         $controller->delete($_GET['id_pqrs'] ?? null);
         break;
+    
+    case 'deleteMisPqrs':
+        $controller->deleteMisPqrs($_GET['id_pqrs']);
+        break;
 
     case 'visualizarPqrs':
         $controller->visualizarPqrs();
@@ -158,6 +162,17 @@ class PqrsController
         try {
             $this->pqrsModel->delete($id_pqrs);
             header('Location: ../views/administrador/pqrs/pqrsIndex.php');
+            exit;
+        } catch (\Throwable $e) {
+            echo '[Ocurrió un error al ELIMINAR la PQR. Estamos trabajando para solucionarlo]';
+        }
+    }
+
+    public function deleteMisPqrs($id_pqrs)
+    {
+        try {
+            $this->pqrsModel->deleteMisPqrs($id_pqrs);
+            header('Location: /controllers/HomeController.php?accion=homePaciente');
             exit;
         } catch (\Throwable $e) {
             echo '[Ocurrió un error al ELIMINAR la PQR. Estamos trabajando para solucionarlo]';

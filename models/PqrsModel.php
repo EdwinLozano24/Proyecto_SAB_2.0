@@ -79,6 +79,12 @@ class PqrsModel
         $stmt = $this->pdo->prepare("UPDATE tbl_pqrs SET pqrs_estado = 'Cerrado' WHERE id_pqrs = :id_pqrs");
         return $stmt->execute([':id_pqrs' => $id_pqrs]);
     }
+    
+    public function deleteMisPqrs($id_pqrs)
+    {
+        $stmt = $this->pdo->prepare("UPDATE tbl_pqrs SET pqrs_estado = 'Cancelado' WHERE id_pqrs = :id_pqrs");
+        return $stmt->execute([':id_pqrs' => $id_pqrs]);
+    }
 
     public function findPendientes()
     {
