@@ -10,8 +10,8 @@
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <?php
-    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/assets/css/user/loginRegister.css';
-    $cssUrl = '/assets/css/user/loginRegister.css';
+    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/assets/css/user/loginRegister.css?v=20250830';
+    $cssUrl = '/assets/css/user/loginRegister.css?v=20250830';
     if (file_exists($cssPath)) {
         echo '<link rel="stylesheet" href="' . $cssUrl . '">';
     } else {
