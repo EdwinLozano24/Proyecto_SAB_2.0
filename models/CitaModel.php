@@ -209,4 +209,26 @@ WHERE c.cita_especialista = :id_especialista
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
+    public function findResultado($id_cita)
+    {
+        $sql = "SELECT 
+    c.*, 
+    up.usua_nombre AS cita_paciente,
+    ue.usua_nombre AS cita_especialista,
+    co.cons_numero AS cita_consultorio
+FROM tbl_citas AS c
+LEFT JOIN tbl_pacientes AS p ON c.cita_paciente = p.id_paciente
+LEFT JOIN tbl_usuarios AS up ON p.paci_usuario = up.id_usuario
+LEFT JOIN tbl_especialistas AS e ON c.cita_especialista = e.id_especialista
+LEFT JOIN tbl_usuarios AS ue ON e.espe_usuario = ue.id_usuario
+LEFT JOIN tbl_consultorios AS co ON c.cita_consultorio = co.id_consultorio
+WHERE id_cita = :id_cita
+";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->bindValue(':id_cita', $id_cita, PDO::PARAM_INT);
+    $stmt->execute();
+
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+    }   
+
 }
