@@ -49,7 +49,7 @@
 
                     <div class="form-group full-width">
                         <label for="cita_observacion">Observaciones</label>
-                        <input type="text" id="cita_observacion" name="cita_observacion" value="<?= htmlspecialchars($cita['cita_observacion']) ?>" placeholder="Hola" readonly>
+                        <input type="text" id="cita_observacion" name="cita_observacion" value="<?= htmlspecialchars($cita['cita_observacion']) ?>" placeholder="N/A" readonly>
                     </div>
 
                 </div>
