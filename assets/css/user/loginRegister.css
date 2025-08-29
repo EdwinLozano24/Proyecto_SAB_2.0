@@ -1,4 +1,3 @@
-
 * {
     margin: 0;
     padding: 0;
@@ -13,7 +12,7 @@
 
 
 body{
-    background-color: #329FAB;
+    background-color: #0ea5e9;
     background-image: url(../../img/Login/fondoLogin.jpg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -41,7 +40,7 @@ main{
     display: flex;
     justify-content: center;
     backdrop-filter: blur(10px);
-    background-color: rgba(50, 159, 171,0.5);
+    background-color: rgba(14, 165, 233, 0.5);
     border-radius: 10px;
 }
 
@@ -74,7 +73,7 @@ main{
 }
 
 .caja__trasera button:hover{
-    background:#329FAB;
+    background: #0ea5e9;
     color: #fff;
 }
 
@@ -102,7 +101,7 @@ main{
     font-size: 30px;
     text-align: center;
     margin-bottom: 20px;
-    color: #329FAB;
+    color: #0ea5e9;
 }
 
 .contenedor__login-register form input{
@@ -120,7 +119,7 @@ main{
     margin-top: 40px;
     border: none;
     font-size: 14px;
-    background: #329FAB;
+    background: #0ea5e9;
     font-weight: 600;
     cursor: pointer;
     color: #fff;
@@ -176,7 +175,7 @@ main{
 }
 
 .formulario__register .form-scroll-inner::-webkit-scrollbar-thumb {
-    background-color: #329FAB; /* Color de la barra de scroll */
+    background-color: #0ea5e9; /* Color de la barra de scroll */
     border-radius: 4px;
 }
 
