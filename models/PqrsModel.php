@@ -110,4 +110,11 @@ WHERE p.id_pqrs = :id_pqrs");
         return $stmt->fetch();  
     }
 
+    public function findEmpleado($id_usuario)
+    {
+    $stmt = $this->pdo->prepare("SELECT id_empleado FROM tbl_empleados WHERE empl_usuario = :id_usuario");
+    $stmt->execute([':id_usuario' => $id_usuario]);
+    $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
 }
