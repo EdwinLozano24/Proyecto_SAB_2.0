@@ -32,9 +32,9 @@ switch ($action) {
     case 'visualizarPqrs':
         $controller->visualizarPqrs();
         break;
-    // case 'responderPqrs':
-    //     $controller->responderPqrs($_GET['id_pqrs']);
-    //     break;
+    case 'responderPqrs':
+        $controller->responderPqrs($_GET['id_pqrs']);
+        break;
     default:
         $controller->index();
         break;
