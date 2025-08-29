@@ -80,7 +80,7 @@
                             <option value="" disabled selected>Seleccionar diagnostico...</option>
                                 <?php foreach ($diags as $diag): ?>
                                     <option value="<?= $diag['id_diagnostico'] ?>">
-                                        <?= $consultorio['diag_nombre'] ?>
+                                        <?= $diag['diag_nombre'] ?>
                                     </option>
                             <?php endforeach; ?>
                         </select>
