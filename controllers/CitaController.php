@@ -269,6 +269,7 @@ class CitaController
 
     public function view_resultado($id_cita)
     {
-        echo('Hola');
+        $cita = $this->CitaModel->find($id_cita);
+        var_dump($cita); exit;
     }
 }
