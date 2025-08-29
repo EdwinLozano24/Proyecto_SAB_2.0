@@ -69,13 +69,16 @@
                             <option value="Otro">Otro</option>
                         </select>
 
-                        <label for="usua_tipo_documento">Número de Documento</label>
+                        <label for="usua_documento">Número de Documento</label>
                         <input type="int" placeholder="Número de Documento" name="usua_documento" id="num_documento" required>
 
-                        <label for="usua_tipo_documento">Nombre Completo</label>
+                        <label for="usua_nombre">Nombre Completo</label>
                         <input type="text" placeholder="Nombre Completo" name="usua_nombre" id="nombre" required>
                         
+                        <label for="usua_correo_electronico">Correo Electronico</label>
                         <input type="email" placeholder="Correo Electrónico" name="usua_correo_electronico" id="correo" required>
+
+                        <label for="usua_tipo_documento">Tipo de Documento</label>
                         <input type="tel" placeholder="Número de Contacto" name="usua_num_contacto" id="contacto" required>
                         <input type="tel" placeholder="Número Secundario / Acudiente" name="usua_num_secundario" id="acudiente" required>
                         <input type="text" placeholder="Dirección" name="usua_direccion" id="direccion" required>
