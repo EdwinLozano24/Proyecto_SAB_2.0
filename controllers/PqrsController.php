@@ -29,12 +29,19 @@ switch ($action) {
     case 'delete':
         $controller->delete($_GET['id_pqrs'] ?? null);
         break;
+
     case 'visualizarPqrs':
         $controller->visualizarPqrs();
         break;
+
     case 'responderPqrs':
         $controller->responderPqrs($_GET['id_pqrs']);
         break;
+    
+    case 'pacientePqrs':
+        $controller->pacientePqrs($_GET['id_usuario']);
+        break;
+
     default:
         $controller->index();
         break;
@@ -169,6 +176,12 @@ class PqrsController
         $pqrs = $this->pqrsModel->findResponder($id_pqrs);
         include '../views/especialista/pqr/responderPQR.php';
         exit;
+    }
+
+    public function pacientePqrs($id_usuario)
+    {
+        $pqrs = $this->pqrsModel->findUsuario($id_pqrs);
+        var_dump($pqrs); exit;
     }
 
 }

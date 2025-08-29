@@ -117,4 +117,20 @@ WHERE p.id_pqrs = :id_pqrs");
     return $stmt->fetchColumn();
     }
 
+    public function findUsuario($id_usuario)
+    {
+        $stmt = $this->pdo->prepare("SELECT 
+    p.*,
+    e.id_empleado,
+    u.id_usuario,
+    u.usua_nombre
+FROM tbl_pqrs p
+INNER JOIN tbl_empleados e 
+    ON p.pqrs_empleado = e.id_empleado
+INNER JOIN tbl_usuarios u 
+    ON e.empl_usuario = u.id_usuario
+        WHERE pqrs_usuario = :id_usuario");
+        $stmt->execute([':id_usuario' => $id_usuario]);
+        return $stmt->fetchAll();
+    }
 }
