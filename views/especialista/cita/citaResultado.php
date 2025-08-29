@@ -39,7 +39,7 @@
 
                     <div class="form-group">
                         <label for="cita_paciente">Nombre del Paciente</label>
-                        <input type="text" id="cita_paciente" name="cita_paciente" value="" readonly>
+                        <input type="text" id="cita_paciente" name="cita_paciente" value="<?= htmlspecialchars($cita['cita_paciente']) ?>" readonly>
                     </div>
 
                     <div class="form-group">
