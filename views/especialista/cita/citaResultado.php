@@ -24,7 +24,7 @@
             <p class="subtitle">Complete la información para atender la cita</p>
         </div>
 
-        <form id="registroForm" action="/controllers/HomeController.php?accion=store_resultado_cita" method="POST">
+        <form id="registroForm" action="/controllers/CitaController.php?accion=store_resultado_cita" method="POST">
             <input type="hidden" name="resu_cita" value="<?= htmlspecialchars($cita['id_cita']) ?>">
             <input type="hidden" name="id_cita" value="<?= htmlspecialchars($cita['id_cita']) ?>">
             <div class="info-card">
