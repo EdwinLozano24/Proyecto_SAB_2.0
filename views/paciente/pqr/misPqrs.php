@@ -62,7 +62,7 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
                         <td>
                             <a href="/controllers/PqrsController.php?accion=delete&id_pqrs=<?= $pqr['id_pqrs'] ?>"
                                 class="action-btn delete">
-                                <i class="fa-solid fa-file-pen"></i>
+                                <i class="fa-solid fa-trash"></i>
                             </a>
                         </td>
                     </tr>
