@@ -114,7 +114,7 @@ WHERE p.id_pqrs = :id_pqrs");
     {
     $stmt = $this->pdo->prepare("SELECT id_empleado FROM tbl_empleados WHERE empl_usuario = :id_usuario");
     $stmt->execute([':id_usuario' => $id_usuario]);
-    return $stmt->fetch();
+    return $stmt->fetchColumn();
     }
 
 }
