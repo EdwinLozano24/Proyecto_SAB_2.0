@@ -124,7 +124,8 @@ WHERE p.id_pqrs = :id_pqrs");
     u.usua_nombre
 FROM tbl_pqrs p
 INNER JOIN tbl_usuarios u 
-    ON p.pqrs_usuario = u.id_usuario");
+    ON p.pqrs_usuario = u.id_usuario
+    WHERE pqrs_usuario = :id_usuario");
         $stmt->execute([':id_usuario' => $id_usuario]);
         return $stmt->fetchAll();
     }
