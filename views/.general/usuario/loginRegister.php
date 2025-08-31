@@ -84,12 +84,14 @@
                         <input type="text" placeholder="Dirección" name="usua_direccion" id="direccion" required>
                         <input type="date" placeholder="Fecha de Nacimiento" name="usua_fecha_nacimiento" id="nacimiento" required>
 
+                        <label for="usua_sexo">Sexo</label>
                         <select name="usua_sexo" id="sexo" required>
-                            <option value=""disabled selected>Sexo</option>
+                            <option value="" disabled selected>Sexo</option>
                             <option value="Masculino">Masculino</option>
                             <option value="Femenino">Femenino</option>
                         </select>
-
+    
+                        <label for="usua_rh">Tipo de sangre</label>
                         <select name="usua_rh" id="rh" required>
                             <option value=""disabled selected>Tipo de Sangre (RH)</option>
                             <option value="A+">A+</option>
@@ -101,7 +103,7 @@
                             <option value="O+">O+</option>
                             <option value="O-">O-</option>
                         </select>
-
+                        <label for="usua_eps">Eps</label>
                         <input type="text" placeholder="EPS" name="usua_eps" id="eps" required>
                         <input type="password" placeholder="Contraseña" name="usua_password" id="contrasena" required>
                     </div>
