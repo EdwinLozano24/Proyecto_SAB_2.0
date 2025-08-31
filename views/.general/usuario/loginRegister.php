@@ -109,8 +109,11 @@
                             <option value="O+">O+</option>
                             <option value="O-">O-</option>
                         </select>
+                        
                         <label for="usua_eps">Eps *</label>
                         <input type="text" placeholder="EPS" name="usua_eps" id="eps" required>
+
+                        <label for="usua_password">Contraseña *</label>
                         <input type="password" placeholder="Contraseña" name="usua_password" id="contrasena" required>
                     </div>
 
