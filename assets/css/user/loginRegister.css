@@ -17,14 +17,13 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
 }
 
 main{
     width: 100%;
     padding: 20px;
     margin: auto;
-    margin-top: 100px;
+    margin-top: 145px;
 }
 
 .contenedor__todo{
@@ -36,7 +35,7 @@ main{
 
 .caja__trasera{
     width: 100%;
-    padding: 10px 20px;
+    padding: 5px 1  0px;
     display: flex;
     justify-content: center;
     backdrop-filter: blur(10px);
@@ -138,7 +137,6 @@ main{
 }
 #sexo {
     width: 100%;
-    margin-top: 20px;
     padding: 10px;
     border: none;
     background: #f2f2f2;
@@ -148,7 +146,6 @@ main{
 
 #rh {
     width: 100%;
-    margin-top: 20px;
     padding: 10px;
     border: none;
     background: #f2f2f2;
@@ -196,7 +193,6 @@ main{
         margin: auto;
     }
     .caja__trasera div{
-        margin: 0px;
         position: absolute;
     }
     /*Formularios*/
