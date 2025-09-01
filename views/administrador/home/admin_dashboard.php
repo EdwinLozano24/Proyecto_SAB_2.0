@@ -16,7 +16,7 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
 </head>
 
 <body>
-    <?php 
+    <?php
     include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/admin/header.php');
     include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/admin/nav.php');
     include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/admin/aside.php');
@@ -27,43 +27,46 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
     <main class="main-content">
         <div class="content-header">
             <h2 class="content-title">Panel Administrativo
-</h2>
+            </h2>
 
-            
+
         </div>
 
         <div class="content-grid">
-            
-            
+
+
 
             <div class="content-card">
-                    <h2>HISTORIAS CLINICAS</h2>
-               
+                <h2><a href="#">HISTORIAS CLINICAS</a></h2>
+
             </div>
             <div class="content-card">
-                    <h2>TRATAMIENTOS</h2>
-               
-            </div><div class="content-card">
-                    <h2>PQR'S</h2>
-               
+                <h2><a href="#">TRATAMIENTOS</a></h2>
+
             </div>
-        <div class="content-card">
-                    <h2>USUARIOS</h2>
-               
-            </div><div class="content-card ">
-                    <h2>CITAS</h2>
-               
-            </div></div>
+            <div class="content-card">
+                <h2><a href="#">PQR'S</a></h2>
 
-        <div class="content-grid">
-            
+            </div>
+            <div class="content-card">
+                <h2><a href="#">USUARIOS</a></h2>
 
-            
+            </div>
+            <div class="content-card ">
+                <h2><a href="#">CITAS</a></h2>
 
-            
+            </div>
         </div>
 
-        </main>
+        <div class="content-grid">
+
+
+
+
+
+        </div>
+
+    </main>
     <?php
     include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/admin/footer.php');
     ?>
