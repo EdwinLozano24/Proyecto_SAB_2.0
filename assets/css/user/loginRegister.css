@@ -207,4 +207,8 @@ main{
     .contenedor__login-register form{
         position: relative;
     }
+
+    .required {
+    color: #ef4444;
+    }
 }
