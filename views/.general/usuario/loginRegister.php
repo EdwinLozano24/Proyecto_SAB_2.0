@@ -14,7 +14,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- CSS personalizado (se fuerza actualización con versión al final) -->
-    <link rel="stylesheet" href="/assets/css/user/loginRegister.css?v=20250837">
+    <link rel="stylesheet" href="/assets/css/user/loginRegister.css?v=20250836">
 </head>
 <body>
     <?php 
@@ -81,7 +81,7 @@
                     <div class="form-scroll-inner">
 
                         <!-- Tipo de Documento -->
-                        <label for="doc_tipo">Tipo de DocumentoZZ<span class="required"> *</span></label>
+                        <label for="doc_tipo">Tipo de Documento<span class="required"> *</span></label>
                         <select name="usua_tipo_documento" id="doc_tipo" required>
                             <option value="" disabled selected>Tipo de Documento</option>
                             <option value="Cédula de ciudadanía">Cédula</option>
