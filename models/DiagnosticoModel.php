@@ -55,25 +55,4 @@ public function update(array $data)
     $params = [];
     foreach ($data as $key => $value) 
     {
-        $params[":$key"] = $value;
-    }
-    return $stmt->execute($params);
-}
-
-    public function delete($id_diagnostico)
-    {
-        $sql = "UPDATE tbl_diagnosticos SET diag_estado = 'Inactivo'
-        WHERE id_diagnostico = :id_diagnostico";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt -> bindParam(':id_diagnostico', $id_diagnostico, PDO::PARAM_INT);
-        $stmt->execute();
-    }
-
-    public function findAll()
-    {
-        $sql = "SELECT * FROM tbl_diagnosticos";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-}
+    
