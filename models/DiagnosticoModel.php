@@ -57,3 +57,4 @@ public function update(array $data)
     {
     }
 }
+}
