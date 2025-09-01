@@ -55,4 +55,5 @@ public function update(array $data)
     $params = [];
     foreach ($data as $key => $value) 
     {
-    
+    }
+}
