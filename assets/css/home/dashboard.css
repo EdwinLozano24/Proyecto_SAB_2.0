@@ -233,16 +233,17 @@ body {
 
 .content-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 24px;
+    gap: 20px;
+    grid-template-columns: 2fr 2fr;
     margin-bottom: 32px;
+    color: white
 }
 
 .content-card {
-    background: #f8fafc;
+   background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
     border: 1px solid #e2e8f0;
-    border-radius: 12px;
-    padding: 24px;
+    border-radius: 10px;
+    padding: 12px;
     transition: all 0.2s ease;
 }
 
