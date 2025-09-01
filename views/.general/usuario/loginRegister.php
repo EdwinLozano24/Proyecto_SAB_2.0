@@ -81,7 +81,7 @@
                     <div class="form-scroll-inner">
 
                         <!-- Tipo de Documento -->
-                        <label for="doc_tipo">Tipo de Documento<span class="required"> *</span></label>
+                        <label for="doc_tipo">Tipo de DocumentoZZ<span class="required"> *</span></label>
                         <select name="usua_tipo_documento" id="doc_tipo" required>
                             <option value="" disabled selected>Tipo de Documento</option>
                             <option value="Cédula de ciudadanía">Cédula</option>
