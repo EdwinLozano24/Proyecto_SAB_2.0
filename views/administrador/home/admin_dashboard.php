@@ -27,6 +27,7 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
     <main class="main-content">
         <div class="content-header">
             <h2 class="content-title">Panel Administrativo
+          
             </h2>
 
 
