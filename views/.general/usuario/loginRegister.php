@@ -14,7 +14,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- CSS personalizado (se fuerza actualización con versión al final) -->
-    <link rel="stylesheet" href="/assets/css/user/loginRegister.css?v=20250834">
+    <link rel="stylesheet" href="/assets/css/user/loginRegister.css?v=20250835">
 </head>
 <body>
     <?php 
