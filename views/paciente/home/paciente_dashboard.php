@@ -21,7 +21,7 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
     <?php 
     include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/paciente/header.php');
     include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/paciente/nav/nav.php');
-    include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/paciente/aside.php');
+    include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/paciente/aside/asideInicio.php');
     ?>
 
     <!-- Main Content -->
