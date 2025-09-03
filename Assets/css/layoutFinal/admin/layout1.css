@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 /* --- Reset y base --- */
@@ -65,18 +66,15 @@ body {
 
 
 .user-name-button {
-    color: #334155;
-    /* color de texto */
-    text-decoration: none;
-    /* quita el subrayado */
+    color: #334155;        /* color de texto */
+    text-decoration: none; /* quita el subrayado */
     font-weight: 400;
     font-size: 14px;
     transition: color 0.2s ease;
 }
 
 .user-name-button:hover {
-    color: #0ea5e9;
-    /* cambia color al pasar el mouse */
+    color: #0ea5e9;        /* cambia color al pasar el mouse */
 }
 
 .user-info {
@@ -160,16 +158,13 @@ body {
     grid-area: sidebar;
     background: white;
     border-radius: 16px;
-    padding: 32px 32px 107px 32px;
-    /* Igual que main-content */
+    padding: 32px 32px 107px 32px; /* Igual que main-content */
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     border: 1px solid #e2e8f0;
-    align-self: start;
-    /* Alineación consistente */
+    align-self: start; /* Alineación consistente */
     height: auto;
     overflow-y: visible;
-    margin-bottom: 10px;
-    /* Igual que main-content */
+    margin-bottom: 10px; /* Igual que main-content */
 }
 
 .sidebar-section {
@@ -223,16 +218,13 @@ body {
     grid-area: main;
     background: white;
     border-radius: 16px;
-    padding: 32px 32px 40px 32px;
-    /* Ajustado para mejor balance */
+    padding: 32px 32px 40px 32px; /* Ajustado para mejor balance */
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     border: 1px solid #e2e8f0;
     min-height: 60vh;
     overflow-y: visible;
-    align-self: start;
-    /* Añadido para alineación con aside */
-    margin-bottom: auto;
-    /* Asegura espacio antes del footer */
+    align-self: start; /* Añadido para alineación con aside */
+    margin-bottom: auto; /* Asegura espacio antes del footer */
 }
 
 .content-header {
@@ -244,7 +236,7 @@ body {
 }
 
 .content-title {
-    color: #0ea5e9;
+    color: #1e293b;
     font-weight: 600;
     font-size: 28px;
     margin-bottom: 8px;
@@ -263,10 +255,9 @@ body {
 
 .content-grid {
     display: grid;
-    gap: 20px;
-    grid-template-columns: 2fr 2fr;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
     margin-bottom: 32px;
-    color: white;
 }
 
 .content-card {
@@ -276,16 +267,11 @@ body {
 }
 
 .content-card {
-    background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+    background: #f8fafc;
     border: 1px solid #e2e8f0;
-    border-radius: 10px;
-    padding: 12px;
+    border-radius: 12px;
+    padding: 24px;
     transition: all 0.2s ease;
-}
-
-.content-card a {
-    text-decoration: none;
-    color: inherit;
 }
 
 .content-card:hover {
