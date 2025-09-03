@@ -5,6 +5,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/models/EspecialistaModel.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/models/DiagnosticoModel.php';
 
 $historial =
+
         $historial->delete($_GET['id_historial']);
     default:
         $historial->index();
