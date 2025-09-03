@@ -9,7 +9,7 @@ $historial =
     default:
         $historial->index();
         break;
-}
+)
 
 class HistorialController
 {
