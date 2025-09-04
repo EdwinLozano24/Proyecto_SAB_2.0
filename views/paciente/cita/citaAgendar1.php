@@ -1,3 +1,9 @@
+<?php
+require_once $_SERVER['DOCUMENT_ROOT'] . '/config/auth.php';
+requiereSesion();
+
+$id_usuario = $_SESSION['usuario']['id_usuario'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,9 +31,25 @@
             <section class="citas-section">
                 <h2 class="section-title">Agendar Nueva Cita</h2>
                 <p class="section-subtitle">Programa tu cita odontológica seleccionando la fecha, hora y motivo de consulta</p>
-
-
+                
+                
                 <form id="crearCitaForm" method="POST" action="/../controllers/CitaController.php?accion=store" class="form-card">
+                <input type="hidden" name="origen_formulario" value="Usuario">
+                <input type="hidden" name="pqrs_usuario" value="<?php echo $_SESSION['usuario']['id_usuario']; ?>">
+
+
+                <div class="form-group">
+                        <label for="cita_especialista">Especialista <span class="required">*</span></label>
+                        <select name="cita_especialista" id="cita_especialista" class="form-control select2" required>
+                            <option value="" >Seleccionar especialista...</option>
+                            <?php foreach ($especialistas as $especialista): ?>
+                                <option value="<?= $especialista['id_especialista'] ?>">
+                                    <?=$especialista['usua_nombre'] ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+
                     <?php if (isset($_SESSION['paciente_id'])): ?>
                         <input type="hidden" name="asignacion_automatica" value="1">
                         <input type="hidden" name="cita_hora_fin" id="hora_fin">
