@@ -249,27 +249,21 @@ class CitaController
         }
     }
 
-    public function viewAgendar()
-    {
-        $especialistas = $this->EspecialistaModel->findAll();
-        include '../views/paciente/cita/citaAgendar1.php';
-        exit;
-    }
-
+    
     public function especialistaCitaView($id_usuario)
     {
         $especialista = $this->EspecialistaModel->findEspecialista($id_usuario);
-
+        
         $id_especialista = $especialista['id_especialista'];
-
+        
         $cita = $this->CitaModel->findCita($id_especialista);
         
         include '../views/especialista/cita/citaEspecialista.php';
         exit;
-
-
+        
+        
     }
-
+    
     public function view_resultado($id_cita)
     {
         $cita = $this->CitaModel->findResultado($id_cita);
@@ -277,7 +271,7 @@ class CitaController
         include '../views/especialista/cita/citaResultado.php';
         exit;
     }
-
+    
     public function store_resultado()
     {
         $dataResultado = [
@@ -287,12 +281,12 @@ class CitaController
             'resu_recomendacion' => $_POST['resu_recomendacion'] ?? null,
             'resu_fecha' => $_POST['resu_fecha'] ?? date("Y-m-d H:i:s"),
         ];
-
+        
         $dataEstado = [
             'id_cita' => $_POST['id_cita'], 
             'cita_estado' => $_POST['cita_estado']
         ];
-
+        
         try {
             $this->CitaModel->storeResultado($dataResultado);
             $this->CitaModel->cambiarEstado($dataEstado);
@@ -301,6 +295,40 @@ class CitaController
         } catch (\Exception $e) {
             error_log("Error al registrar el resultado de la cita: " . $e->getMessage());
             echo "Ocurrió un error al registrar el resultado de la cita. $e";
+        }
+    }
+
+    public function viewAgendar()
+    {
+        $especialistas = $this->EspecialistaModel->findAll();
+        include '../views/paciente/cita/citaAgendar1.php';
+        exit;
+    }
+
+    public function agendarHora()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id_especialista = $_POST['id_especialista'];
+            $fecha = $_POST['cita_fecha'];
+
+            // Horarios base
+
+            $horarios = [
+                "08:00:00", "09:00:00", "10:00:00", "11:00:00",
+                "12:00:00", "13:00:00", "14:00:00", "15:00:00",
+                "16:00:00", "17:00:00"
+
+            ];
+
+            $ocupados = $this->citaModel->obtenerHorariosOcupados($id_especialista, $cita_fecha);
+            $disponibles = array_diff($horarios, $ocupados);
+
+            // Pasamos datos a la vista
+            var_dump($disponibles); exit;
+            $cita_especialista = $id_especialista;
+            $cita_fecha = $fecha;
+
+            include '../views/paciente/cita/citaHora.php';
         }
     }
 }
