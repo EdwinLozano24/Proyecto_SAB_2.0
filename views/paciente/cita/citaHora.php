@@ -47,7 +47,7 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
                                 <label for="cita_especialista">Especialista Seleccionado</label>
                                 <div class="input-with-icon">
                                     <i class="fas fa-user-doctor input-icon"></i>
-                                    <input type="text" name="cita_especialista" value="<?= htmlspecialchars($cita['cita_fecha']) ?>" readonly>
+                                    <input type="text" name="usua_nombre" value="<?= htmlspecialchars($especialista['usua_nombre']) ?>" readonly>
                                 </div>
                             </div>
                         
