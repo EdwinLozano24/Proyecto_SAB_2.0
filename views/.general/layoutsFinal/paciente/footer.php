@@ -4,9 +4,9 @@
                 © 2025 SAB. Todos los derechos reservados.
             </div>
             <div class="footer-links">
-                <a href="/views/.general/terminosCondiciones/terminosCondiciones.php">Términos y condiciones</a>
-                <a href="/views/.general/sobreNosotros/sobreNosotros.php">Sobre nosotros</a>
-                <a href="/views/.general/soporte/soporte.php">Soporte</a>
+                <a href="/views/paciente/extras/terminosPaciente.php">Términos y condiciones</a>
+                <a href="/views/paciente/extras/sobrePaciente.php">Sobre nosotros</a>
+                <a href="/views/paciente/extras/soportePaciente.php">Soporte</a>
             </div>
         </div>
     </footer>
