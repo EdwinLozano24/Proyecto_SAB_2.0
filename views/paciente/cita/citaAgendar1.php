@@ -48,6 +48,7 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
 
 
                         <div class="form-grid">
+                        
                             <div class="form-group">
                                 <label for="cita_especialista">Especialista <span class="required">*</span></label>
                                 <div class="input-with-icon">
@@ -62,10 +63,9 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
                                     </select>
                                 </div>
                             </div>
-                        </div>
+                        
 
 
-                        <div class="form-grid">
                             <div class="form-group">
                                 <label for="fecha">Fecha de la Cita <span class="required">*</span></label>
                                 <div class="input-with-icon">
