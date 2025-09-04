@@ -312,6 +312,7 @@ class CitaController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id_especialista = $_POST['id_especialista'];
             $fecha = $_POST['cita_fecha'];
+            $motivo = $_POST['cita_motivo'];
 
             // Horarios base
 

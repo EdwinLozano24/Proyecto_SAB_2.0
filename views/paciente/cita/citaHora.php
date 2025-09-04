@@ -63,32 +63,24 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
                                     <input type="text" name="usua_nombre" value="<?= htmlspecialchars($especialista['usua_nombre']) ?>" readonly>
                                 </div>
                             </div>
-                        
-
 
                             <div class="form-group">
-                                <label for="fecha">Fecha de la Cita <span class="required">*</span></label>
+                                <label for="fecha">Fecha de la Cita</label>
                                 <div class="input-with-icon">
                                     <i class="fas fa-calendar input-icon"></i>
                                     <input type="date" name="cita_fecha" id="fecha" value="<?= htmlspecialchars($cita_fecha)?>" readonly>
                                 </div>
                             </div>
 
-
                             <div class="form-group">
-                                <label for="motivo">Motivo de la Cita <span class="required">*</span></label>
+                                <label for="motivo">Motivo de la Cita</label>
                                 <div class="input-with-icon">
                                     <i class="fas fa-stethoscope input-icon"></i>
-                                    <select name="cita_motivo" id="motivo" required>
-                                        <option value="" disabled selected>Selecciona el motivo</option>
-                                        <option value="Consulta general" data-duration="30">Consulta General (30 min)</option>
-                                        <option value="Control" data-duration="20">Control (20 min)</option>
-                                        <option value="Urgencia" data-duration="45">Urgencia (45 min)</option>
-                                        <option value="Seguimiento" data-duration="25">Seguimiento (25 min)</option>
-                                        <option value="Examen" data-duration="40">Examen (40 min)</option>
-                                        <option value="Otro" data-duration="30">Otro (30 min)</option>
-                                    </select>
+                                    <input type="date" name="cita_fecha" id="fecha" value="<?= htmlspecialchars($cita_fecha)?>" readonly>
                                 </div>
+
+
+
                                 <div id="duration-display" class="duration-info">
                                     <i class="fas fa-hourglass-half"></i>
                                     <span id="duration-text">Selecciona un motivo para ver la duración</span>
