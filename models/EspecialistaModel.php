@@ -31,4 +31,14 @@ class EspecialistaModel
         return $stmt->fetch(PDO::FETCH_ASSOC); // false si no encuentra nada
     }
 
+    public function find($id_especialista)
+    {
+        $sql = "SELECT u.usua_nombre 
+                FROM tbl_especialistas e
+                INNER JOIN tbl_usuarios u ON e.espe_usuario = u.id_usuario
+                WHERE e.id_especialista = :id_especialista";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute(['id_especialista' => $id_especialista]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }

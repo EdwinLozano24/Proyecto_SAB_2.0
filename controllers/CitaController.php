@@ -326,10 +326,10 @@ class CitaController
             $disponibles = array_diff($horarios, $ocupados);
 
             // Pasamos datos a la vista
-            var_dump($disponibles); exit;
             $cita_especialista = $id_especialista;
+            $especialista = $this->EspecialistaModel->obtenerPorId($id_especialista);
             $cita_fecha = $fecha;
-
+            var_dump($especialista); exit;
             include '../views/paciente/cita/citaHora.php';
         }
     }
