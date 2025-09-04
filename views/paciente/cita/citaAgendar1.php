@@ -99,19 +99,6 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
                         </div>
                     </div>
 
-
-                    <div class="form-group full-width">
-                        <label for="observacion">Observaciones <span class="required">*</span></label>
-                        <div class="textarea-container">
-                            <textarea name="cita_observacion" id="observacion" required
-                                placeholder="Describe el motivo de tu cita con más detalle..."
-                                rows="5"></textarea>
-                            <div class="textarea-footer">
-                                <i class="fas fa-info-circle"></i> Sé lo más específico posible
-                            </div>
-                        </div>
-                    </div>
-
                     <div class="form-info-card">
                         <div class="info-card-header">
                             <i class="fas fa-info-circle"></i>
