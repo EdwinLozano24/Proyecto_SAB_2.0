@@ -26,7 +26,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/views/.general/contactenos/contactenos.php" class="nav-link active">
+                <a href="/views/paciente/extras/contactenosPaciente.php" class="nav-link active">
                     <div class="nav-icon"></div>
                     Contáctenos
                 </a>
