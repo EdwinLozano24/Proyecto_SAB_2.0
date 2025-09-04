@@ -70,7 +70,7 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
                                 <label for="fecha">Fecha de la Cita <span class="required">*</span></label>
                                 <div class="input-with-icon">
                                     <i class="fas fa-calendar input-icon"></i>
-                                    <input type="date" name="cita_fecha" id="fecha" value="<?= htmlspecialchars($cita_fecha)?>">
+                                    <input type="date" name="cita_fecha" id="fecha" value="<?= htmlspecialchars($cita_fecha)?>" readonly>
                                 </div>
                             </div>
 
