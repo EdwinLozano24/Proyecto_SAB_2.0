@@ -74,31 +74,6 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <label for="hora_inicio">Hora de Inicio <span class="required">*</span></label>
-                                <div class="input-with-icon">
-                                    <i class="fas fa-clock input-icon"></i>
-                                    <select name="cita_hora_inicio" id="hora_inicio" required>
-                                        <option value="" disabled selected>Selecciona hora de inicio</option>
-                                        <option value="08:00:00">08:00 AM</option>
-                                        <option value="08:30:00">08:30 AM</option>
-                                        <option value="09:00:00">09:00 AM</option>
-                                        <option value="09:30:00">09:30 AM</option>
-                                        <option value="10:00:00">10:00 AM</option>
-                                        <option value="10:30:00">10:30 AM</option>
-                                        <option value="11:00:00">11:00 AM</option>
-                                        <option value="11:30:00">11:30 AM</option>
-                                        <option value="14:00:00">02:00 PM</option>
-                                        <option value="14:30:00">02:30 PM</option>
-                                        <option value="15:00:00">03:00 PM</option>
-                                        <option value="15:30:00">03:30 PM</option>
-                                        <option value="16:00:00">04:00 PM</option>
-                                        <option value="16:30:00">04:30 PM</option>
-                                        <option value="17:00:00">05:00 PM</option>
-                                        <option value="17:30:00">05:30 PM</option>
-                                    </select>
-                                </div>
-                            </div>
 
                             <div class="form-group">
                                 <label for="motivo">Motivo de la Cita <span class="required">*</span></label>
