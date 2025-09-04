@@ -8,7 +8,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/views/paciente/cita/citaAgendar1.php" class="nav-link active">
+                <a href="/controllers/CitaController.php?accion=viewAgendar" class="nav-link active">
                     <div class="nav-icon"></div>
                     Agenda tu Cita
                 </a>
