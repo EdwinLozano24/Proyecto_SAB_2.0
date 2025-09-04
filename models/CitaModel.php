@@ -269,7 +269,7 @@ WHERE id_cita = :id_cita
     }
 
     public function obtenerHorariosOcupados($id_especialista, $fecha) {
-        $sql = "SELECT cita_hora_inicio FROM tbl_citas WHERE cita_especialista = :cita_especialista AND fecha = :fecha";
+        $sql = "SELECT cita_hora_inicio FROM tbl_citas WHERE cita_especialista = :cita_especialista AND cita_fecha = :fecha";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([
             ':cita_especialista' => $id_especialista,
