@@ -2,9 +2,21 @@
 <nav class="nav">
         <ul class="nav-list">
             <li class="nav-item">
-                <a href="/proyecto_sab/controllers/HomeController.php?accion=home" class="nav-link">
+                <a href="/views/especialista/home/especialista_dashboard.php" class="nav-link">
                     <div class="nav-icon"></div>
                     Inicio
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/controllers/CitaController.php?accion=pacienteAgendar" class="nav-link">
+                    <div class="nav-icon"></div>
+                    Citas Pendientes
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/controllers/CitaController.php?accion=pacienteAgendar" class="nav-link">
+                    <div class="nav-icon"></div>
+                    Agenda una Cita
                 </a>
             </li>
             <li class="nav-item">
