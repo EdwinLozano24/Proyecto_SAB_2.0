@@ -322,7 +322,7 @@ class CitaController
 
             ];
 
-            $ocupados = $this->citaModel->obtenerHorariosOcupados($id_especialista, $cita_fecha);
+            $ocupados = $this->CitaModel->obtenerHorariosOcupados($id_especialista, $cita_fecha);
             $disponibles = array_diff($horarios, $ocupados);
 
             // Pasamos datos a la vista
