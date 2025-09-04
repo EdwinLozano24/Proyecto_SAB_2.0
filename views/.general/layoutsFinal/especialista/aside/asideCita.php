@@ -1,6 +1,6 @@
     <aside class="sidebar">
         <div class="sidebar-section">
-            <h3 class="sidebar-title">Navegación Rápida</h3>
+            <h3 class="sidebar-title">Acciones de Especialista</h3>
             <ul class="sidebar-menu">
                 <li><a href="/controllers/HomeController.php?accion=homeEspecialista">🏠 Inicio</a></li>
                 <li><a href="/controllers/HomeController.php?accion=especialistaPerfil&id_usuario=<?php echo $_SESSION['usuario']['id_usuario']; ?>">👤 Tu Perfil</a></li>
@@ -11,7 +11,7 @@
         </div>
 
         <div class="sidebar-section">
-            <h3 class="sidebar-title">Herramientas de Administrador</h3>
+            <h3 class="sidebar-title">Acciones de Empleado</h3>
                 <ul class="sidebar-menu">
                 <li><a href="/controllers/UsuarioController.php?accion=index">📆 Agendar Cita</a></li>
                 <li><a href="/controllers/PqrsController.php?accion=visualizarPqrs">📝 Responder Pqrs </a></li>
