@@ -15,7 +15,7 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/Assets/css/layoutFinal/paciente/layout1.css">
-    <link rel="stylesheet" href="/assets/css/citas/citasAgendar1.css?v=20250907">
+    <link rel="stylesheet" href="/assets/css/citas/citasAgendar1.css?v=20250908">
 
 </head>
 
@@ -55,7 +55,7 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
                                 <label for="cita_especialista">Especialista <span class="required">*</span></label>
                                 <div class="input-with-icon">
                                     <i class="fas fa-user-doctor input-icon"></i>
-                                    <select name="cita_especialista" id="cita_especialista" class="form-control select2" required>
+                                    <select name="cita_especialista" id="cita_especialista" class="select2-selection select2-selection--single" required>
                                         <option value="">Seleccionar especialista...</option>
                                         <?php foreach ($especialistas as $especialista): ?>
                                             <option value="<?= $especialista['id_especialista'] ?>">
