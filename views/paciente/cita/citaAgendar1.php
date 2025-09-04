@@ -50,11 +50,6 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
                         </select>
                     </div>
 
-                    <?php if (isset($_SESSION['paciente_id'])): ?>
-                        <input type="hidden" name="asignacion_automatica" value="1">
-                        <input type="hidden" name="cita_hora_fin" id="hora_fin">
-                        <input type="hidden" name="cita_paciente" value="<?php echo htmlspecialchars($_SESSION['paciente_id']); ?>">
-
                         <div class="form-section">
                             <div class="section-header">
                                 <i class="fas fa-calendar-alt section-icon"></i>
@@ -153,15 +148,6 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
                             </button>
                         </div>
 
-                    <?php else: ?>
-                        <div class="login-alert">
-                            <i class="fas fa-exclamation-triangle"></i>
-                            <p>Debes iniciar sesión como paciente para agendar una cita</p>
-                        </div>
-                        <script>
-                            document.getElementById('crearCitaForm').style.display = 'none';
-                        </script>
-                    <?php endif; ?>
                 </form>
             </section>
         </div>
