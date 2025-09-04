@@ -39,6 +39,21 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
                             <i class="fas fa-calendar-alt section-icon"></i>
                             <h3 class="section-title">Detalles de la Cita</h3>
                         </div>
+                        
+                        <div class="form-info-card">
+                        <div class="info-card-header">
+                            <i class="fas fa-info-circle"></i>
+                            <h3>Información importante</h3>
+                        </div>
+                        <ul class="info-list">
+                            <li><i class="fas fa-clock"></i> Las citas deben programarse con 24 horas de anticipación</li>
+                            <li><i class="fas fa-user-md"></i> Se asignará automáticamente el especialista más adecuado</li>
+                            <li><i class="fas fa-ban"></i> Cancela con mínimo 2 horas de anticipación</li>
+                            <li><i class="fas fa-calendar-check"></i> Llega 10 minutos antes de tu cita</li>
+                            <li><i class="fas fa-phone-alt"></i> En urgencias, contacta directamente al consultorio</li>
+                        </ul>
+                        </div>
+
 
                         <div class="form-grid">
                         
@@ -96,19 +111,7 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
                         </div>
                     </div>
 
-                    <div class="form-info-card">
-                        <div class="info-card-header">
-                            <i class="fas fa-info-circle"></i>
-                            <h3>Información importante</h3>
-                        </div>
-                        <ul class="info-list">
-                            <li><i class="fas fa-clock"></i> Las citas deben programarse con 24 horas de anticipación</li>
-                            <li><i class="fas fa-user-md"></i> Se asignará automáticamente el especialista más adecuado</li>
-                            <li><i class="fas fa-ban"></i> Cancela con mínimo 2 horas de anticipación</li>
-                            <li><i class="fas fa-calendar-check"></i> Llega 10 minutos antes de tu cita</li>
-                            <li><i class="fas fa-phone-alt"></i> En urgencias, contacta directamente al consultorio</li>
-                        </ul>
-                    </div>
+                    
 
                     <div class="button-group">
                         <button type="button" class="btn btn-secondary" onclick="window.history.back()">
