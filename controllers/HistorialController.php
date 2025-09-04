@@ -4,13 +4,29 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/models/PacienteModel.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/models/EspecialistaModel.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/models/DiagnosticoModel.php';
 
-$historial =
+$historial = new HistorialController();
+$accion = $_GET['accion'] ?? 'index';
 
+switch ($accion) {
+    case 'view_store':
+        $historial->view_store();
+        break;
+    case 'store':
+        $historial->store();
+        break;
+    case 'view_update':
+        $historial->view_update($_GET['id_historial']);
+        break;
+    case 'update':
+        $historial->update();
+        break;
+    case 'delete':
         $historial->delete($_GET['id_historial']);
     default:
         $historial->index();
         break;
-)
+}
+
 
 class HistorialController
 {

@@ -37,24 +37,43 @@ class DiagnosticoModel
         return $stmt->fetch();
     }
 
-public function update(array $data)
-{
-    if (!isset($data['id_diagnostico'])) {
-        throw new InvalidArgumentException("[EL ID DEL DIAGNOSTICO ES OBLIGATORIO PARA ACTUALIZAR]");
-    }
-
-    $sql = "UPDATE tbl_diagnosticos SET
-        diag_nombre = :diag_nombre,
-        diag_descripcion = :diag_descripcion,
-        diag_tratamiento = :diag_tratamiento,
-        diag_estado = :diag_estado
-    WHERE id_diagnostico = :id_diagnostico";
-
-    $stmt = $this->pdo->prepare($sql);
-
-    $params = [];
-    foreach ($data as $key => $value) 
+    public function update(array $data)
     {
+        if (!isset($data['id_diagnostico'])) {
+            throw new InvalidArgumentException("[EL ID DEL DIAGNOSTICO ES OBLIGATORIO PARA ACTUALIZAR]");
+        }
+
+        $sql = "UPDATE tbl_diagnosticos SET
+            diag_nombre = :diag_nombre,
+            diag_descripcion = :diag_descripcion,
+            diag_tratamiento = :diag_tratamiento,
+            diag_estado = :diag_estado
+        WHERE id_diagnostico = :id_diagnostico";
+
+        $stmt = $this->pdo->prepare($sql);
+
+        $params = [];
+        foreach ($data as $key => $value) 
+        {
+            $params[":$key"] = $value;
+        }
+        return $stmt->execute($params);
     }
-}
+
+    public function delete($id_diagnostico)
+    {
+        $sql = "UPDATE tbl_diagnosticos SET diag_estado = 'Inactivo'
+        WHERE id_diagnostico = :id_diagnostico";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt -> bindParam(':id_diagnostico', $id_diagnostico, PDO::PARAM_INT);
+        $stmt->execute();
+    }
+
+    public function findAll()
+    {
+        $sql = "SELECT * FROM tbl_diagnosticos";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
