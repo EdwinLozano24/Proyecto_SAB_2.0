@@ -10,7 +10,7 @@
             <li class="nav-item">
                 <a href="/controllers/CitaController.php?accion=especialistaCitaView&id_usuario=<?php echo $_SESSION['usuario']['id_usuario']; ?>" class="nav-link">
                     <div class="nav-icon"></div>
-                    Citas Pendientes
+                    Atender Citas
                 </a>
             </li>
             <li class="nav-item">
