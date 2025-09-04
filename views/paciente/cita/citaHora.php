@@ -76,7 +76,7 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
                                 <label for="motivo">Motivo de la Cita</label>
                                 <div class="input-with-icon">
                                     <i class="fas fa-stethoscope input-icon"></i>
-                                    <input type="date" name="cita_fecha" id="fecha" value="<?= htmlspecialchars($cita_fecha)?>" readonly>
+                                    <input type="text" name="cita_motivo" id="fecha" value="<?= htmlspecialchars($motivo)?>" readonly>
                                 </div>
 
 
