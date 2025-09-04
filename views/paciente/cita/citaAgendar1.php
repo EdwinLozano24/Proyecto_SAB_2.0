@@ -52,7 +52,7 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
                             <div class="form-group">
                                 <label for="cita_especialista">Especialista <span class="required">*</span></label>
                                 <div class="input-with-icon">
-                                    <i class="fa-solid fa-user-doctor"></i>
+                                    <i class="fas fa-solid fa-user-doctor"></i>
                                     <select name="cita_especialista" id="cita_especialista" class="form-control select2" required>
                                         <option value="">Seleccionar especialista...</option>
                                         <?php foreach ($especialistas as $especialista): ?>
