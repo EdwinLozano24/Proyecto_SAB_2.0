@@ -327,7 +327,7 @@ class CitaController
 
             // Pasamos datos a la vista
             $cita_especialista = $id_especialista;
-            $especialista = $this->EspecialistaModel->obtenerPorId($id_especialista);
+            $especialista = $this->find->obtenerPorId($id_especialista);
             $cita_fecha = $fecha;
             var_dump($especialista); exit;
             include '../views/paciente/cita/citaHora.php';
