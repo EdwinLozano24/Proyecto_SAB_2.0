@@ -34,6 +34,8 @@ switch ($accion) {
     case 'viewAgendar':
         $cita->viewAgendar();
         break;
+    case 'agendarHora':
+        $cita->agendarHora();
     case 'especialistaCitaView':
         $cita->especialistaCitaView($_GET['id_usuario']);
         break;
