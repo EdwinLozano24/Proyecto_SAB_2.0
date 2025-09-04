@@ -330,6 +330,7 @@ class CitaController
             $especialista = $this->EspecialistaModel->find($id_especialista);
             $cita_fecha = $fecha;
             include '../views/paciente/cita/citaHora.php';
+            exit;
         }
     }
 }
