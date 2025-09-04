@@ -31,8 +31,8 @@ switch ($accion) {
     case 'delete':
         $cita->delete($_GET['id_cita']);
         break;
-    case 'view_agendar':
-        $cita->view_agendar($_GET['id_usuario']);
+    case 'viewAgendar':
+        $cita->viewAgendar();
         break;
     case 'especialistaCitaView':
         $cita->especialistaCitaView($_GET['id_usuario']);
@@ -249,10 +249,10 @@ class CitaController
         }
     }
 
-    public function view_agendar($id_usuario)
+    public function viewAgendar()
     {
-        $paci = $this->PacienteModel->findAll();
-        include '../views/paciente/cita/citaAgendar.php';
+        $especialistas = $this->EspecialistaModel->findAll();
+        include '../views/paciente/cita/citaAgendar1.php';
         exit;
     }
 
