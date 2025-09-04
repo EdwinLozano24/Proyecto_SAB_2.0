@@ -13,7 +13,7 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
     <title>Agendar Cita</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/Assets/css/layoutFinal/paciente/layout1.css">
-    <link rel="stylesheet" href="/assets/css/citas/citasAgendar1.css?v=20250905">
+    <link rel="stylesheet" href="/assets/css/citas/citasAgendar1.css?v=20250906">
 
 </head>
 
@@ -52,7 +52,7 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
                             <div class="form-group">
                                 <label for="cita_especialista">Especialista <span class="required">*</span></label>
                                 <div class="input-with-icon">
-                                    <i class="fas fa-solid fa-user-doctor"></i>
+                                    <i class="fas fa-user-doctor input-icon"></i>
                                     <select name="cita_especialista" id="cita_especialista" class="form-control select2" required>
                                         <option value="">Seleccionar especialista...</option>
                                         <?php foreach ($especialistas as $especialista): ?>
