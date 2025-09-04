@@ -45,16 +45,18 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
                             <i class="fas fa-calendar-alt section-icon"></i>
                             <h3 class="section-title">Detalles de la Cita</h3>
                         </div>
-                        <div class="form-group">
-                            <label for="cita_especialista">Especialista <span class="required">*</span></label>
-                            <select name="cita_especialista" id="cita_especialista" class="form-control select2" required>
-                                <option value="">Seleccionar especialista...</option>
-                                <?php foreach ($especialistas as $especialista): ?>
-                                    <option value="<?= $especialista['id_especialista'] ?>">
-                                        <?= $especialista['usua_nombre'] ?>
-                                    </option>
-                                <?php endforeach; ?>
-                            </select>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="cita_especialista">Especialista <span class="required">*</span></label>
+                                <select name="cita_especialista" id="cita_especialista" class="form-control select2" required>
+                                    <option value="">Seleccionar especialista...</option>
+                                    <?php foreach ($especialistas as $especialista): ?>
+                                        <option value="<?= $especialista['id_especialista'] ?>">
+                                            <?= $especialista['usua_nombre'] ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
                         </div>
                         <div class="form-grid">
                             <div class="form-group">
