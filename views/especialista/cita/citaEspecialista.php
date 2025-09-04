@@ -32,8 +32,8 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
 <body>
     <?php 
         include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/especialista/header.php');
-        include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/especialista/nav.php');
-        include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/especialista/asideCita.php');
+        include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/especialista/nav/nav.php');
+        include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/especialista/aside/asideCita.php');
     ?>
     <main class="main-content">
             <h2 class="content-title">Tus Citas Asignadas</h2>
