@@ -16,6 +16,20 @@
     include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/paciente/header.php');
     include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/paciente/nav/navTratamiento.php');
     include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/paciente/aside/aside.php');
+
+    // CONEXIÓN A LA BASE DE DATOS
+    require_once($_SERVER['DOCUMENT_ROOT'] . '/config/database.php');
+
+    try {
+        // Consulta para obtener todos los tratamientos activos
+        $query = "SELECT * FROM tbl_tratamientos WHERE trat_estado = 'Activo'";
+        $stmt = $pdo->prepare($query);
+        $stmt->execute();
+        $tratamientos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        $tratamientos = [];
+        error_log("Error al cargar tratamientos: " . $e->getMessage());
+    }
     ?>
 
     <main class="main-content">
@@ -59,73 +73,29 @@
                 </section>
                 <div class="tratamientos-grid">
 
-                    <div class="tratamiento-card">
-                        <div class="card-image">
-                            <img src="/assets/img/tratamientosVisualizar/ortodoncia.png" alt="Ortodoncia">
-                        </div>
-                        <div class="card-content">
-                            <h3>Ortodoncia</h3>
-                            <p class="card-desc">Corrige la posición de tus dientes con nuestros brackets estéticos.</p>
-                            <div class="card-footer">
-                                <span class="card-price">Desde $2'500.000</span>
-                                <button class="btn btn-vermas">Ver más</button>
+                    <?php if (!empty($tratamientos)): ?>
+                        <?php foreach ($tratamientos as $tratamiento): ?>
+                            <div class="tratamiento-card" data-name="<?php echo htmlspecialchars($tratamiento['trat_nombre']); ?>">
+                                <div class="card-image">
+                                    <img src="/assets/img/default.jpg/<?php echo htmlspecialchars($tratamiento['trat_imagen'] ?? 'default.jpg'); ?>"
+                                        alt="<?php echo htmlspecialchars($tratamiento['trat_nombre']); ?>">
+                                </div>
+                                <div class="card-content">
+                                    <h3><?php echo htmlspecialchars($tratamiento['trat_nombre']); ?></h3>
+                                    <p class="card-desc"><?php echo htmlspecialchars($tratamiento['trat_descripcion']); ?></p>
+                                    <div class="card-footer">
+                                        <span class="card-price"><?php echo htmlspecialchars($tratamiento['trat_duracion']); ?></span>
+                                        <button class="btn btn-vermas">Ver más</button>
+                                    </div>
+                                </div>
                             </div>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <div class="no-results show">
+                            No hay tratamientos disponibles en este momento.
                         </div>
-                    </div>
+                    <?php endif; ?>
 
-                    <!-- Tarjeta 3 -->
-                    <div class="tratamiento-card">
-                        <div class="card-image">
-                            <img src="/assets/img/tratamientosVisualizar/implanteDental.jpg" alt="Implantes Dentales">
-                        </div>
-                        <div class="card-content">
-                            <h3>Implantes Dentales</h3>
-                            <p class="card-desc">Solución permanente para dientes perdidos con tecnología de última generación.</p>
-                            <div class="card-footer">
-                                <span class="card-price">Desde $1'800.000</span>
-                                <button class="btn btn-vermas">Ver más</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tratamiento-card">
-                        <div class="card-image">
-                            <img src="/assets/img/tratamientosVisualizar/implanteDental.jpg" alt="Implantes Dentales">
-                        </div>
-                        <div class="card-content">
-                            <h3>Implantes Dentales</h3>
-                            <p class="card-desc">Solución permanente para dientes perdidos con tecnología de última generación.</p>
-                            <div class="card-footer">
-                                <span class="card-price">Desde $1'800.000</span>
-                                <button class="btn btn-vermas">Ver más</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tratamiento-card">
-                        <div class="card-image">
-                            <img src="/assets/img/tratamientosVisualizar/blanqueamiento.webp" alt="Blanqueamiento Dental">
-                        </div>
-                        <div class="card-content">
-                            <h3>Blanqueamiento Dental</h3>
-                            <p class="card-desc">Aclara varios tonos tu sonrisa con nuestro tratamiento profesional.</p>
-                            <div class="card-footer">
-                                <span class="card-price">Desde $300.000</span>
-                                <button class="btn btn-vermas">Ver más</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tratamiento-card">
-                        <div class="card-image">
-                            <img src="/assets/img/tratamientosVisualizar/implanteDental.jpg" alt="Implantes Dentales">
-                        </div>
-                        <div class="card-content">
-                            <h3>Implantes Dentales</h3>
-                            <p class="card-desc">Solución permanente para dientes perdidos con tecnología de última generación.</p>
-                            <div class="card-footer">
-                                <span class="card-price">Desde $1'800.000</span>
-                                <button class="btn btn-vermas">Ver más</button>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div id="noResultsMessage" class="no-results hidden">
                     No se encontraron tratamientos que coincidan con tu búsqueda.
@@ -135,7 +105,7 @@
     </main>
 
     <?php
-include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/paciente/footer.php');
+    include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/paciente/footer.php');
     ?>
     <script src="/assets/js/tratamiento/tratamientoVisualizarBusqueda.js"></script>
     <script src="/assets/js/tratamiento/tratamientoVisualizar.js"></script>
