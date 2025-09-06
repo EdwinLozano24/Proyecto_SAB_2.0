@@ -19,7 +19,8 @@
 
     // CONEXIÓN A LA BASE DE DATOS
     require_once($_SERVER['DOCUMENT_ROOT'] . '/config/database.php');
-
+    $pdo = conectarBD(); 
+    
     try {
         // Consulta para obtener todos los tratamientos activos
         $query = "SELECT * FROM tbl_tratamientos WHERE trat_estado = 'Activo'";
