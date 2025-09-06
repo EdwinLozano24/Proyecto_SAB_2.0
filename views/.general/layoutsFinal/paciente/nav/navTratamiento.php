@@ -15,7 +15,7 @@
             </li>
             <li class="nav-item">
                 <a href="/views/paciente/tratamiento/tratamientoVisualizar.php" class="nav-link active">
-                    <div>🩻</div>
+                    <div class="nav-icon"></div>
                     Tratamientos Disponibles
                 </a>
             </li>
