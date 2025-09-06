@@ -20,7 +20,7 @@
     // CONEXIÓN A LA BASE DE DATOS
     require_once($_SERVER['DOCUMENT_ROOT'] . '/config/database.php');
     $pdo = conectarBD(); 
-    
+
     try {
         // Consulta para obtener todos los tratamientos activos
         $query = "SELECT * FROM tbl_tratamientos WHERE trat_estado = 'Activo'";
@@ -78,7 +78,7 @@
                         <?php foreach ($tratamientos as $tratamiento): ?>
                             <div class="tratamiento-card" data-name="<?php echo htmlspecialchars($tratamiento['trat_nombre']); ?>">
                                 <div class="card-image">
-                                    <img src="/assets/img/default.jpg/<?php echo htmlspecialchars($tratamiento['trat_imagen'] ?? 'default.jpg'); ?>"
+                                    <img src="/Assets/img/default.jpg/"<?php echo htmlspecialchars($tratamiento['trat_imagen'] ?? 'default.jpg'); ?>"
                                         alt="<?php echo htmlspecialchars($tratamiento['trat_nombre']); ?>">
                                 </div>
                                 <div class="card-content">
