@@ -78,7 +78,7 @@
                         <?php foreach ($tratamientos as $tratamiento): ?>
                             <div class="tratamiento-card" data-name="<?php echo htmlspecialchars($tratamiento['trat_nombre']); ?>">
                                 <div class="card-image">
-                                    <img src="/Assets/img/default.jpg/"<?php echo htmlspecialchars($tratamiento['trat_imagen'] ?? 'default.jpg'); ?>"
+                                    <img src="https://www.odontosupport.es/wp-content/uploads/2023/02/Diseno-sin-titulo-min-2.jpg"<?php echo htmlspecialchars($tratamiento['trat_imagen'] ?? 'default.jpg'); ?>"
                                         alt="<?php echo htmlspecialchars($tratamiento['trat_nombre']); ?>">
                                 </div>
                                 <div class="card-content">
