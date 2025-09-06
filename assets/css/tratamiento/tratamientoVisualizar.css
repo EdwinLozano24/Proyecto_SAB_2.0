@@ -217,7 +217,6 @@
     /* Esto es esencial para que aparezca sobre la imagen */
     bottom: 12px;
     left: 0;
-    right: 0;
     background: #12adf5;
     /* Más opaco */
     color: #ffffff;
@@ -228,7 +227,7 @@
 
 
 .slide-caption h3 {
-    font-size: 28px;
+    font-size: 20px;
     margin-bottom: 8px;
 }
 
