@@ -213,7 +213,7 @@
 }
 
 .slide-caption {
-    position: absolute;
+    position: sticky;
     /* Esto es esencial para que aparezca sobre la imagen */
     bottom: 12px;
     left: 0;
