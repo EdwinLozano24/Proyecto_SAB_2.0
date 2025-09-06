@@ -47,10 +47,10 @@
                 <section class="carrusel-container">
                     <div class="carrusel">
                         <div class="slide active">
-                            <img src="/assets/img/tratamiento2.jpg" alt="Promoción Blanqueamiento Dental">
+                            <img src="/assets/img/Logo.png" alt="Promoción Blanqueamiento Dental">
                             <div class="slide-caption">
-                                <h3>Blanqueamiento Dental Profesional</h3>
-                                <p>30% de descuento este mes</p>
+                                <h3>¡Contactanos ya!</h3>
+                                <p>No te vas a arepentir</p>
                             </div>
                         </div>
                         <div class="slide">
