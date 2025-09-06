@@ -149,13 +149,18 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 15px;
+    margin-top: auto;
+    min-height: 50px;
 }
 
-.card-price {
+.card-duracion {
     font-weight: 600;
     color: #0ea5e9;
-    font-size: 18px;
+    font-size: 17px;
+    white-space: nowrap;       /* evita salto de línea */
+    overflow: hidden;          /* oculta si se pasa */
+    text-overflow: ellipsis;   /* agrega "..." */
+    max-width: 60%;            /* evita que coma demasiado espacio */
 }
 
 .btn-vermas {

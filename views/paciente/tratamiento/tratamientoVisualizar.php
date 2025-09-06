@@ -85,7 +85,7 @@
                                     <h3><?php echo htmlspecialchars($tratamiento['trat_nombre']); ?></h3>
                                     <p class="card-desc"><?php echo htmlspecialchars($tratamiento['trat_descripcion']); ?></p>
                                     <div class="card-footer">
-                                        <span class="card-price"><?php echo htmlspecialchars($tratamiento['trat_duracion']); ?></span>
+                                        <span class="card-duracion"><?php echo htmlspecialchars($tratamiento['trat_duracion']); ?></span>
                                         <button class="btn btn-vermas">Ver más</button>
                                     </div>
                                 </div>
