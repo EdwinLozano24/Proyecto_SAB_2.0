@@ -11,6 +11,12 @@ document.addEventListener("DOMContentLoaded", function () {
             fetch(`/views/paciente/tratamiento/tratamientoShow.php?id=${id}`)
                 .then(res => res.json())
                 .then(data => {
+                    console.log("Respuesta del servidor:", data); // 👈 Debug
+                    if (data.error) {
+                        alert(data.error);
+                        return;
+                    }
+
                     document.getElementById("modal-nombre").textContent = data.trat_nombre;
                     document.getElementById("modal-categoria").textContent = data.trat_categoria;
                     document.getElementById("modal-descripcion").textContent = data.trat_descripcion;
@@ -20,7 +26,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     document.getElementById("modal-estado").textContent = data.trat_estado;
 
                     modal.style.display = "block";
-                });
+                })
+                .catch(err => console.error("Error en el fetch:", err));
+
         });
     });
 
