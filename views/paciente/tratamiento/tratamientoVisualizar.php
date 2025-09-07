@@ -7,7 +7,7 @@
     <title>Catalogo Tratamientos</title>
     <link rel="stylesheet" href="/Assets/css/layoutFinal/paciente/layout1.css">
     <link rel="stylesheet" href="/assets/css/tratamiento/tratamientoVisualizar.css">
-    <link rel="stylesheet" href="/assets/css/tratamiento/tratamientoVisualizarModal.css">
+    <link rel="stylesheet" href="/assets/css/tratamientoModal/tratamientoVisualizarModal.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
@@ -121,7 +121,7 @@
 
     <script src="/assets/js/tratamiento/tratamientoVisualizarBusqueda.js"></script>
     <script src="/assets/js/tratamiento/tratamientoVisualizar.js"></script>
-    <script src="/assets/js/tratamiento/tratamientoVisualizarModal.js"></script>
+    <script src="/assets/js/tratamientoModal/tratamientoVisualizarModal.js"></script>
 
     <?php
     include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/paciente/footer.php');
