@@ -48,21 +48,21 @@
                 <section class="carrusel-container">
                     <div class="carrusel">
                         <div class="slide active">
-                            <img src="/assets/img/tratamientosVisualizar/Logo_resized.png" alt="Promoción SAB">
+                            <img src="/Assets/img/tratamientosVisualizarCarrusel/Logo_resized.png" alt="Promoción SAB">
                             <div class="slide-caption">
                                 <h3>¡Contactanos ya!</h3>
                                 <p>No te vas a arepentir</p>
                             </div>
                         </div>
                         <div class="slide">
-                            <img src="/assets/img/tratamientosVisualizar/gestionar.jpg/" alt="Podrás gestionar tus Citas, Usuarios, Pqrs, Tratamientos, e Historiales Clínicos.">
+                            <img src="/Assets/img/tratamientosVisualizarCarrusel/gestionar.jpg" alt="Podrás gestionar tus Citas, Usuarios, Pqrs, Tratamientos, e Historiales Clínicos.">
                             <div class="slide-caption">
                                 <h3>¡No pierdas la oportunidad!</h3>
                                 <p>Podrás gestionar tus Citas, Usuarios, Pqrs, Tratamientos, e Historiales Clínicos</p>
                             </div>
                         </div>
                         <div class="slide">
-                            <img src="/assets/img/tratamientosVisualizar/confianza.jpg" alt="Tu bienestar y comodidad son nuestra prioridad">
+                            <img src="/Assets/img/tratamientosVisualizarCarrusel/confianza.jpg" alt="Tu bienestar y comodidad son nuestra prioridad">
                             <div class="slide-caption">
                                 <h3>¡Creemos en la innovación!</h3>
                                 <p>Tu bienestar y comodidad son nuestra prioridad</p>
