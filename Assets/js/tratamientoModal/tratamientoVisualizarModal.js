@@ -31,9 +31,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         });
     });
-    document.getElementById("btnAgendar").addEventListener("click", () => {
-        window.location.href = "/views/paciente/cita/agendarCita1.php";
-    });
     // Cerrar modal
     closeBtn.addEventListener("click", () => modal.style.display = "none");
     window.addEventListener("click", (e) => {
