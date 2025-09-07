@@ -7,7 +7,7 @@
     <title>Catalogo Tratamientos</title>
     <link rel="stylesheet" href="/Assets/css/layoutFinal/paciente/layout1.css">
     <link rel="stylesheet" href="/assets/css/tratamiento/tratamientoVisualizar.css">
-    <link rel="stylesheet" href="/assets/css/tratamientoModal/tratamientoVisualizarModal.css">
+    <link rel="stylesheet" href="/Assets/css/tratamientoModal/tratamientoVisualizarModal.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
@@ -108,7 +108,6 @@
     <div id="tratamientoModal" class="modal" style="display:none;">
         <div class="modal-content">
             <span class="modal-close">&times;</span>
-            <!-- Aquí se insertarán los datos dinámicamente -->
             <h2 id="modal-nombre"></h2>
             <p><strong>Categoría:</strong> <span id="modal-categoria"></span></p>
             <p><strong>Descripción:</strong> <span id="modal-descripcion"></span></p>
@@ -116,6 +115,10 @@
             <p><strong>Riesgos:</strong> <span id="modal-riesgos"></span></p>
             <p><strong>Complejidad:</strong> <span id="modal-complejidad"></span></p>
             <p><strong>Estado:</strong> <span id="modal-estado"></span></p>
+
+            <div class="modal-footer">
+                <button class="btn-agendar" id="btnAgendar">Agendar Cita</button>
+            </div>
         </div>
     </div>
 
