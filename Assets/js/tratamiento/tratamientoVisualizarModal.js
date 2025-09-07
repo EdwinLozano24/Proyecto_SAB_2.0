@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
         btn.addEventListener("click", function () {
             const id = this.getAttribute("data-id");
 
-            fetch(`/views/paciente/tratamientoShow.php?id=${id}`)
+            fetch(`/views/paciente/tratamiento/tratamientoShow.php?id=${id}`)
                 .then(res => res.json())
                 .then(data => {
                     document.getElementById("modal-nombre").textContent = data.trat_nombre;
