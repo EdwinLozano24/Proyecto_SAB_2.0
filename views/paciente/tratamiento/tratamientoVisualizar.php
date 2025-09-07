@@ -47,24 +47,24 @@
                 <section class="carrusel-container">
                     <div class="carrusel">
                         <div class="slide active">
-                            <img src="/assets/img/logo_resized.png" alt="Promoción Blanqueamiento Dental">
+                            <img src="/assets/img/Logo.png" alt="Promoción SAB">
                             <div class="slide-caption">
                                 <h3>¡Contactanos ya!</h3>
                                 <p>No te vas a arepentir</p>
                             </div>
                         </div>
                         <div class="slide">
-                            <img src="/assets/img/tratamiento3.jpg" alt="Ortodoncia Invisible">
+                            <img src="/assets/img/gestionar.jpg" alt="Podrás gestionar tus Citas, Usuarios, Pqrs, Tratamientos, e Historiales Clínicos.">
                             <div class="slide-caption">
-                                <h3>Ortodoncia Invisible</h3>
-                                <p>Financiamiento disponible</p>
+                                <h3>¡No pierdas la oportunidad!</h3>
+                                <p>Podrás gestionar tus Citas, Usuarios, Pqrs, Tratamientos, e Historiales Clínicos</p>
                             </div>
                         </div>
                         <div class="slide">
-                            <img src="/assets/img/tratamiento1.jpg" alt="Implantes Dentales">
+                            <img src="/assets/img/confianza.jpg" alt="Tu bienestar y comodidad son nuestra prioridad">
                             <div class="slide-caption">
-                                <h3>Implantes Dentales</h3>
-                                <p>Recupera tu sonrisa completa</p>
+                                <h3>¡Creemos en la innovación!</h3>
+                                <p>Tu bienestar y comodidad son nuestra prioridad</p>
                             </div>
                         </div>
                     </div>
