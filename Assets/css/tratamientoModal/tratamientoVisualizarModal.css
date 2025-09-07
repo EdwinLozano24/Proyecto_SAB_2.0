@@ -1,6 +1,7 @@
 /* ===== Modal Corregido ===== */
 .modal {
-    display: none; /* Mantenemos none por defecto */
+    display: none;
+    /* Mantenemos none por defecto */
     position: fixed;
     z-index: 1000;
     inset: 0;
@@ -12,7 +13,8 @@
 
 /* Clase adicional para cuando el modal debe mostrarse */
 .modal.activo {
-    display: flex; /* Solo mostramos como flex cuando está activo */
+    display: flex;
+    /* Solo mostramos como flex cuando está activo */
     justify-content: center;
     align-items: center;
 }
@@ -89,10 +91,10 @@
     display: inline-block;
     background: #0ea5e9;
     color: #fff;
-    padding: 12px 24px;
+    padding: 10px 20px;
     border-radius: 8px;
+    font-weight: bold;
     text-decoration: none;
-    font-weight: 600;
     transition: background 0.3s ease;
 }
 
@@ -101,12 +103,14 @@
 }
 
 
+
 /* Animación entrada */
 @keyframes scaleIn {
     from {
         opacity: 0;
         transform: scale(0.9);
     }
+
     to {
         opacity: 1;
         transform: scale(1);
