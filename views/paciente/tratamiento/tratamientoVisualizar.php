@@ -120,7 +120,7 @@
 
     <script src="/assets/js/tratamiento/tratamientoVisualizarBusqueda.js"></script>
     <script src="/assets/js/tratamiento/tratamientoVisualizar.js"></script>
-    <script src="assets/js/tratamiento/tratamientoVisualizarModal.js"></script>
+    <script src="/assets/js/tratamiento/tratamientoVisualizarModal.js"></script>
 
     <?php
     include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/paciente/footer.php');
