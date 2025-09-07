@@ -19,7 +19,7 @@
 
     // CONEXIÓN A LA BASE DE DATOS
     require_once($_SERVER['DOCUMENT_ROOT'] . '/config/database.php');
-    $pdo = conectarBD(); 
+    $pdo = conectarBD();
 
     try {
         // Consulta para obtener todos los tratamientos activos
@@ -78,7 +78,7 @@
                         <?php foreach ($tratamientos as $tratamiento): ?>
                             <div class="tratamiento-card" data-name="<?php echo htmlspecialchars($tratamiento['trat_nombre']); ?>">
                                 <div class="card-image">
-                                    <img src="https://www.odontosupport.es/wp-content/uploads/2023/02/Diseno-sin-titulo-min-2.jpg"<?php echo htmlspecialchars($tratamiento['trat_imagen'] ?? 'default.jpg'); ?>"
+                                    <img src="https://www.odontosupport.es/wp-content/uploads/2023/02/Diseno-sin-titulo-min-2.jpg" <?php echo htmlspecialchars($tratamiento['trat_imagen'] ?? 'default.jpg'); ?>"
                                         alt="<?php echo htmlspecialchars($tratamiento['trat_nombre']); ?>">
                                 </div>
                                 <div class="card-content">
@@ -86,7 +86,7 @@
                                     <p class="card-desc"><?php echo htmlspecialchars($tratamiento['trat_descripcion']); ?></p>
                                     <div class="card-footer">
                                         <span class="card-duracion"><?php echo htmlspecialchars($tratamiento['trat_duracion']); ?></span>
-                                        <button class="btn btn-vermas">Ver más</button>
+                                        <button class="btn btn-vermas" data-id="<?php echo $tratamiento['id_tratamiento']; ?>">Ver más</button>
                                     </div>
                                 </div>
                             </div>
@@ -104,12 +104,25 @@
             </section>
         </div>
     </main>
-
+    <div id="tratamientoModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <!-- Aquí se insertarán los datos dinámicamente -->
+            <h2 id="modal-nombre"></h2>
+            <p><strong>Categoría:</strong> <span id="modal-categoria"></span></p>
+            <p><strong>Descripción:</strong> <span id="modal-descripcion"></span></p>
+            <p><strong>Duración:</strong> <span id="modal-duracion"></span></p>
+            <p><strong>Riesgos:</strong> <span id="modal-riesgos"></span></p>
+            <p><strong>Complejidad:</strong> <span id="modal-complejidad"></span></p>
+            <p><strong>Estado:</strong> <span id="modal-estado"></span></p>
+        </div>
+    </div>
     <?php
     include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/paciente/footer.php');
     ?>
     <script src="/assets/js/tratamiento/tratamientoVisualizarBusqueda.js"></script>
     <script src="/assets/js/tratamiento/tratamientoVisualizar.js"></script>
+    <script src="/assets/js/tratamiento/tratamientoVisualizarModal.js"></script>
 </body>
 
 </html>
