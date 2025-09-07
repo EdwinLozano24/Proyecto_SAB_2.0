@@ -1,26 +1,29 @@
-/* ===== Modal ===== */
+/* ===== Modal Corregido ===== */
 .modal {
-    display: none;
+    display: none; /* Mantenemos none por defecto */
     position: fixed;
     z-index: 1000;
-    inset: 0; /* shorthand para top, right, bottom, left = 0 */
+    inset: 0;
     background-color: rgba(30, 41, 59, 0.6);
     backdrop-filter: blur(4px);
-
-    /* Clave para centrar */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
     padding: 20px;
+    /* Quitamos display:flex de aquí */
 }
 
+/* Clase adicional para cuando el modal debe mostrarse */
+.modal.activo {
+    display: flex; /* Solo mostramos como flex cuando está activo */
+    justify-content: center;
+    align-items: center;
+}
+
+/* El resto de tu CSS se mantiene igual */
 .modal-content {
     background: #ffffff;
     padding: 35px;
     border-radius: 16px;
     width: 95%;
-    max-width: 700px; /* más grande */
+    max-width: 700px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     animation: scaleIn 0.3s ease;
     color: #1e293b;
