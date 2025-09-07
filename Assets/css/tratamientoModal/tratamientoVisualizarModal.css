@@ -86,22 +86,20 @@
 }
 
 .btn-agendar {
+    display: inline-block;
     background: #0ea5e9;
-    color: white;
-    padding: 12px 28px;
-    border-radius: 10px;
-    border: none;
-    font-size: 16px;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
     font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.25);
+    transition: background 0.3s ease;
 }
 
 .btn-agendar:hover {
     background: #0284c7;
-    box-shadow: 0 6px 16px rgba(14, 165, 233, 0.35);
 }
+
 
 /* Animación entrada */
 @keyframes scaleIn {
