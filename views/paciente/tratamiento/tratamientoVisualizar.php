@@ -7,6 +7,7 @@
     <title>Catalogo Tratamientos</title>
     <link rel="stylesheet" href="/Assets/css/layoutFinal/paciente/layout1.css">
     <link rel="stylesheet" href="/assets/css/tratamiento/tratamientoVisualizar.css">
+    <link rel="stylesheet" href="/tratamientoVisualizarModal.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
