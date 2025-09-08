@@ -423,6 +423,8 @@ class CitaController
     public function pacienteCitas($id_usuario)
     {
         $id_paciente = $this->PacienteModel->findIdPaciente($id_usuario);
+        var_dump($id_paciente);
+        exit;
         $citas = $this->CitaModel->find($id_paciente);
         var_dump($citas);
         exit;
