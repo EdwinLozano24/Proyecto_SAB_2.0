@@ -364,6 +364,7 @@ class CitaController
 
             $data = [
                 'cita_paciente' => $cita_paciente,
+                'cita_historial' => $cita_historial,
                 'cita_especialista' => $_POST['cita_especialista'] ?? null,
                 'cita_fecha' => $_POST['cita_fecha'] ?? null,
                 'cita_hora_inicio' => $_POST['cita_hora_inicio'] ?? null,
