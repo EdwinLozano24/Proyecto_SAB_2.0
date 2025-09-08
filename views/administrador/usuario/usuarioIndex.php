@@ -263,7 +263,7 @@ $usuarios = $stmt->fetchAll();
             }
             table {
                 border-collapse: collapse;
-                width: 100%;
+                width: 98%;
             }
             th {
                 background-color: #00AEEF !important;
