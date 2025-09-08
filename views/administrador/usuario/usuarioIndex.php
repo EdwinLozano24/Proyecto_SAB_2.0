@@ -253,7 +253,7 @@ $usuarios = $stmt->fetchAll();
             }
             body {
                 font-size: 10pt;
-                margin: 15px;
+                margin: 30px;
                 backgroud: #bde7f7ff;
             }
             h1 {
@@ -268,7 +268,7 @@ $usuarios = $stmt->fetchAll();
             th {
                 background-color: #00AEEF !important;
                 color: white !important;
-                padding: 6px;
+                padding: 5px;
                 text-align: center;
             }
             td {
