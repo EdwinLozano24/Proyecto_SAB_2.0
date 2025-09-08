@@ -120,6 +120,6 @@ class HistorialModel
     {
         $stmt = $this->pdo->prepare("SELECT id_historial FROM tbl_historial_clinico WHERE hist_paciente = :id_paciente AND hist_estado = 'Activo' LIMIT 1");
         $stmt->execute([':id_paciente' => $id_paciente]);
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        return $stmt->fetchColumn();
     }
 }
