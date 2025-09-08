@@ -285,7 +285,7 @@ WHERE id_cita = :id_cita
                cons.cons_numero
         FROM tbl_citas c
         INNER JOIN tbl_especialistas e ON c.cita_especialista = e.id_especialista
-        INNER JOIN tbl_usuarios u ON e.especialista_usuario = u.id_usuario
+        INNER JOIN tbl_usuarios u ON e.espe_usuario = u.id_usuario
         INNER JOIN tbl_consultorios cons ON c.cita_consultorio = cons.id_consultorio
         WHERE c.cita_paciente = :id_paciente 
           AND c.cita_estado = 'Proceso'";
