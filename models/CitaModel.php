@@ -278,4 +278,12 @@ WHERE id_cita = :id_cita
         return $stmt->fetchAll(PDO::FETCH_COLUMN);
     }
 
+    public function findCitaPaciente($id_paciente)
+    {
+        $sql = "SELECT * FROM tbl_citas WHERE cita_paciente = :id_paciente";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([':id_paciente' => $id_paciente]);
+        return $stmt->fetchAll();
+    }
+
 }

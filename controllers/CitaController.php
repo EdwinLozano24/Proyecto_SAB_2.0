@@ -54,7 +54,9 @@ switch ($accion) {
     case 'store_resultado_cita':
         $cita->store_resultado();
         break;
-
+    case 'pacienteCitas':
+        $cita->pacienteCitas($_GET['id_usuario']);
+        break;
     default:
         $cita->index();
         break;
@@ -415,11 +417,15 @@ class CitaController
                         error_log("Error al registrar la cita: " . $e->getMessage());
                         echo "Ocurrió un error al registrar el usuario. error: $e";
                     }
-                    
-
-                    
-            
-
                 }
-            }
+    }
+
+    public function pacienteCitas($id_usuario)
+    {
+        $id_paciente = $this->PacienteModel->findIdPaciente($id_usuario);
+        $citas = $this->CitaModel->find($id_paciente);
+        var_dump($citas);
+        exit;
+        include '../views/paciente/cita/citaPaciente.php';
+    }
 }
