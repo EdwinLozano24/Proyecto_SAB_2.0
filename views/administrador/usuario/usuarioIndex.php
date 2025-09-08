@@ -254,7 +254,7 @@ $usuarios = $stmt->fetchAll();
             body {
                 font-size: 10pt;
                 margin: 30px;
-                backgroud: #bde7f7ff;
+                backgroud: #512020ff;
             }
             h1 {
                 text-align: center;
