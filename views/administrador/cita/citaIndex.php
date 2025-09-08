@@ -110,6 +110,20 @@ $citas = $stmt->fetchAll();
                         <td><?= htmlspecialchars($cita['cita_motivo']) ?></td>
                         <td><?= htmlspecialchars($cita['cita_observacion']) ?></td>
                         <td><?= htmlspecialchars($cita['cita_estado']) ?></td>
+                        <div class="d-flex align-items-center">
+                            <div class="me-2">
+                                <label for="filtroEstado" class="form-label">Filtrar por Estado:</label>
+                                <select id="filtroEstado" class="form-select">
+                                    <option value="">Todos</option>
+                                    <option value="pendiente">Pendiente</option>
+                                    <option value="cumplida">Cumplida</option>
+                                    <option value="cancelada">Cancelada</option>
+                                </select>
+                            </div>
+                            <div class="me-2">
+                                <button id="clearFilters" class="btn btn-secondary mt-4">Limpiar Filtros</button>
+                            </div>
+                        </div>
                         <td>
                             <a href="/controllers/CitaController.php?accion=view_update&id_cita=<?= $cita['id_cita'] ?>"
                                 class="action-btn edit">
@@ -121,20 +135,6 @@ $citas = $stmt->fetchAll();
                             </a>
                         </td>
                     </tr>
-                    <div class="d-flex align-items-center">
-                        <div class="me-2">
-                            <label for="filtroEstado" class="form-label">Filtrar por Estado:</label>
-                            <select id="filtroEstado" class="form-select">
-                                <option value="">Todos</option>
-                                <option value="pendiente">Pendiente</option>
-                                <option value="cumplida">Cumplida</option>
-                                <option value="cancelada">Cancelada</option>
-                            </select>
-                        </div>
-                        <div class="me-2">
-                            <button id="clearFilters" class="btn btn-secondary mt-4">Limpiar Filtros</button>
-                        </div>
-                    </div>
                 <?php endforeach; ?>
             </tbody>
         </table>
