@@ -58,7 +58,7 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
                         <td><?= htmlspecialchars($cit['cita_turno']) ?></td>
                         <td><?= htmlspecialchars($cit['cita_duracion']) ?></td>
                         <td><?= htmlspecialchars($cit['cons_numero']) ?></td>
-                        <td><?= htmlspecialchars($cit['espe_nombre']) ?></td>
+                        <td><?= htmlspecialchars($cit['usua_nombre']) ?></td>
                         <td><?= htmlspecialchars($cit['cita_motivo']) ?></td>
                     </tr>
                 <?php endforeach; ?>
