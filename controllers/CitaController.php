@@ -351,7 +351,14 @@ class CitaController
         
             $cita_hora_inicio = $_POST['cita_hora_inicio'];
             $cita_hora_fin = date('H:i:s', strtotime($cita_hora_inicio . ' + 60 minutes'));
-            var_dump($cita_paciente,$cita_historial,$cita_hora_inicio,$cita_hora_fin); exit;
+
+            $inicio = new DateTime($cita_hora_inicio);
+            $fin = new DateTime($cita_hora_fin);
+            $duracion = $inicio->diff($fin)->h * 60 + $inicio->diff($fin)->i;
+
+            $horaInt = (int)$inicio->format("H");
+            $turno = ($horaInt < 12) ? "Mañana" : "Tarde";
+            var_dump($cita_paciente,$cita_historial,$cita_hora_inicio,$cita_hora_fin,$duracion,$turno); exit;
 
             $data = [
                 'cita_paciente' => $cita_paciente['id_paciente'],
