@@ -81,12 +81,25 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
                             </div>
 
                             <div class="form-group">
-                                <label for="fecha">Fecha de la Cita</label>
+                                <label for="cita_fecha">Fecha de la Cita</label>
                                 <div class="input-with-icon">
                                     <i class="fas fa-calendar input-icon"></i>
                                     <input type="date" name="cita_fecha" id="fecha" value="<?= htmlspecialchars($cita_fecha)?>" readonly>
                                 </div>
                             </div>
+
+                            <div class="form-group">
+                                <label for="cita_hora_inicio">Horas disponibles para el <?= htmlspecialchars($cita_fecha)?> :</label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-calendar input-icon"></i>
+                                        <select name="cita_hora_inicio" required>
+                                            <?php foreach($disponibles as $hora): ?>
+                                                <option value="<?= $hora ?>"><?= $hora ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                </div>
+                            </div>
+
 
                         </div>
                     </div>
