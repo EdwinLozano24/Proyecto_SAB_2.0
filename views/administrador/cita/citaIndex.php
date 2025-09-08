@@ -78,7 +78,21 @@ $citas = $stmt->fetchAll();
                 Nueva Cita
             </a>
         </div>
-
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <label for="filtroEstado" class="form-label">Filtrar por Estado:</label>
+                <select id="filtroEstado" class="form-select">
+                    <option value="">Todos los estados</option>
+                    <option value="proceso">Proceso</option>
+                    <option value="cumplida">Cumplida</option>
+                    <option value="incumplida">Incumplida</option>
+                    <option value="cancelada">Cancelada</option>
+                </select>
+            </div>
+            <div class="col-md-2 d-flex align-items-end">
+                <button id="clearFilters" class="btn btn-secondary">Limpiar Filtros</button>
+            </div>
+        </div>
         <table id="citaDatatable" class="table-custom">
             <thead>
                 <tr>
@@ -110,20 +124,6 @@ $citas = $stmt->fetchAll();
                         <td><?= htmlspecialchars($cita['cita_motivo']) ?></td>
                         <td><?= htmlspecialchars($cita['cita_observacion']) ?></td>
                         <td><?= htmlspecialchars($cita['cita_estado']) ?></td>
-                        <div class="d-flex align-items-center">
-                            <div class="me-2">
-                                <label for="filtroEstado" class="form-label">Filtrar por Estado:</label>
-                                <select id="filtroEstado" class="form-select">
-                                    <option value="">Todos</option>
-                                    <option value="pendiente">Pendiente</option>
-                                    <option value="cumplida">Cumplida</option>
-                                    <option value="cancelada">Cancelada</option>
-                                </select>
-                            </div>
-                            <div class="me-2">
-                                <button id="clearFilters" class="btn btn-secondary mt-4">Limpiar Filtros</button>
-                            </div>
-                        </div>
                         <td>
                             <a href="/controllers/CitaController.php?accion=view_update&id_cita=<?= $cita['id_cita'] ?>"
                                 class="action-btn edit">
