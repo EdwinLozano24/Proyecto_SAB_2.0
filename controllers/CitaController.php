@@ -346,7 +346,7 @@ class CitaController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $id_usuario = $_POST['id_usuario'];
-            $cita_paciente = $this->PacienteModel->findPaciente($id_usuario);
+            $cita_paciente = $this->PacienteModel->findIdPaciente($id_usuario);
             $cita_historial = $this->HistorialModel->findByPaciente($cita_paciente['id_paciente']);
             $cita_hora_inicio = $_POST['cita_hora_inicio'];
             $cita_hora_fin = date('H:i:s', strtotime($cita_hora_inicio . ' + 60 minutes'));
