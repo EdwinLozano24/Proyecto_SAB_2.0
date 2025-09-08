@@ -86,6 +86,6 @@ class ConsultorioModel
             ':hora_fin' => $hora_fin,
         ]);
 
-        return $stmt->fetch(PDO::FETCH_ASSOC); // consultorio libre o false si no hay
+        return $stmt->fetchAll(PDO::FETCH_ASSOC); // consultorio libre o false si no hay
     }
 }
