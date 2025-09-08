@@ -362,7 +362,6 @@ class CitaController
             $cita_especialista = $_POST['cita_especialista'];
             $cita_fecha = $_POST['cita_fecha'];
             $consultorio = $this->ConsultorioModel->findConsultorioLibre(
-                $cita_especialista,
                 $cita_fecha,
                 $cita_hora_inicio,
                 $cita_hora_fin
