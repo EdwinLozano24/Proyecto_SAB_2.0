@@ -17,7 +17,7 @@ $pqrs = $stmt->fetchAll();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>PQRS CRUD</title>
+    <title>Pqrs</title>
 
     <link href="https://cdn.datatables.net/2.3.1/css/dataTables.bootstrap5.min.css" rel="stylesheet"
         integrity="sha384-5hBbs6yhVjtqKk08rsxdk9xO80wJES15HnXHglWBQoj3cus3WT+qDJRpvs5rRP2c" crossorigin="anonymous">
@@ -149,34 +149,149 @@ $pqrs = $stmt->fetchAll();
         integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
         crossorigin="anonymous"></script>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             // 1) Inicializo DataTable con TODAS las opciones
             const table = $('#PqrsDatatable').DataTable({
-                buttons: [
-                    {
+                buttons: [{
                         extend: "excelHtml5",
                         text: '<i class="fa-solid fa-file-excel"></i>',
                         titleAttr: "Exportar a Excel",
-                        className: "btn btn-success me-1"
+                        className: "btn btn-success me-1",
+                        title: 'Pqrs registrados',
+                        exportOptions: {
+                            columns: ':visible:not(:last-child)'
+                        },
+                        customize: function(xlsx) {
+                            var sheet = xlsx.xl.worksheets['sheet1.xml'];
+
+                            // Agrega estilo de cabecera (negrita)
+                            $('row:first c', sheet).attr('s', '2'); // Negrita para la primera fila
+
+                            // Aplica borde a todas las celdas
+                            $('row c', sheet).attr('s', '25'); // Sólo funciona si el estilo 25 está definido por defecto
+                        }
                     },
                     {
                         extend: "pdfHtml5",
                         text: '<i class="fa-solid fa-file-pdf"></i>',
                         titleAttr: "Exportar a PDF",
-                        className: "btn btn-danger me-1"
+                        className: "btn btn-danger me-1",
+                        orientation: "landscape",
+                        title: "Pqrs registrados",
+                        exportOptions: {
+                            columns: ':visible:not(:last-child)'
+                        },
+                        customize: function(doc) {
+                            doc.pageMargins = [20, 20, 20, 20];
+
+                            doc.defaultStyle = {
+                                fontSize: 10,
+                                margin: [10, 10, 10, 10]
+                            };
+
+                            doc.content[0].margin = [0, 20, 0, 10];
+                            doc.content[0].alignment = 'center';
+                            doc.content[0].fontSize = 14;
+
+                            doc.styles.tableHeader = {
+                                bold: true,
+                                fontSize: 11,
+                                color: 'white',
+                                fillColor: '#00AEEF',
+                                alignment: 'center',
+                                margin: [5, 5, 5, 5]
+                            };
+
+                            // Líneas suaves en la tabla
+                            doc.content[1].layout = {
+                                hLineWidth: function() {
+                                    return 0.5;
+                                },
+                                vLineWidth: function() {
+                                    return 0.5;
+                                },
+                                hLineColor: function() {
+                                    return '#aaa';
+                                },
+                                vLineColor: function() {
+                                    return '#aaa';
+                                },
+                                paddingLeft: function() {
+                                    return 8;
+                                },
+                                paddingRight: function() {
+                                    return 8;
+                                },
+                                paddingTop: function() {
+                                    return 4;
+                                },
+                                paddingBottom: function() {
+                                    return 4;
+                                }
+                            };
+                        }
                     },
                     {
                         extend: "print",
                         text: '<i class="fa-solid fa-print"></i>',
                         titleAttr: "Imprimir",
-                        className: "btn btn-warning"
+                        className: "btn btn-warning",
+                        title: "&nbsp",
+                        orientation: "landscape",
+                        exportOptions: {
+                            columns: ':visible:not(:last-child)' // No imprime columna "Acciones"
+                        },
+                        customize: function(win) {
+                            // Forzar orientación horizontal
+                            const css = `
+            @page {
+                size: landscape;
+            }
+            body {
+                font-size: 10pt;
+                margin: 20px;
+                backgroud: #bde7f7ff;
+            }
+            h1 {
+                text-align: center;
+                font-size: 18pt;
+                margin-bottom: 20px;
+            }
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+            th {
+                background-color: #00AEEF !important;
+                color: white !important;
+                padding: 6px;
+                text-align: center;
+            }
+            td {
+                padding: 6px;
+                text-align: center;
+            }
+            table, th, td {
+                border: 1px solid #aaa;
+            }
+        `;
+                            const style = document.createElement('style');
+                            style.type = 'text/css';
+                            style.innerHTML = css;
+                            win.document.head.appendChild(style);
+
+                            // Cambiar el título visual impreso
+                            const h1 = win.document.querySelector('h1');
+                            if (h1) {
+                                h1.innerText = 'Citas Registradas';
+                            }
+                        }
                     }
                 ],
 
                 // Ubicación del contenedor de botones (sólo genera el <div> aquí,
                 // luego lo moveremos al .mb-4)
-                dom:
-                    "<'row'<'col-12'B>>" +
+                dom: "<'row'<'col-12'B>>" +
                     "<'row mb-3'<'col-sm-6'l><'col-sm-6'f>>" +
                     "t" +
                     // <-- Aquí añadimos d-flex justify-content-end
