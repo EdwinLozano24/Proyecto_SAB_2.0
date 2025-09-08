@@ -365,6 +365,7 @@ class CitaController
             $cita_fecha = $_POST['cita_fecha'];
             $consultorio = $this->ConsultorioModel->findConsultorioLibre($cita_fecha, $cita_hora_inicio,$cita_hora_fin);
 
+
             $data = [
                 'cita_paciente' => $cita_paciente,
                 'cita_historial' => $cita_historial,
@@ -385,9 +386,11 @@ class CitaController
             try {
             $this->CitaModel->store($data);
                 $usuarioGuardado = $this->UsuarioModel->findCorreo($id_usuario);
-                    if ($usuarioGuardado) {
+                    
+                if ($usuarioGuardado && isset($usuarioGuardado['usua_correo_electronico'])) {
+                    $correoUsuario = $usuarioGuardado['usua_correo_electronico'];
                         $this->mailer->send(
-                            $data['usua_correo_electronico'],
+                            $correoUsuario,
                             'Cita Agendada Correctamente',
                             'cita_agendada',
                             ['usuario' => $usuarioGuardado, 'app_url' => $this->config['app_url']]
