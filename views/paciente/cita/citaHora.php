@@ -71,13 +71,6 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
                                     <i class="fas fa-stethoscope input-icon"></i>
                                     <input type="text" name="cita_motivo" id="fecha" value="<?= htmlspecialchars($motivo)?>" readonly>
                                 </div>
-
-
-
-                                <div id="duration-display" class="duration-info">
-                                    <i class="fas fa-hourglass-half"></i>
-                                    <span id="duration-text">Selecciona un motivo para ver la duración</span>
-                                </div>
                             </div>
 
                             <div class="form-group">
@@ -91,7 +84,7 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
                             <div class="form-group">
                                 <label for="cita_hora_inicio">Horas disponibles para el <?= htmlspecialchars($cita_fecha)?> :</label>
                                 <div class="input-with-icon">
-                                    <i class="fas fa-calendar input-icon"></i>
+                                    <i class="fa-solid fa-clock"></i>
                                         <select name="cita_hora_inicio" required>
                                             <?php foreach($disponibles as $hora): ?>
                                                 <option value="<?= $hora ?>"><?= $hora ?></option>
