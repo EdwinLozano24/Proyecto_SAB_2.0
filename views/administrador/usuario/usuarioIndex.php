@@ -253,7 +253,7 @@ $usuarios = $stmt->fetchAll();
             }
             body {
                 font-size: 10pt;
-                margin: 20px;
+                margin: 15px;
                 backgroud: #bde7f7ff;
             }
             h1 {
