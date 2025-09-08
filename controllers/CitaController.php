@@ -360,6 +360,7 @@ class CitaController
             $cita_turno = ($horaInt < 12) ? "Mañana" : "Tarde";
 
             $cita_especialista = $_POST['cita_especialista'];
+            $cita_fecha = $_POST['cita_fecha'];
             $consultorio = $this->ConsultorioModel->findConsultorioLibre(
                 $cita_especialista,
                 $cita_fecha,
