@@ -77,7 +77,7 @@ class ConsultorioModel
                             OR (cita_hora_inicio BETWEEN :hora_inicio AND :hora_fin)
                     )
                 )
-                LIMIT 1";
+                LIMIT 10";
 
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([
