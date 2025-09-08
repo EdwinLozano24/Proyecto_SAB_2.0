@@ -66,16 +66,6 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
                             </div>
                         
 
-
-                            <div class="form-group">
-                                <label for="fecha">Fecha de la Cita <span class="required">*</span></label>
-                                <div class="input-with-icon">
-                                    <i class="fas fa-calendar input-icon"></i>
-                                    <input type="date" name="cita_fecha" id="fecha" required min="">
-                                </div>
-                            </div>
-
-
                             <div class="form-group">
                                 <label for="motivo">Motivo de la Cita <span class="required">*</span></label>
                                 <div class="input-with-icon">
@@ -95,6 +85,16 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
                                     <span id="duration-text">Selecciona un motivo para ver la duración</span>
                                 </div>
                             </div>
+
+                            <div class="form-group">
+                                <label for="fecha">Fecha de la Cita <span class="required">*</span></label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-calendar input-icon"></i>
+                                    <input type="date" name="cita_fecha" id="fecha" required min="">
+                                </div>
+                            </div>
+
+
                         </div>
                     </div>
 
