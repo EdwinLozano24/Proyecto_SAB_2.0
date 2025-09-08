@@ -82,6 +82,10 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
                             </div>
 
                             <div class="form-group">
+
+                            </div>
+
+                            <div class="form-group">
                                 <label for="cita_hora_inicio">Horas disponibles para el <?= htmlspecialchars($cita_fecha)?> :</label>
                                 <div class="input-with-icon">
                                     <i class="fa-solid fa-clock"></i>
@@ -92,7 +96,10 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
                                         </select>
                                 </div>
                             </div>
+                            
+                            <div class="form-group">
 
+                            </div>
 
                         </div>
                     </div>
