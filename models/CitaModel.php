@@ -280,7 +280,7 @@ WHERE id_cita = :id_cita
 
     public function findCitaPaciente($id_paciente)
     {
-        $sql = "SELECT * FROM tbl_citas WHERE cita_paciente = :id_paciente";
+        $sql = "SELECT * FROM tbl_citas WHERE cita_paciente = :id_paciente AND cita_estado = 'Proceso'";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([':id_paciente' => $id_paciente]);
         return $stmt->fetchAll();
