@@ -77,7 +77,7 @@ class ConsultorioModel
                             OR (cita_hora_inicio BETWEEN :hora_inicio AND :hora_fin)
                     )
                 )
-                LIMIT 10";
+                LIMIT 1";
 
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([
@@ -86,6 +86,6 @@ class ConsultorioModel
             ':hora_fin' => $hora_fin,
         ]);
 
-        return $stmt->fetchAll(PDO::FETCH_ASSOC); // consultorio libre o false si no hay
+        return $stmt->fetchColumn(); // consultorio libre o false si no hay
     }
 }
