@@ -343,6 +343,7 @@ class CitaController
             $cita_especialista = $_POST['cita_especialista'];
             $cita_fecha = $_POST['cita_fecha'];
             $cita_hora_inicio = $_POST['cita_hora_inicio'];
-            
+
+    }
     }
 }
