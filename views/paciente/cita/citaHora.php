@@ -88,7 +88,7 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
                             <div class="form-group">
                                 <label for="cita_hora_inicio">Horas disponibles para el <?= htmlspecialchars($cita_fecha)?> :</label>
                                 <div class="input-with-icon">
-                                    <i class="fa-solid fa-clock"></i>
+                                    <i class="fas fa-clock input-icon"></i>
                                         <select name="cita_hora_inicio" required>
                                             <?php foreach($disponibles as $hora): ?>
                                                 <option value="<?= $hora ?>"><?= $hora ?></option>
