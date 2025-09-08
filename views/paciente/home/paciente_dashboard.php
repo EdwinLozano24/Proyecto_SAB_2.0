@@ -35,13 +35,13 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
                 <h3 class="card-title">Agenda Tu Cita</h3>
                 <p class="card-description">Reserva fácilmente tu cita para chequeos, limpiezas, tratamientos especializados o cualquier consulta.
                 ¡Tu salud oral es nuestra prioridad!.</p>
-                <a href="#" class="btn btn-primary" style="margin-top: 16px;">Ver más</a>
+                <a href="/controllers/CitaController.php?accion=viewAgendar" class="btn btn-primary" style="margin-top: 16px;">Ver más</a>
             </div>
 
             <div class="content-card">
                 <h3 class="card-title">Tratamientos</h3>
                 <p class="card-description">En nuestro Centro Odontológico te ofrecemos una amplia gama de tratamientos diseñados para cuidar y mejorar tu salud bucal.</p>
-                <a href="#" class="btn btn-primary" style="margin-top: 16px;">Ver más</a>
+                <a href="/views/paciente/tratamiento/tratamientoVisualizar.php" class="btn btn-primary" style="margin-top: 16px;">Ver más</a>
             </div>
 
             <div class="content-card">
