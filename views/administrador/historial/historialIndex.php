@@ -250,13 +250,13 @@ $historias = $stmt->fetchAll();
             }
             body {
                 font-size: 10pt;
-                margin: 20px;
+                margin: 15px;
                 backgroud: #bde7f7ff;
             }
             h1 {
                 text-align: center;
                 font-size: 18pt;
-                margin-bottom: 20px;
+                margin-bottom: 15px;
             }
             table {
                 border-collapse: collapse;
@@ -284,7 +284,7 @@ $historias = $stmt->fetchAll();
                             // Cambiar el título visual impreso
                             const h1 = win.document.querySelector('h1');
                             if (h1) {
-                                h1.innerText = 'Citas Registradas';
+                                h1.innerText = 'Historiales clínicos';
                             }
                         }
                     }
