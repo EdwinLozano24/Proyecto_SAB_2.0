@@ -83,8 +83,9 @@ $citas = $stmt->fetchAll();
                 <label for="filtroEstado" class="form-label">Filtrar por Estado:</label>
                 <select id="filtroEstado" class="form-select">
                     <option value="">Todos los estados</option>
-                    <option value="pendiente">Pendiente</option>
+                    <option value="proceso">Proceso</option>
                     <option value="cumplida">Cumplida</option>
+                    <option value="incumplida">Incumplida</option>
                     <option value="cancelada">Cancelada</option>
                 </select>
             </div>
