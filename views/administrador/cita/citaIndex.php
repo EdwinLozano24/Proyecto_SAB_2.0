@@ -89,9 +89,6 @@ $citas = $stmt->fetchAll();
                     <option value="cancelada">Cancelada</option>
                 </select>
             </div>
-            <div class="col-md-2 d-flex align-items-end">
-                <button id="clearFilters" class="btn btn-secondary">Limpiar Filtros</button>
-            </div>
         </div>
         <table id="citaDatatable" class="table-custom">
             <thead>
