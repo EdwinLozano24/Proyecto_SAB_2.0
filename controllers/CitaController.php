@@ -375,10 +375,36 @@ class CitaController
                 'cita_observacion' => $_POST['cita_observacion'] ?? null,
                 'cita_estado' => 'Proceso',
             ];
-            var_dump($data); exit;
-            
-    
 
-        }
-    }
+            $origen = $_POST['origen_formulario'] ?? 'Paciente';
+
+            try {
+            $this->CitaModel->store($data);
+                $usuarioGuardado = $this->UsuarioModel->findCorreo($id_usuario);
+                    if ($usuarioGuardado) {
+                        $this->mailer->send(
+                            $data['usua_correo_electronico'],
+                            'Cita Agendada Correctamente',
+                            'cita_agendada',
+                            ['usuario' => $usuarioGuardado, 'app_url' => $this->config['app_url']]
+                            );
+                    } if ($origen === 'Especialista') {
+                            header('Location: ../views/especialista/home/especialista_dashboard.php');
+                        } elseif ($origen === 'Administrador') {
+                            header('Location: ../views/administrador/home/admin_dashboard.php'); // 👈 aquí va la vista del admin
+                        } else {
+                            header('Location: ../views/paciente/home/paciente_dashboard.php');
+                        }
+                        exit;
+                    } catch (\Exception $e) {
+                        error_log("Error al registrar la cita: " . $e->getMessage());
+                        echo "Ocurrió un error al registrar el usuario. error: $e";
+                    }
+                    
+
+                    
+            
+
+                }
+            }
 }
