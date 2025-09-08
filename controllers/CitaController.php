@@ -423,7 +423,7 @@ class CitaController
     public function pacienteCitas($id_usuario)
     {
         $id_paciente = $this->PacienteModel->findIdPaciente($id_usuario);
-        $citas = $this->CitaModel->findCitaPaciente($id_paciente);
+        $cita = $this->CitaModel->findCitaPaciente($id_paciente);
         include '../views/paciente/cita/citaPaciente.php';
     }
 }

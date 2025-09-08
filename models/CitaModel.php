@@ -280,7 +280,15 @@ WHERE id_cita = :id_cita
 
     public function findCitaPaciente($id_paciente)
     {
-        $sql = "SELECT * FROM tbl_citas WHERE cita_paciente = :id_paciente AND cita_estado = 'Proceso'";
+        $sql = "SELECT c.*, 
+               u.usua_nombre, 
+               cons.cons_numero
+        FROM tbl_citas c
+        INNER JOIN tbl_especialistas e ON c.cita_especialista = e.id_especialista
+        INNER JOIN tbl_usuarios u ON e.especialista_usuario = u.id_usuario
+        INNER JOIN tbl_consultorios cons ON c.cita_consultorio = cons.id_consultorio
+        WHERE c.cita_paciente = :id_paciente 
+          AND c.cita_estado = 'Proceso'";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([':id_paciente' => $id_paciente]);
         return $stmt->fetchAll();
