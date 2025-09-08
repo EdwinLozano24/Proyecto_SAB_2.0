@@ -13,7 +13,7 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
     <title>Agendar Cita</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/Assets/css/layoutFinal/paciente/layout1.css">
-    <link rel="stylesheet" href="/assets/css/citas/citasAgendar1.css?v=202509023">
+    <link rel="stylesheet" href="/assets/css/citas/citasAgendar1.css?v=202509024">
 
 </head>
 
@@ -66,14 +66,6 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
                             </div>
 
                             <div class="form-group">
-                                <label for="fecha">Fecha de la Cita</label>
-                                <div class="input-with-icon">
-                                    <i class="fas fa-calendar input-icon"></i>
-                                    <input type="date" name="cita_fecha" id="fecha" value="<?= htmlspecialchars($cita_fecha)?>" readonly>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
                                 <label for="motivo">Motivo de la Cita</label>
                                 <div class="input-with-icon">
                                     <i class="fas fa-stethoscope input-icon"></i>
@@ -87,6 +79,15 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
                                     <span id="duration-text">Selecciona un motivo para ver la duración</span>
                                 </div>
                             </div>
+
+                            <div class="form-group">
+                                <label for="fecha">Fecha de la Cita</label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-calendar input-icon"></i>
+                                    <input type="date" name="cita_fecha" id="fecha" value="<?= htmlspecialchars($cita_fecha)?>" readonly>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
 
