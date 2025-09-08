@@ -70,14 +70,17 @@ $citas = $stmt->fetchAll();
             </a>
         </div>
 
-        <!-- Botón nuevo usuario -->
         <div class="mb-4 d-flex justify-content-between align-items-center">
-            <a href="/controllers/CitaController.php?accion=view_store"
-                class="btn-custom btn-primary-custom">
+            <a href="/controllers/CitaController.php?accion=view_store" class="btn-custom btn-primary-custom">
                 <i class="fa-solid fa-square-plus"></i>
                 Nueva Cita
             </a>
+            <div id="botonesExportacion"></div>
         </div>
+
+        <div class="row mb-4">
+        </div>
+
         <div class="row mb-4">
             <div class="col-md-4">
                 <label for="filtroEstado" class="form-label">Filtrar por Estado:</label>
@@ -88,9 +91,6 @@ $citas = $stmt->fetchAll();
                     <option value="incumplida">Incumplida</option>
                     <option value="cancelada">Cancelada</option>
                 </select>
-            </div>
-            <div class="col-md-2 d-flex align-items-end">
-                <button id="clearFilters" class="btn btn-secondary">Limpiar Filtros</button>
             </div>
         </div>
         <table id="citaDatatable" class="table-custom">
@@ -263,13 +263,13 @@ $citas = $stmt->fetchAll();
                         },
                         customize: function(win) {
                             const css = `
-                    @page { size: landscape; }
-                    body { font-size: 10pt; margin: 20px; }
-                    h1 { text-align: center; font-size: 18pt; margin-bottom: 20px; }
-                    table { border-collapse: collapse; width: 100%; }
-                    th { background-color: #00AEEF !important; color: white !important; padding: 6px; text-align: center; }
-                    td { padding: 6px; text-align: center; }
-                    table, th, td { border: 1px solid #aaa; }
+                        @page { size: landscape; }
+                        body { font-size: 10pt; margin: 20px; }
+                        h1 { text-align: center; font-size: 18pt; margin-bottom: 20px; }
+                        table { border-collapse: collapse; width: 100%; }
+                        th { background-color: #00AEEF !important; color: white !important; padding: 6px; text-align: center; }
+                        td { padding: 6px; text-align: center; }
+                        table, th, td { border: 1px solid #aaa; }
                     `;
                             const style = document.createElement('style');
                             style.type = 'text/css';
@@ -282,13 +282,11 @@ $citas = $stmt->fetchAll();
                         }
                     }
                 ],
-                dom: "<'row'<'col-12'B>>" +
+                dom: "<'row'<'col-12'B>>" + // B stands for Buttons
                     "<'row mb-3'<'col-sm-6'l><'col-sm-6'f>>" +
                     "t" +
                     "<'row mt-3'<'col-sm-6'i><'col-sm-6 d-flex justify-content-end'p>>",
-
                 lengthMenu: [10, 20, 50, 100],
-
                 language: {
                     processing: "Procesando...",
                     lengthMenu: "Mostrar _MENU_ registros",
@@ -339,14 +337,12 @@ $citas = $stmt->fetchAll();
                 }
             });
 
-            // Mueve los botones de la tabla dentro del div que ya tienes
-            table.buttons().container().appendTo('.mb-4');
+            // Mueve los botones de la tabla al div con id="botonesExportacion"
+            table.buttons().container().appendTo('#botonesExportacion');
 
-            // Aquí es donde agregamos la lógica para el filtro de estado
+            // Lógica para el filtro de estado
             $('#filtroEstado').on('change', function() {
-                const estado = this.value; // 'pendiente', 'cumplida', 'cancelada' o '' (todos)
-
-                // La columna "Estado" es la 10 (basada en el índice 0, ya que tienes 11 columnas)
+                const estado = this.value;
                 table.column(10).search(estado).draw();
             });
 
