@@ -362,17 +362,20 @@ class CitaController
             $cita_fecha = $_POST['cita_fecha'];
             $consultorio = $this->ConsultorioModel->findConsultorioLibre($cita_fecha, $cita_hora_inicio,$cita_hora_fin);
 
-
-            var_dump($cita_paciente,$cita_historial,$cita_hora_inicio,$cita_hora_fin,$cita_duracion,$cita_turno,$cita_fecha,$consultorio); exit;
-
             $data = [
                 'cita_paciente' => $cita_paciente['id_paciente'],
                 'cita_especialista' => $_POST['cita_especialista'] ?? null,
                 'cita_fecha' => $_POST['cita_fecha'] ?? null,
                 'cita_hora_inicio' => $_POST['cita_hora_inicio'] ?? null,
                 'cita_hora_fin' => $cita_hora_fin,
-
+                'cita_turno' => $cita_turno,
+                'cita_duracion' => $cita_duracion,
+                'cita_consultorio' => $consultorio,
+                'cita_motivo' => $_POST['cita_motivo'] ?? null,
+                'cita_observacion' => $_POST['cita_observacion'] ?? null,
+                'cita_estado' => 'Proceso',
             ];
+            var_dump($data); exit;
             
     
 
