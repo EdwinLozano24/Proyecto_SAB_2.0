@@ -424,6 +424,7 @@ class CitaController
     {
         $id_paciente = $this->PacienteModel->findIdPaciente($id_usuario);
         $cita = $this->CitaModel->findCitaPaciente($id_paciente);
+        var_dump($cita); exit;
         include '../views/paciente/cita/citaPaciente.php';
     }
 }
