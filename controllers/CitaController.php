@@ -36,6 +36,10 @@ switch ($accion) {
         break;
     case 'agendarHora':
         $cita->agendarHora();
+        break;
+    case 'agendarCita':
+        $cita->agendarCita();
+        break;
     case 'especialistaCitaView':
         $cita->especialistaCitaView($_GET['id_usuario']);
         break;
@@ -45,6 +49,7 @@ switch ($accion) {
     case 'store_resultado_cita':
         $cita->store_resultado();
         break;
+
     default:
         $cita->index();
         break;
@@ -339,10 +344,24 @@ class CitaController
     public function agendarCita()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $cita_paciente = $_POST['cita_paciente'];
-            $cita_especialista = $_POST['cita_especialista'];
-            $cita_fecha = $_POST['cita_fecha'];
+
+            $id_usuario = $_POST['id_usuario'];
+            $cita_paciente = $this->PacienteModel->findPaciente($id_usuario);
+            $cita_historial = $this->HistorialModel->findByPaciente($cita_paciente['id_paciente']);
             $cita_hora_inicio = $_POST['cita_hora_inicio'];
+            $cita_hora_fin = date('H:i:s', strtotime($cita_hora_inicio . ' + 60 minutes'));
+            var_dump($cita_paciente,$cita_historial,$cita_hora_inicio,$cita_hora_fin); exit;
+
+            $data = [
+                'cita_paciente' => $cita_paciente['id_paciente'],
+                'cita_especialista' => $_POST['cita_especialista'] ?? null,
+                'cita_fecha' => $_POST['cita_fecha'] ?? null,
+                'cita_hora_inicio' => $_POST['cita_hora_inicio'] ?? null,
+                'cita_hora_fin' => $cita_hora_fin,
+
+            ];
+            
+    
 
     }
     }
