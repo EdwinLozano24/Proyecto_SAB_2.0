@@ -65,9 +65,9 @@ class ConsultorioModel
 
     public function findConsultorioLibre($id_especialista, $fecha, $hora_inicio, $hora_fin)
     {
-        $sql = "SELECT c.id_consultorio, c.nombre
+        $sql = "SELECT c.id_consultorio
                 FROM tbl_consultorios c
-                INNER JOIN tbl_especialistas e ON e.consultorio_id = c.id_consultorio
+                INNER JOIN tbl_especialistas e ON e.id_consultorio = c.id_consultorio
                 WHERE e.id_especialista = :id_especialista
                 AND c.id_consultorio NOT IN (
                     SELECT cita_consultorio
