@@ -354,11 +354,21 @@ class CitaController
 
             $inicio = new DateTime($cita_hora_inicio);
             $fin = new DateTime($cita_hora_fin);
-            $duracion = $inicio->diff($fin)->h * 60 + $inicio->diff($fin)->i;
+            $cita_duracion = $inicio->diff($fin)->h * 60 + $inicio->diff($fin)->i;
 
             $horaInt = (int)$inicio->format("H");
-            $turno = ($horaInt < 12) ? "Mañana" : "Tarde";
-            var_dump($cita_paciente,$cita_historial,$cita_hora_inicio,$cita_hora_fin,$duracion,$turno); exit;
+            $cita_turno = ($horaInt < 12) ? "Mañana" : "Tarde";
+
+            $cita_especialista = $_POST['cita_especialista'];
+            $consultorio = $this->ConsultorioModel->findConsultorioLibre(
+                $cita_especialista,
+                $cita_fecha,
+                $cita_hora_inicio,
+                $cita_hora_fin
+            );
+            var_dump($consultorio); exit;
+
+            var_dump($cita_paciente,$cita_historial,$cita_hora_inicio,$cita_hora_fin,$cita_duracion,$cita_turno); exit;
 
             $data = [
                 'cita_paciente' => $cita_paciente['id_paciente'],
@@ -371,6 +381,6 @@ class CitaController
             
     
 
-    }
+        }
     }
 }

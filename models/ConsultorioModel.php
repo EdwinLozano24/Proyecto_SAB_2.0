@@ -62,4 +62,32 @@ class ConsultorioModel
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function findConsultorioLibre($id_especialista, $fecha, $hora_inicio, $hora_fin)
+    {
+        $sql = "SELECT c.id_consultorio, c.nombre
+                FROM tbl_consultorios c
+                INNER JOIN tbl_especialistas e ON e.consultorio_id = c.id_consultorio
+                WHERE e.id_especialista = :id_especialista
+                AND c.id_consultorio NOT IN (
+                    SELECT cita_consultorio
+                    FROM tbl_citas
+                    WHERE cita_especialista = :id_especialista
+                        AND cita_fecha = :fecha
+                        AND (
+                            (:hora_inicio BETWEEN cita_hora_inicio AND cita_hora_fin)
+                            OR (:hora_fin BETWEEN cita_hora_inicio AND cita_hora_fin)
+                            OR (cita_hora_inicio BETWEEN :hora_inicio AND :hora_fin)
+                        )
+                )
+                LIMIT 1"; // traemos uno libre
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([
+            ':id_especialista' => $id_especialista,
+            ':fecha' => $fecha,
+            ':hora_inicio' => $hora_inicio,
+            ':hora_fin' => $hora_fin,
+        ]);
+        return $stmt->fetch(PDO::FETCH_ASSOC); // consultorio libre o false si no hay
+    }
 }
