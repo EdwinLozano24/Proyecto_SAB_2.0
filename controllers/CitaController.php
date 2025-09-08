@@ -386,7 +386,6 @@ class CitaController
             try {
             $this->CitaModel->store($data);
                 $usuarioGuardado = $this->UsuarioModel->findCorreoUser($id_usuario);
-                var_dump($usuarioGuardado); exit;
                     
                 if ($usuarioGuardado && isset($usuarioGuardado['usua_correo_electronico'])) {
                     $correoUsuario = $usuarioGuardado['usua_correo_electronico'];
