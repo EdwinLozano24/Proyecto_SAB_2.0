@@ -133,4 +133,11 @@ class UsuarioModel
     $stmt = $this->pdo->prepare($sql);
     return $stmt->execute([$newPassword, $id_usuario]);
 }
+    public function findCorreoUser($id_usuario)
+    {
+        $sql = "SELECT usua_correo_electronico FROM tbl_usuarios WHERE id_usuario = ?";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$id_usuario]);
+        return $stmt->fetch(PDO::FETCH_ASSOC) ?: null;
+    }
 }

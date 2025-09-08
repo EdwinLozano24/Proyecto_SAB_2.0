@@ -12,6 +12,10 @@ require_once __DIR__ . '/../models/TratamientoModel.php';
 require_once __DIR__ . '/../models/DiagnosticoModel.php';
 require_once __DIR__ . '/../models/HistorialModel.php';
 require_once __DIR__ . '/../models/UsuarioModel.php';
+require_once __DIR__ . '/../app/services/MailService.php';
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use app\services\MailService;
 
 $cita = new CitaController();
 $accion = $_GET['accion'] ?? 'index';
@@ -66,6 +70,8 @@ class CitaController
     protected $HistorialModel;
     protected $DiagnosticoModel;
     protected $UsuarioModel;
+    private MailService $mailer;
+    private array $config;
 
     public function __construct()
     {
@@ -77,6 +83,8 @@ class CitaController
         $this->HistorialModel = new HistorialModel();
         $this->DiagnosticoModel = new DiagnosticoModel();
         $this->UsuarioModel = new UsuarioModel();
+        $this->config = require __DIR__ . '/../config/configmailer.php';
+        $this->mailer = new MailService($this->config);
     }
 
     public function index()
@@ -365,6 +373,7 @@ class CitaController
             $cita_fecha = $_POST['cita_fecha'];
             $consultorio = $this->ConsultorioModel->findConsultorioLibre($cita_fecha, $cita_hora_inicio,$cita_hora_fin);
 
+
             $data = [
                 'cita_paciente' => $cita_paciente,
                 'cita_historial' => $cita_historial,
@@ -384,10 +393,12 @@ class CitaController
 
             try {
             $this->CitaModel->store($data);
-                $usuarioGuardado = $this->UsuarioModel->findCorreo($id_usuario);
-                    if ($usuarioGuardado) {
+                $usuarioGuardado = $this->UsuarioModel->findCorreoUser($id_usuario);
+                    
+                if ($usuarioGuardado && isset($usuarioGuardado['usua_correo_electronico'])) {
+                    $correoUsuario = $usuarioGuardado['usua_correo_electronico'];
                         $this->mailer->send(
-                            $data['usua_correo_electronico'],
+                            $correoUsuario,
                             'Cita Agendada Correctamente',
                             'cita_agendada',
                             ['usuario' => $usuarioGuardado, 'app_url' => $this->config['app_url']]
