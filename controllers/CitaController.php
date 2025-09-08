@@ -11,6 +11,7 @@ require_once __DIR__ . '/../models/ConsultorioModel.php';
 require_once __DIR__ . '/../models/TratamientoModel.php';
 require_once __DIR__ . '/../models/DiagnosticoModel.php';
 require_once __DIR__ . '/../models/HistorialModel.php';
+require_once __DIR__ . '/../models/UsuarioModel.php';
 
 $cita = new CitaController();
 $accion = $_GET['accion'] ?? 'index';
@@ -64,6 +65,7 @@ class CitaController
     protected $TratamientoModel;
     protected $HistorialModel;
     protected $DiagnosticoModel;
+    protected $UsuarioModel;
 
     public function __construct()
     {
@@ -74,6 +76,7 @@ class CitaController
         $this->TratamientoModel = new TratamientoModel();
         $this->HistorialModel = new HistorialModel();
         $this->DiagnosticoModel = new DiagnosticoModel();
+        $this->UsuarioModel = new UsuarioModel();
     }
 
     public function index()
