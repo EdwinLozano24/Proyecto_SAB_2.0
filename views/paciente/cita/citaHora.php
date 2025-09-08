@@ -31,7 +31,7 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
                 <h2 class="section-title">Horas Disponibles</h2>
                 <p class="section-subtitle">Programa tu cita odontológica seleccionando hora de la misma</p>
 
-                <form id="crearCitaForm" method="POST" action="/../controllers/CitaController.php?accion=agendarHora" class="form-card">
+                <form id="crearCitaForm" method="POST" action="/../controllers/CitaController.php?accion=agendarCita" class="form-card">
 
                     <div class="form-section">
 
@@ -60,6 +60,7 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
                                 <label for="cita_especialista">Especialista Seleccionado</label>
                                 <div class="input-with-icon">
                                     <i class="fas fa-user-doctor input-icon"></i>
+                                    <input type="text" name="id_usuario" value="<?php echo $_SESSION['usuario']['id_usuario']; ?>">
                                     <input type="hidden" name="cita_especialista" value="<?= htmlspecialchars($cita_especialista) ?>">
                                     <input type="text" name="usua_nombre" value="<?= htmlspecialchars($especialista['usua_nombre']) ?>" readonly>
                                 </div>
@@ -82,7 +83,7 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
                             </div>
 
                             <div class="form-group">
-                                <label for="cita_hora_inicio">Horas disponibles para el <?= htmlspecialchars($cita_fecha)?> :</label>
+                                <label for="cita_hora_inicio">Horas disponibles para el <?= htmlspecialchars($cita_fecha)?></label>
                                 <div class="input-with-icon">
                                     <i class="fas fa-clock input-icon"></i>
                                         <select name="cita_hora_inicio" required>

@@ -335,4 +335,14 @@ class CitaController
             exit;
         }
     }
+
+    public function agendarCita()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $cita_paciente = $_POST['cita_paciente'];
+            $cita_especialista = $_POST['cita_especialista'];
+            $cita_fecha = $_POST['cita_fecha'];
+            $cita_hora_inicio = $_POST['cita_hora_inicio'];
+            
+    }
 }
