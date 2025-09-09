@@ -8,13 +8,13 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/controllers/CitaController.php?accion=pacienteAgendar" class="nav-link">
+                <a href="/controllers/CitaController.php?accion=viewAgendar" class="nav-link">
                     <div class="nav-icon"></div>
                     Agenda tu Cita
                 </a>
             </li>
             <li class="nav-item">
-                <a href="<?php echo dirname(dirname($_SERVER['SCRIPT_NAME'])) ?>/views/tratamiento/tratamientoVisualizar.php" class="nav-link">
+                <a href="/views/paciente/tratamiento/tratamientoVisualizar.php" class="nav-link">
                     <div class="nav-icon"></div>
                     Tratamientos Disponibles
                 </a>
