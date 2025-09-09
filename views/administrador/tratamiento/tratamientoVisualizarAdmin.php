@@ -117,7 +117,7 @@
             <p><strong>Estado:</strong> <span id="modal-estado"></span></p>
 
             <div class="modal-footer">
-                <a href="/views/paciente/cita/citaAgendar1.php" class="btn-agendar">Agendar Cita</a>
+                <a href="/views/administrador/cita/citaAgendarAdmin.php" class="btn-agendar">Agendar Cita</a>
             </div>
         </div>
     </div>
