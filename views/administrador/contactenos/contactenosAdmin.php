@@ -126,7 +126,7 @@
         </div>
     </main>
 
-    <?php include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/paciente/footer.php'); ?>
+    <?php include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/admin/footer.php'); ?>
 </body>
 
 </html>
