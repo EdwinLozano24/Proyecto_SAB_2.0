@@ -253,8 +253,8 @@ $usuarios = $stmt->fetchAll();
             }
             body {
                 font-size: 10pt;
-                margin: 20px;
-                backgroud: #bde7f7ff;
+                margin: 30px;
+                backgroud: #512020ff;
             }
             h1 {
                 text-align: center;
@@ -263,12 +263,12 @@ $usuarios = $stmt->fetchAll();
             }
             table {
                 border-collapse: collapse;
-                width: 100%;
+                width: 98%;
             }
             th {
                 background-color: #00AEEF !important;
                 color: white !important;
-                padding: 6px;
+                padding: 5px;
                 text-align: center;
             }
             td {

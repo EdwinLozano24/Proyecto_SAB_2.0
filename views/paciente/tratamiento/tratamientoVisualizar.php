@@ -7,6 +7,7 @@
     <title>Catalogo Tratamientos</title>
     <link rel="stylesheet" href="/Assets/css/layoutFinal/paciente/layout1.css">
     <link rel="stylesheet" href="/assets/css/tratamiento/tratamientoVisualizar.css">
+    <link rel="stylesheet" href="/Assets/css/tratamientoModal/tratamientoVisualizarModal.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
@@ -16,6 +17,21 @@
     include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/paciente/header.php');
     include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/paciente/nav/navTratamiento.php');
     include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/paciente/aside/aside.php');
+
+    // CONEXIÓN A LA BASE DE DATOS
+    require_once($_SERVER['DOCUMENT_ROOT'] . '/config/database.php');
+    $pdo = conectarBD();
+
+    try {
+        // Consulta para obtener todos los tratamientos activos
+        $query = "SELECT * FROM tbl_tratamientos WHERE trat_estado = 'Activo'";
+        $stmt = $pdo->prepare($query);
+        $stmt->execute();
+        $tratamientos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        $tratamientos = [];
+        error_log("Error al cargar tratamientos: " . $e->getMessage());
+    }
     ?>
 
     <main class="main-content">
@@ -26,30 +42,30 @@
                 <div class="search-container">
                     <div class="search-box">
                         <i class="fas fa-search search-icon"></i>
-                        <input type="text" id="treatmentSearch" placeholder="Buscar tratamientos..." class="search-input">
+                        <input type="text" id="treatmentSearch" placeholder="Buscar tratamientos....." class="search-input">
                     </div>
                 </div>
                 <section class="carrusel-container">
                     <div class="carrusel">
                         <div class="slide active">
-                            <img src="/assets/img/tratamiento2.jpg" alt="Promoción Blanqueamiento Dental">
+                            <img src="/Assets/img/tratamientosVisualizarCarrusel/Logo_resized.png" alt="Promoción SAB">
                             <div class="slide-caption">
-                                <h3>Blanqueamiento Dental Profesional</h3>
-                                <p>30% de descuento este mes</p>
+                                <h3>¡Contactanos ya!</h3>
+                                <p>No te vas a arepentir</p>
                             </div>
                         </div>
                         <div class="slide">
-                            <img src="/assets/img/tratamiento3.jpg" alt="Ortodoncia Invisible">
+                            <img src="/Assets/img/tratamientosVisualizarCarrusel/gestionar.jpg" alt="Podrás gestionar tus Citas, Usuarios, Pqrs, Tratamientos, e Historiales Clínicos.">
                             <div class="slide-caption">
-                                <h3>Ortodoncia Invisible</h3>
-                                <p>Financiamiento disponible</p>
+                                <h3>¡No pierdas la oportunidad!</h3>
+                                <p>Podrás gestionar tus Citas, Usuarios, Pqrs, Tratamientos, e Historiales Clínicos</p>
                             </div>
                         </div>
                         <div class="slide">
-                            <img src="/assets/img/tratamiento1.jpg" alt="Implantes Dentales">
+                            <img src="/Assets/img/tratamientosVisualizarCarrusel/confianza.jpg" alt="Tu bienestar y comodidad son nuestra prioridad">
                             <div class="slide-caption">
-                                <h3>Implantes Dentales</h3>
-                                <p>Recupera tu sonrisa completa</p>
+                                <h3>¡Creemos en la innovación!</h3>
+                                <p>Tu bienestar y comodidad son nuestra prioridad</p>
                             </div>
                         </div>
                     </div>
@@ -59,73 +75,29 @@
                 </section>
                 <div class="tratamientos-grid">
 
-                    <div class="tratamiento-card">
-                        <div class="card-image">
-                            <img src="/assets/img/tratamientosVisualizar/ortodoncia.png" alt="Ortodoncia">
-                        </div>
-                        <div class="card-content">
-                            <h3>Ortodoncia</h3>
-                            <p class="card-desc">Corrige la posición de tus dientes con nuestros brackets estéticos.</p>
-                            <div class="card-footer">
-                                <span class="card-price">Desde $2'500.000</span>
-                                <button class="btn btn-vermas">Ver más</button>
+                    <?php if (!empty($tratamientos)): ?>
+                        <?php foreach ($tratamientos as $tratamiento): ?>
+                            <div class="tratamiento-card" data-name="<?php echo htmlspecialchars($tratamiento['trat_nombre']); ?>">
+                                <div class="card-image">
+                                    <img src="https://www.odontosupport.es/wp-content/uploads/2023/02/Diseno-sin-titulo-min-2.jpg" <?php echo htmlspecialchars($tratamiento['trat_imagen'] ?? 'default.jpg'); ?>"
+                                        alt="<?php echo htmlspecialchars($tratamiento['trat_nombre']); ?>">
+                                </div>
+                                <div class="card-content">
+                                    <h3><?php echo htmlspecialchars($tratamiento['trat_nombre']); ?></h3>
+                                    <p class="card-desc"><?php echo htmlspecialchars($tratamiento['trat_descripcion']); ?></p>
+                                    <div class="card-footer">
+                                        <span class="card-duracion"><?php echo htmlspecialchars($tratamiento['trat_duracion']); ?></span>
+                                        <button class="btn btn-vermas" data-id="<?php echo $tratamiento['id_tratamiento']; ?>">Ver más</button>
+                                    </div>
+                                </div>
                             </div>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <div class="no-results show">
+                            No hay tratamientos disponibles en este momento.
                         </div>
-                    </div>
+                    <?php endif; ?>
 
-                    <!-- Tarjeta 3 -->
-                    <div class="tratamiento-card">
-                        <div class="card-image">
-                            <img src="/assets/img/tratamientosVisualizar/implanteDental.jpg" alt="Implantes Dentales">
-                        </div>
-                        <div class="card-content">
-                            <h3>Implantes Dentales</h3>
-                            <p class="card-desc">Solución permanente para dientes perdidos con tecnología de última generación.</p>
-                            <div class="card-footer">
-                                <span class="card-price">Desde $1'800.000</span>
-                                <button class="btn btn-vermas">Ver más</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tratamiento-card">
-                        <div class="card-image">
-                            <img src="/assets/img/tratamientosVisualizar/implanteDental.jpg" alt="Implantes Dentales">
-                        </div>
-                        <div class="card-content">
-                            <h3>Implantes Dentales</h3>
-                            <p class="card-desc">Solución permanente para dientes perdidos con tecnología de última generación.</p>
-                            <div class="card-footer">
-                                <span class="card-price">Desde $1'800.000</span>
-                                <button class="btn btn-vermas">Ver más</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tratamiento-card">
-                        <div class="card-image">
-                            <img src="/assets/img/tratamientosVisualizar/blanqueamiento.webp" alt="Blanqueamiento Dental">
-                        </div>
-                        <div class="card-content">
-                            <h3>Blanqueamiento Dental</h3>
-                            <p class="card-desc">Aclara varios tonos tu sonrisa con nuestro tratamiento profesional.</p>
-                            <div class="card-footer">
-                                <span class="card-price">Desde $300.000</span>
-                                <button class="btn btn-vermas">Ver más</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tratamiento-card">
-                        <div class="card-image">
-                            <img src="/assets/img/tratamientosVisualizar/implanteDental.jpg" alt="Implantes Dentales">
-                        </div>
-                        <div class="card-content">
-                            <h3>Implantes Dentales</h3>
-                            <p class="card-desc">Solución permanente para dientes perdidos con tecnología de última generación.</p>
-                            <div class="card-footer">
-                                <span class="card-price">Desde $1'800.000</span>
-                                <button class="btn btn-vermas">Ver más</button>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div id="noResultsMessage" class="no-results hidden">
                     No se encontraron tratamientos que coincidan con tu búsqueda.
@@ -133,12 +105,30 @@
             </section>
         </div>
     </main>
+    <div id="tratamientoModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2 id="modal-nombre"></h2>
+            <p><strong>Categoría:</strong> <span id="modal-categoria"></span></p>
+            <p><strong>Descripción:</strong> <span id="modal-descripcion"></span></p>
+            <p><strong>Duración:</strong> <span id="modal-duracion"></span></p>
+            <p><strong>Riesgos:</strong> <span id="modal-riesgos"></span></p>
+            <p><strong>Complejidad:</strong> <span id="modal-complejidad"></span></p>
+            <p><strong>Estado:</strong> <span id="modal-estado"></span></p>
 
-    <?php
-include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/paciente/footer.php');
-    ?>
+            <div class="modal-footer">
+                <a href="/views/paciente/cita/citaAgendar1.php" class="btn-agendar">Agendar Cita</a>
+            </div>
+        </div>
+    </div>
+
     <script src="/assets/js/tratamiento/tratamientoVisualizarBusqueda.js"></script>
     <script src="/assets/js/tratamiento/tratamientoVisualizar.js"></script>
+    <script src="/assets/js/tratamientoModal/tratamientoVisualizarModal.js"></script>
+
+    <?php
+    include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/paciente/footer.php');
+    ?>
 </body>
 
 </html>

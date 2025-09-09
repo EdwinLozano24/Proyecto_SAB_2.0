@@ -63,51 +63,51 @@ $historias = $stmt->fetchAll();
         </div>
 
         <div class="table-responsive">
-        <table id="HistorialDatatable" class="table-custom">
-            <thead>
-                <tr>
-                    <th>Paciente</th>
-                    <th>Medicamentos Actuales</th>
-                    <th>Alergias</th>
-                    <th>Diagnostico</th>
-                    <th>Odontograma</th>
-                    <th>Indice DMFT</th>
-                    <th>Frecuencia De Cepillado</th>
-                    <th>Hilo Dental</th>
-                    <th>Enjuague Bucal</th>
-                    <th>Sensibilidad Dental</th>
-                    <th>Estado</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($historias as $historia): ?>
+            <table id="HistorialDatatable" class="table-custom">
+                <thead>
                     <tr>
-                        <td><?= htmlspecialchars($historia['hist_paciente']) ?></td>
-                        <td><?= htmlspecialchars($historia['hist_medicamentos_actuales']) ?></td>
-                        <td><?= htmlspecialchars($historia['hist_alergias']) ?></td>
-                        <td><?= htmlspecialchars($historia['hist_diagnostico']) ?></td>
-                        <td><?= htmlspecialchars($historia['hist_odontograma']) ?></td>
-                        <td><?= htmlspecialchars($historia['hist_indice_dmft']) ?></td>
-                        <td><?= htmlspecialchars($historia['hist_frecuencia_cepillado']) ?></td>
-                        <td><?= htmlspecialchars($historia['hist_hilo_dental']) ?></td>
-                        <td><?= htmlspecialchars($historia['hist_enjuague_bucal']) ?></td>
-                        <td><?= htmlspecialchars($historia['hist_sensibilidad_dental']) ?></td>
-                        <td><?= htmlspecialchars($historia['hist_estado']) ?></td>
-                        <td>
-                            <a href="/controllers/HistorialController.php?accion=view_update&id_historial=<?= $historia['id_historial'] ?>"
-                                class="action-btn edit">
-                                <i class="fa-solid fa-eye"></i>
-                            </a>
-                            <a href="/controllers/HistorialController.php?accion=delete&id_historial=<?= $historia['id_historial'] ?>"
-                                class="action-btn delete">
-                                <i class="fa-solid fa-trash"></i>
-                            </a>
-                        </td>
+                        <th>Paciente</th>
+                        <th>Medicamentos Actuales</th>
+                        <th>Alergias</th>
+                        <th>Diagnostico</th>
+                        <th>Odontograma</th>
+                        <th>Indice DMFT</th>
+                        <th>Frecuencia De Cepillado</th>
+                        <th>Hilo Dental</th>
+                        <th>Enjuague Bucal</th>
+                        <th>Sensibilidad Dental</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
                     </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <?php foreach ($historias as $historia): ?>
+                        <tr>
+                            <td><?= htmlspecialchars($historia['hist_paciente']) ?></td>
+                            <td><?= htmlspecialchars($historia['hist_medicamentos_actuales']) ?></td>
+                            <td><?= htmlspecialchars($historia['hist_alergias']) ?></td>
+                            <td><?= htmlspecialchars($historia['hist_diagnostico']) ?></td>
+                            <td><?= htmlspecialchars($historia['hist_odontograma']) ?></td>
+                            <td><?= htmlspecialchars($historia['hist_indice_dmft']) ?></td>
+                            <td><?= htmlspecialchars($historia['hist_frecuencia_cepillado']) ?></td>
+                            <td><?= htmlspecialchars($historia['hist_hilo_dental']) ?></td>
+                            <td><?= htmlspecialchars($historia['hist_enjuague_bucal']) ?></td>
+                            <td><?= htmlspecialchars($historia['hist_sensibilidad_dental']) ?></td>
+                            <td><?= htmlspecialchars($historia['hist_estado']) ?></td>
+                            <td>
+                                <a href="/controllers/HistorialController.php?accion=view_update&id_historial=<?= $historia['id_historial'] ?>"
+                                    class="action-btn edit">
+                                    <i class="fa-solid fa-eye"></i>
+                                </a>
+                                <a href="/controllers/HistorialController.php?accion=delete&id_historial=<?= $historia['id_historial'] ?>"
+                                    class="action-btn delete">
+                                    <i class="fa-solid fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
@@ -150,34 +150,149 @@ $historias = $stmt->fetchAll();
         integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
         crossorigin="anonymous"></script>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             // 1) Inicializo DataTable con TODAS las opciones
             const table = $('#HistorialDatatable').DataTable({
-                buttons: [
-                    {
+                buttons: [{
                         extend: "excelHtml5",
                         text: '<i class="fa-solid fa-file-excel"></i>',
                         titleAttr: "Exportar a Excel",
-                        className: "btn btn-success me-1"
+                        className: "btn btn-success me-1",
+                        title: "Historiales clínicos",
+                        exportOptions: {
+                            columns: ':visible:not(:last-child)'
+                        },
+                        customize: function(xlsx) {
+                            var sheet = xlsx.xl.worksheets['sheet1.xml'];
+
+                            // Agrega estilo de cabecera (negrita)
+                            $('row:first c', sheet).attr('s', '2'); // Negrita para la primera fila
+
+                            // Aplica borde a todas las celdas
+                            $('row c', sheet).attr('s', '25'); // Sólo funciona si el estilo 25 está definido por defecto
+                        }
                     },
                     {
                         extend: "pdfHtml5",
                         text: '<i class="fa-solid fa-file-pdf"></i>',
                         titleAttr: "Exportar a PDF",
-                        className: "btn btn-danger me-1"
+                        className: "btn btn-danger me-1",
+                        orientation: "landscape",
+                        title: "Historiales clínicos",
+                        exportOptions: {
+                            columns: ':visible:not(:last-child)'
+                        },
+                        customize: function(doc) {
+                            doc.pageMargins = [20, 20, 20, 20];
+
+                            doc.defaultStyle = {
+                                fontSize: 10,
+                                margin: [10, 10, 10, 10]
+                            };
+
+                            doc.content[0].margin = [0, 20, 0, 10];
+                            doc.content[0].alignment = 'center';
+                            doc.content[0].fontSize = 14;
+
+                            doc.styles.tableHeader = {
+                                bold: true,
+                                fontSize: 11,
+                                color: 'white',
+                                fillColor: '#00AEEF',
+                                alignment: 'center',
+                                margin: [5, 5, 5, 5]
+                            };
+
+                            // Líneas suaves en la tabla
+                            doc.content[1].layout = {
+                                hLineWidth: function() {
+                                    return 0.5;
+                                },
+                                vLineWidth: function() {
+                                    return 0.5;
+                                },
+                                hLineColor: function() {
+                                    return '#aaa';
+                                },
+                                vLineColor: function() {
+                                    return '#aaa';
+                                },
+                                paddingLeft: function() {
+                                    return 8;
+                                },
+                                paddingRight: function() {
+                                    return 8;
+                                },
+                                paddingTop: function() {
+                                    return 4;
+                                },
+                                paddingBottom: function() {
+                                    return 4;
+                                }
+                            };
+                        }
                     },
                     {
                         extend: "print",
                         text: '<i class="fa-solid fa-print"></i>',
                         titleAttr: "Imprimir",
-                        className: "btn btn-warning"
+                        className: "btn btn-warning",
+                        title: "&nbsp",
+                        orientation: "landscape",
+                        exportOptions: {
+                            columns: ':visible:not(:last-child)' // No imprime columna "Acciones"
+                        },
+                        customize: function(win) {
+                            // Forzar orientación horizontal
+                            const css = `
+            @page {
+                size: landscape;
+            }
+            body {
+                font-size: 10pt;
+                margin: 15px;
+                backgroud: #bde7f7ff;
+            }
+            h1 {
+                text-align: center;
+                font-size: 18pt;
+                margin-bottom: 15px;
+            }
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+            th {
+                background-color: #00AEEF !important;
+                color: white !important;
+                padding: 6px;
+                text-align: center;
+            }
+            td {
+                padding: 6px;
+                text-align: center;
+            }
+            table, th, td {
+                border: 1px solid #aaa;
+            }
+        `;
+                            const style = document.createElement('style');
+                            style.type = 'text/css';
+                            style.innerHTML = css;
+                            win.document.head.appendChild(style);
+
+                            // Cambiar el título visual impreso
+                            const h1 = win.document.querySelector('h1');
+                            if (h1) {
+                                h1.innerText = 'Historiales clínicos';
+                            }
+                        }
                     }
                 ],
 
                 // Ubicación del contenedor de botones (sólo genera el <div> aquí,
                 // luego lo moveremos al .mb-4)
-                dom:
-                    "<'row'<'col-12'B>>" +
+                dom: "<'row'<'col-12'B>>" +
                     "<'row mb-3'<'col-sm-6'l><'col-sm-6'f>>" +
                     "t" +
                     // <-- Aquí añadimos d-flex justify-content-end

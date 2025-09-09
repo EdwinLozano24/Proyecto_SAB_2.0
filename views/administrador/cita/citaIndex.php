@@ -33,6 +33,9 @@ $citas = $stmt->fetchAll();
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Crud Citas</title>
     <!-- Css -->
+    <!-- CSS Responsive -->
+    <link href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css" rel="stylesheet">
+
     <link href="https://cdn.datatables.net/2.3.1/css/dataTables.bootstrap5.min.css" rel="stylesheet"
         integrity="sha384-5hBbs6yhVjtqKk08rsxdk9xO80wJES15HnXHglWBQoj3cus3WT+qDJRpvs5rRP2c" crossorigin="anonymous">
     <link href="https://cdn.datatables.net/buttons/3.2.3/css/buttons.bootstrap5.min.css" rel="stylesheet"
@@ -70,60 +73,76 @@ $citas = $stmt->fetchAll();
             </a>
         </div>
 
-        <!-- Botón nuevo usuario -->
         <div class="mb-4 d-flex justify-content-between align-items-center">
-            <a href="/controllers/CitaController.php?accion=view_store"
-                class="btn-custom btn-primary-custom">
+            <a href="/controllers/CitaController.php?accion=view_store" class="btn-custom btn-primary-custom">
                 <i class="fa-solid fa-square-plus"></i>
                 Nueva Cita
             </a>
+            <div id="botonesExportacion"></div>
         </div>
 
-        <table id="citaDatatable" class="table-custom">
-            <thead>
-                <tr>
-                    <th>Usuario Solicitante</th>
-                    <th>Especialista Encargado</th>
-                    <th>Fecha</th>
-                    <th>Hora Inicio</th>
-                    <th>Hora Fin</th>
-                    <th>Turno</th>
-                    <th>Duracion</th>
-                    <th>Consultorio Asignado</th>
-                    <th>Motivo</th>
-                    <th>Observacion</th>
-                    <th>Estado</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($citas as $cita): ?>
+        <div class="row mb-4">
+        </div>
+
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <label for="filtroEstado" class="form-label">Filtrar por Estado:</label>
+                <select id="filtroEstado" class="form-select">
+                    <option value="">Todos los estados</option>
+                    <option value="proceso">Proceso</option>
+                    <option value="cumplida">Cumplida</option>
+                    <option value="incumplida">Incumplida</option>
+                    <option value="cancelada">Cancelada</option>
+                </select>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table id="citaDatatable" class="table-custom">
+                <thead>
                     <tr>
-                        <td><?= htmlspecialchars($cita['cita_paciente']) ?></td>
-                        <td><?= htmlspecialchars($cita['cita_especialista']) ?></td>
-                        <td><?= htmlspecialchars($cita['cita_fecha']) ?></td>
-                        <td><?= htmlspecialchars($cita['cita_hora_inicio']) ?></td>
-                        <td><?= htmlspecialchars($cita['cita_hora_fin']) ?></td>
-                        <td><?= htmlspecialchars($cita['cita_turno']) ?></td>
-                        <td><?= htmlspecialchars($cita['cita_duracion']) ?></td>
-                        <td><?= htmlspecialchars($cita['cita_consultorio']) ?></td>
-                        <td><?= htmlspecialchars($cita['cita_motivo']) ?></td>
-                        <td><?= htmlspecialchars($cita['cita_observacion']) ?></td>
-                        <td><?= htmlspecialchars($cita['cita_estado']) ?></td>
-                        <td>
-                            <a href="/controllers/CitaController.php?accion=view_update&id_cita=<?= $cita['id_cita'] ?>"
-                                class="action-btn edit">
-                                <i class="fa-solid fa-pen-to-square"></i>
-                            </a>
-                            <a href="/controllers/CitaController.php?accion=delete&id_cita=<?= $cita['id_cita'] ?>"
-                                class="action-btn delete">
-                                <i class="fa-solid fa-trash"></i>
-                            </a>
-                        </td>
+                        <th>Usuario Solicitante</th>
+                        <th>Especialista Encargado</th>
+                        <th>Fecha</th>
+                        <th>Hora Inicio</th>
+                        <th>Hora Fin</th>
+                        <th>Turno</th>
+                        <th>Duracion</th>
+                        <th>Consultorio Asignado</th>
+                        <th>Motivo</th>
+                        <th>Observacion</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
                     </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <?php foreach ($citas as $cita): ?>
+                        <tr>
+                            <td><?= htmlspecialchars($cita['cita_paciente']) ?></td>
+                            <td><?= htmlspecialchars($cita['cita_especialista']) ?></td>
+                            <td><?= htmlspecialchars($cita['cita_fecha']) ?></td>
+                            <td><?= htmlspecialchars($cita['cita_hora_inicio']) ?></td>
+                            <td><?= htmlspecialchars($cita['cita_hora_fin']) ?></td>
+                            <td><?= htmlspecialchars($cita['cita_turno']) ?></td>
+                            <td><?= htmlspecialchars($cita['cita_duracion']) ?></td>
+                            <td><?= htmlspecialchars($cita['cita_consultorio']) ?></td>
+                            <td><?= htmlspecialchars($cita['cita_motivo']) ?></td>
+                            <td><?= htmlspecialchars($cita['cita_observacion']) ?></td>
+                            <td><?= htmlspecialchars($cita['cita_estado']) ?></td>
+                            <td>
+                                <a href="/controllers/CitaController.php?accion=view_update&id_cita=<?= $cita['id_cita'] ?>"
+                                    class="action-btn edit">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </a>
+                                <a href="/controllers/CitaController.php?accion=delete&id_cita=<?= $cita['id_cita'] ?>"
+                                    class="action-btn delete">
+                                    <i class="fa-solid fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
@@ -159,6 +178,8 @@ $citas = $stmt->fetchAll();
     <script src="https://cdn.datatables.net/buttons/3.2.3/js/buttons.print.min.js"
         integrity="sha384-FvTRywo5HrkPlBKFrm2tT8aKxIcI/VU819roC/K/8UrVwrl4XsF3RKRKiCAKWNly"
         crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap5.min.js"></script>
 
     <!-- Boostrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
@@ -166,156 +187,115 @@ $citas = $stmt->fetchAll();
         crossorigin="anonymous"></script>
     <script>
         $(document).ready(function() {
-            // 1) Inicializo DataTable con TODAS las opciones
             const table = $('#citaDatatable').DataTable({
-                    buttons: [{
-                            extend: "excelHtml5",
-                            text: '<i class="fa-solid fa-file-excel"></i>',
-                            titleAttr: "Exportar a Excel",
-                            className: "btn btn-success me-1",
-                            title: 'Citas registradas',
-                            exportOptions: {
-                                columns: ':visible:not(:last-child)'
-                            },
-                            customize: function(xlsx) {
-                                var sheet = xlsx.xl.worksheets['sheet1.xml'];
-
-                                // Agrega estilo de cabecera (negrita)
-                                $('row:first c', sheet).attr('s', '2'); // Negrita para la primera fila
-
-                                // Aplica borde a todas las celdas
-                                $('row c', sheet).attr('s', '25'); // Sólo funciona si el estilo 25 está definido por defecto
-                            }
+                responsive: true,
+                scrollX: true,
+                buttons: [{
+                        extend: "excelHtml5",
+                        text: '<i class="fa-solid fa-file-excel"></i>',
+                        titleAttr: "Exportar a Excel",
+                        className: "btn btn-success me-1",
+                        title: 'Citas registradas',
+                        exportOptions: {
+                            columns: ':visible:not(:last-child)'
                         },
-                        {
-                            extend: "pdfHtml5",
-                            text: '<i class="fa-solid fa-file-pdf"></i>',
-                            titleAttr: "Exportar a PDF",
-                            className: "btn btn-danger me-1",
-                            orientation: "landscape",
-                            title: 'Citas registradas',
-                            exportOptions: {
-                                columns: ':visible:not(:last-child)'
-                            },
-                            customize: function(doc) {
-                                doc.pageMargins = [20, 20, 20, 20];
-
-                                doc.defaultStyle = {
-                                    fontSize: 10,
-                                    margin: [10, 10, 10, 10]
-                                };
-
-                                doc.content[0].margin = [0, 20, 0, 10];
-                                doc.content[0].alignment = 'center';
-                                doc.content[0].fontSize = 14;
-
-                                doc.styles.tableHeader = {
-                                    bold: true,
-                                    fontSize: 11,
-                                    color: 'white',
-                                    fillColor: '#00AEEF',
-                                    alignment: 'center',
-                                    margin: [5, 5, 5, 5]
-                                };
-
-                                // Líneas suaves en la tabla
-                                doc.content[1].layout = {
-                                    hLineWidth: function() {
-                                        return 0.5;
-                                    },
-                                    vLineWidth: function() {
-                                        return 0.5;
-                                    },
-                                    hLineColor: function() {
-                                        return '#aaa';
-                                    },
-                                    vLineColor: function() {
-                                        return '#aaa';
-                                    },
-                                    paddingLeft: function() {
-                                        return 8;
-                                    },
-                                    paddingRight: function() {
-                                        return 8;
-                                    },
-                                    paddingTop: function() {
-                                        return 4;
-                                    },
-                                    paddingBottom: function() {
-                                        return 4;
-                                    }
-                                };
-                            }
+                        customize: function(xlsx) {
+                            var sheet = xlsx.xl.worksheets['sheet1.xml'];
+                            $('row:first c', sheet).attr('s', '2');
+                            $('row c', sheet).attr('s', '25');
+                        }
+                    },
+                    {
+                        extend: "pdfHtml5",
+                        text: '<i class="fa-solid fa-file-pdf"></i>',
+                        titleAttr: "Exportar a PDF",
+                        className: "btn btn-danger me-1",
+                        orientation: "landscape",
+                        title: 'Citas registradas',
+                        exportOptions: {
+                            columns: ':visible:not(:last-child)'
                         },
-                        {
-                            extend: "print",
-                            text: '<i class="fa-solid fa-print"></i>',
-                            titleAttr: "Imprimir",
-                            className: "btn btn-warning",
-                            title: "&nbsp",
-                            orientation: "landscape",
-                            exportOptions: {
-                                columns: ':visible:not(:last-child)' // No imprime columna "Acciones"
-                            },
-                            customize: function(win) {
-                                // Forzar orientación horizontal
-                                const css = `
-            @page {
-                size: landscape;
-            }
-            body {
-                font-size: 10pt;
-                margin: 20px;
-                backgroud: #bde7f7ff;
-            }
-            h1 {
-                text-align: center;
-                font-size: 18pt;
-                margin-bottom: 20px;
-            }
-            table {
-                border-collapse: collapse;
-                width: 100%;
-            }
-            th {
-                background-color: #00AEEF !important;
-                color: white !important;
-                padding: 6px;
-                text-align: center;
-            }
-            td {
-                padding: 6px;
-                text-align: center;
-            }
-            table, th, td {
-                border: 1px solid #aaa;
-            }
-        `;
-                                const style = document.createElement('style');
-                                style.type = 'text/css';
-                                style.innerHTML = css;
-                                win.document.head.appendChild(style);
-
-                                // Cambiar el título visual impreso
-                                const h1 = win.document.querySelector('h1');
-                                if (h1) {
-                                    h1.innerText = 'Citas Registradas';
+                        customize: function(doc) {
+                            doc.pageMargins = [20, 20, 20, 20];
+                            doc.defaultStyle = {
+                                fontSize: 10,
+                                margin: [10, 10, 10, 10]
+                            };
+                            doc.content[0].margin = [0, 20, 0, 10];
+                            doc.content[0].alignment = 'center';
+                            doc.content[0].fontSize = 14;
+                            doc.styles.tableHeader = {
+                                bold: true,
+                                fontSize: 11,
+                                color: 'white',
+                                fillColor: '#00AEEF',
+                                alignment: 'center',
+                                margin: [5, 5, 5, 5]
+                            };
+                            doc.content[1].layout = {
+                                hLineWidth: function() {
+                                    return 0.5;
+                                },
+                                vLineWidth: function() {
+                                    return 0.5;
+                                },
+                                hLineColor: function() {
+                                    return '#aaa';
+                                },
+                                vLineColor: function() {
+                                    return '#aaa';
+                                },
+                                paddingLeft: function() {
+                                    return 8;
+                                },
+                                paddingRight: function() {
+                                    return 8;
+                                },
+                                paddingTop: function() {
+                                    return 4;
+                                },
+                                paddingBottom: function() {
+                                    return 4;
                                 }
+                            };
+                        }
+                    },
+                    {
+                        extend: "print",
+                        text: '<i class="fa-solid fa-print"></i>',
+                        titleAttr: "Imprimir",
+                        className: "btn btn-warning",
+                        title: "&nbsp",
+                        orientation: "landscape",
+                        exportOptions: {
+                            columns: ':visible:not(:last-child)'
+                        },
+                        customize: function(win) {
+                            const css = `
+                        @page { size: landscape; }
+                        body { font-size: 10pt; margin: 20px; }
+                        h1 { text-align: center; font-size: 18pt; margin-bottom: 20px; }
+                        table { border-collapse: collapse; width: 100%; }
+                        th { background-color: #00AEEF !important; color: white !important; padding: 6px; text-align: center; }
+                        td { padding: 6px; text-align: center; }
+                        table, th, td { border: 1px solid #aaa; }
+                    `;
+                            const style = document.createElement('style');
+                            style.type = 'text/css';
+                            style.innerHTML = css;
+                            win.document.head.appendChild(style);
+                            const h1 = win.document.querySelector('h1');
+                            if (h1) {
+                                h1.innerText = 'Citas Registradas';
                             }
                         }
-                    ],
-
-                // Ubicación del contenedor de botones (sólo genera el <div> aquí,
-                // luego lo moveremos al .mb-4)
-                dom:
-                "<'row'<'col-12'B>>" +
-                "<'row mb-3'<'col-sm-6'l><'col-sm-6'f>>" +
-                "t" +
-                // <-- Aquí añadimos d-flex justify-content-end
-                "<'row mt-3'<'col-sm-6'i><'col-sm-6 d-flex justify-content-end'p>>",
-
+                    }
+                ],
+                dom: "<'row'<'col-12'B>>" +
+                    "<'row mb-3'<'col-sm-6'l><'col-sm-6'f>>" +
+                    "t" +
+                    "<'row mt-3'<'col-sm-6'i><'col-sm-6 d-flex justify-content-end'p>>",
                 lengthMenu: [10, 20, 50, 100],
-
                 language: {
                     processing: "Procesando...",
                     lengthMenu: "Mostrar _MENU_ registros",
@@ -364,10 +344,19 @@ $citas = $stmt->fetchAll();
                         renameTitle: "Cambiar Nombre Estado"
                     }
                 }
-        });
+            });
 
-        // 2) Muevo el contenedor de botones dentro de mi div.mb-4
-        table.buttons().container().appendTo('.mb-4');
+            // Mueve los botones de la tabla al div con id="botonesExportacion"
+            table.buttons().container().appendTo('#botonesExportacion');
+
+            $('#filtroEstado').on('change', function() {
+                const estado = this.value;
+                if (estado) {
+                    table.column(10).search('^' + estado + '$', true, false).draw();
+                } else {
+                    table.column(10).search('').draw(); // mostrar todos
+                }
+            });
         });
     </script>
 </body>

@@ -13,7 +13,7 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
     <title>Agendar Cita</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/Assets/css/layoutFinal/paciente/layout1.css">
-    <link rel="stylesheet" href="/assets/css/citas/citasAgendar1.css?v=202509023">
+    <link rel="stylesheet" href="/assets/css/citas/citasAgendar1.css?v=202509024">
 
 </head>
 
@@ -31,7 +31,7 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
                 <h2 class="section-title">Horas Disponibles</h2>
                 <p class="section-subtitle">Programa tu cita odontológica seleccionando hora de la misma</p>
 
-                <form id="crearCitaForm" method="POST" action="/../controllers/CitaController.php?accion=agendarHora" class="form-card">
+                <form id="crearCitaForm" method="POST" action="/../controllers/CitaController.php?accion=agendarCita" class="form-card">
 
                     <div class="form-section">
 
@@ -60,17 +60,14 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
                                 <label for="cita_especialista">Especialista Seleccionado</label>
                                 <div class="input-with-icon">
                                     <i class="fas fa-user-doctor input-icon"></i>
+<<<<<<< HEAD
                                     <input type="hidden" name="id_usuario" id="id_usuario" value="<?php echo $_SESSION['usuario']['id_usuario']; ?>">
+=======
+                                    <input type="hidden" name="origen_formulario" value="Paciente">
+                                    <input type="hidden" name="id_usuario" value="<?php echo $_SESSION['usuario']['id_usuario']; ?>">
+>>>>>>> 0fc654fabc3c05fea3d5984ff53b4f7120b7dab1
                                     <input type="hidden" name="cita_especialista" value="<?= htmlspecialchars($cita_especialista) ?>">
                                     <input type="text" name="usua_nombre" value="<?= htmlspecialchars($especialista['usua_nombre']) ?>" readonly>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="fecha">Fecha de la Cita</label>
-                                <div class="input-with-icon">
-                                    <i class="fas fa-calendar input-icon"></i>
-                                    <input type="date" name="cita_fecha" id="fecha" value="<?= htmlspecialchars($cita_fecha)?>" readonly>
                                 </div>
                             </div>
 
@@ -80,10 +77,33 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
                                     <i class="fas fa-stethoscope input-icon"></i>
                                     <input type="text" name="cita_motivo" id="fecha" value="<?= htmlspecialchars($motivo)?>" readonly>
                                 </div>
-
-
-
                             </div>
+
+<<<<<<< HEAD
+
+
+=======
+                            <div class="form-group">
+                                <label for="cita_fecha">Fecha de la Cita</label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-calendar input-icon"></i>
+                                    <input type="date" name="cita_fecha" id="fecha" value="<?= htmlspecialchars($cita_fecha)?>" readonly>
+                                </div>
+>>>>>>> 0fc654fabc3c05fea3d5984ff53b4f7120b7dab1
+                            </div>
+
+                            <div class="form-group">
+                                <label for="cita_hora_inicio">Horas disponibles para el <?= htmlspecialchars($cita_fecha)?></label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-clock input-icon"></i>
+                                        <select name="cita_hora_inicio" required>
+                                            <?php foreach($disponibles as $hora): ?>
+                                                <option value="<?= $hora ?>"><?= $hora ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
 

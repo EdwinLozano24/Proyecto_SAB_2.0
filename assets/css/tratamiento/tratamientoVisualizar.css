@@ -110,7 +110,7 @@
 }
 
 .card-image {
-    height: 100px;
+    height: 200px;
     overflow: hidden;
 }
 
@@ -149,13 +149,18 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 15px;
+    margin-top: auto;
+    min-height: 50px;
 }
 
-.card-price {
+.card-duracion {
     font-weight: 600;
     color: #0ea5e9;
-    font-size: 18px;
+    font-size: 17px;
+    white-space: nowrap;       /* evita salto de línea */
+    overflow: hidden;          /* oculta si se pasa */
+    text-overflow: ellipsis;   /* agrega "..." */
+    max-width: 60%;            /* evita que coma demasiado espacio */
 }
 
 .btn-vermas {
@@ -181,8 +186,8 @@
 /* Carrusel */
 .carrusel-container {
     position: relative;
-    width: 99%;
-    max-height: 250px;
+    width: 96%;
+    max-height: 300px;
     overflow: hidden;
     border-radius: 12px;
     margin: 0 auto 30px;
@@ -208,12 +213,11 @@
 }
 
 .slide-caption {
-    position: absolute;
+    position: sticky;
     /* Esto es esencial para que aparezca sobre la imagen */
     bottom: 12px;
     left: 0;
-    right: 0;
-    background: #12adf5;
+    background: #4baddc;
     /* Más opaco */
     color: #ffffff;
     /* Un negro más suave */
@@ -223,12 +227,12 @@
 
 
 .slide-caption h3 {
-    font-size: 28px;
+    font-size: 15px;
     margin-bottom: 8px;
 }
 
 .slide-caption p {
-    font-size: 18px;
+    font-size: 14px;
     opacity: 0.9;
 }
 
@@ -236,9 +240,9 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 72%);
     border: none;
-    color: white;
+    color: rgb(0, 0, 0);
     font-size: 24px;
     width: 40px;
     height: 40px;

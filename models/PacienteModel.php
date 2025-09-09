@@ -16,4 +16,22 @@ class PacienteModel
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function findPaciente($id_usuario)
+    {
+        $sql = "SELECT * FROM tbl_pacientes WHERE paci_usuario = :id_usuario";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function findIdPaciente($id_usuario)
+    {
+        $sql = "SELECT id_paciente FROM tbl_pacientes WHERE paci_usuario = :id_usuario";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchColumn();
+    }
 }

@@ -1,0 +1,134 @@
+/* ===== Modal Corregido ===== */
+.modal {
+    display: none;
+    /* Mantenemos none por defecto */
+    position: fixed;
+    z-index: 1000;
+    inset: 0;
+    background-color: rgba(30, 41, 59, 0.6);
+    backdrop-filter: blur(4px);
+    padding: 20px;
+    /* Quitamos display:flex de aquí */
+}
+
+/* Clase adicional para cuando el modal debe mostrarse */
+.modal.activo {
+    display: flex;
+    /* Solo mostramos como flex cuando está activo */
+    justify-content: center;
+    align-items: center;
+}
+
+/* El resto de tu CSS se mantiene igual */
+.modal-content {
+    background: #ffffff;
+    padding: 35px;
+    border-radius: 16px;
+    width: 95%;
+    max-width: 700px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    animation: scaleIn 0.3s ease;
+    color: #1e293b;
+    line-height: 1.6;
+    position: relative;
+    text-align: left;
+    margin: auto;
+}
+
+.modal-content h2 {
+    color: #0ea5e9;
+    font-size: 28px;
+    margin-bottom: 25px;
+    text-align: center;
+    position: relative;
+    padding-bottom: 12px;
+}
+
+.modal-content h2::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 3px;
+    background: #0ea5e9;
+    border-radius: 2px;
+}
+
+.modal-content p {
+    margin: 14px 0;
+    font-size: 17px;
+    color: #475569;
+}
+
+.modal-content strong {
+    color: #0ea5e9;
+}
+
+.modal-close {
+    position: absolute;
+    top: 18px;
+    right: 22px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #64748b;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.modal-close:hover {
+    color: #0ea5e9;
+}
+
+/* Botón agendar */
+.modal-footer {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.btn-agendar {
+    display: inline-block;
+    background: #0ea5e9;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.btn-agendar:hover {
+    background: #0284c7;
+}
+
+
+
+/* Animación entrada */
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .modal-content {
+        padding: 25px;
+        max-width: 95%;
+    }
+
+    .modal-content h2 {
+        font-size: 24px;
+    }
+
+    .modal-content p {
+        font-size: 15px;
+    }
+}
