@@ -43,7 +43,7 @@ switch ($accion) {
         $cita->agendarHora($_GET['rol']);
         break;
     case 'agendarCita':
-        $cita->agendarCita();
+        $cita->agendarCita($_GET['rol']);
         break;
     case 'especialistaCitaView':
         $cita->especialistaCitaView($_GET['id_usuario']);
@@ -367,7 +367,7 @@ class CitaController
         }
     }
 
-    public function agendarCita()
+    public function agendarCita($rol)
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -404,8 +404,6 @@ class CitaController
                 'cita_estado' => 'Proceso',
             ];
 
-            $origen = $_POST['origen_formulario'] ?? 'Paciente';
-
             try {
             $this->CitaModel->store($data);
                 $usuarioGuardado = $this->UsuarioModel->findCorreoUser($id_usuario);
@@ -418,10 +416,10 @@ class CitaController
                             'cita_agendada',
                             ['usuario' => $usuarioGuardado, 'app_url' => $this->config['app_url']]
                             );
-                    } if ($origen === 'Especialista') {
+                    } if ($rol = 'Administrador') {
+                            header('Location: ../views/administrador/home/admin_dashboard.php');
+                        } elseif ($rol = 'Especialista') {
                             header('Location: ../views/especialista/home/especialista_dashboard.php');
-                        } elseif ($origen === 'Administrador') {
-                            header('Location: ../views/administrador/home/admin_dashboard.php'); // 👈 aquí va la vista del admin
                         } else {
                             header('Location: ../views/paciente/home/paciente_dashboard.php');
                         }
