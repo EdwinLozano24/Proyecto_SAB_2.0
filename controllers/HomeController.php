@@ -25,6 +25,9 @@ switch ($accion) {
     case 'especialistaPerfil':
         $home->especialistaPerfil($_GET['id_usuario']);
         break;
+    case 'homeAdministrador':
+        $home->homeAdministrador();
+        break;
     default:
         $home->homeAdministrador();
         break;
