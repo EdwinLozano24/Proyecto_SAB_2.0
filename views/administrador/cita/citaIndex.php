@@ -291,7 +291,7 @@ $citas = $stmt->fetchAll();
                         }
                     }
                 ],
-                dom: "<'row'<'col-12'B>>" + // B stands for Buttons
+                dom: "<'row'<'col-12'B>>" +
                     "<'row mb-3'<'col-sm-6'l><'col-sm-6'f>>" +
                     "t" +
                     "<'row mt-3'<'col-sm-6'i><'col-sm-6 d-flex justify-content-end'p>>",
