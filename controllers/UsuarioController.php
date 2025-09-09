@@ -115,13 +115,14 @@ class UsuarioController
             !preg_match('/[\W]/', $data['usua_password'])) {     // al menos 1 carácter especial
             $errors[] = "La contraseña debe tener mínimo 8 caracteres, una mayúscula, un número y un carácter especial.";
         }
-
+        
+        var_dump($errors); exit;
+        
         if (!empty($errors)) {
             include '../views/.general/usuario/loginRegister.php';
             return;
         }
 
-        var_dump($errors); exit;
 
         $origen = $_POST['origen_formulario'] ?? 'Usuario';
         try {
