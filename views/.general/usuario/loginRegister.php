@@ -44,7 +44,6 @@
                     <button id="btn__registrarse">Registrarse</button>
                 </div>
             </div>
-            <?php include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/error/alerta.php'); ?>
             <!-- Contenedor de los formularios -->
             <div class="contenedor__login-register">
 
@@ -158,6 +157,8 @@
                     <button type="submit" name="registrarUsuario">Registrarse</button>
                 </form>
             </div>
+            <?php include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/error/alerta.php'); ?>
+
         </div>
         
     </main>
