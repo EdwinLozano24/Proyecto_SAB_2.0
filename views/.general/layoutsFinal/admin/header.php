@@ -11,6 +11,6 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
             
             <div class="user-info">
                 <div class="user-avatar">U</div>
-                <a href="/controllers/HomeController.php?accion=pacientePerfilView&id_usuario=<?php echo $_SESSION['usuario']['id_usuario']; ?>" class="user-name-button"><?php echo htmlspecialchars($usua_nombre); ?></a>
+                <a href="/controllers/HomeController.php?accion=pacientePerfil&id_usuario=<?php echo $_SESSION['usuario']['id_usuario']; ?>" class="user-name-button"><?php echo htmlspecialchars($usua_nombre); ?></a>
             </div>
         </header>
