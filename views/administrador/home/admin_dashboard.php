@@ -18,8 +18,8 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
 <body>
     <?php 
     include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/admin/header.php');
-    include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/admin/nav.php');
-    include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/admin/aside.php');
+    include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/admin/nav/navInicio.php');
+    include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/admin/aside/asideInicio.php');
 
     ?>
 

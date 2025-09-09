@@ -60,6 +60,7 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
                                 <label for="cita_especialista">Especialista Seleccionado</label>
                                 <div class="input-with-icon">
                                     <i class="fas fa-user-doctor input-icon"></i>
+                                    <input type="hidden" name="id_usuario" id="id_usuario" value="<?php echo $_SESSION['usuario']['id_usuario']; ?>">
                                     <input type="hidden" name="cita_especialista" value="<?= htmlspecialchars($cita_especialista) ?>">
                                     <input type="text" name="usua_nombre" value="<?= htmlspecialchars($especialista['usua_nombre']) ?>" readonly>
                                 </div>
@@ -82,10 +83,6 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
 
 
 
-                                <div id="duration-display" class="duration-info">
-                                    <i class="fas fa-hourglass-half"></i>
-                                    <span id="duration-text">Selecciona un motivo para ver la duración</span>
-                                </div>
                             </div>
                         </div>
                     </div>
