@@ -5,8 +5,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/config/database.php';
 $pdo = conectarBD();
 $sql = "SELECT 
     c.*, 
-    up.usua_nombre AS cita_paciente,
-    ue.usua_nombre AS cita_especialista,
+    up.usua_nombre AS cita_paciente, 
+    ue.usua_nombre AS cita_especialista, 
     co.cons_numero AS cita_consultorio
 FROM tbl_citas AS c
 INNER JOIN tbl_pacientes AS p ON c.cita_paciente = p.id_paciente
@@ -23,65 +23,63 @@ $stmt = $pdo->query($sql);
 $citas = $stmt->fetchAll();
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Crud Citas</title>
-    <!-- Css -->
-    <!-- CSS Responsive -->
-    <link href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css" rel="stylesheet">
 
-    <link href="https://cdn.datatables.net/2.3.1/css/dataTables.bootstrap5.min.css" rel="stylesheet"
-        integrity="sha384-5hBbs6yhVjtqKk08rsxdk9xO80wJES15HnXHglWBQoj3cus3WT+qDJRpvs5rRP2c" crossorigin="anonymous">
-    <link href="https://cdn.datatables.net/buttons/3.2.3/css/buttons.bootstrap5.min.css" rel="stylesheet"
-        integrity="sha384-DJhypeLg79qWALC844KORuTtaJcH45J+36wNgzj4d1Kv1vt2PtRuV2eVmdkVmf/U" crossorigin="anonymous">
-    <!-- Boostrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
-    <!-- Fony Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- FontAwesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet" />
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- DataTables (versión compatible con Bootstrap 5) -->
+    <link href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.bootstrap5.min.css" rel="stylesheet" />
+    <!-- Si usas CSS responsive de DataTables, puedes incluirlo; si no, tu .table-responsive CSS bastará -->
+    <link href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css" rel="stylesheet" />
+
+    <!-- Tu CSS personalizado -->
     <?php
     $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/assets/css/admin/crudIndex.css';
     $cssUrl = '/assets/css/admin/crudIndex.css';
     if (file_exists($cssPath)) {
         echo '<link rel="stylesheet" href="' . $cssUrl . '">';
-    } else {
-        echo ' CSS File not fount at: ' . $cssPath . '';
     }
     ?>
+    <style>
+        /* pequeñas defensas para que no se rompa el layout si falta algo */
+        .table-custom {
+            width: 100% !important;
+            white-space: nowrap;
+        }
+
+        .dt-buttons .btn {
+            margin-right: 8px;
+        }
+    </style>
 </head>
 
 <body>
     <div class="container-custom">
         <!-- Header -->
-        <div class="header">
-            <div class="logo">
-                <i class="fa-solid fa-calendar-days"></i>
-            </div>
+        <div class="header text-center mb-4">
+            <div class="logo mb-2"><i class="fa-solid fa-calendar-days"></i></div>
             <h2>Citas Registradas</h2>
             <p class="subtitle">Gestión completa de las citas del sistema</p>
-            <a href="/controllers/HomeController.php?accion=home" class="btn-custom btn-primary-custom">
-                <i class="fa-solid fa-rotate-left"></i>
-                Volver
+            <a href="/controllers/HomeController.php?accion=home" class="btn-custom btn-primary-custom mt-2">
+                <i class="fa-solid fa-rotate-left"></i> Volver
             </a>
         </div>
 
         <div class="mb-4 d-flex justify-content-between align-items-center">
             <a href="/controllers/CitaController.php?accion=view_store" class="btn-custom btn-primary-custom">
-                <i class="fa-solid fa-square-plus"></i>
-                Nueva Cita
+                <i class="fa-solid fa-square-plus"></i> Nueva Cita
             </a>
             <div id="botonesExportacion"></div>
-        </div>
-
-        <div class="row mb-4">
         </div>
 
         <div class="row mb-4">
@@ -96,8 +94,9 @@ $citas = $stmt->fetchAll();
                 </select>
             </div>
         </div>
-        <div class="table-responsive">
-            <table id="citaDatatable" class="table-custom">
+
+        <div class="table-responsive"> <!-- contenedor que controla el scroll horizontal -->
+            <table id="citaDatatable" class="table table-striped table-hover table-custom">
                 <thead>
                     <tr>
                         <th>Usuario Solicitante</th>
@@ -128,13 +127,11 @@ $citas = $stmt->fetchAll();
                             <td><?= htmlspecialchars($cita['cita_motivo']) ?></td>
                             <td><?= htmlspecialchars($cita['cita_observacion']) ?></td>
                             <td><?= htmlspecialchars($cita['cita_estado']) ?></td>
-                            <td>
-                                <a href="/controllers/CitaController.php?accion=view_update&id_cita=<?= $cita['id_cita'] ?>"
-                                    class="action-btn edit">
+                            <td class="text-center">
+                                <a href="/controllers/CitaController.php?accion=view_update&id_cita=<?= $cita['id_cita'] ?>" class="action-btn edit">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </a>
-                                <a href="/controllers/CitaController.php?accion=delete&id_cita=<?= $cita['id_cita'] ?>"
-                                    class="action-btn delete">
+                                <a href="/controllers/CitaController.php?accion=delete&id_cita=<?= $cita['id_cita'] ?>" class="action-btn delete">
                                     <i class="fa-solid fa-trash"></i>
                                 </a>
                             </td>
@@ -144,120 +141,82 @@ $citas = $stmt->fetchAll();
             </table>
         </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
-        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <!-- Datatables -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"
-        integrity="sha384-+mbV2IY1Zk/X1p/nWllGySJSUN8uMs+gUAN10Or95UBH0fpj6GfKgPmgC5EXieXG"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"
-        integrity="sha384-VFQrHzqBh5qiJIU0uGU5CIW3+OWpdGGJM9LBnGbuIH2mkICcFZ7lPd/AAtI7SNf7"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"
-        integrity="sha384-/RlQG9uf0M2vcTw3CX7fbqgbj/h8wKxw7C3zu9/GxcBPRKOEcESxaxufwRXqzq6n"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.datatables.net/2.3.1/js/dataTables.min.js"
-        integrity="sha384-LiV1KhVIIiAY/+IrQtQib29gCaonfR5MgtWzPCTBVtEVJ7uYd0u8jFmf4xka4WVy"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.datatables.net/2.3.1/js/dataTables.bootstrap5.min.js"
-        integrity="sha384-G85lmdZCo2WkHaZ8U1ZceHekzKcg37sFrs4St2+u/r2UtfvSDQmQrkMsEx4Cgv/W"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.datatables.net/buttons/3.2.3/js/dataTables.buttons.min.js"
-        integrity="sha384-zlMvVlfnPFKXDpBlp4qbwVDBLGTxbedBY2ZetEqwXrfWm+DHPvVJ1ZX7xQIBn4bU"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.datatables.net/buttons/3.2.3/js/buttons.bootstrap5.min.js"
-        integrity="sha384-BdedgzbgcQH1hGtNWLD56fSa7LYUCzyRMuDzgr5+9etd1/W7eT0kHDrsADMmx60k"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.datatables.net/buttons/3.2.3/js/buttons.colVis.min.js"
-        integrity="sha384-v0wzF6NECWiQyIain/Wacl6wEYr6NDJRus6qpckumPIngNI9Zo0sDMon5lBh9Np1"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.datatables.net/buttons/3.2.3/js/buttons.html5.min.js"
-        integrity="sha384-+E6fb8f66UPOVDHKlEc1cfguF7DOTQQ70LNUnlbtywZiyoyQWqtrMjfTnWyBlN/Y"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.datatables.net/buttons/3.2.3/js/buttons.print.min.js"
-        integrity="sha384-FvTRywo5HrkPlBKFrm2tT8aKxIcI/VU819roC/K/8UrVwrl4XsF3RKRKiCAKWNly"
-        crossorigin="anonymous"></script>
+
+    <!-- JS: jQuery primero -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- Librerías para export (jszip, pdfmake) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+
+    <!-- DataTables + Bootstrap 5 integration -->
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+
+    <!-- Buttons -->
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.colVis.min.js"></script>
+
+    <!-- Responsive (opcional si quieres que DataTables también haga colapsos) -->
     <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap5.min.js"></script>
 
-    <!-- Boostrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
-        crossorigin="anonymous"></script>
+    <!-- Bootstrap bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+
     <script>
         $(document).ready(function() {
             const table = $('#citaDatatable').DataTable({
+                // Si prefieres que el scroll lo haga CSS (.table-responsive),
+                // puedes poner responsive: false y scrollX: false.
+                // Aquí activo responsive + scrollX para máxima compatibilidad:
                 responsive: true,
                 scrollX: true,
+
+                autoWidth: false,
+                orderCellsTop: true,
+                pageLength: 10,
+                lengthMenu: [10, 20, 50, 100],
+
+                columnDefs: [{
+                        orderable: false,
+                        searchable: false,
+                        targets: -1
+                    }, // acciones
+                    {
+                        className: 'align-middle',
+                        targets: '_all'
+                    }
+                ],
+
+                dom: "<'row mb-3'<'col-12'B>>" +
+                    "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>" +
+                    "<'row'<'col-sm-12'tr>>" +
+                    "<'row mt-3'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+
                 buttons: [{
                         extend: "excelHtml5",
                         text: '<i class="fa-solid fa-file-excel"></i>',
                         titleAttr: "Exportar a Excel",
-                        className: "btn btn-success me-1",
+                        className: "btn btn-success",
                         title: 'Citas registradas',
                         exportOptions: {
                             columns: ':visible:not(:last-child)'
-                        },
-                        customize: function(xlsx) {
-                            var sheet = xlsx.xl.worksheets['sheet1.xml'];
-                            $('row:first c', sheet).attr('s', '2');
-                            $('row c', sheet).attr('s', '25');
                         }
                     },
                     {
                         extend: "pdfHtml5",
                         text: '<i class="fa-solid fa-file-pdf"></i>',
                         titleAttr: "Exportar a PDF",
-                        className: "btn btn-danger me-1",
+                        className: "btn btn-danger",
                         orientation: "landscape",
                         title: 'Citas registradas',
                         exportOptions: {
                             columns: ':visible:not(:last-child)'
-                        },
-                        customize: function(doc) {
-                            doc.pageMargins = [20, 20, 20, 20];
-                            doc.defaultStyle = {
-                                fontSize: 10,
-                                margin: [10, 10, 10, 10]
-                            };
-                            doc.content[0].margin = [0, 20, 0, 10];
-                            doc.content[0].alignment = 'center';
-                            doc.content[0].fontSize = 14;
-                            doc.styles.tableHeader = {
-                                bold: true,
-                                fontSize: 11,
-                                color: 'white',
-                                fillColor: '#00AEEF',
-                                alignment: 'center',
-                                margin: [5, 5, 5, 5]
-                            };
-                            doc.content[1].layout = {
-                                hLineWidth: function() {
-                                    return 0.5;
-                                },
-                                vLineWidth: function() {
-                                    return 0.5;
-                                },
-                                hLineColor: function() {
-                                    return '#aaa';
-                                },
-                                vLineColor: function() {
-                                    return '#aaa';
-                                },
-                                paddingLeft: function() {
-                                    return 8;
-                                },
-                                paddingRight: function() {
-                                    return 8;
-                                },
-                                paddingTop: function() {
-                                    return 4;
-                                },
-                                paddingBottom: function() {
-                                    return 4;
-                                }
-                            };
                         }
                     },
                     {
@@ -265,37 +224,31 @@ $citas = $stmt->fetchAll();
                         text: '<i class="fa-solid fa-print"></i>',
                         titleAttr: "Imprimir",
                         className: "btn btn-warning",
-                        title: "&nbsp",
                         orientation: "landscape",
                         exportOptions: {
                             columns: ':visible:not(:last-child)'
                         },
                         customize: function(win) {
                             const css = `
-                        @page { size: landscape; }
-                        body { font-size: 10pt; margin: 20px; }
-                        h1 { text-align: center; font-size: 18pt; margin-bottom: 20px; }
-                        table { border-collapse: collapse; width: 100%; }
-                        th { background-color: #00AEEF !important; color: white !important; padding: 6px; text-align: center; }
-                        td { padding: 6px; text-align: center; }
-                        table, th, td { border: 1px solid #aaa; }
-                    `;
+                                @page { size: landscape; }
+                                body { font-size: 10pt; margin: 20px; }
+                                h1 { text-align: center; font-size: 18pt; margin-bottom: 20px; }
+                                table { border-collapse: collapse; width: 100%; }
+                                th { background-color: #00AEEF !important; color: white !important; padding: 6px; text-align: center; }
+                                td { padding: 6px; text-align: center; }
+                                table, th, td { border: 1px solid #aaa; }
+                            `;
                             const style = document.createElement('style');
                             style.type = 'text/css';
-                            style.innerHTML = css;
+                            style.appendChild(document.createTextNode(css));
                             win.document.head.appendChild(style);
+
                             const h1 = win.document.querySelector('h1');
-                            if (h1) {
-                                h1.innerText = 'Citas Registradas';
-                            }
+                            if (h1) h1.innerText = 'Citas Registradas';
                         }
                     }
                 ],
-                dom: "<'row'<'col-12'B>>" +
-                    "<'row mb-3'<'col-sm-6'l><'col-sm-6'f>>" +
-                    "t" +
-                    "<'row mt-3'<'col-sm-6'i><'col-sm-6 d-flex justify-content-end'p>>",
-                lengthMenu: [10, 20, 50, 100],
+
                 language: {
                     processing: "Procesando...",
                     lengthMenu: "Mostrar _MENU_ registros",
@@ -337,28 +290,22 @@ $citas = $stmt->fetchAll();
                         }
                     },
                     thousands: ".",
-                    decimal: ",",
-                    infoThousands: ".",
-                    stateRestore: {
-                        removeTitle: "Remover Estado",
-                        renameTitle: "Cambiar Nombre Estado"
-                    }
+                    decimal: ","
                 }
             });
 
-            // Mueve los botones de la tabla al div con id="botonesExportacion"
+            // mueve los botones al contenedor externo si lo deseas
             table.buttons().container().appendTo('#botonesExportacion');
 
+            // filtro externo por estado (coincidencia exacta)
             $('#filtroEstado').on('change', function() {
                 const estado = this.value;
                 if (estado) {
-                    // Coincidencia insensible a mayúsculas/minúsculas
                     table.column(10).search('^' + estado + '$', true, false).draw();
                 } else {
-                    table.column(10).search('').draw(); // mostrar todos
+                    table.column(10).search('').draw();
                 }
             });
-
         });
     </script>
 </body>
