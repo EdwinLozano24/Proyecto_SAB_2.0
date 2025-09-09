@@ -78,7 +78,7 @@ class UsuarioController
             'usua_sexo' => $_POST['usua_sexo'] ?? null,
             'usua_rh' => $_POST['usua_rh'] ?? null,
             'usua_eps' => $_POST['usua_eps'] ?? null,
-            'usua_password' => password_hash($_POST['usua_password'] ?? '', PASSWORD_DEFAULT),
+            'usua_password' => $_POST['usua_password'] ?? '',
             'usua_tipo' => $_POST['usua_tipo'] ?? 'Paciente',
             'usua_estado' => $_POST['usua_estado'] ?? 'Activo',
         ];
@@ -117,13 +117,13 @@ class UsuarioController
         }
         
         var_dump($errors); exit;
-        
+
         if (!empty($errors)) {
             include '../views/.general/usuario/loginRegister.php';
             return;
         }
 
-
+        $data['usua_password'] = password_hash($data['usua_password'], PASSWORD_DEFAULT);
         $origen = $_POST['origen_formulario'] ?? 'Usuario';
         try {
             $this->UsuarioModel->store($data);
