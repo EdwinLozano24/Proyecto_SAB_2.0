@@ -352,11 +352,13 @@ $citas = $stmt->fetchAll();
             $('#filtroEstado').on('change', function() {
                 const estado = this.value;
                 if (estado) {
+                    // Coincidencia insensible a mayúsculas/minúsculas
                     table.column(10).search('^' + estado + '$', true, false).draw();
                 } else {
                     table.column(10).search('').draw(); // mostrar todos
                 }
             });
+
         });
     </script>
 </body>
