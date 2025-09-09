@@ -358,7 +358,7 @@ class CitaController
             if ($rol === "Administrador") {
             include '../views/administrador/cita/citaHoraAdmin.php';
             } elseif ($rol === "Especialista") {
-            include '../views/especialsita/cita/citaHoraEspe.php';
+            include '../views/especialista/cita/citaHoraEspe.php';
             } else {
             include '../views/paciente/cita/citaHora.php';
             }
