@@ -82,6 +82,47 @@ class UsuarioController
             'usua_tipo' => $_POST['usua_tipo'] ?? 'Paciente',
             'usua_estado' => $_POST['usua_estado'] ?? 'Activo',
         ];
+
+        $errors = [];
+
+        if (!is_numeric($data['usua_documento'])) {
+            $errors[] = "El documento debe ser numérico.";
+        } else {
+            if ($this->UsuarioModel->findDocumento($data['usua_documento'])) {
+                $errors[] = "El documento ya está registrado.";
+            }
+        }
+
+        if (!filter_var($data['usua_correo_electronico'], FILTER_VALIDATE_EMAIL)) {
+            $errors[] = "El correo electrónico no es válido.";
+        } else {
+            if ($this->UsuarioModel->findCorreo($data['usua_correo_electronico'])) {
+                $errors[] = "El correo ya está registrado.";
+            }
+        }
+
+        if (!empty($data['usua_fecha_nacimiento'])) {
+            $fechaNacimiento = new DateTime($data['usua_fecha_nacimiento']);
+            $hoy = new DateTime();
+            if ($fechaNacimiento > $hoy) {
+                $errors[] = "La fecha de nacimiento no puede ser superior a hoy.";
+            }
+        }
+
+        if (strlen($data['usua_password']) < 8 ||
+            !preg_match('/[A-Z]/', $data['usua_password']) ||    // al menos 1 mayúscula
+            !preg_match('/[0-9]/', $data['usua_password']) ||    // al menos 1 número
+            !preg_match('/[\W]/', $data['usua_password'])) {     // al menos 1 carácter especial
+            $errors[] = "La contraseña debe tener mínimo 8 caracteres, una mayúscula, un número y un carácter especial.";
+        }
+
+        if (!empty($errors)) {
+            include '../views/.general/usuario/loginRegister.php';
+            return;
+        }
+
+        var_dump($errors); exit;
+
         $origen = $_POST['origen_formulario'] ?? 'Usuario';
         try {
             $this->UsuarioModel->store($data);

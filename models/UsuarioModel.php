@@ -140,4 +140,12 @@ class UsuarioModel
         $stmt->execute([$id_usuario]);
         return $stmt->fetch(PDO::FETCH_ASSOC) ?: null;
     }
+
+    public function findDocumento($documento)
+    {
+        $sql = "SELECT * FROM tbl_usuarios WHERE usua_documento = ? LIMIT 1";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$documento]);
+        return $stmt->fetch(PDO::FETCH_ASSOC) ?: null;
+    }
 }
