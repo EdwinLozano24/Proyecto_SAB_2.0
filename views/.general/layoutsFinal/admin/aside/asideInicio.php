@@ -7,7 +7,6 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
             <ul class="sidebar-menu">
                 <li><a href="/controllers/HomeController.php?accion=home" class="active">🏠 Inicio</a></li>
                 <li><a href="/controllers/HomeController.php?accion=pacientePerfil&id_usuario=<?php echo $_SESSION['usuario']['id_usuario']; ?>">👤 Tu Perfil</a></li>
-                <li><a href="#">⚙️ Configuración</a></li>
             </ul>
             <a href="/controllers/AuthController.php?accion=Logout" class="btn btn-primary" style="margin-top: 16px;">Cerrar Sesion</a>
         </div>
