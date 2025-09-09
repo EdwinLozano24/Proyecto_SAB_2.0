@@ -2,7 +2,7 @@
 <nav class="nav">
         <ul class="nav-list">
             <li class="nav-item">
-                <a href="/proyecto_sab/controllers/HomeController.php?accion=home">
+                <a href="/controllers/HomeController.php?accion=home">
                     <div class="nav-icon"></div>
                     Inicio
                 </a>
