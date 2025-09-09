@@ -96,51 +96,53 @@ $citas = $stmt->fetchAll();
                 </select>
             </div>
         </div>
-        <table id="citaDatatable" class="table-custom">
-            <thead>
-                <tr>
-                    <th>Usuario Solicitante</th>
-                    <th>Especialista Encargado</th>
-                    <th>Fecha</th>
-                    <th>Hora Inicio</th>
-                    <th>Hora Fin</th>
-                    <th>Turno</th>
-                    <th>Duracion</th>
-                    <th>Consultorio Asignado</th>
-                    <th>Motivo</th>
-                    <th>Observacion</th>
-                    <th>Estado</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($citas as $cita): ?>
+        <div class="table-responsive">
+            <table id="citaDatatable" class="table-custom">
+                <thead>
                     <tr>
-                        <td><?= htmlspecialchars($cita['cita_paciente']) ?></td>
-                        <td><?= htmlspecialchars($cita['cita_especialista']) ?></td>
-                        <td><?= htmlspecialchars($cita['cita_fecha']) ?></td>
-                        <td><?= htmlspecialchars($cita['cita_hora_inicio']) ?></td>
-                        <td><?= htmlspecialchars($cita['cita_hora_fin']) ?></td>
-                        <td><?= htmlspecialchars($cita['cita_turno']) ?></td>
-                        <td><?= htmlspecialchars($cita['cita_duracion']) ?></td>
-                        <td><?= htmlspecialchars($cita['cita_consultorio']) ?></td>
-                        <td><?= htmlspecialchars($cita['cita_motivo']) ?></td>
-                        <td><?= htmlspecialchars($cita['cita_observacion']) ?></td>
-                        <td><?= htmlspecialchars($cita['cita_estado']) ?></td>
-                        <td>
-                            <a href="/controllers/CitaController.php?accion=view_update&id_cita=<?= $cita['id_cita'] ?>"
-                                class="action-btn edit">
-                                <i class="fa-solid fa-pen-to-square"></i>
-                            </a>
-                            <a href="/controllers/CitaController.php?accion=delete&id_cita=<?= $cita['id_cita'] ?>"
-                                class="action-btn delete">
-                                <i class="fa-solid fa-trash"></i>
-                            </a>
-                        </td>
+                        <th>Usuario Solicitante</th>
+                        <th>Especialista Encargado</th>
+                        <th>Fecha</th>
+                        <th>Hora Inicio</th>
+                        <th>Hora Fin</th>
+                        <th>Turno</th>
+                        <th>Duracion</th>
+                        <th>Consultorio Asignado</th>
+                        <th>Motivo</th>
+                        <th>Observacion</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
                     </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <?php foreach ($citas as $cita): ?>
+                        <tr>
+                            <td><?= htmlspecialchars($cita['cita_paciente']) ?></td>
+                            <td><?= htmlspecialchars($cita['cita_especialista']) ?></td>
+                            <td><?= htmlspecialchars($cita['cita_fecha']) ?></td>
+                            <td><?= htmlspecialchars($cita['cita_hora_inicio']) ?></td>
+                            <td><?= htmlspecialchars($cita['cita_hora_fin']) ?></td>
+                            <td><?= htmlspecialchars($cita['cita_turno']) ?></td>
+                            <td><?= htmlspecialchars($cita['cita_duracion']) ?></td>
+                            <td><?= htmlspecialchars($cita['cita_consultorio']) ?></td>
+                            <td><?= htmlspecialchars($cita['cita_motivo']) ?></td>
+                            <td><?= htmlspecialchars($cita['cita_observacion']) ?></td>
+                            <td><?= htmlspecialchars($cita['cita_estado']) ?></td>
+                            <td>
+                                <a href="/controllers/CitaController.php?accion=view_update&id_cita=<?= $cita['id_cita'] ?>"
+                                    class="action-btn edit">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </a>
+                                <a href="/controllers/CitaController.php?accion=delete&id_cita=<?= $cita['id_cita'] ?>"
+                                    class="action-btn delete">
+                                    <i class="fa-solid fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
@@ -187,6 +189,7 @@ $citas = $stmt->fetchAll();
         $(document).ready(function() {
             const table = $('#citaDatatable').DataTable({
                 responsive: true,
+                scrollX: true,
                 buttons: [{
                         extend: "excelHtml5",
                         text: '<i class="fa-solid fa-file-excel"></i>',
