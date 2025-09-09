@@ -109,11 +109,11 @@ class PqrsController
 
         try {
             $this->pqrsModel->store($data);
-            if ($rol = 'AdministradorHome') {
+            if ($rol === 'AdministradorHome') {
             header('Location: ../views/administrador/home/admin_dashboard.php');
-            } elseif ($rol = "Administrador") {
+            } elseif ($rol === "Administrador") {
             header('Location: ../views/administrador/pqrs/pqrsIndex.php');
-            } elseif ($rol = "Especialista") {
+            } elseif ($rol === "Especialista") {
             header('Location: ../views/administrador/home/admin_dashboard.php');
             } else {
             header('Location: ../views/paciente/home/paciente_dashboard.php');
