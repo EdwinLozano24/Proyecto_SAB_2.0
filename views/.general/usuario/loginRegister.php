@@ -28,6 +28,7 @@
     <?php endif; ?>
 
     <main>
+        <?php include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/error/alerta.php'); ?>
         <div class="contenedor__todo">
             
             <!-- Caja trasera con botones para alternar entre login y registro -->
@@ -158,7 +159,7 @@
                 </form>
             </div>
         </div>
-        <?php include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/error/alerta.php'); ?>
+        
     </main>
 
     <!-- Bootstrap JS -->
