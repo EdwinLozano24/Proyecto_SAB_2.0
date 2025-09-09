@@ -103,7 +103,7 @@ class UsuarioController
 
         } catch (\Exception $e) {
             error_log("Error al registrar usuario: " . $e->getMessage());
-            echo "Ocurrió un error al registrar el usuario.";
+            echo "Ocurrió un error al registrar el usuario. $e";
         }
     
     }
