@@ -2,13 +2,13 @@
 <nav class="nav">
         <ul class="nav-list">
             <li class="nav-item">
-                <a href="/controllers/HomeController.php?accion=homeAdministrador">
+                <a href="/controllers/HomeController.php?accion=homeAdministrador" class="nav-link">
                     <div class="nav-icon"></div>
                     Inicio
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/controllers/CitaController.php?accion=viewAgendar&rol='Administrador'" class="nav-link">
+                <a href="/controllers/CitaController.php?accion=viewAgendar&rol='Administrador'" class="nav-link active">
                     <div class="nav-icon"></div>
                     Agenda tu Cita
                 </a>
