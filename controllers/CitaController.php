@@ -37,7 +37,7 @@ switch ($accion) {
         $cita->delete($_GET['id_cita']);
         break;
     case 'viewAgendar':
-        $cita->viewAgendar();
+        $cita->viewAgendar($_GET['rol']);
         break;
     case 'agendarHora':
         $cita->agendarHora();
@@ -318,10 +318,19 @@ class CitaController
         }
     }
 
-    public function viewAgendar()
+    public function viewAgendar($rol)
     {
         $especialistas = $this->EspecialistaModel->findAll();
-        include '../views/paciente/cita/citaAgendar1.php';
+        if($rol === "Administrador")
+        {
+            include '../views/administrador/cita/citaAgendar.php';
+        } elseif ($rol === "Especialista")
+            { 
+                include '../views/especialista/cita/citaAgendar.php';
+              } else
+                {
+                    include '../views/paciente/cita/citaAgendar1.php';
+                }
         exit;
     }
 
