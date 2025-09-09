@@ -324,7 +324,7 @@ class CitaController
         if ($rol === "Administrador") {
             include '../views/administrador/cita/citaAgendarAdmin.php';
         } elseif ($rol === "Especialista") { 
-            include '../views/especialista/cita/citaAgendar.php';
+            include '../views/especialista/cita/citaAgendarEspe.php';
         } elseif ($rol === "Paciente"){
             include '../views/paciente/cita/citaAgendar1.php';
         }
