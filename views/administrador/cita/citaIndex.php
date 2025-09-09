@@ -288,7 +288,7 @@ $citas = $stmt->fetchAll();
                 th { background-color: #00AEEF !important; color: white !important; padding: 6px; text-align: center; }
                 td { padding: 6px; text-align: center; }
                 table, th, td { border: 1px solid #aaa; }
-              `;
+            `;
                             const style = document.createElement('style');
                             style.type = 'text/css';
                             style.innerHTML = css;
@@ -303,7 +303,7 @@ $citas = $stmt->fetchAll();
                     "<'row mb-3'<'col-sm-6'l><'col-sm-6'f>>" +
                     "t" +
                     "<'row mt-3'<'col-sm-6'i><'col-sm-6 d-flex justify-content-end'p>>",
-                lengthMenu: [10, 20, 50, 100],
+                lengthMenu: [5,10,15,25,30,50,70,100],
                 language: {
                     processing: "Procesando...",
                     lengthMenu: "Mostrar _MENU_ registros",
