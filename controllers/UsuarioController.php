@@ -111,8 +111,8 @@ class UsuarioController
 
         if (strlen($data['usua_password']) < 8 ||
             !preg_match('/[A-Z]/', $data['usua_password']) ||    // al menos 1 mayúscula
-            !preg_match('/[0-9]/', $data['usua_password']) ||    // al menos 1 número
-            !preg_match('/[\W]/', $data['usua_password'])) {     // al menos 1 carácter especial
+            !preg_match('/[0-9]/', $data['usua_password']))    // al menos 1 número
+            {     // al menos 1 carácter especial
             $errors[] = "La contraseña debe tener mínimo 8 caracteres, una mayúscula, un número y un carácter especial.";
         }
         
