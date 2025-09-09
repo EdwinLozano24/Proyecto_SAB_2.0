@@ -114,7 +114,7 @@ class UsuarioController
         if (strlen($data['usua_password']) < 8 ||
             !preg_match('/[A-Z]/', $data['usua_password']) ||    // al menos 1 mayúscula
             !preg_match('/[0-9]/', $data['usua_password'])) {    
-            $errors[] = "La contraseña debe tener mínimo 8 caracteres, una mayúscula, un número y un carácter especial.";
+            $errors[] = "La contraseña debe tener mínimo 8 caracteres y una mayúscula.";
         }
         
         if (!empty($errors)) {
@@ -129,7 +129,7 @@ class UsuarioController
         }
 
         $data['usua_password'] = password_hash($data['usua_password'], PASSWORD_DEFAULT);
-        
+
         try {
             $this->UsuarioModel->store($data);
                 $usuarioGuardado = $this->UsuarioModel->findCorreo($data['usua_correo_electronico']);
