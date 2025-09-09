@@ -28,7 +28,7 @@
     <?php endif; ?>
 
     <main>
-        <?php include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/error/alerta.php'); ?>
+        
         <div class="contenedor__todo">
             
             <!-- Caja trasera con botones para alternar entre login y registro -->
@@ -44,7 +44,7 @@
                     <button id="btn__registrarse">Registrarse</button>
                 </div>
             </div>
-
+            <?php include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/error/alerta.php'); ?>
             <!-- Contenedor de los formularios -->
             <div class="contenedor__login-register">
 
