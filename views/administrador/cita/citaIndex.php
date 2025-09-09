@@ -57,7 +57,7 @@ $citas = $stmt->fetchAll();
 
     <?php
     $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/assets/css/admin/crudIndex.css?v=20250902';
-    $cssUrl  = '/assets/css/admin/crudIndex.css';
+    $cssUrl  = '/assets/css/admin/crudIndex.cssv=20250902';
     if (file_exists($cssPath)) {
         echo '<link rel="stylesheet" href="' . $cssUrl . '">';
     } else {
