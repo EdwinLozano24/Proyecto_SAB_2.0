@@ -33,6 +33,9 @@ $citas = $stmt->fetchAll();
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Crud Citas</title>
     <!-- Css -->
+    <!-- CSS Responsive -->
+    <link href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css" rel="stylesheet">
+
     <link href="https://cdn.datatables.net/2.3.1/css/dataTables.bootstrap5.min.css" rel="stylesheet"
         integrity="sha384-5hBbs6yhVjtqKk08rsxdk9xO80wJES15HnXHglWBQoj3cus3WT+qDJRpvs5rRP2c" crossorigin="anonymous">
     <link href="https://cdn.datatables.net/buttons/3.2.3/css/buttons.bootstrap5.min.css" rel="stylesheet"
@@ -173,6 +176,8 @@ $citas = $stmt->fetchAll();
     <script src="https://cdn.datatables.net/buttons/3.2.3/js/buttons.print.min.js"
         integrity="sha384-FvTRywo5HrkPlBKFrm2tT8aKxIcI/VU819roC/K/8UrVwrl4XsF3RKRKiCAKWNly"
         crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap5.min.js"></script>
 
     <!-- Boostrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
@@ -181,6 +186,7 @@ $citas = $stmt->fetchAll();
     <script>
         $(document).ready(function() {
             const table = $('#citaDatatable').DataTable({
+                responsive: true,
                 buttons: [{
                         extend: "excelHtml5",
                         text: '<i class="fa-solid fa-file-excel"></i>',
