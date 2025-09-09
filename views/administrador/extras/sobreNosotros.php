@@ -14,8 +14,8 @@
     <?php
     session_start();
     include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/admin/header.php');
-    include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/admin/nav.php');
-    include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/admin/aside.php');
+    include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/admin/nav/nav.php');
+    include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/admin/aside/aside.php');
     ?>
 
     <main class="main-content">
