@@ -303,7 +303,7 @@ $citas = $stmt->fetchAll();
                     "<'row mb-3'<'col-sm-6'l><'col-sm-6'f>>" +
                     "t" +
                     "<'row mt-3'<'col-sm-6'i><'col-sm-6 d-flex justify-content-end'p>>",
-                lengthMenu: [5,10,15,25,30,50,70,100],
+                lengthMenu: [5, 10, 15, 25, 30, 50, 70, 100],
                 language: {
                     processing: "Procesando...",
                     lengthMenu: "Mostrar _MENU_ registros",
@@ -360,13 +360,11 @@ $citas = $stmt->fetchAll();
             // Filtro de estado
             $('#filtroEstado').on('change', function() {
                 const estado = this.value;
-                table.column(10).search(estado).draw();
-            });
-
-            // Limpiar filtros
-            $('#clearFilters').on('click', function() {
-                $('#filtroEstado').val('');
-                table.column(10).search('').draw();
+                if (estado) {
+                    table.column(10).search('^' + estado + '$', true, false).draw();
+                } else {
+                    table.column(10).search('').draw();
+                }
             });
         });
     </script>
