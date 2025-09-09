@@ -83,6 +83,8 @@ class UsuarioController
             'usua_estado' => $_POST['usua_estado'] ?? 'Activo',
         ];
 
+        $origen = $_POST['origen_formulario'] ?? 'Usuario';
+
         $errors = [];
 
         if (!is_numeric($data['usua_documento'])) {
@@ -111,20 +113,23 @@ class UsuarioController
 
         if (strlen($data['usua_password']) < 8 ||
             !preg_match('/[A-Z]/', $data['usua_password']) ||    // al menos 1 mayúscula
-            !preg_match('/[0-9]/', $data['usua_password']))    // al menos 1 número
-            {     // al menos 1 carácter especial
+            !preg_match('/[0-9]/', $data['usua_password'])) {    
             $errors[] = "La contraseña debe tener mínimo 8 caracteres, una mayúscula, un número y un carácter especial.";
         }
         
-        var_dump($errors); exit;
-
         if (!empty($errors)) {
-            include '../views/.general/usuario/loginRegister.php';
+            if ($origen === 'Administrador') {
+                // Regresar al formulario de administración
+                include '../views/administrador/usuario/usuarioCreate.php';
+            } else {
+                // Regresar al login/registro del usuario común
+                include '../views/.general/usuario/loginRegister.php';
+            }
             return;
         }
 
         $data['usua_password'] = password_hash($data['usua_password'], PASSWORD_DEFAULT);
-        $origen = $_POST['origen_formulario'] ?? 'Usuario';
+        
         try {
             $this->UsuarioModel->store($data);
                 $usuarioGuardado = $this->UsuarioModel->findCorreo($data['usua_correo_electronico']);
