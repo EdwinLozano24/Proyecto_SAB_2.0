@@ -357,9 +357,9 @@ class CitaController
             $cita_motivo = $motivo;
 
             if ($rol = "Administrador") {
-            include '../views/administrador/cita/citaHora.php';
+            include '../views/administrador/cita/citaHoraAdmin.php';
             } elseif ($rol = "Especialista") {
-            include '../views/especialsita/cita/citaHora.php';
+            include '../views/especialsita/cita/citaHoraEspe.php';
             } else {
             include '../views/paciente/cita/citaHora.php';
             }
