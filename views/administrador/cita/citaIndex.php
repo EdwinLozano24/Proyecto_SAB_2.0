@@ -180,89 +180,89 @@ $citas = $stmt->fetchAll();
         crossorigin="anonymous"></script>
     <script>
         $(document).ready(function() {
-            const table = $('#citaDatatable').DataTable({
-                buttons: [{
-                        extend: "excelHtml5",
-                        text: '<i class="fa-solid fa-file-excel"></i>',
-                        titleAttr: "Exportar a Excel",
-                        className: "btn btn-success me-1",
-                        title: 'Citas registradas',
-                        exportOptions: {
-                            columns: ':visible:not(:last-child)'
-                        },
-                        customize: function(xlsx) {
-                            var sheet = xlsx.xl.worksheets['sheet1.xml'];
-                            $('row:first c', sheet).attr('s', '2');
-                            $('row c', sheet).attr('s', '25');
-                        }
-                    },
-                    {
-                        extend: "pdfHtml5",
-                        text: '<i class="fa-solid fa-file-pdf"></i>',
-                        titleAttr: "Exportar a PDF",
-                        className: "btn btn-danger me-1",
-                        orientation: "landscape",
-                        title: 'Citas registradas',
-                        exportOptions: {
-                            columns: ':visible:not(:last-child)'
-                        },
-                        customize: function(doc) {
-                            doc.pageMargins = [20, 20, 20, 20];
-                            doc.defaultStyle = {
-                                fontSize: 10,
-                                margin: [10, 10, 10, 10]
-                            };
-                            doc.content[0].margin = [0, 20, 0, 10];
-                            doc.content[0].alignment = 'center';
-                            doc.content[0].fontSize = 14;
-                            doc.styles.tableHeader = {
-                                bold: true,
-                                fontSize: 11,
-                                color: 'white',
-                                fillColor: '#00AEEF',
-                                alignment: 'center',
-                                margin: [5, 5, 5, 5]
-                            };
-                            doc.content[1].layout = {
-                                hLineWidth: function() {
-                                    return 0.5;
+                    const table = $('#citaDatatable').DataTable({
+                        buttons: [{
+                                extend: "excelHtml5",
+                                text: '<i class="fa-solid fa-file-excel"></i>',
+                                titleAttr: "Exportar a Excel",
+                                className: "btn btn-success me-1",
+                                title: 'Citas registradas',
+                                exportOptions: {
+                                    columns: ':visible:not(:last-child)'
                                 },
-                                vLineWidth: function() {
-                                    return 0.5;
-                                },
-                                hLineColor: function() {
-                                    return '#aaa';
-                                },
-                                vLineColor: function() {
-                                    return '#aaa';
-                                },
-                                paddingLeft: function() {
-                                    return 8;
-                                },
-                                paddingRight: function() {
-                                    return 8;
-                                },
-                                paddingTop: function() {
-                                    return 4;
-                                },
-                                paddingBottom: function() {
-                                    return 4;
+                                customize: function(xlsx) {
+                                    var sheet = xlsx.xl.worksheets['sheet1.xml'];
+                                    $('row:first c', sheet).attr('s', '2');
+                                    $('row c', sheet).attr('s', '25');
                                 }
-                            };
-                        }
-                    },
-                    {
-                        extend: "print",
-                        text: '<i class="fa-solid fa-print"></i>',
-                        titleAttr: "Imprimir",
-                        className: "btn btn-warning",
-                        title: "&nbsp",
-                        orientation: "landscape",
-                        exportOptions: {
-                            columns: ':visible:not(:last-child)'
-                        },
-                        customize: function(win) {
-                            const css = `
+                            },
+                            {
+                                extend: "pdfHtml5",
+                                text: '<i class="fa-solid fa-file-pdf"></i>',
+                                titleAttr: "Exportar a PDF",
+                                className: "btn btn-danger me-1",
+                                orientation: "landscape",
+                                title: 'Citas registradas',
+                                exportOptions: {
+                                    columns: ':visible:not(:last-child)'
+                                },
+                                customize: function(doc) {
+                                    doc.pageMargins = [20, 20, 20, 20];
+                                    doc.defaultStyle = {
+                                        fontSize: 10,
+                                        margin: [10, 10, 10, 10]
+                                    };
+                                    doc.content[0].margin = [0, 20, 0, 10];
+                                    doc.content[0].alignment = 'center';
+                                    doc.content[0].fontSize = 14;
+                                    doc.styles.tableHeader = {
+                                        bold: true,
+                                        fontSize: 11,
+                                        color: 'white',
+                                        fillColor: '#00AEEF',
+                                        alignment: 'center',
+                                        margin: [5, 5, 5, 5]
+                                    };
+                                    doc.content[1].layout = {
+                                        hLineWidth: function() {
+                                            return 0.5;
+                                        },
+                                        vLineWidth: function() {
+                                            return 0.5;
+                                        },
+                                        hLineColor: function() {
+                                            return '#aaa';
+                                        },
+                                        vLineColor: function() {
+                                            return '#aaa';
+                                        },
+                                        paddingLeft: function() {
+                                            return 8;
+                                        },
+                                        paddingRight: function() {
+                                            return 8;
+                                        },
+                                        paddingTop: function() {
+                                            return 4;
+                                        },
+                                        paddingBottom: function() {
+                                            return 4;
+                                        }
+                                    };
+                                }
+                            },
+                            {
+                                extend: "print",
+                                text: '<i class="fa-solid fa-print"></i>',
+                                titleAttr: "Imprimir",
+                                className: "btn btn-warning",
+                                title: "&nbsp",
+                                orientation: "landscape",
+                                exportOptions: {
+                                    columns: ':visible:not(:last-child)'
+                                },
+                                customize: function(win) {
+                                    const css = `
                         @page { size: landscape; }
                         body { font-size: 10pt; margin: 20px; }
                         h1 { text-align: center; font-size: 18pt; margin-bottom: 20px; }
@@ -271,87 +271,83 @@ $citas = $stmt->fetchAll();
                         td { padding: 6px; text-align: center; }
                         table, th, td { border: 1px solid #aaa; }
                     `;
-                            const style = document.createElement('style');
-                            style.type = 'text/css';
-                            style.innerHTML = css;
-                            win.document.head.appendChild(style);
-                            const h1 = win.document.querySelector('h1');
-                            if (h1) {
-                                h1.innerText = 'Citas Registradas';
+                                    const style = document.createElement('style');
+                                    style.type = 'text/css';
+                                    style.innerHTML = css;
+                                    win.document.head.appendChild(style);
+                                    const h1 = win.document.querySelector('h1');
+                                    if (h1) {
+                                        h1.innerText = 'Citas Registradas';
+                                    }
+                                }
+                            }
+                        ],
+                        dom: "<'row'<'col-12'B>>" + // B stands for Buttons
+                            "<'row mb-3'<'col-sm-6'l><'col-sm-6'f>>" +
+                            "t" +
+                            "<'row mt-3'<'col-sm-6'i><'col-sm-6 d-flex justify-content-end'p>>",
+                        lengthMenu: [10, 20, 50, 100],
+                        language: {
+                            processing: "Procesando...",
+                            lengthMenu: "Mostrar _MENU_ registros",
+                            zeroRecords: "No se encontraron resultados",
+                            emptyTable: "Ningún dato disponible en esta tabla",
+                            info: "Mostrando _START_ a _END_ de _TOTAL_ registros",
+                            infoEmpty: "Mostrando registros del 0 al 0 de un total de 0 registros",
+                            infoFiltered: "(filtrado de un total de _MAX_ registros)",
+                            search: "Buscar:",
+                            loadingRecords: "Cargando...",
+                            paginate: {
+                                first: "Primero",
+                                last: "Último",
+                                next: "Siguiente",
+                                previous: "Anterior"
+                            },
+                            aria: {
+                                sortAscending: ": Activar para ordenar la columna de manera ascendente",
+                                sortDescending: ": Activar para ordenar la columna de manera descendente"
+                            },
+                            buttons: {
+                                copy: "Copiar",
+                                colvis: "Visibilidad",
+                                collection: "Colección",
+                                colvisRestore: "Restaurar visibilidad",
+                                copyKeys: "Presione ctrl o ⌘ + C para copiar los datos. Escape para cancelar.",
+                                copySuccess: {
+                                    "1": "Copiada 1 fila al portapapeles",
+                                    "_": "Copiadas %ds filas al portapapeles"
+                                },
+                                copyTitle: "Copiar al portapapeles",
+                                csv: "CSV",
+                                excel: "Excel",
+                                pdf: "PDF",
+                                print: "Imprimir",
+                                pageLength: {
+                                    "-1": "Mostrar todas las filas",
+                                    "_": "Mostrar %d filas"
+                                }
+                            },
+                            thousands: ".",
+                            decimal: ",",
+                            infoThousands: ".",
+                            stateRestore: {
+                                removeTitle: "Remover Estado",
+                                renameTitle: "Cambiar Nombre Estado"
                             }
                         }
-                    }
-                ],
-                dom: "<'row'<'col-12'B>>" + // B stands for Buttons
-                    "<'row mb-3'<'col-sm-6'l><'col-sm-6'f>>" +
-                    "t" +
-                    "<'row mt-3'<'col-sm-6'i><'col-sm-6 d-flex justify-content-end'p>>",
-                lengthMenu: [10, 20, 50, 100],
-                language: {
-                    processing: "Procesando...",
-                    lengthMenu: "Mostrar _MENU_ registros",
-                    zeroRecords: "No se encontraron resultados",
-                    emptyTable: "Ningún dato disponible en esta tabla",
-                    info: "Mostrando _START_ a _END_ de _TOTAL_ registros",
-                    infoEmpty: "Mostrando registros del 0 al 0 de un total de 0 registros",
-                    infoFiltered: "(filtrado de un total de _MAX_ registros)",
-                    search: "Buscar:",
-                    loadingRecords: "Cargando...",
-                    paginate: {
-                        first: "Primero",
-                        last: "Último",
-                        next: "Siguiente",
-                        previous: "Anterior"
-                    },
-                    aria: {
-                        sortAscending: ": Activar para ordenar la columna de manera ascendente",
-                        sortDescending: ": Activar para ordenar la columna de manera descendente"
-                    },
-                    buttons: {
-                        copy: "Copiar",
-                        colvis: "Visibilidad",
-                        collection: "Colección",
-                        colvisRestore: "Restaurar visibilidad",
-                        copyKeys: "Presione ctrl o ⌘ + C para copiar los datos. Escape para cancelar.",
-                        copySuccess: {
-                            "1": "Copiada 1 fila al portapapeles",
-                            "_": "Copiadas %ds filas al portapapeles"
-                        },
-                        copyTitle: "Copiar al portapapeles",
-                        csv: "CSV",
-                        excel: "Excel",
-                        pdf: "PDF",
-                        print: "Imprimir",
-                        pageLength: {
-                            "-1": "Mostrar todas las filas",
-                            "_": "Mostrar %d filas"
+                    });
+
+                    // Mueve los botones de la tabla al div con id="botonesExportacion"
+                    table.buttons().container().appendTo('#botonesExportacion');
+
+                    $('#filtroEstado').on('change', function() {
+                        const estado = this.value;
+                        if (estado) {
+                            table.column(10).search('^' + estado + '$', true, false).draw();
+                        } else {
+                            table.column(10).search('').draw(); // mostrar todos
                         }
-                    },
-                    thousands: ".",
-                    decimal: ",",
-                    infoThousands: ".",
-                    stateRestore: {
-                        removeTitle: "Remover Estado",
-                        renameTitle: "Cambiar Nombre Estado"
-                    }
-                }
-            });
-
-            // Mueve los botones de la tabla al div con id="botonesExportacion"
-            table.buttons().container().appendTo('#botonesExportacion');
-
-            // Lógica para el filtro de estado
-            $('#filtroEstado').on('change', function() {
-                const estado = this.value;
-                table.column(10).search(estado).draw();
-            });
-
-            // Lógica para limpiar el filtro
-            $('#clearFilters').on('click', function() {
-                $('#filtroEstado').val('');
-                table.column(10).search('').draw();
-            });
-        });
+                    });
     </script>
 </body>
 

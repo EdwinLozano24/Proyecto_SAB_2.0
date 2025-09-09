@@ -98,6 +98,7 @@ CREATE TABLE IF NOT EXISTS tbl_tratamientos (
     trat_descripcion VARCHAR(255) NOT NULL,
     trat_complejidad ENUM('Baja','Media','Alta','Urgencia'),
     trat_estado ENUM('Activo','Inactivo') DEFAULT 'Activo',
+    trat_imagen VARCHAR(255) NOT NULL,
     FOREIGN KEY (trat_categoria) REFERENCES tbl_categorias_tratamientos(id_categoria)
 );
 
