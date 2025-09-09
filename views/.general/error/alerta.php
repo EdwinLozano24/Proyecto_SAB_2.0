@@ -1,5 +1,5 @@
 <?php if (!empty($errors)): ?>
-  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <div class=" alert alert-primary alert-dismissible fade show" role="alert">
     <strong>Se encontraron errores:</strong>
     <ul class="mb-0">
       <?php foreach ($errors as $error): ?>
