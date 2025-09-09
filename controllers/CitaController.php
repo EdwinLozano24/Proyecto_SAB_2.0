@@ -322,11 +322,11 @@ class CitaController
     {
         $especialistas = $this->EspecialistaModel->findAll();
         var_dump($rol); exit;
-        if($rol === "Administrador")
+        if($rol == "Administrador")
         {
             include '../views/administrador/cita/citaAgendar.php';
             exit;
-        } elseif ($rol === "Especialista")
+        } elseif ($rol == "Especialista")
             { 
                 include '../views/especialista/cita/citaAgendar.php';
                 exit;
