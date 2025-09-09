@@ -355,9 +355,9 @@ class CitaController
             $cita_fecha = $fecha;
             $cita_motivo = $motivo;
 
-            if ($rol = "Administrador") {
+            if ($rol === "Administrador") {
             include '../views/administrador/cita/citaHoraAdmin.php';
-            } elseif ($rol = "Especialista") {
+            } elseif ($rol === "Especialista") {
             include '../views/especialsita/cita/citaHoraEspe.php';
             } else {
             include '../views/paciente/cita/citaHora.php';
@@ -415,9 +415,9 @@ class CitaController
                             'cita_agendada',
                             ['usuario' => $usuarioGuardado, 'app_url' => $this->config['app_url']]
                             );
-                    } if ($rol = 'Administrador') {
+                    } if ($rol === 'Administrador') {
                             header('Location: ../views/administrador/home/admin_dashboard.php');
-                        } elseif ($rol = 'Especialista') {
+                        } elseif ($rol === 'Especialista') {
                             header('Location: ../views/especialista/home/especialista_dashboard.php');
                         } else {
                             header('Location: ../views/paciente/home/paciente_dashboard.php');
