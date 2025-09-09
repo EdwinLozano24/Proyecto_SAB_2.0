@@ -40,7 +40,7 @@ switch ($accion) {
         $cita->viewAgendar($_GET['rol']);
         break;
     case 'agendarHora':
-        $cita->agendarHora();
+        $cita->agendarHora($_GET['rol']);
         break;
     case 'agendarCita':
         $cita->agendarCita();
@@ -332,7 +332,7 @@ class CitaController
         exit;
     }
 
-    public function agendarHora()
+    public function agendarHora($rol)
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id_especialista = $_POST['id_especialista'];
@@ -355,7 +355,14 @@ class CitaController
             $especialista = $this->EspecialistaModel->find($id_especialista);
             $cita_fecha = $fecha;
             $cita_motivo = $motivo;
+
+            if ($rol = "Administrador") {
+            include '../views/administrador/cita/citaHora.php';
+            } elseif ($rol = "Especialista") {
+            include '../views/especialsita/cita/citaHora.php';
+            } else {
             include '../views/paciente/cita/citaHora.php';
+            }
             exit;
         }
     }

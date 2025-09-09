@@ -19,9 +19,9 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
 
 <body class="citas-page">
     <?php
-    include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/paciente/header.php');
-    include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/paciente/nav/navAgendarCita.php');
-    include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/paciente/aside/aside.php');
+    include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/admin/header.php');
+    include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/admin/nav/navAgendarCita.php');
+    include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/admin/aside/aside.php');
     ?>
 
     <main class="main-content">
@@ -31,7 +31,7 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
                 <h2 class="section-title">Horas Disponibles</h2>
                 <p class="section-subtitle">Programa tu cita odontológica seleccionando hora de la misma</p>
 
-                <form id="crearCitaForm" method="POST" action="/../controllers/CitaController.php?accion=agendarCita" class="form-card">
+                <form id="crearCitaForm" method="POST" action="/../controllers/CitaController.php?accion=agendarCita&rol='Administrador'" class="form-card">
 
                     <div class="form-section">
 
@@ -128,7 +128,7 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
     </main>
 
     <?php
-    include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/paciente/footer.php');
+    include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/admin/footer.php');
     ?>
 
     <script src="/assets/js/cita/citaAgendar.js"></script>
