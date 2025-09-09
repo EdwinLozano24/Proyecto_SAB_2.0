@@ -15,7 +15,7 @@ switch ($action) {
         break;
 
     case 'store':
-        $controller->store();
+        $controller->store($rol);
         break;
 
     case 'view_update':
@@ -93,7 +93,7 @@ class PqrsController
 
     /* ---------- ACCIONES ---------- */
 
-    public function store(): void
+    public function store($rol): void
     {
         $data = [
             'pqrs_tipo'           => $_POST['pqrs_tipo']        ?? null,
@@ -106,14 +106,18 @@ class PqrsController
             'pqrs_usuario'        => $_POST['pqrs_usuario']     ?? null,
             'pqrs_empleado'       => $_POST['pqrs_empleado'] ?? null,
         ];
-        $origen = $_POST['origen_formulario'] ?? 'Usuario';
+
         try {
             $this->pqrsModel->store($data);
-            if ($origen === 'Administrador') {
+            if ($rol = 'AdministradorHome') {
+            header('Location: ../views/administrador/home/admin_dashboard.php');
+            } elseif ($rol = "Administrador") {
             header('Location: ../views/administrador/pqrs/pqrsIndex.php');
-        } else {
+            } elseif ($rol = "Especialista") {
+            header('Location: ../views/administrador/home/admin_dashboard.php');
+            } else {
             header('Location: ../views/paciente/home/paciente_dashboard.php');
-        }
+            }
         exit;
         } catch (\Throwable $e) {
             echo '[Ocurrió un error al CREAR la PQR. Estamos trabajando para solucionarlo]';
