@@ -321,12 +321,11 @@ class CitaController
     public function viewAgendar($rol)
     {
         $especialistas = $this->EspecialistaModel->findAll();
-        var_dump($rol); exit;
-        if($rol = "Administrador") {
+        if ($rol === "Administrador") {
             include '../views/administrador/cita/citaAgendarAdmin.php';
-        } elseif ($rol = "Especialista") { 
+        } elseif ($rol === "Especialista") { 
             include '../views/especialista/cita/citaAgendar.php';
-        } elseif ($rol = "Paciente"){
+        } elseif ($rol === "Paciente"){
             include '../views/paciente/cita/citaAgendar1.php';
         }
         exit;
