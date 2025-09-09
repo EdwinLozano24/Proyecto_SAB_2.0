@@ -29,7 +29,7 @@
 
     <main>
         <div class="contenedor__todo">
-            <?php include '../../views/.general/error/alerta.php'; ?>
+            <?php include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/error/alerta.php'); ?>
             <!-- Caja trasera con botones para alternar entre login y registro -->
             <div class="caja__trasera">
                 <div class="caja__trasera-login">
