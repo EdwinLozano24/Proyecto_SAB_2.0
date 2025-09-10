@@ -524,7 +524,7 @@ class CitaController
             ];
 
             try {
-            $this->CitaModel->store($data);
+            //$this->CitaModel->store($data);
                 $pacienteUsuario = $this->PacienteModel->findUsuario($cita_paciente);
                 $usuarioGuardado = $this->UsuarioModel->findCorreoUser($pacienteUsuario);
                 var_dump($pacienteUsuario,$usuarioGuardado); exit;
