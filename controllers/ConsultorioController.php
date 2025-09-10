@@ -68,7 +68,7 @@ class ConsultorioController
 
         $cons = $this->ConsultorioModel->find($id_consultorio);
         $consAll = $this->ConsultorioModel->findAll();
-        include '/../views/administrador/consultorio/consultorioUpdate.php';
+        include __DIR__ . '/../views/administrador/consultorio/consultorioUpdate.php';
         exit;
     }
 
