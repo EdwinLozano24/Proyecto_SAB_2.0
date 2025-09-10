@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../../../config/database.php';
 $pdo = conectarBD();
 
 // Obtener todas las categorías para el select
