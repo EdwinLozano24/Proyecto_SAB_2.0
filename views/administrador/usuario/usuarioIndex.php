@@ -48,6 +48,7 @@ $usuarios = $stmt->fetchAll();
 </head>
 
 <body>
+    <?php include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/error/alerta.php'); ?>
     <div class="container-custom">
         <!-- Header -->
         <div class="header">
