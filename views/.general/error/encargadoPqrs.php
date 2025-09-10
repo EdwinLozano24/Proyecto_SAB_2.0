@@ -23,7 +23,7 @@
 
         <!-- Código de error -->
         <div class="error-code">
-            ERROR 403
+            ERROR
         </div>
 
         <!-- Título y subtítulo -->
