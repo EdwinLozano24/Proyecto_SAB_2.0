@@ -66,6 +66,18 @@ $tratamientos = $stmt->fetchAll();
                 <i class="fa-solid fa-square-plus"></i>
                 Nuevo Tratamiento
             </a>
+            <div id="botonesExportacion"></div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <label for="filtroEstado" class="form-label">Filtrar por Estado:</label>
+                <select id="filtroEstado" class="form-select">
+                    <option value="">Todos..</option>
+                    <option value="Activo">Activo</option>
+                    <option value="Inactivo">Inactivo</option>
+                </select>
+            </div>
         </div>
 
         <table id="TratamientosDatatable" class="table-custom">
@@ -153,24 +165,24 @@ $tratamientos = $stmt->fetchAll();
         $(document).ready(function() {
             // 1) Inicializo DataTable con TODAS las opciones
             const table = $('#TratamientosDatatable').DataTable({
-                    buttons: [{
-                            extend: "excelHtml5",
-                            text: '<i class="fa-solid fa-file-excel"></i>',
-                            titleAttr: "Exportar a Excel",
-                            className: "btn btn-success me-1",
-                            title: 'Tratamientos registrados',
-                            exportOptions: {
-                                columns: ':visible:not(:last-child)'
-                            },
-                            customize: function(xlsx) {
-                                var sheet = xlsx.xl.worksheets['sheet1.xml'];
+                buttons: [{
+                        extend: "excelHtml5",
+                        text: '<i class="fa-solid fa-file-excel"></i>',
+                        titleAttr: "Exportar a Excel",
+                        className: "btn btn-success me-1",
+                        title: 'Tratamientos registrados',
+                        exportOptions: {
+                            columns: ':visible:not(:last-child)'
+                        },
+                        customize: function(xlsx) {
+                            var sheet = xlsx.xl.worksheets['sheet1.xml'];
 
-                                // Agrega estilo de cabecera (negrita)
-                                $('row:first c', sheet).attr('s', '2'); // Negrita para la primera fila
+                            // Agrega estilo de cabecera (negrita)
+                            $('row:first c', sheet).attr('s', '2'); // Negrita para la primera fila
 
-                                // Aplica borde a todas las celdas
-                                $('row c', sheet).attr('s', '25'); // Sólo funciona si el estilo 25 está definido por defecto
-                            }
+                            // Aplica borde a todas las celdas
+                            $('row c', sheet).attr('s', '25'); // Sólo funciona si el estilo 25 está definido por defecto
+                        }
                     },
                     {
                         extend: "pdfHtml5",
@@ -294,12 +306,10 @@ $tratamientos = $stmt->fetchAll();
                 // Ubicación del contenedor de botones (sólo genera el <div> aquí,
                 // luego lo moveremos al .mb-4)
                 dom: "<'row'<'col-12'B>>" +
-                "<'row mb-3'<'col-sm-6'l><'col-sm-6'f>>" +
-                "t" +
-                // <-- Aquí añadimos d-flex justify-content-end
-                "<'row mt-3'<'col-sm-6'i><'col-sm-6 d-flex justify-content-end'p>>",
-
-                lengthMenu: [10, 20, 50, 100],
+                    "<'row mb-3'<'col-sm-6'l><'col-sm-6'f>>" +
+                    "t" +
+                    "<'row mt-3'<'col-sm-6'i><'col-sm-6 d-flex justify-content-end'p>>",
+                lengthMenu: [5, 10, 15, 25, 30, 50, 70, 100],
 
                 language: {
                     processing: "Procesando...",
@@ -351,8 +361,18 @@ $tratamientos = $stmt->fetchAll();
                 }
             });
 
-        // 2) Muevo el contenedor de botones dentro de mi div.mb-4
-        table.buttons().container().appendTo('.mb-4');
+            // 2) Muevo el contenedor de botones dentro de mi div.mb-4
+            table.buttons().container().appendTo('#botonesExportacion');
+
+            // Filtro de estado
+            $('#filtroEstado').on('change', function() {
+                const estado = this.value;
+                if (estado) {
+                    table.column(10).search('^' + estado + '$', true, false).draw();
+                } else {
+                    table.column(10).search('').draw();
+                }
+            });
         });
     </script>
 
