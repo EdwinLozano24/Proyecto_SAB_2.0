@@ -60,6 +60,8 @@ switch ($accion) {
     case 'pacienteAgendar':
         $cita->pacienteAgendar();
         break;
+    case 'agendarHoraPaciente':
+        $cita->agendarHoraPaciente();
     default:
         $cita->index();
         break;
@@ -446,5 +448,37 @@ class CitaController
         $especialistas = $this->EspecialistaModel->findAll();
         include '../views/especialista/cita/pacienteAgendar.php';
         exit;
+    }
+
+    public function agendarHoraPaciente()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id_especialista = $_POST['id_especialista'];
+            $fecha = $_POST['cita_fecha'];
+            $motivo = $_POST['cita_motivo'];
+            $id_paciente = $_POST['cita_paciente'];
+
+            // Horarios base
+
+            $horarios = [
+                "08:00:00", "09:00:00", "10:00:00", "11:00:00",
+                "12:00:00", "13:00:00", "14:00:00", "15:00:00",
+                "16:00:00", "17:00:00"
+            ];
+
+            $ocupados = $this->CitaModel->obtenerHorariosOcupados($id_especialista, $fecha);
+            $disponibles = array_diff($horarios, $ocupados);
+
+            // Pasamos datos a la vista
+            $cita_especialista = $id_especialista;
+            $especialista = $this->EspecialistaModel->find($id_especialista);
+            $cita_fecha = $fecha;
+            $cita_motivo = $motivo;
+            $cita_paciente = $id_paciente;
+
+            
+            include '../views/especialista/cita/citaHoraPaciente.php';
+            exit;
+        }
     }
 }
