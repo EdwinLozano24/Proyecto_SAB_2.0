@@ -143,7 +143,7 @@ LEFT JOIN tbl_usuarios ue
 
     public function findRolPqrs($id_usuario)
     {
-        $stmt = $this->pdo->prepare("SELECT id_empleado FROM tbl_empleados WHERE empl_usuario = :id_usuario AND empl_rol = 4");
+        $stmt = $this->pdo->prepare("SELECT id_empleado FROM tbl_empleados WHERE empl_usuario = :id_usuario AND empl_rol = 4 AND empl_estado = Activo");
         $stmt->execute([':id_usuario' => $id_usuario]);
         return $stmt->fetchColumn();
     }
