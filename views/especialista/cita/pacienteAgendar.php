@@ -22,8 +22,8 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
 <body class="citas-page">
     <?php
     include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/especialista/header.php');
-    include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/especialista/nav/navAgendarCita.php');
-    include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/especialista/aside/aside.php');
+    include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/especialista/nav/navPacienteAgendar.php');
+    include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/especialista/aside/asidePacienteAgendar.php');
     ?>
 
     <main class="main-content">
