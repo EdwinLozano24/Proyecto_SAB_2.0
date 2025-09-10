@@ -25,7 +25,7 @@ switch ($action) {
     case 'update':
         $controller->update();
         break;
-    case 'updateAdmin'
+    case 'updateAdmin':
         $controller->updateAdmin();
         break;
 
