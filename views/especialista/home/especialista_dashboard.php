@@ -34,7 +34,7 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
             <div class="content-card">
                 <h3 class="card-title">Agenda una Cita</h3>
                 <p class="card-description">Reserva una cita para el usuario que la solicite. ¡La salud oral es nuestra prioridad!.</p>
-                <a href="/controllers/CitaController.php?accion=viewAgendar&rol=Paciente" class="btn btn-primary" style="margin-top: 16px;">Ir ya</a>
+                <a href="/controllers/CitaController.php?accion=pacienteAgendar" class="btn btn-primary" style="margin-top: 16px;">Ir ya</a>
             </div>
 
             <div class="content-card">
