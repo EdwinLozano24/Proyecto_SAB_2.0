@@ -28,26 +28,25 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
     <main class="main-content">
         <div class="content-header">
             <h2 class="content-title">Bienvenido a SAB</h2>
-            <p class="content-subtitle">Explora las diferentes secciones y descubre todo lo que tenemos para ofrecer como sistema de gestión odontológica.</p>
+            <p class="content-subtitle">Nos alegra que seas parte del equipo interno de SAB, utiliza las diferentes secciones para garantizar una excelente experiencia a los usuarios.</p>
         </div>
         <div class="content-grid">
             <div class="content-card">
-                <h3 class="card-title">Agenda Tu Cita</h3>
-                <p class="card-description">Reserva fácilmente tu cita para chequeos, limpiezas, tratamientos especializados o cualquier consulta.
-                ¡Tu salud oral es nuestra prioridad!.</p>
+                <h3 class="card-title">Agenda una Cita</h3>
+                <p class="card-description">Reserva una cita para el usuario que la solicite. ¡La salud oral es nuestra prioridad!.</p>
                 <a href="/controllers/CitaController.php?accion=viewAgendar&rol=Paciente" class="btn btn-primary" style="margin-top: 16px;">Ver más</a>
             </div>
 
             <div class="content-card">
-                <h3 class="card-title">Tratamientos</h3>
-                <p class="card-description">En nuestro Centro Odontológico te ofrecemos una amplia gama de tratamientos diseñados para cuidar y mejorar tu salud bucal.</p>
+                <h3 class="card-title">Atender Citas</h3>
+                <p class="card-description">Atiende las citas pedientes relacionadas a tu usuario. ¡La calidad de servicio es nuestra prioridad!</p>
                 <a href="/views/paciente/tratamiento/tratamientoVisualizar.php" class="btn btn-primary" style="margin-top: 16px;">Ver más</a>
             </div>
 
             <div class="content-card">
-                <h3 class="card-title">Crear PQR</h3>
+                <h3 class="card-title">Responder Pqrs</h3>
                 <p class="card-description">En SAB estamos comprometidos con mejorar cada día.
-        Envía tus peticiones, quejas, reclamos o sugerencias y ayúdanos a brindarte una mejor atención.</p>
+        Si eres encargado de la gestion de Pqrs ingresa para ver las Pqrs pendientes de los usuarios.</p>
                 <a href="/views/paciente/pqr/crearPQR.php" class="btn btn-primary" style="margin-top: 16px;">Ver mas</a>
             </div>
         </div>
