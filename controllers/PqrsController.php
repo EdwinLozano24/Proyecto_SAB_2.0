@@ -187,7 +187,7 @@ class PqrsController
     public function visualizarPqrs($id_usuario)
     {
         $permisos = $this->pqrsModel->findRolPqrs($id_usuario);
-
+        var_dump($permisos);
         if ($permisos = false)
         {
             echo 'Hola';
