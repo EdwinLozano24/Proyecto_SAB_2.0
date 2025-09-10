@@ -62,6 +62,10 @@ switch ($accion) {
         break;
     case 'agendarHoraPaciente':
         $cita->agendarHoraPaciente();
+        break;
+    case 'agendarCitaPaciente':
+        $cita->agendarCitaPaciente();
+        break;
     default:
         $cita->index();
         break;
@@ -480,5 +484,63 @@ class CitaController
             include '../views/especialista/cita/citaHoraPaciente.php';
             exit;
         }
+        
+    }
+
+    public function agendarCitaPaciente()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+            $cita_paciente = $_POST['cita_paciente'];
+            $cita_historial = $this->HistorialModel->findIdHistorial($cita_paciente);
+        
+            $cita_hora_inicio = $_POST['cita_hora_inicio'];
+            $cita_hora_fin = date('H:i:s', strtotime($cita_hora_inicio . ' + 60 minutes'));
+
+            $inicio = new DateTime($cita_hora_inicio);
+            $fin = new DateTime($cita_hora_fin);
+            $cita_duracion = $inicio->diff($fin)->h * 60 + $inicio->diff($fin)->i;
+
+            $horaInt = (int)$inicio->format("H");
+            $cita_turno = ($horaInt < 12) ? "Mañana" : "Tarde";
+
+            $cita_fecha = $_POST['cita_fecha'];
+            $consultorio = $this->ConsultorioModel->findConsultorioLibre($cita_fecha, $cita_hora_inicio,$cita_hora_fin);
+
+
+            $data = [
+                'cita_paciente' => $cita_paciente,
+                'cita_historial' => $cita_historial,
+                'cita_especialista' => $_POST['cita_especialista'] ?? null,
+                'cita_fecha' => $_POST['cita_fecha'] ?? null,
+                'cita_hora_inicio' => $_POST['cita_hora_inicio'] ?? null,
+                'cita_hora_fin' => $cita_hora_fin,
+                'cita_turno' => $cita_turno,
+                'cita_duracion' => $cita_duracion,
+                'cita_consultorio' => $consultorio,
+                'cita_motivo' => $_POST['cita_motivo'] ?? null,
+                'cita_observacion' => $_POST['cita_observacion'] ?? null,
+                'cita_estado' => 'Proceso',
+            ];
+
+            try {
+            $this->CitaModel->store($data);
+                $usuarioGuardado = $this->UsuarioModel->findCorreoUser($id_usuario);
+                    
+                if ($usuarioGuardado && isset($usuarioGuardado['usua_correo_electronico'])) {
+                    $correoUsuario = $usuarioGuardado['usua_correo_electronico'];
+                        $this->mailer->send(
+                            $correoUsuario,
+                            'Cita Agendada Correctamente',
+                            'cita_agendada',
+                            ['usuario' => $usuarioGuardado, 'app_url' => $this->config['app_url']]
+                            );
+                    }
+                    header('Location: ../views/especialista/home/especialista_dashboard.php');
+                    } catch (\Exception $e) {
+                        error_log("Error al registrar la cita: " . $e->getMessage());
+                        echo "Ocurrió un error al registrar el usuario. error: $e";
+                    }
+                }
     }
 }
