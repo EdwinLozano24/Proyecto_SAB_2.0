@@ -8,10 +8,10 @@ $controller = new ConsultorioController();
 $action = $_GET['accion'] ?? 'index';
 
 switch ($action) {
-    case 'view_store';
+    case 'view_store':
         $controller->view_store();
         break;
-    case 'store';
+    case 'store':
         $controller->store();
         break;
 
@@ -19,11 +19,11 @@ switch ($action) {
         $controller->view_update($_GET['id_consultorio'] ?? null);
         break;
 
-    case 'update';
+    case 'update':
         $controller->update();
         break;
 
-    case 'delete';
+    case 'delete':
         $controller->delete($_GET['id_consultorio'] ?? null);
         break;
 
