@@ -522,8 +522,6 @@ class CitaController
                 'cita_observacion' => $_POST['cita_observacion'] ?? null,
                 'cita_estado' => 'Proceso',
             ];
-            var_dump($consultorio);
-            exit;
             try {
             $this->CitaModel->store($data);
                 $pacienteUsuario = $this->PacienteModel->findUsuario($cita_paciente);
