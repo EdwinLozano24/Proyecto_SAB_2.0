@@ -57,6 +57,9 @@ switch ($accion) {
     case 'pacienteCitas':
         $cita->pacienteCitas($_GET['id_usuario']);
         break;
+    case 'pacienteAgendar':
+        $cita->pacienteAgendar();
+        break;
     default:
         $cita->index();
         break;
@@ -435,5 +438,13 @@ class CitaController
         $id_paciente = $this->PacienteModel->findIdPaciente($id_usuario);
         $cita = $this->CitaModel->findCitaPaciente($id_paciente);
         include '../views/paciente/cita/citaPaciente.php';
+    }
+
+    public function pacienteAgendar()
+    {
+        $pacientes = $this->PacienteModel->findAll();
+        $especialistas = $this->EspecialistaModel->findAll();
+        include '../views/especialista/cita/pacienteAgendar.php';
+        exit;
     }
 }
