@@ -139,7 +139,8 @@ class PqrsController
             'pqrs_usuario' => $_POST['pqrs_usuario'] ?? null,
             'pqrs_empleado'       => $empleado,
         ];
-
+        var_dump($data['pqrs_empleado']);
+exit;
         $origen = $_POST['origen_formulario'] ?? 'Administrador';
 
         try {
