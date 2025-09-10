@@ -37,7 +37,7 @@ class PacienteModel
 
     public function findUsuario($id_paciente)
     {
-        $sql = "SELECT id_usuario FROM tbl_pacientes WHERE id_paciente = :id_paciente";
+        $sql = "SELECT paci_usuario FROM tbl_pacientes WHERE id_paciente = :id_paciente";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(':id_paciente', $id_paciente, PDO::PARAM_INT);
         $stmt->execute();
