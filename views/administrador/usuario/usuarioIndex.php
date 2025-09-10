@@ -193,7 +193,7 @@ $usuarios = $stmt->fetchAll();
                         orientation: 'landscape',
                         title: 'Usuarios Registrados',
                         exportOptions: {
-                            columns: ':visible:not(:last-child)'
+                            columns: [0, 1, 2, 3, 4, 5, 6, 7, 8] // 👈 solo columnas válidas
                         },
                         customize: function(doc) {
                             doc.pageMargins = [20, 20, 20, 20];
@@ -216,7 +216,6 @@ $usuarios = $stmt->fetchAll();
                                 margin: [5, 5, 5, 5]
                             };
 
-                            // Líneas suaves en la tabla
                             doc.content[1].layout = {
                                 hLineWidth: function() {
                                     return 0.5;
