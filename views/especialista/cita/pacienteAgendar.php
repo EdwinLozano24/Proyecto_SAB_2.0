@@ -95,10 +95,6 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
                                         <option value="Otro" data-duration="30">Otro (30 min)</option>
                                     </select>
                                 </div>
-                                <div id="duration-display" class="duration-info">
-                                    <i class="fas fa-hourglass-half"></i>
-                                    <span id="duration-text">Selecciona un motivo para ver la duración</span>
-                                </div>
                             </div>
 
                             <div class="form-group">
