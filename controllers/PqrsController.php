@@ -190,12 +190,14 @@ class PqrsController
         var_dump($permisos);
         if ($permisos === false)
         {
-            echo 'Adios';
-        } else { echo 'Hola';}
-        exit;
+            $error = "Lo sentimos, no cuentas con los permisos para realizar esta accion, comunicate con un usuario administrador";
+            include '../views/.general/error/encargadoPqrs.php';
+            exit;
+        } else {
         $pendientes = $this->pqrsModel->findPendientes();
         include '../views/especialista/pqr/visualizarPQR.php';
         exit;
+        }
     }
 
     public function responderPqrs($id_pqrs)
