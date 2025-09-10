@@ -42,7 +42,7 @@ $empl = $stmt->fetchAll();
             <p class="subtitle">Sistema de Gestión Odontológica SAB</p>
         </div>
 
-        <form id="PqrsStore" method="POST" action="/controllers/PqrsController.php?accion=store">
+        <form id="PqrsStore" method="POST" action="/controllers/PqrsController.php?accion=store&rol=Administrador">
             <div class="form-section">
                 <div class="section-title">
                     <div class="section-icon">📝</div>
