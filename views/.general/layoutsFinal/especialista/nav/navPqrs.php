@@ -8,7 +8,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/controllers/CitaController.php?accion=especialistaCitaView&id_usuario=<?php echo $_SESSION['usuario']['id_usuario']; ?>" class="nav-link active">
+                <a href="/controllers/CitaController.php?accion=especialistaCitaView&id_usuario=<?php echo $_SESSION['usuario']['id_usuario']; ?>" class="nav-link">
                     <div class="nav-icon"></div>
                     Atender Citas
                 </a>
@@ -32,7 +32,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/views/especialista/pqr/crearPQRSEspe.php" class="nav-link">
+                <a href="/views/especialista/pqr/crearPQRSEspe.php" class="nav-link active">
                     <div class="nav-icon"></div>
                     Crear Pqrs
                 </a>

@@ -32,7 +32,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/views/paciente/pqr/crearPQR.php" class="nav-link">
+                <a href="/views/especialista/pqr/crearPQRSEspe.php" class="nav-link">
                     <div class="nav-icon"></div>
                     Crear Pqrs
                 </a>
