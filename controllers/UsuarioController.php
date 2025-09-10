@@ -120,7 +120,7 @@ class UsuarioController
         if (!empty($errors)) {
             if ($origen === 'Administrador') {
                 // Regresar al formulario de administración
-                include '../views/.general/error/alerta.php';
+                include '../views/.general/error/alertaIndex.php';
             } else {
                 // Regresar al login/registro del usuario común
                 include '../views/.general/usuario/loginRegister.php';
