@@ -190,8 +190,8 @@ class PqrsController
         var_dump($permisos);
         if ($permisos === false)
         {
-            echo 'Hola';
-        } else { echo 'Adios';}
+            echo 'Adios';
+        } else { echo 'Hola';}
         exit;
         $pendientes = $this->pqrsModel->findPendientes();
         include '../views/especialista/pqr/visualizarPQR.php';
