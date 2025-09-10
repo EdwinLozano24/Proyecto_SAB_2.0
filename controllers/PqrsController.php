@@ -192,7 +192,7 @@ class PqrsController
         {
             echo 'Hola';
         } else { echo 'Adios';}
-
+        exit;
         $pendientes = $this->pqrsModel->findPendientes();
         include '../views/especialista/pqr/visualizarPQR.php';
         exit;
