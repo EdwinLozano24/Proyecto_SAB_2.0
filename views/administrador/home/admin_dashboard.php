@@ -30,32 +30,35 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
             <p class="content-subtitle">Panel de administración</p>
         </div>
 
-        <div class="content-card">
-            <h3 class="card-title">Gestionar usuarios</h3>
-            <p class="card-description"></p>
-            <a href="/controllers/UsuarioController.php?accion=index" class="btn btn-primary" style="margin-top: 16px;">Ir</a>
-        </div>
+        <!-- Contenedor de tarjetas -->
+        <div class="content-grid">
+            <!-- Tarjeta 1 -->
+            <div class="content-card">
+                <h3 class="card-title">Gestionar usuarios</h3>
+                <p class="card-description"></p>
+                <a href="/controllers/UsuarioController.php?accion=index" class="btn btn-primary" style="margin-top: 16px;">Ir</a>
+            </div>
 
-        <!-- Tarjeta 2 -->
-        <div class="content-card">
-            <h3 class="card-title">Gestionar citas</h3>
-            <p class="card-description"></p>
-            <a href="/controllers/CitaController.php?accion=index" class="btn btn-primary" style="margin-top: 16px;">Ir</a>
-        </div>
+            <!-- Tarjeta 2 -->
+            <div class="content-card">
+                <h3 class="card-title">Gestionar citas</h3>
+                <p class="card-description"></p>
+                <a href="/controllers/CitaController.php?accion=index" class="btn btn-primary" style="margin-top: 16px;">Ir</a>
+            </div>
 
-        <!-- Tarjeta 3 -->
-        <div class="content-card">
-            <h3 class="card-title">Consultorios</h3>
-            <p class="card-description"></p>
-            <a href="/controllers/ConsultorioController.php?accion=index" class="btn btn-primary" style="margin-top: 16px;">Ver más</a>
-        </div>
+            <!-- Tarjeta 3 -->
+            <div class="content-card">
+                <h3 class="card-title">Consultorios</h3>
+                <p class="card-description"></p>
+                <a href="/controllers/ConsultorioController.php?accion=index" class="btn btn-primary" style="margin-top: 16px;">Ver más</a>
+            </div>
 
-        <!-- Tarjeta 4 -->
-        <div class="content-card">
-            <h3 class="card-title">Solucione PQRS</h3>
-            <p class="card-description"></p>
-            <a href="/controllers/PqrsController.php?accion=index" class="btn btn-primary" style="margin-top: 16px;">Ir</a>
-        </div>
+            <!-- Tarjeta 4 -->
+            <div class="content-card">
+                <h3 class="card-title">Solucione PQRS</h3>
+                <p class="card-description"></p>
+                <a href="/controllers/PqrsController.php?accion=index" class="btn btn-primary" style="margin-top: 16px;">Ir</a>
+            </div>
         </div>
     </main>
     <?php
