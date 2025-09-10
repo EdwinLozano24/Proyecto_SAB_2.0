@@ -83,11 +83,11 @@ $citas = $stmt->fetchAll();
         </div>
 
         <div class="mb-4 d-flex justify-content-between align-items-center">
-            <a href="/controllers/CitaController.php?accion=view_store"
+            <!-- <a href="/controllers/CitaController.php?accion=view_store"
                 class="btn-custom btn-primary-custom">
                 <i class="fa-solid fa-square-plus"></i>
                 Nueva Cita
-            </a>
+            </a> -->
             <div id="botonesExportacion"></div>
         </div>
 
