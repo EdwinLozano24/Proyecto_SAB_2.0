@@ -1,20 +1,27 @@
 <?php
+require_once $_SERVER['DOCUMENT_ROOT'] . '/config/auth.php';
+requiereSesion();
+
 require_once __DIR__ . '/../../config/database.php';
 $pdo = conectarBD();
+
 $sql = "SELECT * FROM tbl_consultorios ORDER BY
     CASE cons_estado
         WHEN 'Disponible' THEN 1
         WHEN 'No Disponible' THEN 2
         ELSE 3
     END, id_consultorio ASC "; // Ordenar por estado y luego por número
+
 $stmt = $pdo->query($sql);
 $consultorios = $stmt->fetchAll();
+
 
 
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,9 +44,10 @@ $consultorios = $stmt->fetchAll();
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
     <h2>Consultorios Registrados</h2>
-   <a href="/proyecto_sab/controllers/ConsultorioController.php?accion=view_store">Nuevo consultorio<i class="fa-solid fa-square-plus"></i></a>
+    <a href="/proyecto_sab/controllers/ConsultorioController.php?accion=view_store">Nuevo consultorio<i class="fa-solid fa-square-plus"></i></a>
     <table id="ConsultoriosDatatable" class="display">
         <thead>
             <tr>
@@ -50,14 +58,14 @@ $consultorios = $stmt->fetchAll();
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($consultorios as $consultorio): ?>
+            <?php foreach ($consultorios as $c): ?>
                 <tr>
-                    <td><?= htmlspecialchars($consultorio['id_consultorio']) ?></td>
-                    <td><?= htmlspecialchars($consultorio['cons_numero']) ?></td>
-                    <td><?= htmlspecialchars($consultorio['cons_estado']) ?></td>
+                    <td><?= htmlspecialchars($c['id_consultorio']) ?></td>
+                    <td><?= htmlspecialchars($c['cons_numero']) ?></td>
+                    <td><?= htmlspecialchars($c['cons_estado']) ?></td>
                     <td>
-                        <a href="/proyecto_sab/controllers/ConsultorioController.php?accion=view_update&id_consultorio=<?= $consultorio['id_consultorio'] ?>"><i class="fa-solid fa-pen-to-square"></i></a>
-                        <a href="/proyecto_sab/controllers/ConsultorioController.php?accion=delete&id_consultorio=<?= $consultorio['id_consultorio'] ?>"><i class="fa-solid fa-trash"></i></a>
+                        <a href="/controllers/ConsultorioController.php?accion=view_update&id_consultorio=<?= $c['id_consultorio'] ?>">Editar</a>
+                        <a href="/controllers/ConsultorioController.php?accion=delete&id_consultorio=<?= $c['id_consultorio'] ?>">Eliminar</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -354,13 +362,14 @@ $consultorios = $stmt->fetchAll();
                 },
 
 
-            ) 
+            )
 
         })
     </script>
 
 
-    
-    
+
+
 </body>
+
 </html>
