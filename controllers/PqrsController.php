@@ -126,8 +126,6 @@ class PqrsController
 
     public function update(): void
     {
-        $id_usuario = $_POST['pqrs_empleado'] ?? null;
-        $empleado = $this->pqrsModel->findEmpleado($id_usuario);
         $data = [
             'id_pqrs'             => $_POST['id_pqrs'] ?? null,
             'pqrs_tipo'           => $_POST['pqrs_tipo']        ?? null,
@@ -137,10 +135,9 @@ class PqrsController
             'pqrs_respuesta'      => $_POST['pqrs_respuesta']   ?? null,
             'pqrs_fecha_respuesta' => $_POST['pqrs_fecha_respuesta'] ?? date("Y-m-d H:i:s"),
             'pqrs_usuario' => $_POST['pqrs_usuario'] ?? null,
-            'pqrs_empleado'       => $empleado,
+            'pqrs_empleado'       => $_POST['pqrs_empleado'],
         ];
-        var_dump($data['pqrs_empleado']);
-exit;
+        
         $origen = $_POST['origen_formulario'] ?? 'Administrador';
 
         try {
