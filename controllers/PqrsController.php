@@ -188,7 +188,7 @@ class PqrsController
     {
         $permisos = $this->pqrsModel->findRolPqrs($id_usuario);
         var_dump($permisos);
-        if ($permisos = false)
+        if ($permisos === false)
         {
             echo 'Hola';
         } else { echo 'Adios';}
