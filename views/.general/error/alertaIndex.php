@@ -28,13 +28,13 @@
 
         <!-- Título y subtítulo -->
         <h1 class="error-title">Ocurrio un error al ingresar el usuario</h1>
-        <h2 class="error-subtitle"></h2>
+        <h2 class="error-subtitle">                   <?php foreach ($errors as $error): ?>
+        <li><?= htmlspecialchars($error) ?></li>
+      <?php endforeach; ?></h2>
 
         <!-- Descripción -->
         <p class="error-description">
-                  <?php foreach ($errors as $error): ?>
-        <li><?= htmlspecialchars($error) ?></li>
-      <?php endforeach; ?>
+
         </p>
 
         <!-- Botones de acción -->
