@@ -32,7 +32,9 @@
 
         <!-- Descripción -->
         <p class="error-description">
-            <?php echo($errors); ?>
+                  <?php foreach ($errors as $error): ?>
+        <li><?= htmlspecialchars($error) ?></li>
+      <?php endforeach; ?>
         </p>
 
         <!-- Botones de acción -->
