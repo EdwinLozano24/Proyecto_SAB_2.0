@@ -13,8 +13,6 @@ $sql = "SELECT * FROM tbl_consultorios ORDER BY
 $stmt = $pdo->query($sql);
 $consultorios = $stmt->fetchAll();
 
-
-
 ?>
 
 <!DOCTYPE html>
@@ -25,8 +23,8 @@ $consultorios = $stmt->fetchAll();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <?php
-    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/assets/css/admin/usuario.css';
-    $cssUrl = '/assets/css/admin/usuario.css';
+    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/assets/css/admin/crudIndex.css';
+    $cssUrl = '/assets/css/admin/crudIndex.css';
     if (file_exists($cssPath)) {
         echo '<link rel="stylesheet" href="' . $cssUrl . '">';
     } else {
