@@ -40,14 +40,14 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
             <div class="content-card">
                 <h3 class="card-title">Atender Citas</h3>
                 <p class="card-description">Atiende las citas pendientes relacionadas a tu usuario. ¡La calidad de servicio es nuestra prioridad!</p>
-                <a href="/views/paciente/tratamiento/tratamientoVisualizar.php" class="btn btn-primary" style="margin-top: 16px;">Ir ya</a>
+                <a href="/controllers/CitaController.php?accion=especialistaCitaView&id_usuario=<?php echo $_SESSION['usuario']['id_usuario']; ?>" class="btn btn-primary" style="margin-top: 16px;">Ir ya</a>
             </div>
 
             <div class="content-card">
                 <h3 class="card-title">Responder Pqrs</h3>
                 <p class="card-description">En SAB estamos comprometidos con mejorar cada día.
         Si eres encargado de la gestion de Pqrs ingresa para ver las Pqrs pendientes de los usuarios.</p>
-                <a href="/views/paciente/pqr/crearPQR.php" class="btn btn-primary" style="margin-top: 16px;">Ir ya</a>
+                <a href="/controllers/PqrsController.php?accion=visualizarPqrs" class="btn btn-primary" style="margin-top: 16px;">Ir ya</a>
             </div>
         </div>
     </main>
