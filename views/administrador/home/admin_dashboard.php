@@ -52,7 +52,7 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
 
             <div class="content-card">
                 <h3 class="card-title">Gestionar Historial Clinico</h3>
-                <p class="card-description">18 (ejemplo)</p>
+                <p class="card-description"></p>
                 <a href="/controllers/HistorialController.php?accion=index" class="btn btn-primary" style="margin-top: 16px;">Ver más</a>
             </div>
 
