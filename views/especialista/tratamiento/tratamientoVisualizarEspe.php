@@ -117,7 +117,7 @@
             <p><strong>Estado:</strong> <span id="modal-estado"></span></p>
 
             <div class="modal-footer">
-                <a href="/controllers/CitaController.php?accion=viewAgendar&rol=Administrador" class="btn-agendar">Agendar Cita</a>
+                <a href="/controllers/CitaController.php?accion=viewAgendar&rol=Especialista" class="btn-agendar">Agendar Cita</a>
             </div>
         </div>
     </div>
