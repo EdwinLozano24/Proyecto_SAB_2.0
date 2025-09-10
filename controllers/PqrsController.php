@@ -15,7 +15,7 @@ switch ($action) {
         break;
 
     case 'store':
-        $controller->store($rol);
+        $controller->store($_GET['rol']);
         break;
 
     case 'view_update':
