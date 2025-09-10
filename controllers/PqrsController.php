@@ -114,7 +114,7 @@ class PqrsController
             } elseif ($rol === "Administrador") {
             header('Location: ../views/administrador/pqrs/pqrsIndex.php');
             } elseif ($rol === "Especialista") {
-            header('Location: ../views/administrador/home/admin_dashboard.php');
+            header('Location: ../views/administrador/home/especialista_dashboard.php');
             } else {
             header('Location: ../views/paciente/home/paciente_dashboard.php');
             }
