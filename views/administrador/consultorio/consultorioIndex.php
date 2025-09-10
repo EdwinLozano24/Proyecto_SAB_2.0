@@ -1,7 +1,6 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/config/auth.php';
 requiereSesion();
-
 $pdo = conectarBD();
 
 $sql = "SELECT * FROM tbl_consultorios ORDER BY
@@ -46,7 +45,7 @@ $consultorios = $stmt->fetchAll();
 
 <body>
     <h2>Consultorios Registrados</h2>
-    <a href="/proyecto_sab/controllers/ConsultorioController.php?accion=view_store">Nuevo consultorio<i class="fa-solid fa-square-plus"></i></a>
+    <a href="/controllers/ConsultorioController.php?accion=view_store">Nuevo consultorio<i class="fa-solid fa-square-plus"></i></a>
     <table id="ConsultoriosDatatable" class="display">
         <thead>
             <tr>
