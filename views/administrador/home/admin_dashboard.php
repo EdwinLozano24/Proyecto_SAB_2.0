@@ -57,9 +57,9 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
             </div>
 
             <div class="content-card">
-                <h3 class="card-title">PQRS registrados</h3>
-                <p class="card-description">25 (ejemplo)</p>
-                <a href="#" class="btn btn-primary" style="margin-top: 16px;">Ver más</a>
+                <h3 class="card-title">Consultorios</h3>
+                <p class="card-description"></p>
+                <a href="/controllers/ConsultorioController.php?accion=index" class="btn btn-primary" style="margin-top: 16px;">Ver más</a>
             </div>
         </div>
 
@@ -67,7 +67,7 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
             <div class="content-card">
                 <h3 class="card-title">Solucione PQRS</h3>
                 <p class="card-description"></p>
-                <a href="#" class="btn btn-primary" style="margin-top: 16px;">Ir</a>
+                <a href="/controllers/PqrsController.php?accion=index" class="btn btn-primary" style="margin-top: 16px;">Ir</a>
             </div>
             <div class="content-card">
                 <h3 class="card-title">Solicitudes Historial Clínico</h3>
