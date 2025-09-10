@@ -32,7 +32,7 @@
 
         <!-- Descripción -->
         <p class="error-description">
-            <?php echo($erros); ?>
+            <?php echo($errors); ?>
         </p>
 
         <!-- Botones de acción -->
