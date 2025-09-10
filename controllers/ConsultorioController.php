@@ -48,9 +48,11 @@ class ConsultorioController
     /* ---------- VISTAS ---------- */
     public function index(): void
     {
-        header('Location: /views/administrador/consultorio/consultorioIndex.php');
+        $consultorios = $this->ConsultorioModel->findAll();
+        include __DIR__ . '/../views/administrador/consultorio/consultorioIndex.php';
         exit;
     }
+
 
     public function view_store(): void
     {
@@ -66,7 +68,7 @@ class ConsultorioController
 
         $cons = $this->ConsultorioModel->find($id_consultorio);
         $consAll = $this->ConsultorioModel->findAll();
-        include '/views/administrador/consultorio/consultorioUpdate.php';
+        include __DIR__ . '/../views/administrador/consultorio/consultorioUpdate.php';
         exit;
     }
 
