@@ -77,8 +77,8 @@ $usuarios = $stmt->fetchAll();
                 <label for="filtroEstado" class="form-label">Filtrar por Estado:</label>
                 <select id="filtroEstado" class="form-select">
                     <option value="">Todos..</option>
-                    <option value="activo">Activo</option>
-                    <option value="inactivo">Inactivo</option>
+                    <option value="Activo">Activo</option>
+                    <option value="Inactivo">Inactivo</option>
                 </select>
             </div>
         </div>
@@ -174,7 +174,7 @@ $usuarios = $stmt->fetchAll();
                         className: "btn btn-success me-1",
                         title: 'Usuarios registrados',
                         exportOptions: {
-                            columns: ':visible:not(:last-child)'
+                            columns: [0, 1, 2, 3, 4, 5, 6, 7, 8] // solo hasta "Estado"
                         },
                         customize: function(xlsx) {
                             var sheet = xlsx.xl.worksheets['sheet1.xml'];
