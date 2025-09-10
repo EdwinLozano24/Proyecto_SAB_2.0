@@ -35,7 +35,7 @@ switch ($action) {
         break;
 
     case 'visualizarPqrs':
-        $controller->visualizarPqrs();
+        $controller->visualizarPqrs($_GET['id_usuario']);
         break;
 
     case 'responderPqrs':
@@ -184,8 +184,11 @@ class PqrsController
         }
     }
 
-    public function visualizarPqrs()
+    public function visualizarPqrs($id_usuario)
     {
+        $permisos = $this->pqrsModel->findRolPqrs($id_usuario);
+        var_dump($permisos); exit;
+
         $pendientes = $this->pqrsModel->findPendientes();
         include '../views/especialista/pqr/visualizarPQR.php';
         exit;

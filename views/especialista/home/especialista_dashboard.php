@@ -47,7 +47,7 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
                 <h3 class="card-title">Responder Pqrs</h3>
                 <p class="card-description">En SAB estamos comprometidos con mejorar cada día.
         Si eres encargado de la gestion de Pqrs ingresa para ver las Pqrs pendientes de los usuarios.</p>
-                <a href="/controllers/PqrsController.php?accion=visualizarPqrs" class="btn btn-primary" style="margin-top: 16px;">Ir ya</a>
+                <a href="/controllers/PqrsController.php?accion=visualizarPqrs&id_usuario=<?php echo $_SESSION['usuario']['id_usuario']; ?>" class="btn btn-primary" style="margin-top: 16px;">Ir ya</a>
             </div>
         </div>
     </main>
