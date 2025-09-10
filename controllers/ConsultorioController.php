@@ -48,7 +48,7 @@ class ConsultorioController
     /* ---------- VISTAS ---------- */
     public function index(): void
     {
-        header('Location: /views/consultorio/consultorioIndex.php');
+        header('Location: /views/administrador/consultorio/consultorioIndex.php');
         exit;
     }
 
