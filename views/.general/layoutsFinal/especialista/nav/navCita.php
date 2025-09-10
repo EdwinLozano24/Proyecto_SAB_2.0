@@ -26,7 +26,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="<?php echo dirname(dirname($_SERVER['SCRIPT_NAME'])) ?>/views/tratamiento/tratamientoVisualizar.php" class="nav-link">
+                <a href="/views/especialista/tratamiento/tratamientoVisualizarEspe.php" class="nav-link">
                     <div class="nav-icon"></div>
                     Tratamientos Disponibles
                 </a>

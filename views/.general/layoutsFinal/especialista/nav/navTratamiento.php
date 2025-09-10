@@ -2,7 +2,7 @@
 <nav class="nav">
         <ul class="nav-list">
             <li class="nav-item">
-                <a href="/views/especialista/home/especialista_dashboard.php" class="nav-link active">
+                <a href="/views/especialista/home/especialista_dashboard.php" class="nav-link">
                     <div class="nav-icon"></div>
                     Inicio
                 </a>
@@ -26,7 +26,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/views/especialista/tratamiento/tratamientoVisualizarEspe.php" class="nav-link">
+                <a href="/views/especialista/tratamiento/tratamientoVisualizarEspe.php" class="nav-link active">
                     <div class="nav-icon"></div>
                     Tratamientos Disponibles
                 </a>
