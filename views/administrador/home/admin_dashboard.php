@@ -16,7 +16,7 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
 </head>
 
 <body>
-    <?php 
+    <?php
     include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/admin/header.php');
     include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/admin/nav/navInicio.php');
     include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/admin/aside/asideInicio.php');
@@ -30,32 +30,33 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
             <p class="content-subtitle">Panel de administración</p>
         </div>
 
-        <div class="content-grid">
-            <div class="content-card">
-                <h3 class="card-title">Gestionar usuarios</h3>
-                <p class="card-description"></p>
-                <a href="/controllers/UsuarioController.php?accion=index" class="btn btn-primary" style="margin-top: 16px;">Ir</a>
-            </div>
-            <div class="content-grid">
-                <h3 class="card-title">Gestionar citas</h3>
-                <p class="card-description"></p>
-                <a href="/controllers/CitaController.php?accion=index" class="btn btn-primary" style="margin-top: 16px;">Ir</a>
-            </div>
+        <div class="content-card">
+            <h3 class="card-title">Gestionar usuarios</h3>
+            <p class="card-description"></p>
+            <a href="/controllers/UsuarioController.php?accion=index" class="btn btn-primary" style="margin-top: 16px;">Ir</a>
         </div>
 
-            <div class="content-grid">
-                <h3 class="card-title">Consultorios</h3>
-                <p class="card-description"></p>
-                <a href="/controllers/ConsultorioController.php?accion=index" class="btn btn-primary" style="margin-top: 16px;">Ver más</a>
-            </div>
+        <!-- Tarjeta 2 -->
+        <div class="content-card">
+            <h3 class="card-title">Gestionar citas</h3>
+            <p class="card-description"></p>
+            <a href="/controllers/CitaController.php?accion=index" class="btn btn-primary" style="margin-top: 16px;">Ir</a>
         </div>
 
-        <div class="content-grid">
-            <div class="content-card">
-                <h3 class="card-title">Solucione PQRS</h3>
-                <p class="card-description"></p>
-                <a href="/controllers/PqrsController.php?accion=index" class="btn btn-primary" style="margin-top: 16px;">Ir</a>
-            </div>
+        <!-- Tarjeta 3 -->
+        <div class="content-card">
+            <h3 class="card-title">Consultorios</h3>
+            <p class="card-description"></p>
+            <a href="/controllers/ConsultorioController.php?accion=index" class="btn btn-primary" style="margin-top: 16px;">Ver más</a>
+        </div>
+
+        <!-- Tarjeta 4 -->
+        <div class="content-card">
+            <h3 class="card-title">Solucione PQRS</h3>
+            <p class="card-description"></p>
+            <a href="/controllers/PqrsController.php?accion=index" class="btn btn-primary" style="margin-top: 16px;">Ir</a>
+        </div>
+        </div>
     </main>
     <?php
     include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/admin/footer.php');
