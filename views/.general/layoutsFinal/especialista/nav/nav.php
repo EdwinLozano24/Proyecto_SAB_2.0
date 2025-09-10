@@ -38,7 +38,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/views/.general/contactenos/contactenos.php" class="nav-link">
+                <a href="/views/especialista/contactenos/contactenosEspe.php" class="nav-link">
                     <div class="nav-icon"></div>
                     Contáctanos
                 </a>

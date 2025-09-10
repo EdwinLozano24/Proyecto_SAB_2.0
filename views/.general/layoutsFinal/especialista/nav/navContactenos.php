@@ -20,7 +20,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/controllers/CitaController.php?accion=viewAgendar&rol=Especialista" class="nav-link active">
+                <a href="/controllers/CitaController.php?accion=viewAgendar&rol=Especialista" class="nav-link">
                     <div class="nav-icon"></div>
                     Agenda tu Cita
                 </a>
@@ -38,7 +38,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/views/especialista/contactenos/contactenosEspe.php" class="nav-link">
+                <a href="/views/especialista/contactenos/contactenosEspe.php" class="nav-link active">
                     <div class="nav-icon"></div>
                     Contáctanos
                 </a>
