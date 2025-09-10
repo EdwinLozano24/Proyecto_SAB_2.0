@@ -137,7 +137,7 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
     <!-- <script src="script.js"></script> -->
     <script>
 $(document).ready(function() {
-    $('#cita_especialista').select2();
+    $('#id_especialista').select2();
 });
 </script>
 </body>
