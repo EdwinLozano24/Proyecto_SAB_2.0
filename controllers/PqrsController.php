@@ -25,6 +25,9 @@ switch ($action) {
     case 'update':
         $controller->update();
         break;
+    case 'updateAdmin'
+        $controller->updateAdmin();
+        break;
 
     case 'delete':
         $controller->delete($_GET['id_pqrs'] ?? null);
@@ -126,6 +129,41 @@ class PqrsController
 
     public function update(): void
     {
+        $id_usuario = $_POST['pqrs_empleado'] ?? null;
+        $empleado = $this->pqrsModel->findEmpleado($id_usuario);
+        $data = [
+            'id_pqrs'             => $_POST['id_pqrs'] ?? null,
+            'pqrs_tipo'           => $_POST['pqrs_tipo']        ?? null,
+            'pqrs_asunto'         => $_POST['pqrs_asunto']      ?? null,
+            'pqrs_descripcion'    => $_POST['pqrs_descripcion'] ?? null,
+            'pqrs_estado'         => $_POST['pqrs_estado']      ?? 'Pendiente',
+            'pqrs_respuesta'      => $_POST['pqrs_respuesta']   ?? null,
+            'pqrs_fecha_respuesta' => $_POST['pqrs_fecha_respuesta'] ?? date("Y-m-d H:i:s"),
+            'pqrs_usuario' => $_POST['pqrs_usuario'] ?? null,
+            'pqrs_empleado'       => $empleado,
+        ];
+        
+        $origen = $_POST['origen_formulario'] ?? 'Administrador';
+
+        try {
+            $this->pqrsModel->update($data);
+
+            if ($origen === 'Administrador') {
+            header('Location: ../views/administrador/pqrs/pqrsIndex.php');
+        } else {
+            header('Location: /controllers/PqrsController.php?accion=visualizarPqrs');
+        }
+
+        exit;
+        } catch (\Throwable $e) {
+            echo '[Ocurrió un error al ACTUALIZAR la PQR. Estamos trabajando para solucionarlo ]';
+    echo "<br>Error técnico: " . $e->getMessage();
+            
+        }
+    }
+
+       public function updateAdmin(): void
+    {
         $data = [
             'id_pqrs'             => $_POST['id_pqrs'] ?? null,
             'pqrs_tipo'           => $_POST['pqrs_tipo']        ?? null,
@@ -143,12 +181,8 @@ class PqrsController
         try {
             $this->pqrsModel->update($data);
 
-            if ($origen === 'Administrador') {
-            header('Location: ../views/administrador/pqrs/pqrsIndex.php');
-        } else {
-            header('Location: /controllers/PqrsController.php?accion=visualizarPqrs');
-        }
 
+            header('Location: ../views/administrador/pqrs/pqrsIndex.php');
         exit;
         } catch (\Throwable $e) {
             echo '[Ocurrió un error al ACTUALIZAR la PQR. Estamos trabajando para solucionarlo ]';
