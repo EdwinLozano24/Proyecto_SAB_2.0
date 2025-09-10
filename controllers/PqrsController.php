@@ -188,6 +188,10 @@ class PqrsController
     {
         $permisos = $this->pqrsModel->findRolPqrs($id_usuario);
         var_dump($permisos); exit;
+        if ($permisos = false)
+        {
+            echo 'Hola';
+        } else { echo 'Adios';}
 
         $pendientes = $this->pqrsModel->findPendientes();
         include '../views/especialista/pqr/visualizarPQR.php';
