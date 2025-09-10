@@ -54,7 +54,7 @@ class ConsultorioController
 
     public function view_store(): void
     {
-        header('Location: /views/consultorio/consultorioStore.php');
+        header('Location: /views/administrador/consultorio/consultorioStore.php');
         exit;
     }
 
@@ -66,7 +66,7 @@ class ConsultorioController
 
         $cons = $this->ConsultorioModel->find($id_consultorio);
         $consAll = $this->ConsultorioModel->findAll();
-        include '/views/consultorio/consultorioUpdate.php';
+        include '/views/administrador/consultorio/consultorioUpdate.php';
         exit;
     }
 
@@ -81,7 +81,7 @@ class ConsultorioController
 
         try {
             $this->ConsultorioModel->store($data);
-            header('Location: /views/consultorio/consultorioIndex.php');
+            header('Location: /views/administrador/consultorio/consultorioIndex.php');
             exit;
         } catch (Exception $e) {
             echo "Error al guardar el consultorio: " . $e->getMessage();
@@ -108,7 +108,7 @@ class ConsultorioController
 
         try {
             $this->ConsultorioModel->update($data);
-            header('Location: /views/consultorio/consultorioIndex.php');
+            header('Location: /views/administrador/consultorio/consultorioIndex.php');
             exit;
         } catch (Exception $e) {
             echo "Error al actualizar el consultorio: " . $e->getMessage();
@@ -125,7 +125,7 @@ class ConsultorioController
 
         try {
             $this->ConsultorioModel->delete($id_consultorio);
-            header('Location: /views/consultorio/consultorioIndex.php');
+            header('Location: /views/administrador/consultorio/consultorioIndex.php');
             exit;
         } catch (Exception $e) {
             echo "Error al eliminar el consultorio: " . $e->getMessage();
