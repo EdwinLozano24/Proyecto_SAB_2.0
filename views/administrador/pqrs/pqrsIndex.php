@@ -30,6 +30,8 @@ $pqrs = $stmt->fetchAll();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css" rel="stylesheet"
+        integrity="sha384-H6C7bJ1aV7hB8eP4Z7hB9f9c7H6z6B3w6n5l4d5e7V8c8E5hB8p5F5D5E5l4d5l4D5" crossorigin="anonymous">
     <?php
     $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/assets/css/admin/crudIndex.css';
     $cssUrl = '/assets/css/admin/crudIndex.css';
@@ -155,6 +157,11 @@ $pqrs = $stmt->fetchAll();
     <script src="https://cdn.datatables.net/buttons/3.2.3/js/buttons.print.min.js"
         integrity="sha384-FvTRywo5HrkPlBKFrm2tT8aKxIcI/VU819roC/K/8UrVwrl4XsF3RKRKiCAKWNly"
         crossorigin="anonymous"></script>
+    <!-- RESPONSIVE-->
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"
+        integrity="sha384-jK8M9z5B1tK8h6g5e8r9aA5d8E5f5l4d5e7V8c8E5hB8p5F5D5E5l4d5l4D5" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap5.min.js"
+        integrity="sha384-y7E8k3d4E6f9t3s7h7g7p9p5l4d5e7V8c8E5hB8p5F5D5E5l4d5l4D5" crossorigin="anonymous"></script>
 
     <!-- Boostrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
@@ -164,6 +171,7 @@ $pqrs = $stmt->fetchAll();
         $(document).ready(function() {
             // 1) Inicializo DataTable con TODAS las opciones
             const table = $('#PqrsDatatable').DataTable({
+                responsive: true,
                 buttons: [{
                         extend: "excelHtml5",
                         text: '<i class="fa-solid fa-file-excel"></i>',
