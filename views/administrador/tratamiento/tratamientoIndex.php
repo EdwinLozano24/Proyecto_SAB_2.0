@@ -74,8 +74,8 @@ $tratamientos = $stmt->fetchAll();
                 <label for="filtroEstado" class="form-label">Filtrar por Estado:</label>
                 <select id="filtroEstado" class="form-select">
                     <option value="">Todos..</option>
-                    <option value="activo">Activo</option>
-                    <option value="inactivo">Inactivo</option>
+                    <option value="Activo">Activo</option>
+                    <option value="Inactivo">Inactivo</option>
                 </select>
             </div>
         </div>
@@ -368,9 +368,9 @@ $tratamientos = $stmt->fetchAll();
             $('#filtroEstado').on('change', function() {
                 const estado = this.value;
                 if (estado) {
-                    table.column(10).search('^' + estado + '$', true, false).draw();
+                    table.column(8).search('^' + estado + '$', true, false).draw();
                 } else {
-                    table.column(10).search('').draw();
+                    table.column(8).search('').draw();
                 }
             });
         });
