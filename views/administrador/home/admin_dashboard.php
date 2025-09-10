@@ -12,6 +12,7 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../Assets/css/layoutFinal/admin/layout1.css?v=20250901">
+    <link rel="stylesheet" href="../../../assets/css/hoome/gridHome.css">
     <title>¡Bienvenido a SAB!</title>
 </head>
 
@@ -48,7 +49,7 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
 
             <!-- Tarjeta 3 -->
             <div class="content-card">
-                <h3 class="card-title">Consultorios</h3>
+                <h3 class="card-title">Gestionar Consultorios</h3>
                 <p class="card-description"></p>
                 <a href="/controllers/ConsultorioController.php?accion=index" class="btn btn-primary" style="margin-top: 16px;">Ver más</a>
             </div>
