@@ -17,7 +17,7 @@ $pqrs = $stmt->fetchAll();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Pqrs</title>
+    <title>Crud Pqrs</title>
 
     <link href="https://cdn.datatables.net/2.3.1/css/dataTables.bootstrap5.min.css" rel="stylesheet"
         integrity="sha384-5hBbs6yhVjtqKk08rsxdk9xO80wJES15HnXHglWBQoj3cus3WT+qDJRpvs5rRP2c" crossorigin="anonymous">
@@ -63,6 +63,18 @@ $pqrs = $stmt->fetchAll();
                 <i class="fa-solid fa-square-plus"></i>
                 Nuevo Pqrs
             </a>
+            <div id="botonesExportacion"></div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <label for="filtroEstado" class="form-label">Filtrar por Estado:</label>
+                <select id="filtroEstado" class="form-select">
+                    <option value="">Todos..</option>
+                    <option value="Pendiente">Pendiente</option>
+                    <option value="Cerrado">Cerrado</option>
+                </select>
+            </div>
         </div>
 
         <table id="PqrsDatatable" class="table-custom">
@@ -294,11 +306,8 @@ $pqrs = $stmt->fetchAll();
                 dom: "<'row'<'col-12'B>>" +
                     "<'row mb-3'<'col-sm-6'l><'col-sm-6'f>>" +
                     "t" +
-                    // <-- Aquí añadimos d-flex justify-content-end
                     "<'row mt-3'<'col-sm-6'i><'col-sm-6 d-flex justify-content-end'p>>",
-
-                lengthMenu: [10, 20, 50, 100],
-
+                lengthMenu: [5, 10, 15, 25, 30, 50, 70, 100],
                 language: {
                     processing: "Procesando...",
                     lengthMenu: "Mostrar _MENU_ registros",
@@ -349,8 +358,18 @@ $pqrs = $stmt->fetchAll();
                 }
             });
 
-            // 2) Muevo el contenedor de botones dentro de mi div.mb-4
-            table.buttons().container().appendTo('.mb-4');
+            // Botones
+            table.buttons().container().appendTo('#botonesExportacion');
+
+            // Filtro de estado
+            $('#filtroEstado').on('change', function() {
+                const estado = this.value;
+                if (estado) {
+                    table.column(5).search('^' + estado + '$', true, false).draw();
+                } else {
+                    table.column(5).search('').draw();
+                }
+            });
         });
     </script>
     <!-- <script>

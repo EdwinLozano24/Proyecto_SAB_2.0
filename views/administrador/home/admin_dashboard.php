@@ -16,10 +16,10 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
 </head>
 
 <body>
-    <?php 
+    <?php
     include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/admin/header.php');
-    include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/admin/nav.php');
-    include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/admin/aside.php');
+    include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/admin/nav/navInicio.php');
+    include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/admin/aside/asideInicio.php');
 
     ?>
 
@@ -34,46 +34,50 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
             <div class="content-card">
                 <h3 class="card-title">Gestionar usuarios</h3>
                 <p class="card-description"></p>
-                <a href="/controllers/UsuarioController.php?accion=index" class="btn btn-primary" style="margin-top: 16px;">Ir</a>
+                <a href="/controllers/UsuarioController.php?accion=index" class="btn btn-primary" style="margin-top: 16px;">Ir ya</a>
             </div>
             <div class="content-card">
                 <h3 class="card-title">Gestionar citas</h3>
                 <p class="card-description"></p>
-                <a href="/controllers/CitaController.php?accion=index" class="btn btn-primary" style="margin-top: 16px;">Ir</a>
+                <a href="/controllers/CitaController.php?accion=index" class="btn btn-primary" style="margin-top: 16px;">Ir ya</a>
             </div>
         </div>
 
         <div class="content-grid">
             <div class="content-card">
-                <h3 class="card-title">Usuario activos</h3>
-                <p class="card-description">32 (ejemplo)</p>
-                <a href="#" class="btn btn-primary" style="margin-top: 16px;">Ver más</a>
+                <h3 class="card-title">Gestionar Tratamientos</h3>
+                <p class="card-description"></p>
+                <a href="/controllers/TratamientoController.php?accion=index" class="btn btn-primary" style="margin-top: 16px;">Ir ya</a>
             </div>
 
             <div class="content-card">
-                <h3 class="card-title">Resumen citas</h3>
-                <p class="card-description">18 (ejemplo)</p>
-                <a href="#" class="btn btn-primary" style="margin-top: 16px;">Ver más</a>
+                <h3 class="card-title">Gestionar Historial Clinico</h3>
+                <p class="card-description"></p>
+                <a href="/controllers/HistorialController.php?accion=index" class="btn btn-primary" style="margin-top: 16px;">Ir ya</a>
             </div>
 
+
             <div class="content-card">
-                <h3 class="card-title">PQRS registrados</h3>
-                <p class="card-description">25 (ejemplo)</p>
-                <a href="#" class="btn btn-primary" style="margin-top: 16px;">Ver más</a>
+                <h3 class="card-title">Gestionar Pqrs</h3>
+                <p class="card-description"></p>
+                <a href="/controllers/PqrsController.php?accion=index" class="btn btn-primary" style="margin-top: 16px;">Ir ya</a>
             </div>
         </div>
 
-        <div class="content-grid">
+        <!-- <div class="content-grid">
             <div class="content-card">
                 <h3 class="card-title">Solucione PQRS</h3>
                 <p class="card-description"></p>
-                <a href="#" class="btn btn-primary" style="margin-top: 16px;">Ir</a>
+                <a href="/controllers/PqrsController.php?accion=index" class="btn btn-primary" style="margin-top: 16px;">Ir</a>
             </div>
-            <div class="content-card">
-                <h3 class="card-title">Solicitudes Historial Clínico</h3>
-                <p class="card-description">3 (ejemplo)</p>
-                <a href="#" class="btn btn-primary" style="margin-top: 16px;">Ver más</a>
-            </div>
+
+                <div class="content-card">
+            <h3 class="card-title">Solicitudes Historial Clínico</h3>
+            <p class="card-description">3 (ejemplo)</p>
+            <a href="#" class="btn btn-primary" style="margin-top: 16px;">Ver más</a>
+        </div> -->
+
+
     </main>
     <?php
     include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/admin/footer.php');

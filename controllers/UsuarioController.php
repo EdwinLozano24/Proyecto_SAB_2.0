@@ -78,11 +78,58 @@ class UsuarioController
             'usua_sexo' => $_POST['usua_sexo'] ?? null,
             'usua_rh' => $_POST['usua_rh'] ?? null,
             'usua_eps' => $_POST['usua_eps'] ?? null,
-            'usua_password' => password_hash($_POST['usua_password'] ?? '', PASSWORD_DEFAULT),
+            'usua_password' => $_POST['usua_password'] ?? '',
             'usua_tipo' => $_POST['usua_tipo'] ?? 'Paciente',
             'usua_estado' => $_POST['usua_estado'] ?? 'Activo',
         ];
+
         $origen = $_POST['origen_formulario'] ?? 'Usuario';
+
+        $errors = [];
+
+        if (!is_numeric($data['usua_documento'])) {
+            $errors[] = "El documento debe ser numérico.";
+        } else {
+            if ($this->UsuarioModel->findDocumento($data['usua_documento'])) {
+                $errors[] = "El documento ya está registrado.";
+            }
+        }
+
+        if (!filter_var($data['usua_correo_electronico'], FILTER_VALIDATE_EMAIL)) {
+            $errors[] = "El correo electrónico no es válido.";
+        } else {
+            if ($this->UsuarioModel->findCorreo($data['usua_correo_electronico'])) {
+                $errors[] = "El correo ya está registrado.";
+            }
+        }
+
+        if (!empty($data['usua_fecha_nacimiento'])) {
+            $fechaNacimiento = new DateTime($data['usua_fecha_nacimiento']);
+            $hoy = new DateTime();
+            if ($fechaNacimiento > $hoy) {
+                $errors[] = "La fecha de nacimiento no puede ser superior a hoy.";
+            }
+        }
+
+        if (strlen($data['usua_password']) < 8 ||
+            !preg_match('/[A-Z]/', $data['usua_password']) ||    // al menos 1 mayúscula
+            !preg_match('/[0-9]/', $data['usua_password'])) {    
+            $errors[] = "La contraseña debe tener mínimo 8 caracteres y una mayúscula.";
+        }
+        
+        if (!empty($errors)) {
+            if ($origen === 'Administrador') {
+                // Regresar al formulario de administración
+                include '../views/.general/error/alertaIndex.php';
+            } else {
+                // Regresar al login/registro del usuario común
+                include '../views/.general/usuario/loginRegister.php';
+            }
+            return;
+        }
+
+        $data['usua_password'] = password_hash($data['usua_password'], PASSWORD_DEFAULT);
+
         try {
             $this->UsuarioModel->store($data);
                 $usuarioGuardado = $this->UsuarioModel->findCorreo($data['usua_correo_electronico']);
@@ -103,7 +150,7 @@ class UsuarioController
 
         } catch (\Exception $e) {
             error_log("Error al registrar usuario: " . $e->getMessage());
-            echo "Ocurrió un error al registrar el usuario.";
+            echo "Ocurrió un error al registrar el usuario. $e";
         }
     
     }

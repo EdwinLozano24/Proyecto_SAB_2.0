@@ -229,6 +229,23 @@ h2 {
     margin-bottom: 20px;
 }
 
+/* Ajustar el filtro de estado */
+#filtroEstado {             /* Se ajusta al contenido */
+    max-width: 115px !important  ;       /* Opcional: límite de ancho */
+    display: inline-block;
+    margin-right: 12px;       /* Espacio con otros elementos */
+    padding: 6px 10px;        /* Más compacto */
+    font-size: 14px;
+}
+
+/* Asegura separación en la fila del filtro */
+.row.mb-4 {
+    display: flex;
+    align-items: center;
+    gap: 16px; /* Espacio entre el label y el select */
+}
+
+
 .dt-buttons .btn {
     margin-right: 8px;
     padding: 8px 16px;

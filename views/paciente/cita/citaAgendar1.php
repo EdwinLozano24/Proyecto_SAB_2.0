@@ -34,7 +34,7 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
                 <p class="section-subtitle">Programa tu cita odontológica seleccionando la fecha, hora y motivo de consulta</p>
 
 
-                <form id="crearCitaForm" method="POST" action="/../controllers/CitaController.php?accion=agendarHora" class="form-card">
+                <form id="crearCitaForm" method="POST" action="/../controllers/CitaController.php?accion=agendarHora&rol=Paciente" class="form-card">
                     <input type="hidden" name="origen_formulario" value="Usuario">
                     <input type="hidden" name="pqrs_usuario" value="<?php echo $_SESSION['usuario']['id_usuario']; ?>">
 
@@ -137,7 +137,7 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
     <!-- <script src="script.js"></script> -->
     <script>
 $(document).ready(function() {
-    $('#cita_especialista').select2();
+    $('#id_especialista').select2();
 });
 </script>
 </body>

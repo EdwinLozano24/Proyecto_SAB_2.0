@@ -13,6 +13,7 @@
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 
+
     <!-- CSS personalizado (se fuerza actualización con versión al final) -->
     <link rel="stylesheet" href="/assets/css/user/loginRegister.css?v=20250836">
 </head>
@@ -27,8 +28,9 @@
     <?php endif; ?>
 
     <main>
+        
         <div class="contenedor__todo">
-
+            
             <!-- Caja trasera con botones para alternar entre login y registro -->
             <div class="caja__trasera">
                 <div class="caja__trasera-login">
@@ -42,7 +44,6 @@
                     <button id="btn__registrarse">Registrarse</button>
                 </div>
             </div>
-
             <!-- Contenedor de los formularios -->
             <div class="contenedor__login-register">
 
@@ -156,7 +157,10 @@
                     <button type="submit" name="registrarUsuario">Registrarse</button>
                 </form>
             </div>
+            <?php include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/error/alerta.php'); ?>
+
         </div>
+        
     </main>
 
     <!-- Bootstrap JS -->

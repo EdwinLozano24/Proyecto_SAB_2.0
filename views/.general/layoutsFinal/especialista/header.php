@@ -5,7 +5,7 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
     <header class="header">
         <input type="hidden" name="id_usuario" value="<?php echo htmlspecialchars($id_usuario); ?>">
             <div class="header-content">
-                <div class="logo">SAB</div>
+                <div class="logo" onclick="window.location.href='/views/especialista/home/especialista_dashboard.php'" style="cursor: pointer;">SAB</div>
                 <h1 class="header-title">Sistema de Gestión Odontológica</h1>
             </div>
             

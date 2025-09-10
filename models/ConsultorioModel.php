@@ -56,12 +56,18 @@ class ConsultorioModel
     }
 
     public function findAll()
-    {
-        $sql = "SELECT * FROM tbl_consultorios";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
+{
+    $sql = "SELECT * FROM tbl_consultorios
+            ORDER BY CASE cons_estado
+                WHEN 'Disponible' THEN 1
+                WHEN 'No Disponible' THEN 2
+                ELSE 3 END,
+            id_consultorio ASC";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
 
     public function findConsultorioLibre($fecha, $hora_inicio, $hora_fin)
     {

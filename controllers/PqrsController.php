@@ -15,7 +15,7 @@ switch ($action) {
         break;
 
     case 'store':
-        $controller->store();
+        $controller->store($_GET['rol']);
         break;
 
     case 'view_update':
@@ -24,6 +24,9 @@ switch ($action) {
 
     case 'update':
         $controller->update();
+        break;
+    case 'updateAdmin':
+        $controller->updateAdmin();
         break;
 
     case 'delete':
@@ -35,7 +38,7 @@ switch ($action) {
         break;
 
     case 'visualizarPqrs':
-        $controller->visualizarPqrs();
+        $controller->visualizarPqrs($_GET['id_usuario']);
         break;
 
     case 'responderPqrs':
@@ -93,7 +96,7 @@ class PqrsController
 
     /* ---------- ACCIONES ---------- */
 
-    public function store(): void
+    public function store($rol): void
     {
         $data = [
             'pqrs_tipo'           => $_POST['pqrs_tipo']        ?? null,
@@ -106,14 +109,18 @@ class PqrsController
             'pqrs_usuario'        => $_POST['pqrs_usuario']     ?? null,
             'pqrs_empleado'       => $_POST['pqrs_empleado'] ?? null,
         ];
-        $origen = $_POST['origen_formulario'] ?? 'Usuario';
+
         try {
             $this->pqrsModel->store($data);
-            if ($origen === 'Administrador') {
+            if ($rol === 'AdministradorHome') {
+            header('Location: ../views/administrador/home/admin_dashboard.php');
+            } elseif ($rol === "Administrador") {
             header('Location: ../views/administrador/pqrs/pqrsIndex.php');
-        } else {
+            } elseif ($rol === "Especialista") {
+            header('Location: ../views/especialista/home/especialista_dashboard.php');
+            } else {
             header('Location: ../views/paciente/home/paciente_dashboard.php');
-        }
+            }
         exit;
         } catch (\Throwable $e) {
             echo '[Ocurrió un error al CREAR la PQR. Estamos trabajando para solucionarlo]';
@@ -135,7 +142,7 @@ class PqrsController
             'pqrs_usuario' => $_POST['pqrs_usuario'] ?? null,
             'pqrs_empleado'       => $empleado,
         ];
-
+        
         $origen = $_POST['origen_formulario'] ?? 'Administrador';
 
         try {
@@ -144,12 +151,42 @@ class PqrsController
             if ($origen === 'Administrador') {
             header('Location: ../views/administrador/pqrs/pqrsIndex.php');
         } else {
-            header('Location: /controllers/PqrsController.php?accion=visualizarPqrs');
+            header('Location: ../views/especialista/home/especialista_dashboard.php');
         }
 
         exit;
         } catch (\Throwable $e) {
             echo '[Ocurrió un error al ACTUALIZAR la PQR. Estamos trabajando para solucionarlo ]';
+    echo "<br>Error técnico: " . $e->getMessage();
+            
+        }
+    }
+
+       public function updateAdmin(): void
+    {
+        $data = [
+            'id_pqrs'             => $_POST['id_pqrs'] ?? null,
+            'pqrs_tipo'           => $_POST['pqrs_tipo']        ?? null,
+            'pqrs_asunto'         => $_POST['pqrs_asunto']      ?? null,
+            'pqrs_descripcion'    => $_POST['pqrs_descripcion'] ?? null,
+            'pqrs_estado'         => $_POST['pqrs_estado']      ?? 'Pendiente',
+            'pqrs_respuesta'      => $_POST['pqrs_respuesta']   ?? null,
+            'pqrs_fecha_respuesta' => $_POST['pqrs_fecha_respuesta'] ?? date("Y-m-d H:i:s"),
+            'pqrs_usuario' => $_POST['pqrs_usuario'] ?? null,
+            'pqrs_empleado'       => $_POST['pqrs_empleado'],
+        ];
+        
+        $origen = $_POST['origen_formulario'] ?? 'Administrador';
+
+        try {
+            $this->pqrsModel->update($data);
+
+
+            header('Location: ../views/administrador/pqrs/pqrsIndex.php');
+        exit;
+        } catch (\Throwable $e) {
+            echo '[Ocurrió un error al ACTUALIZAR la PQR. Estamos trabajando para solucionarlo ]';
+    echo "<br>Error técnico: " . $e->getMessage();
             
         }
     }
@@ -180,11 +217,20 @@ class PqrsController
         }
     }
 
-    public function visualizarPqrs()
+    public function visualizarPqrs($id_usuario)
     {
+        $permisos = $this->pqrsModel->findRolPqrs($id_usuario);
+
+        if ($permisos === false)
+        {
+            $error = "Lo sentimos, no cuentas con los permisos para realizar esta accion, comunicate con un usuario administrador";
+            include '../views/.general/error/encargadoPqrs.php';
+            exit;
+        } else {
         $pendientes = $this->pqrsModel->findPendientes();
         include '../views/especialista/pqr/visualizarPQR.php';
         exit;
+        }
     }
 
     public function responderPqrs($id_pqrs)

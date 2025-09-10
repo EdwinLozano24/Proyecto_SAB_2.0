@@ -2,24 +2,27 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/config/auth.php';
 requiereSesion();
 require_once $_SERVER['DOCUMENT_ROOT'] . '/config/database.php';
+
 $pdo = conectarBD();
-$sql = "SELECT 
-    c.*, 
-    up.usua_nombre AS cita_paciente,
-    ue.usua_nombre AS cita_especialista,
-    co.cons_numero AS cita_consultorio
-FROM tbl_citas AS c
-INNER JOIN tbl_pacientes AS p ON c.cita_paciente = p.id_paciente
-INNER JOIN tbl_usuarios AS up ON p.paci_usuario = up.id_usuario
-INNER JOIN tbl_especialistas AS e ON c.cita_especialista = e.id_especialista
-INNER JOIN tbl_usuarios AS ue ON e.espe_usuario = ue.id_usuario
-INNER JOIN tbl_consultorios AS co ON c.cita_consultorio = co.id_consultorio
-ORDER BY
-    CASE c.cita_estado
-        WHEN 'cumplida' THEN 1
-        ELSE 2
-    END";
-$stmt = $pdo->query($sql);
+$sql = "
+    SELECT 
+        c.*, 
+        up.usua_nombre AS cita_paciente,
+        ue.usua_nombre AS cita_especialista,
+        co.cons_numero AS cita_consultorio
+    FROM tbl_citas AS c
+    INNER JOIN tbl_pacientes AS p ON c.cita_paciente = p.id_paciente
+    INNER JOIN tbl_usuarios AS up ON p.paci_usuario = up.id_usuario
+    INNER JOIN tbl_especialistas AS e ON c.cita_especialista = e.id_especialista
+    INNER JOIN tbl_usuarios AS ue ON e.espe_usuario = ue.id_usuario
+    INNER JOIN tbl_consultorios AS co ON c.cita_consultorio = co.id_consultorio
+    ORDER BY
+        CASE c.cita_estado
+            WHEN 'cumplida' THEN 1
+            ELSE 2
+        END
+";
+$stmt  = $pdo->query($sql);
 $citas = $stmt->fetchAll();
 ?>
 <!DOCTYPE html>
@@ -28,29 +31,37 @@ $citas = $stmt->fetchAll();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Crud Citas</title>
-    <!-- Css -->
-    <link href="https://cdn.datatables.net/2.3.1/css/dataTables.bootstrap5.min.css" rel="stylesheet"
-        integrity="sha384-5hBbs6yhVjtqKk08rsxdk9xO80wJES15HnXHglWBQoj3cus3WT+qDJRpvs5rRP2c" crossorigin="anonymous">
-    <link href="https://cdn.datatables.net/buttons/3.2.3/css/buttons.bootstrap5.min.css" rel="stylesheet"
-        integrity="sha384-DJhypeLg79qWALC844KORuTtaJcH45J+36wNgzj4d1Kv1vt2PtRuV2eVmdkVmf/U" crossorigin="anonymous">
-    <!-- Boostrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
-    <!-- Fony Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- DataTables -->
+    <link href="https://cdn.datatables.net/2.3.1/css/dataTables.bootstrap5.min.css"
+        rel="stylesheet"
+        integrity="sha384-5hBbs6yhVjtqKk08rsxdk9xO80wJES15HnXHglWBQoj3cus3WT+qDJRpvs5rRP2c"
+        crossorigin="anonymous">
+    <link href="https://cdn.datatables.net/buttons/3.2.3/css/buttons.bootstrap5.min.css"
+        rel="stylesheet"
+        integrity="sha384-DJhypeLg79qWALC844KORuTtaJcH45J+36wNgzj4d1Kv1vt2PtRuV2eVmdkVmf/U"
+        crossorigin="anonymous">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT"
+        crossorigin="anonymous">
+
     <?php
     $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/assets/css/admin/crudIndex.css';
-    $cssUrl = '/assets/css/admin/crudIndex.css';
+    $cssUrl  = '/assets/css/admin/crudIndex.css';
     if (file_exists($cssPath)) {
         echo '<link rel="stylesheet" href="' . $cssUrl . '">';
     } else {
-        echo ' CSS File not fount at: ' . $cssPath . '';
+        echo ' CSS File not found at: ' . $cssPath . '';
     }
     ?>
 </head>
@@ -64,28 +75,28 @@ $citas = $stmt->fetchAll();
             </div>
             <h2>Citas Registradas</h2>
             <p class="subtitle">Gestión completa de las citas del sistema</p>
-            <a href="/controllers/HomeController.php?accion=home" class="btn-custom btn-primary-custom">
+            <a href="/controllers/HomeController.php?accion=home"
+                class="btn-custom btn-primary-custom">
                 <i class="fa-solid fa-rotate-left"></i>
                 Volver
             </a>
         </div>
 
         <div class="mb-4 d-flex justify-content-between align-items-center">
-            <a href="/controllers/CitaController.php?accion=view_store" class="btn-custom btn-primary-custom">
+            <!-- <a href="/controllers/CitaController.php?accion=view_store"
+                class="btn-custom btn-primary-custom">
                 <i class="fa-solid fa-square-plus"></i>
                 Nueva Cita
-            </a>
+            </a> -->
             <div id="botonesExportacion"></div>
         </div>
 
-        <div class="row mb-4">
-        </div>
-
+        <!-- Filtro -->
         <div class="row mb-4">
             <div class="col-md-4">
                 <label for="filtroEstado" class="form-label">Filtrar por Estado:</label>
                 <select id="filtroEstado" class="form-select">
-                    <option value="">Todos los estados</option>
+                    <option value="">Todos..</option>
                     <option value="proceso">Proceso</option>
                     <option value="cumplida">Cumplida</option>
                     <option value="incumplida">Incumplida</option>
@@ -93,6 +104,8 @@ $citas = $stmt->fetchAll();
                 </select>
             </div>
         </div>
+
+        <!-- Tabla -->
         <table id="citaDatatable" class="table-custom">
             <thead>
                 <tr>
@@ -102,10 +115,10 @@ $citas = $stmt->fetchAll();
                     <th>Hora Inicio</th>
                     <th>Hora Fin</th>
                     <th>Turno</th>
-                    <th>Duracion</th>
+                    <th>Duración</th>
                     <th>Consultorio Asignado</th>
                     <th>Motivo</th>
-                    <th>Observacion</th>
+                    <th>Observación</th>
                     <th>Estado</th>
                     <th>Acciones</th>
                 </tr>
@@ -139,10 +152,13 @@ $citas = $stmt->fetchAll();
             </tbody>
         </table>
     </div>
+
+    <!-- JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <!-- Datatables -->
+
+    <!-- DataTables & Extensions -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"
         integrity="sha384-+mbV2IY1Zk/X1p/nWllGySJSUN8uMs+gUAN10Or95UBH0fpj6GfKgPmgC5EXieXG"
         crossorigin="anonymous"></script>
@@ -174,10 +190,12 @@ $citas = $stmt->fetchAll();
         integrity="sha384-FvTRywo5HrkPlBKFrm2tT8aKxIcI/VU819roC/K/8UrVwrl4XsF3RKRKiCAKWNly"
         crossorigin="anonymous"></script>
 
-    <!-- Boostrap -->
+    <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
         crossorigin="anonymous"></script>
+
+    <!-- DataTables Config -->
     <script>
         $(document).ready(function() {
             const table = $('#citaDatatable').DataTable({
@@ -263,30 +281,29 @@ $citas = $stmt->fetchAll();
                         },
                         customize: function(win) {
                             const css = `
-                        @page { size: landscape; }
-                        body { font-size: 10pt; margin: 20px; }
-                        h1 { text-align: center; font-size: 18pt; margin-bottom: 20px; }
-                        table { border-collapse: collapse; width: 100%; }
-                        th { background-color: #00AEEF !important; color: white !important; padding: 6px; text-align: center; }
-                        td { padding: 6px; text-align: center; }
-                        table, th, td { border: 1px solid #aaa; }
-                    `;
+                @page { size: landscape; }
+                body { font-size: 10pt; margin: 20px; }
+                h1 { text-align: center; font-size: 18pt; margin-bottom: 20px; }
+                table { border-collapse: collapse; width: 100%; }
+                th { background-color: #00AEEF !important; color: white !important; padding: 6px; text-align: center; }
+                td { padding: 6px; text-align: center; }
+                table, th, td { border: 1px solid #aaa; }
+            `;
                             const style = document.createElement('style');
                             style.type = 'text/css';
                             style.innerHTML = css;
                             win.document.head.appendChild(style);
+
                             const h1 = win.document.querySelector('h1');
-                            if (h1) {
-                                h1.innerText = 'Citas Registradas';
-                            }
+                            if (h1) h1.innerText = 'Citas Registradas';
                         }
                     }
                 ],
-                dom: "<'row'<'col-12'B>>" + // B stands for Buttons
+                dom: "<'row'<'col-12'B>>" +
                     "<'row mb-3'<'col-sm-6'l><'col-sm-6'f>>" +
                     "t" +
                     "<'row mt-3'<'col-sm-6'i><'col-sm-6 d-flex justify-content-end'p>>",
-                lengthMenu: [10, 20, 50, 100],
+                lengthMenu: [5, 10, 15, 25, 30, 50, 70, 100],
                 language: {
                     processing: "Procesando...",
                     lengthMenu: "Mostrar _MENU_ registros",
@@ -304,8 +321,8 @@ $citas = $stmt->fetchAll();
                         previous: "Anterior"
                     },
                     aria: {
-                        sortAscending: ": Activar para ordenar la columna de manera ascendente",
-                        sortDescending: ": Activar para ordenar la columna de manera descendente"
+                        sortAscending: ": Activar para ordenar la columna ascendente",
+                        sortDescending: ": Activar para ordenar la columna descendente"
                     },
                     buttons: {
                         copy: "Copiar",
@@ -314,8 +331,8 @@ $citas = $stmt->fetchAll();
                         colvisRestore: "Restaurar visibilidad",
                         copyKeys: "Presione ctrl o ⌘ + C para copiar los datos. Escape para cancelar.",
                         copySuccess: {
-                            "1": "Copiada 1 fila al portapapeles",
-                            "_": "Copiadas %ds filas al portapapeles"
+                            "1": "Copiada 1 fila",
+                            "_": "Copiadas %ds filas"
                         },
                         copyTitle: "Copiar al portapapeles",
                         csv: "CSV",
@@ -323,7 +340,7 @@ $citas = $stmt->fetchAll();
                         pdf: "PDF",
                         print: "Imprimir",
                         pageLength: {
-                            "-1": "Mostrar todas las filas",
+                            "-1": "Mostrar todas",
                             "_": "Mostrar %d filas"
                         }
                     },
@@ -337,19 +354,17 @@ $citas = $stmt->fetchAll();
                 }
             });
 
-            // Mueve los botones de la tabla al div con id="botonesExportacion"
+            // Botones
             table.buttons().container().appendTo('#botonesExportacion');
 
-            // Lógica para el filtro de estado
+            // Filtro de estado
             $('#filtroEstado').on('change', function() {
                 const estado = this.value;
-                table.column(10).search(estado).draw();
-            });
-
-            // Lógica para limpiar el filtro
-            $('#clearFilters').on('click', function() {
-                $('#filtroEstado').val('');
-                table.column(10).search('').draw();
+                if (estado) {
+                    table.column(10).search('^' + estado + '$', true, false).draw();
+                } else {
+                    table.column(10).search('').draw();
+                }
             });
         });
     </script>

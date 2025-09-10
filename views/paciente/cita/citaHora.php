@@ -31,7 +31,7 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
                 <h2 class="section-title">Horas Disponibles</h2>
                 <p class="section-subtitle">Programa tu cita odontológica seleccionando hora de la misma</p>
 
-                <form id="crearCitaForm" method="POST" action="/../controllers/CitaController.php?accion=agendarCita" class="form-card">
+                <form id="crearCitaForm" method="POST" action="/../controllers/CitaController.php?accion=agendarCita&rol=Paciente" class="form-card">
 
                     <div class="form-section">
 

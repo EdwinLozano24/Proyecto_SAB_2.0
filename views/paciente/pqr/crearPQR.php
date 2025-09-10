@@ -43,7 +43,7 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
 
             <!-- Formulario -->
             <div class="form-card">
-                <form action="/controllers/PqrsController.php?accion=store" method="POST">
+                <form action="/controllers/PqrsController.php?accion=store&rol=Paciente" method="POST">
                     <!-- Campos ocultos -->
                     <input type="hidden" name="origen_formulario" value="Usuario">
                     <input type="hidden" name="pqrs_usuario" value="<?php echo $_SESSION['usuario']['id_usuario']; ?>">
