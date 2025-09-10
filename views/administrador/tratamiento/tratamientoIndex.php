@@ -74,8 +74,8 @@ $tratamientos = $stmt->fetchAll();
                 <label for="filtroEstado" class="form-label">Filtrar por Estado:</label>
                 <select id="filtroEstado" class="form-select">
                     <option value="">Todos..</option>
-                    <option value="Activo">Activo</option>
-                    <option value="Inactivo">Inactivo</option>
+                    <option value="activo">Activo</option>
+                    <option value="inactivo">Inactivo</option>
                 </select>
             </div>
         </div>
