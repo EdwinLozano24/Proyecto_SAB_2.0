@@ -59,7 +59,7 @@
                         <!-- Miembro 1 -->
                         <div class="equipo-card">
                             <div class="card-img">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqJbQWzmgkP5pCCxaYoibNCIb31tpkRBEEzQ&s" alt="Foto Santiago">
+                                <img src="https://thumbs.dreamstime.com/b/vector-de-perfil-avatar-predeterminado-foto-usuario-medios-sociales-icono-183042379.jpg" alt="Foto Santiago">
                             </div>
                             <div class="card-content">
                                 <h4>Santiago Carranza</h4>
@@ -69,7 +69,7 @@
                         <!-- Miembro 2 -->
                         <div class="equipo-card">
                             <div class="card-img">
-                                <img src="https://img.chelseafc.com/image/upload/f_auto,w_1440,c_fill,g_faces,q_90/editorial/news/2023/06/20/Kante_PL_trophy_2016_GettyImages-686388948.jpg" alt="Foto Angelo">
+                                <img src="https://thumbs.dreamstime.com/b/vector-de-perfil-avatar-predeterminado-foto-usuario-medios-sociales-icono-183042379.jpg" alt="Foto Angelo">
                             </div>
                             <div class="card-content">
                                 <h4>Angelo Gonzalez</h4>
@@ -79,7 +79,7 @@
                         <!-- Miembro 3 -->
                         <div class="equipo-card">
                             <div class="card-img">
-                                <img src="https://thumbs.dreamstime.com/b/lionel-messi-22716478.jpg" alt="Foto Edwin">
+                                <img src="https://thumbs.dreamstime.com/b/vector-de-perfil-avatar-predeterminado-foto-usuario-medios-sociales-icono-183042379.jpg" alt="Foto Edwin">
                             </div>
                             <div class="card-content">
                                 <h4>Edwin Lozano</h4>
