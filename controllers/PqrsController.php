@@ -151,7 +151,7 @@ class PqrsController
             if ($origen === 'Administrador') {
             header('Location: ../views/administrador/pqrs/pqrsIndex.php');
         } else {
-            header('Location: /controllers/PqrsController.php?accion=visualizarPqrs');
+            header('Location: ../viewa/especialista/home/especialista_dashboard.php');
         }
 
         exit;
