@@ -34,12 +34,12 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
             <div class="content-card">
                 <h3 class="card-title">Gestionar usuarios</h3>
                 <p class="card-description"></p>
-                <a href="/controllers/UsuarioController.php?accion=index" class="btn btn-primary" style="margin-top: 16px;">Ir</a>
+                <a href="/controllers/UsuarioController.php?accion=index" class="btn btn-primary" style="margin-top: 16px;">Ir ya</a>
             </div>
             <div class="content-card">
                 <h3 class="card-title">Gestionar citas</h3>
                 <p class="card-description"></p>
-                <a href="/controllers/CitaController.php?accion=index" class="btn btn-primary" style="margin-top: 16px;">Ir</a>
+                <a href="/controllers/CitaController.php?accion=index" class="btn btn-primary" style="margin-top: 16px;">Ir ya</a>
             </div>
         </div>
 
@@ -47,20 +47,20 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
             <div class="content-card">
                 <h3 class="card-title">Gestionar Tratamientos</h3>
                 <p class="card-description"></p>
-                <a href="/controllers/TratamientoController.php?accion=index" class="btn btn-primary" style="margin-top: 16px;">Ver más</a>
+                <a href="/controllers/TratamientoController.php?accion=index" class="btn btn-primary" style="margin-top: 16px;">Ir ya</a>
             </div>
 
             <div class="content-card">
                 <h3 class="card-title">Gestionar Historial Clinico</h3>
                 <p class="card-description"></p>
-                <a href="/controllers/HistorialController.php?accion=index" class="btn btn-primary" style="margin-top: 16px;">Ver más</a>
+                <a href="/controllers/HistorialController.php?accion=index" class="btn btn-primary" style="margin-top: 16px;">Ir ya</a>
             </div>
 
 
             <div class="content-card">
                 <h3 class="card-title">Gestionar Pqrs</h3>
                 <p class="card-description"></p>
-                <a href="/controllers/PqrsController.php?accion=index" class="btn btn-primary" style="margin-top: 16px;">Ver más</a>
+                <a href="/controllers/PqrsController.php?accion=index" class="btn btn-primary" style="margin-top: 16px;">Ir ya</a>
             </div>
         </div>
 
