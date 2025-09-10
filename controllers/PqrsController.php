@@ -153,7 +153,8 @@ class PqrsController
 
         exit;
         } catch (\Throwable $e) {
-            echo '[Ocurrió un error al ACTUALIZAR la PQR. Estamos trabajando para solucionarlo ]';
+            echo '[Ocurrió un error al ACTUALIZAR la PQR. Estamos trabajando para solucionarlo ]'($e);
+
             
         }
     }
