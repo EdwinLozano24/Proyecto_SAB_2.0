@@ -43,19 +43,6 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
             </div>
         </div>
 
-        <div class="content-grid">
-            <div class="content-card">
-                <h3 class="card-title">Usuario activos</h3>
-                <p class="card-description">32 (ejemplo)</p>
-                <a href="#" class="btn btn-primary" style="margin-top: 16px;">Ver más</a>
-            </div>
-
-            <div class="content-card">
-                <h3 class="card-title">Resumen citas</h3>
-                <p class="card-description">18 (ejemplo)</p>
-                <a href="#" class="btn btn-primary" style="margin-top: 16px;">Ver más</a>
-            </div>
-
             <div class="content-card">
                 <h3 class="card-title">Consultorios</h3>
                 <p class="card-description"></p>
@@ -68,11 +55,6 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
                 <h3 class="card-title">Solucione PQRS</h3>
                 <p class="card-description"></p>
                 <a href="/controllers/PqrsController.php?accion=index" class="btn btn-primary" style="margin-top: 16px;">Ir</a>
-            </div>
-            <div class="content-card">
-                <h3 class="card-title">Solicitudes Historial Clínico</h3>
-                <p class="card-description">3 (ejemplo)</p>
-                <a href="#" class="btn btn-primary" style="margin-top: 16px;">Ver más</a>
             </div>
     </main>
     <?php
