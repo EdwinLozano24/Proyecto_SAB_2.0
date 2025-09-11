@@ -100,7 +100,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
+  background-attachment: scroll; /* más compatible en móviles */
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -123,12 +123,12 @@ main {
 .contenedor__reset {
   display: flex;
   align-items: center;
+  justify-content: center;
   width: 100%;
   max-width: 400px;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
+  margin: 0 auto;
   transition: all 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative; /* Puedes quitar left y transform */
 }
 
 .contenedor__reset form {
@@ -212,14 +212,21 @@ main {
 
 /* Respuesta a dispositivos móviles */
 @media screen and (max-width: 320px) {
+  body {
+    align-items: flex-start; /* importante */
+    padding-top: 40px;
+    background-attachment: scroll; /* Evita bugs con background fijo */
+  }
+
   .contenedor__todo {
     max-width: 290px;
   }
 
   .contenedor__reset {
-    max-width: 290px;
-    top: 0;
-    transform: none;
+    max-width: 100%;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
   }
 
   .contenedor__reset form {
