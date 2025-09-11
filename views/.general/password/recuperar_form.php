@@ -49,6 +49,6 @@
     </div>
   </div>
 
-  <script src= "../..Assets/js/user/resetPasword.js"> </script>
+  <script src= "assets/js/user/resetPasword.js"></script>
 </body>
 </html>
