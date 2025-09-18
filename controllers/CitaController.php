@@ -444,6 +444,7 @@ class CitaController
         $id_paciente = $this->PacienteModel->findIdPaciente($id_usuario);
         $cita = $this->CitaModel->findCitaPaciente($id_paciente);
         include '../views/paciente/cita/citaPaciente.php';
+        exit;
     }
 
     public function pacienteAgendar()

@@ -144,10 +144,10 @@ function obtenerIniciales($nombreCompleto) {
             <p>Los datos mostrados son de solo lectura. Para realizar modificaciones, contacte al administrador del sistema.</p>
         </div>
         <div class="boton-volver">
-                <button type="button" class="btn-custom btn-primary-custom" onclick="window.history.back()">
+                <button type="button" class="btn-custom btn-secundary-custom" onclick="window.history.back()">
                     <i class="fa-solid fa-rotate-left"></i> Volver</a>
                 </button>
-                <input type="submit" value="Actualizar">
+                <input type="submit" class="btn-custom btn-primary-custom" value="Actualizar">
             </div>
             </form>
     </div>

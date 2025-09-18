@@ -12,7 +12,7 @@
         <div class="sidebar-section">
             <h3 class="sidebar-title">Acciones de Empleado</h3>
                 <ul class="sidebar-menu">
-                <li><a href="/controllers/UsuarioController.php?accion=index">📆 Agendar Cita</a></li>
+                <li><a href="/controllers/CitaController.php?accion=pacienteAgendar">📆 Agendar Cita</a></li>
                 <li><a href="/controllers/PqrsController.php?accion=visualizarPqrs&id_usuario=<?php echo $_SESSION['usuario']['id_usuario']; ?>">📝 Responder Pqrs </a></li>
                 <li><a href="/controllers/HistorialController.php?accion=index">🏥 Historial Clinico</a></li>
             </ul>
