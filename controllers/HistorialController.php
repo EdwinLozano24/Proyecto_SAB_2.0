@@ -22,6 +22,9 @@ switch ($accion) {
         break;
     case 'delete':
         $historial->delete($_GET['id_historial']);
+    case 'solicitarHistorial':
+        $historial->findForPaciente($_GET['id_paciente']);
+        break;
     default:
         $historial->index();
         break;
