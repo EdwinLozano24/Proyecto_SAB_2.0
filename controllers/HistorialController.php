@@ -143,9 +143,52 @@ class HistorialController
 
     public function solicitarHistorial($id_usuario)
     {
+        if (!$id_usuario)
+        {
+            echo 'No se a proporciono un usuario valido, esto puede ocurrir pq no se cuenta con una sesion iniciada.';
+            header('Location: ../views/paciente/historial/historial_dashboard.php');
+            exit;
+        }
+
         $id_paciente = $this->PacienteModel->findIdPaciente($id_usuario);
+
+        if (!$id_paciente)
+        {
+            echo 'No se a proporciono un paciente relacionado al usuario proporcionado, avisa a un usuario administrador.';
+            header('Location: ../views/paciente/historial/historial_dashboard.php');
+            exit;
+        }
+
         $historial = $this->HistorialModel->findForPaciente($id_paciente);
-        var_dump($historial); exit;
+        
+        if(!$historial)
+        {
+            echo 'No se encontro un hisotrial relacionado al paciente proporcionado, avisa a un usuario administrador.';
+            header('Location: ../views/paciente/historial/historial_dashboard.php');
+            exit;
+        }
+
+        require_once 'libs/fpdf/fpdf.php';
+        $pdf = new FPDF();
+        $pdf->AddPage();
+        $pdf->SetFont('Arial','B',14);
+        $pdf->Cell(0,10,"Historial Clinico del Paciente",0,1,'C');
+        $pdf->Ln(5);
+
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(0,10,"Nombre: " . $historial['paciente_nombre'],0,1);
+        $pdf->MultiCell(0,10,"Antecedentes Personales: " . $historial['hist_antecedentes_personales']);
+        $pdf->MultiCell(0,10,"Antecedentes Familiares: " . $historial['hist_antecedentes_familiares']);
+        $pdf->MultiCell(0,10,"Medicamentos: " . $historial['hist_medicamentos_actuales']);
+        $pdf->MultiCell(0,10,"Alergias: " . $historial['hist_alergias']);
+        $pdf->Cell(0,10,"Posee Odontograma: " . $historial['hist_odontograma'],0,1);
+        $pdf->Cell(0,10,"Diagnostico: " . $historial['hist_diagnostico'],0,1);
+        $pdf->Cell(0,10,"Fecha de Registro: " . $historial['hist_fecha_registro'],0,1);
+        $pdf->Cell(0,10,"Registrado Por: " . $historial['creado_por_nombre'],0,1);
+        $pdf->Cell(0,10,"Fecha de Actualizacion: " . $historial['hist_fecha_actualizacion'],0,1);
+        $pdf->Cell(0,10,"Actualizado Por: " . $historial['actualizado_por_nombre'],0,1);
+
+        $pdf->Output("I","historial_paciente.pdf");
         
     }
 
