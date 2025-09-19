@@ -3,8 +3,19 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/models/HistorialModel.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/models/PacienteModel.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/models/EspecialistaModel.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/models/DiagnosticoModel.php';
-require_once __DIR__ . '/../vendor/autoload.php';
-use Fpdf\Fpdf;
+
+$autoloadPath = __DIR__ . '/../vendor/autoload.php';
+if (file_exists($autoloadPath)) {
+    require_once $autoloadPath;
+} else {
+    // Fallback: intenta en la raíz pública (por si tu vendor está en /public_html/vendor)
+    $alt = $_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php';
+    if (file_exists($alt)) {
+        require_once $alt;
+    } else {
+        die('No se encontró vendor/autoload.php. Ejecuta composer install o ajusta la ruta.');
+    }
+}
 
 $historial = new HistorialController();
 $accion = $_GET['accion'] ?? 'index';
@@ -170,27 +181,29 @@ class HistorialController
             exit;
         }
 
-        $pdf = new FPDF();
-        $pdf->AddPage();
-        $pdf->SetFont('Arial','B',14);
-        $pdf->Cell(0,10,"Historial Clinico del Paciente",0,1,'C');
-        $pdf->Ln(5);
+        $pdf = new \FPDF('P', 'mm', 'A4'); // orientación, unidad, tamaño
+    $pdf->AddPage();
+    $pdf->SetFont('Arial', 'B', 14);
+    $pdf->Cell(0, 10, "Historial Clínico del Paciente", 0, 1, 'C');
+    $pdf->Ln(5);
 
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(0,10,"Nombre: " . $historial['paciente_nombre'],0,1);
-        $pdf->MultiCell(0,10,"Antecedentes Personales: " . $historial['hist_antecedentes_personales']);
-        $pdf->MultiCell(0,10,"Antecedentes Familiares: " . $historial['hist_antecedentes_familiares']);
-        $pdf->MultiCell(0,10,"Medicamentos: " . $historial['hist_medicamentos_actuales']);
-        $pdf->MultiCell(0,10,"Alergias: " . $historial['hist_alergias']);
-        $pdf->Cell(0,10,"Posee Odontograma: " . $historial['hist_odontograma'],0,1);
-        $pdf->Cell(0,10,"Diagnostico: " . $historial['hist_diagnostico'],0,1);
-        $pdf->Cell(0,10,"Fecha de Registro: " . $historial['hist_fecha_registro'],0,1);
-        $pdf->Cell(0,10,"Registrado Por: " . $historial['creado_por_nombre'],0,1);
-        $pdf->Cell(0,10,"Fecha de Actualizacion: " . $historial['hist_fecha_actualizacion'],0,1);
-        $pdf->Cell(0,10,"Actualizado Por: " . $historial['actualizado_por_nombre'],0,1);
+    $pdf->SetFont('Arial', '', 12);
+    $pdf->Cell(0, 8, "Nombre: " . ($historial['paciente_nombre'] ?? 'No disponible'), 0, 1);
+    $pdf->Ln(2);
+    $pdf->MultiCell(0, 7, "Antecedentes Personales: " . ($historial['hist_antecedentes_personales'] ?? 'N/A'));
+    $pdf->MultiCell(0, 7, "Antecedentes Familiares: " . ($historial['hist_antecedentes_familiares'] ?? 'N/A'));
+    $pdf->MultiCell(0, 7, "Medicamentos: " . ($historial['hist_medicamentos_actuales'] ?? 'N/A'));
+    $pdf->MultiCell(0, 7, "Alergias: " . ($historial['hist_alergias'] ?? 'N/A'));
+    $pdf->Cell(0, 8, "Posee Odontograma: " . (isset($historial['hist_odontograma']) ? ($historial['hist_odontograma'] ? 'Sí' : 'No') : 'N/A'), 0, 1);
+    $pdf->Cell(0, 8, "Diagnóstico: " . ($historial['diagnostico_nombre'] ?? ($historial['hist_diagnostico'] ?? 'N/A')), 0, 1);
+    $pdf->Cell(0, 8, "Fecha de Registro: " . ($historial['hist_fecha_registro'] ?? 'N/A'), 0, 1);
+    $pdf->Cell(0, 8, "Registrado Por: " . ($historial['creado_por_nombre'] ?? 'N/A'), 0, 1);
+    $pdf->Cell(0, 8, "Fecha de Actualización: " . ($historial['hist_fecha_actualizacion'] ?? 'N/A'), 0, 1);
+    $pdf->Cell(0, 8, "Actualizado Por: " . ($historial['actualizado_por_nombre'] ?? 'N/A'), 0, 1);
 
-        $pdf->Output("I","historial_paciente.pdf");
-        
+    // Entregar en el navegador (I = inline, D = descargar)
+    $pdf->Output('I', 'historial_paciente.pdf');
+    exit;
     }
 
 
