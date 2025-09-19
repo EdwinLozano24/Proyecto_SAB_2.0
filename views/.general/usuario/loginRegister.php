@@ -49,7 +49,7 @@
 
                 <!-- FORMULARIO LOGIN -->
                 <form id="loginForm" action="/controllers/AuthController.php?accion=Login" method="POST" class="formulario__login">
-                    <h2>Iniciar Sesión CAMBIO PRO</h2>
+                    <h2>Iniciar Sesión</h2>
 
                     <!-- Campo oculto para identificar origen -->
                     <input type="hidden" name="origen_formulario" value="Usuario">

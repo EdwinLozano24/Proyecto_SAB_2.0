@@ -91,7 +91,7 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
                                 <label for="fecha">Fecha de la Cita <span class="required">*</span></label>
                                 <div class="input-with-icon">
                                     <i class="fas fa-calendar input-icon"></i>
-                                    <input type="date" name="cita_fecha" id="fecha" required min="">
+                                    <input type="date" name="cita_fecha" id="cita_fecha" required min="<?= date('Y-m-d', strtotime('+1 day')) ?>">
                                 </div>
                             </div>
 

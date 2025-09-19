@@ -110,108 +110,6 @@ class CitaController
         exit;
     }
 
-    public function store()
-    {
-        $cita_paciente = $_POST['cita_paciente'] ?? $_SESSION['paciente_id'] ?? null;
-        if (!$cita_paciente) {
-            echo "Error: No se encontró sesión activa de paciente.";
-            return;
-        }
-
-        $cita_hora_inicio = $_POST['cita_hora_inicio'] ?? null;
-        $cita_fecha = $_POST['cita_fecha'] ?? null;
-        $cita_motivo = $_POST['cita_motivo'] ?? null;
-        $cita_observacion = $_POST['cita_observacion'] ?? null;
-        $cita_estado = $_POST['cita_estado'] ?? 'Proceso';
-
-        $duraciones = [
-            'Consulta general' => 30,
-            'Control' => 20,
-            'Urgencia' => 45,
-            'Seguimiento' => 25,
-            'Examen' => 40,
-            'Otro' => 30
-        ];
-        $cita_duracion = $duraciones[$cita_motivo] ?? 30;
-
-        $inicio = strtotime($cita_hora_inicio);
-        $fin = $inicio + ($cita_duracion * 60);
-        $cita_hora_fin = date('H:i:s', $fin);
-
-        $hora_sola = date('H:i', $inicio);
-        if ($hora_sola >= '08:00' && $hora_sola <= '12:00') {
-            $cita_turno = 'Mañana';
-        } elseif ($hora_sola > '12:00' && $hora_sola <= '18:00') {
-            $cita_turno = 'Tarde';
-        } else {
-            $cita_turno = 'Otro';
-        }
-
-        // ATENCION! NO DEJA AGENDAR CITA AL PACIENTE POR LO QUE NO TIENE HISTORIAL CLINICO
-        // YO SUGIERO QUE CAMBIEMOS ESO POR QUE NO TENDRÍA SENTIDO QUE NO PUDIERA AGENDAR UNA CITA POR NO TENER HISTORIAL CLINICO
-        // att EL JUANOTE MASONOTE
-        // No cambie nada aca
-        $historial = $this->HistorialModel->findByPaciente($cita_paciente);
-        if (!$historial) {
-            echo "Este paciente aún no tiene historial clínico registrado.";
-            return;
-        }
-        $cita_historial = $historial['id_historial'];
-
-        $asignarAuto = $_POST['asignacion_automatica'] ?? null;
-        if ($asignarAuto == '1') {
-            $especialistas = $this->EspecialistaModel->findAll();
-            $id_especialista = null;
-            foreach ($especialistas as $esp) {
-                if ($this->CitaModel->verificarDisponibilidad($esp['id_especialista'], $cita_fecha, $cita_hora_inicio, $cita_hora_fin)) {
-                    $id_especialista = $esp['id_especialista'];
-                    break;
-                }
-            }
-
-            $consultorios = $this->ConsultorioModel->findAll();
-            $id_consultorio = null;
-            foreach ($consultorios as $cons) {
-                if ($this->CitaModel->verificarConsultorio($cons['id_consultorio'], $cita_fecha, $cita_hora_inicio, $cita_hora_fin)) {
-                    $id_consultorio = $cons['id_consultorio'];
-                    break;
-                }
-            }
-
-            if (!$id_especialista || !$id_consultorio) {
-                echo "No hay disponibilidad de especialista o consultorio.";
-                return;
-            }
-        } else {
-            $id_especialista = $_POST['cita_especialista'] ?? null;
-            $id_consultorio = $_POST['cita_consultorio'] ?? null;
-        }
-
-        $data = [
-            'cita_paciente' => $cita_paciente,
-            'cita_historial' => $cita_historial,
-            'cita_especialista' => $id_especialista,
-            'cita_fecha' => $cita_fecha,
-            'cita_hora_inicio' => $cita_hora_inicio,
-            'cita_hora_fin' => $cita_hora_fin,
-            'cita_turno' => $cita_turno,
-            'cita_duracion' => $cita_duracion,
-            'cita_consultorio' => $id_consultorio,
-            'cita_motivo' => $cita_motivo,
-            'cita_observacion' => $cita_observacion,
-            'cita_estado' => $cita_estado,
-        ];
-
-        try {
-            $this->CitaModel->store($data);
-            header('Location: ../views/administrador/cita/citaIndex.php?mensaje=Cita creada exitosamente');
-            exit;
-        } catch (Exception $e) {
-            echo "Error al crear la cita: " . $e->getMessage();
-            return;
-        }
-    }
-
     public function view_update($id_cita)
     {
         $cita = $this->CitaModel->find($id_cita);
@@ -340,9 +238,12 @@ class CitaController
         exit;
     }
 
+    // - FUNCIONES PARA AGENDAR CITAS (GENERAL) - //
+
     public function agendarHora($rol)
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        
             $id_especialista = $_POST['id_especialista'];
             $fecha = $_POST['cita_fecha'];
             $motivo = $_POST['cita_motivo'];
@@ -394,8 +295,12 @@ class CitaController
             $cita_turno = ($horaInt < 12) ? "Mañana" : "Tarde";
 
             $cita_fecha = $_POST['cita_fecha'];
+            
             $consultorio = $this->ConsultorioModel->findConsultorioLibre($cita_fecha, $cita_hora_inicio,$cita_hora_fin);
-
+            if (!$consultorio) {
+                echo "No hay consultorios disponibles en esa fecha y hora.";
+                return;
+            }
 
             $data = [
                 'cita_paciente' => $cita_paciente,
