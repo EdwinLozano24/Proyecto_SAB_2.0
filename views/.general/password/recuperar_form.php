@@ -6,15 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reset contraseña</title>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-      <?php
-    $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/assets/css/user/resetPasword.css';
-    $cssUrl = '/assets/css/user/resetPasword.css';
-    if (file_exists($cssPath)) {
-        echo '<link rel="stylesheet" href="' . $cssUrl . '">';
-    } else {
-        echo ' CSS File not fount at: ' . $cssPath . '';
-    }
-    ?>
+  <link rel="stylesheet" href="/assets/css/user/resetPasword.css?v=20250845">
   
 </head>
 
