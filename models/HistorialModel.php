@@ -155,7 +155,7 @@ class HistorialModel
     LEFT JOIN tbl_diagnosticos d ON h.hist_diagnostico = d.id_diagnostico
 
     LEFT JOIN tbl_especialistas ec ON h.hist_creado_por = ec.id_especialista
-    LEFT JOIN tbl_usuarios eu ON ec.id_usuario = eu.id_usuario
+    LEFT JOIN tbl_usuarios eu ON ec.espe_usuario = eu.id_usuario
 
     LEFT JOIN tbl_especialistas ea ON h.hist_actualizado_por = ea.id_especialista
     LEFT JOIN tbl_usuarios eau ON ea.espe_usuario = eau.id_usuario
