@@ -1,6 +1,6 @@
 <?php
 return [
-  'app_url'      => 'https://red-locust-535799.hostingersite.com',
+  'app_url'      => 'https://coral-partridge-225710.hostingersite.com/',
     'app_timezone' => 'America/Bogota',
 
     'smtp' => [
