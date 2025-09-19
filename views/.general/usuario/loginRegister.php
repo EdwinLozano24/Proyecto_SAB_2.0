@@ -15,7 +15,7 @@
 
 
     <!-- CSS personalizado (se fuerza actualización con versión al final) -->
-    <link rel="stylesheet" href="/assets/css/user/loginRegister.css">
+    <link rel="stylesheet" href="/assets/css/user/loginRegister.css?v=3340">
     <link rel="icon" type="image/png" href="/Assets/img/favicon.png"> 
 </head>
 <body>
