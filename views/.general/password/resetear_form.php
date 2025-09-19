@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="/assets/css/user/resetPasword.css?v=20250845">
+  <link rel="icon" type="image/png" href="/Assets/img/favicon.png"> 
 </head>
 
 <body>

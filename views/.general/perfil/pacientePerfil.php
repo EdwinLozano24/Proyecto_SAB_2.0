@@ -1,7 +1,8 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/config/auth.php';
 requiereSesion();
-function obtenerIniciales($nombreCompleto) {
+function obtenerIniciales($nombreCompleto)
+{
     $palabras = explode(' ', trim($nombreCompleto));
     $iniciales = '';
     foreach ($palabras as $palabra) {
@@ -32,7 +33,7 @@ function obtenerIniciales($nombreCompleto) {
         echo ' CSS File not fount at: ' . $cssPath . '';
     }
     ?>
-
+    <link rel="icon" type="image/png" href="/Assets/img/favicon.png">
 </head>
 
 <body>
@@ -48,16 +49,17 @@ function obtenerIniciales($nombreCompleto) {
                 </button>
             </div>
         </div>
-        
+
 
         <!-- Información del Avatar -->
         <div class="avatar-container">
             <div class="avatar"><?= obtenerIniciales($paciente['usua_nombre']) ?></div>
             <div class="avatar-info">
-                <h2><?= $paciente['usua_nombre']?></h2>
-                <h3></h3> <p><?= $paciente['usua_tipo'] ?>
-                
-                <span class="status-badge status-active">● <?= $paciente['usua_estado'] ?></span>
+                <h2><?= $paciente['usua_nombre'] ?></h2>
+                <h3></h3>
+                <p><?= $paciente['usua_tipo'] ?>
+
+                    <span class="status-badge status-active">● <?= $paciente['usua_estado'] ?></span>
             </div>
         </div>
 
@@ -69,37 +71,37 @@ function obtenerIniciales($nombreCompleto) {
             </div>
             <div class="form-grid">
                 <div class="form-group">
-            <form action="/controllers/UsuarioController.php?accion=update" method="POST">
-                    <label>Nombre Completo</label>
-                    <input type="hidden" name="origen_formulario" id="origen_formulario" value="Usuario" required>
-                    <input type="hidden" name="id_usuario" id="id_usuario" value="<?= $paciente['id_usuario'] ?>" required>
-                    <input type="hidden" name="usua_nombre" id="usua_nombre" value="<?= $paciente['usua_nombre'] ?>" required>
-                    <div class="data-field"><?= $paciente['usua_nombre']?></div>
+                    <form action="/controllers/UsuarioController.php?accion=update" method="POST">
+                        <label>Nombre Completo</label>
+                        <input type="hidden" name="origen_formulario" id="origen_formulario" value="Usuario" required>
+                        <input type="hidden" name="id_usuario" id="id_usuario" value="<?= $paciente['id_usuario'] ?>" required>
+                        <input type="hidden" name="usua_nombre" id="usua_nombre" value="<?= $paciente['usua_nombre'] ?>" required>
+                        <div class="data-field"><?= $paciente['usua_nombre'] ?></div>
                 </div>
                 <div class="form-group">
                     <label>Documento de Identidad</label>
                     <input type="hidden" name="usua_documento" id="usua_documento" value="<?= $paciente['usua_documento'] ?>" required>
-                    <div class="data-field"><?= $paciente['usua_documento']?></div>
+                    <div class="data-field"><?= $paciente['usua_documento'] ?></div>
                 </div>
                 <div class="form-group">
                     <label>Tipo de Documento</label>
                     <input type="hidden" name="usua_tipo_documento" id="usua_tipo_documento" value="<?= $paciente['usua_tipo_documento'] ?>" required>
-                    <div class="data-field"><?= $paciente['usua_tipo_documento']?></div>
+                    <div class="data-field"><?= $paciente['usua_tipo_documento'] ?></div>
                 </div>
                 <div class="form-group">
                     <label>Fecha de Nacimiento</label>
                     <input type="hidden" name="usua_fecha_nacimiento" id="usua_fecha_nacimiento" value="<?= $paciente['usua_fecha_nacimiento'] ?>" required>
-                    <div class="data-field"><?= $paciente['usua_fecha_nacimiento']?></div>
+                    <div class="data-field"><?= $paciente['usua_fecha_nacimiento'] ?></div>
                 </div>
                 <div class="form-group">
                     <label>Sexo</label>
                     <input type="hidden" name="usua_sexo" id="usua_sexo" value="<?= $paciente['usua_sexo'] ?>" required>
-                    <div class="data-field"><?= $paciente['usua_sexo']?></div>
+                    <div class="data-field"><?= $paciente['usua_sexo'] ?></div>
                 </div>
                 <div class="form-group">
                     <label>Rh</label>
                     <input type="hidden" name="usua_rh" id="usua_rh" value="<?= $paciente['usua_rh'] ?>" required>
-                    <div class="data-field"><?= $paciente['usua_rh']?></div>
+                    <div class="data-field"><?= $paciente['usua_rh'] ?></div>
                 </div>
                 <div class="form-group">
                     <label>Eps</label>
@@ -144,12 +146,12 @@ function obtenerIniciales($nombreCompleto) {
             <p>Los datos mostrados son de solo lectura. Para realizar modificaciones, contacte al administrador del sistema.</p>
         </div>
         <div class="boton-volver">
-                <button type="button" class="btn-custom btn-secundary-custom" onclick="window.history.back()">
-                    <i class="fa-solid fa-rotate-left"></i> Volver</a>
-                </button>
-                <input type="submit" class="btn-custom btn-primary-custom" value="Actualizar">
-            </div>
-            </form>
+            <button type="button" class="btn-custom btn-secundary-custom" onclick="window.history.back()">
+                <i class="fa-solid fa-rotate-left"></i> Volver</a>
+            </button>
+            <input type="submit" class="btn-custom btn-primary-custom" value="Actualizar">
+        </div>
+        </form>
     </div>
 
     </div>

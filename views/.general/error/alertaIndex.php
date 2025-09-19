@@ -13,6 +13,7 @@
     }
     ?>
     <title>Acceso Denegado</title>
+    <link rel="icon" type="image/png" href="/Assets/img/favicon.png"> 
 </head>
 <body>
     <div class="container-custom">

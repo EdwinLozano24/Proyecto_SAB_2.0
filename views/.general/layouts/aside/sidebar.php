@@ -14,7 +14,7 @@
                 //     echo '<!-- CSS file not found at: ' . $cssPath . ' -->';
                 // }
                 ?>
-                
+                <link rel="icon" type="image/png" href="/Assets/img/favicon.png"> 
            </head>
 
            <body>

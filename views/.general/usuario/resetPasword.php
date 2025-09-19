@@ -7,7 +7,7 @@
   <title>Reset contraseña</title>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/user/resetPasword.css?v=20250845">
-  
+  <link rel="icon" type="image/png" href="/Assets/img/favicon.png"> 
 </head>
 
 <body>

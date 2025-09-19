@@ -1,13 +1,13 @@
-
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reset contraseña</title>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/user/resetPasword.css?v=20250845">
-  
+  <link rel="icon" type="image/png" href="/Assets/img/favicon.png">
 </head>
 
 <body>
@@ -18,7 +18,7 @@
       <div class="contenedor__reset">
         <form method="POST" action="../../../index.php?action=sendResetLink">
           <h2>Cambiar Contraseña</h2>
-          
+
           <label for="email">Correo Electrónico</label>
           <input type="email" name="email" id="email" placeholder="Escriba su email" required>
 
@@ -41,6 +41,7 @@
     </div>
   </div>
 
-  <script src= "Assets/js/user/resetPasword.js"></script>
+  <script src="Assets/js/user/resetPasword.js"></script>
 </body>
+
 </html>
