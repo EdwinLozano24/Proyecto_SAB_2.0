@@ -3,6 +3,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/models/HistorialModel.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/models/PacienteModel.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/models/EspecialistaModel.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/models/DiagnosticoModel.php';
+require_once __DIR__ . '/../vendor/autoload.php';
+use Fpdf\Fpdf;
 
 $historial = new HistorialController();
 $accion = $_GET['accion'] ?? 'index';
