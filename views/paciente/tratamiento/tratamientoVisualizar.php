@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/assets/css/tratamiento/tratamientoVisualizar.css">
     <link rel="stylesheet" href="/Assets/css/tratamientoModal/tratamientoVisualizarModal.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="/Assets/img/favicon.png"> 
 </head>
 
 <body class="catalogo-page">
