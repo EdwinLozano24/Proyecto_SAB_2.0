@@ -158,7 +158,7 @@ class HistorialModel
     LEFT JOIN tbl_usuarios eu ON ec.id_usuario = eu.id_usuario
 
     LEFT JOIN tbl_especialistas ea ON h.hist_actualizado_por = ea.id_especialista
-    LEFT JOIN tbl_usuarios eau ON ea.id_usuario = eau.id_usuario
+    LEFT JOIN tbl_usuarios eau ON ea.espe_usuario = eau.id_usuario
 
     WHERE h.hist_paciente = ? 
       AND h.hist_estado = 'Activo'
