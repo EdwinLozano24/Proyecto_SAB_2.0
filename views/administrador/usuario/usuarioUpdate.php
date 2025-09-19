@@ -8,7 +8,7 @@ requiereSesion();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actualizar Usuario - Sistema Odontológico</title>
+    <title>Actualizar Usuario</title>
     <!-- <link rel="stylesheet" href="styles.css"> -->
     <?php
     $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/assets/css/admin/crudPage.css';
@@ -19,6 +19,7 @@ requiereSesion();
         echo ' CSS File not fount at: ' . $cssPath . '';
     }
     ?>
+    <link rel="icon" type="image/png" href="/Assets/img/favicon.png">
 </head>
 
 <body>
@@ -142,10 +143,10 @@ requiereSesion();
                         <label for="tipo">Tipo de Usuario <span class="required">*</span></label>
                         <select name="usua_tipo" id="tipo" required>
                             <option value="" disabled>Tipo de usuario</option>
-                            <option value="Administrador" <?=($usua['usua_tipo'] == "Administrador") ? 'selected' : '' ?>>Administrador</option>
-                            <option value="Especialista" <?=($usua['usua_tipo'] == "Especialista") ? 'selected' : '' ?>>Especialista</option>
-                            <option value="Empleado" <?=($usua['usua_tipo'] == "Empleado") ? 'selected' : '' ?>>Empleado</option>
-                            <option value="Paciente" <?=($usua['usua_tipo'] == "Paciente") ? 'selected' : '' ?>>Paciente</option>
+                            <option value="Administrador" <?= ($usua['usua_tipo'] == "Administrador") ? 'selected' : '' ?>>Administrador</option>
+                            <option value="Especialista" <?= ($usua['usua_tipo'] == "Especialista") ? 'selected' : '' ?>>Especialista</option>
+                            <option value="Empleado" <?= ($usua['usua_tipo'] == "Empleado") ? 'selected' : '' ?>>Empleado</option>
+                            <option value="Paciente" <?= ($usua['usua_tipo'] == "Paciente") ? 'selected' : '' ?>>Paciente</option>
                         </select>
                     </div>
 

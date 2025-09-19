@@ -36,6 +36,7 @@ $historias = $stmt->fetchAll();
     }
     ?>
     <title>Index Historial Clinico</title>
+    <link rel="icon" type="image/png" href="/Assets/img/favicon.png"> 
 </head>
 
 <body>

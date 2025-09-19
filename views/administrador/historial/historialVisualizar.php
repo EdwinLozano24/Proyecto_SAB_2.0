@@ -21,6 +21,7 @@
         echo ' CSS File not fount at: ' . $cssPath . '';
     }
     ?>
+    <link rel="icon" type="image/png" href="/Assets/img/favicon.png"> 
   </head>
   <body>
 <div class="container">

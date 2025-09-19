@@ -16,7 +16,7 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/Assets/css/layoutFinal/paciente/layout1.css">
     <link rel="stylesheet" href="/assets/css/citas/citasAgendar1.css?v=20250909">
-
+<link rel="icon" type="image/png" href="/Assets/img/favicon.png"> 
 </head>
 
 <body class="citas-page">

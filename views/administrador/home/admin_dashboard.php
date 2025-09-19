@@ -13,6 +13,7 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../Assets/css/layoutFinal/admin/layout1.css?v=20250901">
     <title>¡Bienvenido a SAB!</title>
+    <link rel="icon" type="image/png" href="/Assets/img/favicon.png"> 
 </head>
 
 <body>

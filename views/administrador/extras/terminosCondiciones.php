@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/Assets/css/layoutFinal/paciente/layout1.css">
     <!-- Enlace a los estilos específicos de términos -->
     <link rel="stylesheet" href="/Assets/css/terminosCondiciones/terminosCondiciones.css">
+    <link rel="icon" type="image/png" href="/Assets/img/favicon.png"> 
 </head>
 
 <body>

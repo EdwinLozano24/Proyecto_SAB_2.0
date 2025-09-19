@@ -8,7 +8,7 @@ requiereSesion();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear Usuario - Sistema Odontológico</title>
+    <title>Crear Usuario</title>
     <?php
     $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/assets/css/admin/crudPage.css';
     $cssUrl = '/assets/css/admin/crudPage.css';
@@ -18,7 +18,7 @@ requiereSesion();
         echo ' CSS File not fount at: ' . $cssPath . '';
     }
     ?>
-
+    <link rel="icon" type="image/png" href="/Assets/img/favicon.png">
 </head>
 
 <body>

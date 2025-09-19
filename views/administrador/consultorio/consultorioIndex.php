@@ -31,8 +31,8 @@ $consultorios = $stmt->fetchAll();
         echo ' CSS File not fount at: ' . $cssPath . '';
     }
     ?>
-    <title>Consultorios CRUD</title>
-
+    <title>Crud consultorios</title>
+<link rel="icon" type="image/png" href="/Assets/img/favicon.png"> 
     <link href="https://cdn.datatables.net/2.3.1/css/dataTables.bootstrap5.min.css" rel="stylesheet" integrity="sha384-5hBbs6yhVjtqKk08rsxdk9xO80wJES15HnXHglWBQoj3cus3WT+qDJRpvs5rRP2c" crossorigin="anonymous">
     <link href="https://cdn.datatables.net/buttons/3.2.3/css/buttons.bootstrap5.min.css" rel="stylesheet" integrity="sha384-DJhypeLg79qWALC844KORuTtaJcH45J+36wNgzj4d1Kv1vt2PtRuV2eVmdkVmf/U" crossorigin="anonymous">
     <!-- Boostrap -->

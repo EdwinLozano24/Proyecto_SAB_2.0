@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actualizar Empleado - Sistema Odontológico</title>
+    <title>Actualizar Empleado</title>
     <!-- <link rel="stylesheet" href="styles.css"> -->
     <?php
     $cssPath = $_SERVER['DOCUMENT_ROOT'] . '/assets/css/admin/crudPage.css';
@@ -16,6 +16,7 @@
         echo ' CSS File not fount at: ' . $cssPath . '';
     }
     ?>
+    <link rel="icon" type="image/png" href="/Assets/img/favicon.png"> 
 </head>
 
 

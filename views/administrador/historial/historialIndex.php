@@ -35,7 +35,8 @@ $historias = $stmt->fetchAll();
         echo ' CSS File not fount at: ' . $cssPath . '';
     }
     ?>
-    <title>Index Historial Clinico</title>
+    <title>Crud Historial Clínico</title>
+    <link rel="icon" type="image/png" href="/Assets/img/favicon.png"> 
 </head>
 
 <body>

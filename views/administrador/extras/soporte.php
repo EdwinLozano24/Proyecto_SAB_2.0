@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/Assets/css/layoutFinal/paciente/layout1.css">
     <!-- Estilos propios del soporte -->
     <link rel="stylesheet" href="/assets/css/soporte/soporte.css">
+    <link rel="icon" type="image/png" href="/Assets/img/favicon.png"> 
 </head>
 
 <body>
