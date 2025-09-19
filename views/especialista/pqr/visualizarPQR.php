@@ -28,6 +28,7 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/Assets/css/layoutFinal/admin/layout1.css?v=20250831">
+    <link rel="icon" type="image/png" href="/Assets/img/favicon.png"> 
 </head>
 <body>
     <?php 

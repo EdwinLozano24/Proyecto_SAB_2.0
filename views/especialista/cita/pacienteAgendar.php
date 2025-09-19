@@ -16,7 +16,7 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/Assets/css/layoutFinal/paciente/layout1.css">
     <link rel="stylesheet" href="/assets/css/citas/citasAgendar1.css?v=20250909">
-
+    <link rel="icon" type="image/png" href="/Assets/img/favicon.png">
 </head>
 
 <body class="citas-page">
@@ -49,7 +49,7 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
 
 
                         <div class="form-grid">
-                        
+
                             <div class="form-group">
                                 <label for="cita_paciente">Paciente<span class="required">*</span></label>
                                 <div class="input-with-icon">
@@ -79,7 +79,7 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
                                     </select>
                                 </div>
                             </div>
-                        
+
 
                             <div class="form-group">
                                 <label for="motivo">Motivo de la Cita <span class="required">*</span></label>
@@ -147,10 +147,10 @@ $id_usuario = $_SESSION['usuario']['id_usuario'];
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <!-- <script src="script.js"></script> -->
     <script>
-$(document).ready(function() {
-    $('#id_especialista, #cita_paciente').select2();
-});
-</script>
+        $(document).ready(function() {
+            $('#id_especialista, #cita_paciente').select2();
+        });
+    </script>
 </body>
 
 </html>
