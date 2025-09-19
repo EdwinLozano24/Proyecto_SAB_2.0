@@ -96,11 +96,11 @@
 
 body {
   background-color: #0ea5e9;
-  background-image: url(../../img/Login/fondoLogin.jpg);
+  background-image: url(../../img/Login/chamaquita.jpeg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  background-attachment: scroll; /* más compatible en móviles */
+  background-attachment: fixed;
   min-height: 100vh;
   display: flex;
   align-items: center;
