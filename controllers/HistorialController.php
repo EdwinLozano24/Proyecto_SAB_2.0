@@ -184,7 +184,7 @@ class HistorialController
         $pdf = new \FPDF('P', 'mm', 'A4'); // orientación, unidad, tamaño
     $pdf->AddPage();
     $pdf->SetFont('Arial', 'B', 14);
-    $pdf->Cell(0, 10, "Historial Clínico del Paciente", 0, 1, 'C');
+    $pdf->Cell(0, 10, "Historial Clinico del Paciente", 0, 1, 'C');
     $pdf->Ln(5);
 
     $pdf->SetFont('Arial', '', 12);
@@ -195,10 +195,10 @@ class HistorialController
     $pdf->MultiCell(0, 7, "Medicamentos: " . ($historial['hist_medicamentos_actuales'] ?? 'N/A'));
     $pdf->MultiCell(0, 7, "Alergias: " . ($historial['hist_alergias'] ?? 'N/A'));
     $pdf->Cell(0, 8, "Posee Odontograma: " . (isset($historial['hist_odontograma']) ? ($historial['hist_odontograma'] ? 'Sí' : 'No') : 'N/A'), 0, 1);
-    $pdf->Cell(0, 8, "Diagnóstico: " . ($historial['diagnostico_nombre'] ?? ($historial['hist_diagnostico'] ?? 'N/A')), 0, 1);
+    $pdf->Cell(0, 8, "Diagnostico: " . ($historial['diagnostico_nombre'] ?? ($historial['hist_diagnostico'] ?? 'N/A')), 0, 1);
     $pdf->Cell(0, 8, "Fecha de Registro: " . ($historial['hist_fecha_registro'] ?? 'N/A'), 0, 1);
     $pdf->Cell(0, 8, "Registrado Por: " . ($historial['creado_por_nombre'] ?? 'N/A'), 0, 1);
-    $pdf->Cell(0, 8, "Fecha de Actualización: " . ($historial['hist_fecha_actualizacion'] ?? 'N/A'), 0, 1);
+    $pdf->Cell(0, 8, "Fecha de Actualizacion: " . ($historial['hist_fecha_actualizacion'] ?? 'N/A'), 0, 1);
     $pdf->Cell(0, 8, "Actualizado Por: " . ($historial['actualizado_por_nombre'] ?? 'N/A'), 0, 1);
 
     // Entregar en el navegador (I = inline, D = descargar)
