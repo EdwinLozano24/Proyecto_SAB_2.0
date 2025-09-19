@@ -23,7 +23,7 @@ switch ($accion) {
     case 'delete':
         $historial->delete($_GET['id_historial']);
     case 'solicitarHistorial':
-        $historial->findForPaciente($_GET['id_paciente']);
+        $historial->solicitarHistorial($_GET['id_usuario']);
         break;
     default:
         $historial->index();
@@ -140,5 +140,12 @@ class HistorialController
             return;
         }
     }
+
+    public function solicitarHistorial($id_usuario)
+    {
+        $id_paciente = $this->PacienteModel->findIdPaciente($id_usuario);
+        var_dump($id_paciente); exit;
+    }
+
 
 }
