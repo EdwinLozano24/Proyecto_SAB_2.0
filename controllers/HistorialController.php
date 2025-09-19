@@ -144,7 +144,9 @@ class HistorialController
     public function solicitarHistorial($id_usuario)
     {
         $id_paciente = $this->PacienteModel->findIdPaciente($id_usuario);
-        var_dump($id_paciente); exit;
+        $historial = $this->HistorialModel->findForPaciente($id_paciente);
+        var_dump($historial); exit;
+        
     }
 
 
