@@ -15,7 +15,7 @@
 
 
     <!-- CSS personalizado (se fuerza actualización con versión al final) -->
-    <link rel="stylesheet" href="/Assets/css/user/loginRegister.css?v=20250919">
+    <link rel="stylesheet" href="/assets/css/user/loginRegister.css?v=20250919">
 </head>
 <body>
     <?php 
