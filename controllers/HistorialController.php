@@ -170,7 +170,6 @@ class HistorialController
             exit;
         }
 
-        require_once 'libs/fpdf/fpdf.php';
         $pdf = new FPDF();
         $pdf->AddPage();
         $pdf->SetFont('Arial','B',14);
