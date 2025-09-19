@@ -34,7 +34,7 @@ $nombreUsuario = $_SESSION['usuario']['usua_nombre'];
             <div class="content-card">
                 <h3 class="card-title">Historial Clinico</h3>
                 <p class="card-description">Dentro se visualizara algunas opciones.</p>
-                <a href="#" class="btn btn-primary" style="margin-top: 16px;">Solicitalo Aqui.</a>
+                <a href="/controllers/HistorialController.php?accion=solicitarHistorial&id_usuario=<?php echo($id_usuario) ?>" class="btn btn-primary" style="margin-top: 16px;">Solicitalo Aqui.</a>
             </div>
         </div>
     </main>

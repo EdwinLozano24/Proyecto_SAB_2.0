@@ -122,4 +122,47 @@ class HistorialModel
         $stmt->execute([':id_paciente' => $id_paciente]);
         return $stmt->fetchColumn();
     }
+
+    public function findForPaciente($id_paciente)
+    {
+        $stmt = $this->pdo->prepare("SELECT
+            -- Campos del historial (seleccionados explícitamente para NO traer los FK)
+            h.id_historial,
+            h.hist_antecedentes_personales,
+            h.hist_antecedentes_familiares,
+            h.hist_medicamentos_actuales,
+            h.hist_alergias,
+            h.hist_fecha_registro,
+            h.hist_fecha_actualizacion,
+            h.hist_odontograma,
+            h.hist_indice_dmft,
+            h.hist_frecuencia_cepillado,
+            h.hist_hilo_dental,
+            h.hist_enjuague_bucal,
+            h.hist_sensibilidad_dental,
+            h.hist_estado,
+
+            -- Nombres/etiquetas de las tablas relacionadas (sin traer ids)
+            pu.usua_nombre   AS paciente_nombre,
+            d.diag_nombre    AS diagnostico_nombre,
+            eu.usua_nombre   AS creado_por_nombre,
+            eau.usua_nombre  AS actualizado_por_nombre
+
+            FROM tbl_historial_clinico h
+            LEFT JOIN tbl_pacientes p ON h.hist_paciente = p.id_paciente
+            LEFT JOIN tbl_usuarios pu ON p.id_usuario = pu.id_usuario
+
+            LEFT JOIN tbl_diagnosticos d ON h.hist_diagnostico = d.id_diagnostico
+
+            LEFT JOIN tbl_especialistas ec ON h.hist_creado_por = ec.id_especialista
+            LEFT JOIN tbl_usuarios eu ON ec.id_usuario = eu.id_usuario
+
+            LEFT JOIN tbl_especialistas ea ON h.hist_actualizado_por = ea.id_especialista
+            LEFT JOIN tbl_usuarios eau ON ea.id_usuario = eau.id_usuario
+
+            WHERE h.hist_paciente = ? AND h.hist_estado = 'Activo'
+            LIMIT 1;");
+        $stmt->execute([$id_paciente]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }
