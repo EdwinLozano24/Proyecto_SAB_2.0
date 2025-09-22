@@ -180,11 +180,15 @@ class CitaController
     public function especialistaCitaView($id_usuario)
     {
         $especialista = $this->EspecialistaModel->findEspecialista($id_usuario);
-        
+        if (!$especialista) {
+            $errors[] = "Pacere que tienes el rol de especialista, pero no esta ingresado internamente, comunicate con un administrador.";
+            include '../views/.general/error/alertaIndex.php';
+            exit;
+        }
         $id_especialista = $especialista['id_especialista'];
         
         $cita = $this->CitaModel->findCita($id_especialista);
-        var_dump($cita); exit;
+
         
         include '../views/especialista/cita/citaEspecialista.php';
         exit;
