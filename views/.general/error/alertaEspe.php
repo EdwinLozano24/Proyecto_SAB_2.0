@@ -52,6 +52,7 @@
         <div class="additional-info">
             <h4>Posibles causas:</h4>
             <ul>
+                <li>Tu usuario se le dio el rol de especialista, pero internamente no esta registrado.</li>
             </ul>
         </div>
     </div>
