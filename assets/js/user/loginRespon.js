@@ -14,15 +14,13 @@ document.getElementById("btn__iniciar-sesion").addEventListener("click", iniciar
 
 function anchoPantalla() {
     if (window.innerWidth > 850) {
+        // En escritorio, muestra las dos cajas
         caja_trasera_register.style.display = "block";
         caja_trasera_login.style.display = "block";
     } else {
+        // En móvil, solo ajusta cajas, NO cambies formularios
         caja_trasera_register.style.display = "block";
         caja_trasera_login.style.opacity = "1";
-        caja_trasera_login.style.display = "none";
-        formulario_login.style.display = "block";
-        formulario_register.style.display = "none";
-        contenedor_login_register.style.left = "0px";
     }
 }
 
