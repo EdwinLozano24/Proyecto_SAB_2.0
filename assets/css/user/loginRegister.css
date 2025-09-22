@@ -159,7 +159,7 @@ main{
 
 .formulario__login{
     opacity: 1;
-    display: block;
+    display: none;
 }
 .formulario__register {
     display: none;
