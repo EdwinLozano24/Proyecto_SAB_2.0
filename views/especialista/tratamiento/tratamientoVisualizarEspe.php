@@ -125,7 +125,7 @@
 
     <script src="/assets/js/tratamiento/tratamientoVisualizarBusqueda.js"></script>
     <script src="/assets/js/tratamiento/tratamientoVisualizar.js"></script>
-    <script src="/assets/js/tratamientoModal/tratamientoVisualizarModal.js"></script>
+    <script src="/Assets/js/tratamientoModal/tratamientoVisualizarModal.js"></script>
 
     <?php
     include($_SERVER['DOCUMENT_ROOT'] . '/views/.general/layoutsFinal/especialista/footer.php');
