@@ -1,6 +1,6 @@
 document.getElementById("btn__registrarse").addEventListener("click", register);
 document.getElementById("btn__iniciar-sesion").addEventListener("click", iniciarSesion);
-window.addEventListener("resize", anchoPantalla);
+anchoPantalla();
 
 //declaracion de variables
 var contenedor_login_register = document.querySelector(".contenedor__login-register");
