@@ -7,7 +7,7 @@
 .terminos-content {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 16px;
 }
 
 /* Cada bloque de términos usa .content-card */
@@ -38,4 +38,8 @@
 }
 .contact-info h3 i {
     margin-right: 8px;
+}
+
+.btn-primary {
+    margin-top: 10px;
 }
