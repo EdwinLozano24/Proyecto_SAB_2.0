@@ -24,7 +24,7 @@
           </tr>
           <tr>
             <td align="center" style="padding:20px;">
-              <a href="{{url_confirmacion}}" style="display:inline-block; background:#329FAB; color:#ffffff; text-decoration:none; padding:12px 30px; font-size:16px; font-weight:bold; border-radius:5px;">
+              <a href="https://coral-partridge-225710.hostingersite.com/views/.general/usuario/loginRegister.php" style="display:inline-block; background:#329FAB; color:#ffffff; text-decoration:none; padding:12px 30px; font-size:16px; font-weight:bold; border-radius:5px;">
                 Confirmar Cuenta
               </a>
             </td>
