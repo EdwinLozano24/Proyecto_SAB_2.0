@@ -37,12 +37,12 @@
                 <div class="caja__trasera-login">
                     <h3>¿Ya tienes una cuenta?</h3>
                     <p>Inicia sesión para continuar</p>
-                    <button id="btn__iniciar-sesion">Iniciar Sesión</button>
+                    <button id="btn__iniciar-sesion" type="button">Iniciar Sesión</button>
                 </div>
                 <div class="caja__trasera-register">
                     <h3>¿Aún no tienes una cuenta?</h3>
                     <p>Regístrate para que puedas iniciar sesión</p>
-                    <button id="btn__registrarse">Registrarse</button>
+                    <button id="btn__registrarse" type="button">Registrarse</button>
                 </div>
             </div>
             <!-- Contenedor de los formularios -->
