@@ -66,3 +66,13 @@ function register() {
 window.addEventListener("load", function() {
     iniciarSesion();
 });
+
+document.getElementById("btn__registrarse").addEventListener("click", function(e){
+    e.preventDefault();
+    register();
+});
+
+document.getElementById("btn__iniciar-sesion").addEventListener("click", function(e){
+    e.preventDefault();
+    iniciarSesion();
+});
