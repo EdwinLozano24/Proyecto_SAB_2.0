@@ -10,15 +10,22 @@ var caja_trasera_register = document.querySelector(".caja__trasera-register");
 // Ajusta las cajas al cargar
 ajustarCajas();
 
+// ===============================
 // Eventos de los botones
-document.getElementById("btn__registrarse").addEventListener("click", register);
-document.getElementById("btn__iniciar-sesion").addEventListener("click", iniciarSesion);
+// ===============================
+document.getElementById("btn__registrarse").addEventListener("click", function(e){
+    e.preventDefault();
+    register();
+});
+
+document.getElementById("btn__iniciar-sesion").addEventListener("click", function(e){
+    e.preventDefault();
+    iniciarSesion();
+});
 
 // ===============================
 // Funciones
 // ===============================
-
-// Ajusta solo las cajas traseras según el tamaño de pantalla
 function ajustarCajas() {
     if (window.innerWidth > 850) {
         caja_trasera_register.style.display = "block";
@@ -30,7 +37,6 @@ function ajustarCajas() {
     }
 }
 
-// Mostrar formulario de login
 function iniciarSesion() {
     formulario_login.style.display = "block";
     formulario_register.style.display = "none";
@@ -46,7 +52,6 @@ function iniciarSesion() {
     }
 }
 
-// Mostrar formulario de registro
 function register() {
     formulario_register.style.display = "block";
     formulario_login.style.display = "none";
@@ -63,16 +68,7 @@ function register() {
     }
 }
 
+// Forzar que al cargar siempre se inicie en login
 window.addEventListener("load", function() {
-    iniciarSesion();
-});
-
-document.getElementById("btn__registrarse").addEventListener("click", function(e){
-    e.preventDefault();
-    register();
-});
-
-document.getElementById("btn__iniciar-sesion").addEventListener("click", function(e){
-    e.preventDefault();
     iniciarSesion();
 });
