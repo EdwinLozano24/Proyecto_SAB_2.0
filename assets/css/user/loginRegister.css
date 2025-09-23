@@ -213,20 +213,5 @@ main{
     color: #ef4444;
     }
 
-    .caja__trasera-login,
-    .caja__trasera-register {
-        position: absolute;
-        width: 100%;
-        transition: opacity 0.3s ease;
-    }
-
-    /* Estado inicial en móviles: que se vea solo el login */
-    .caja__trasera-login {
-        opacity: 1;
-    }
-
-    .caja__trasera-register {
-        opacity: 0;
-    }
 }
 
