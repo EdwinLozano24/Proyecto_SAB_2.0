@@ -18,13 +18,13 @@
                     </tr>
                     <tr>
                         <td style="padding:20px 30px; color:#555; font-size:16px; line-height:1.5;">
-                            <p>Hola <strong><?= htmlspecialchars($paciente) ?></strong>,</p>
+                            <p>Hola <strong><?= htmlspecialchars($cita['cita_paciente'])?></strong>,</p>
                             <p>Tu cita ha sido confirmada con los siguientes datos:</p>
                             <ul style="padding-left:20px;">
-                                <li><strong>Fecha:</strong> <?= htmlspecialchars($fecha) ?></li>
-                                <li><strong>Hora:</strong> <?= htmlspecialchars($hora_inicio) ?> - <?= htmlspecialchars($hora_fin) ?></li>
-                                <li><strong>Especialista:</strong> <?= htmlspecialchars($especialista) ?></li>
-                                <li><strong>Consultorio:</strong> <?= htmlspecialchars($consultorio) ?></li>
+                                <li><strong>Fecha:</strong> <?= htmlspecialchars ($cita['cita_fecha'])?></li>
+                                <li><strong>Hora:</strong> <?= htmlspecialchars($cita['cita_hora_inicio']) ?>
+                                <li><strong>Especialista:</strong> <?= htmlspecialchars($cita['cita_especialista']) ?></li>
+                                <li><strong>Consultorio:</strong> <?= htmlspecialchars($cita['cita_consultorio']) ?></li>
                             </ul>
                         </td>
                     </tr>
