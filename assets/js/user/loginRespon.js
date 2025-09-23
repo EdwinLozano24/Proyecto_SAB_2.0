@@ -68,8 +68,10 @@ function register() {
     }
 }
 
-// Forzar que al cargar siempre se inicie en login
-window.addEventListener("load", function() {
-    iniciarSesion();
-});
 
+window.addEventListener("load", () => {
+    formulario_register.style.display = "none";
+    contenedor_login_register.style.left = "0px";
+    caja_trasera_register.style.opacity = "1";
+    caja_trasera_login.style.opacity = "0";
+});
