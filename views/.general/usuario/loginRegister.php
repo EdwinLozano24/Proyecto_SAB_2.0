@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8"> <!-- Codificación UTF-8 para soportar tildes, ñ, etc. -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Página responsive en móviles -->
-    <title>LoginRegister</title>
+    <title>!Bienvenido a SAB!</title>
 
     <!-- Fuente de Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
