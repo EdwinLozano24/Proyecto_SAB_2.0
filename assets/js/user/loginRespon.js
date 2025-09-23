@@ -67,11 +67,3 @@ function register() {
         caja_trasera_login.style.opacity = "1";
     }
 }
-
-
-window.addEventListener("load", () => {
-    formulario_register.style.display = "none";
-    contenedor_login_register.style.left = "0px";
-    caja_trasera_register.style.opacity = "1";
-    caja_trasera_login.style.opacity = "0";
-});
