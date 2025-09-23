@@ -17,7 +17,7 @@
           </tr>
           <tr>
             <td style="padding:20px 30px; color:#555; font-size:16px; line-height:1.5;">
-              <p>Hola <strong>{{nombre}}</strong>,</p>
+              <p>Hola <?= htmlspecialchars($usuario['usua_nombre']) ?>,</p>
               <p>Gracias por registrarte en nuestro sistema. Ahora podrás acceder a todas las funcionalidades de la plataforma.</p>
               <p>Haz clic en el siguiente botón para confirmar tu cuenta:</p>
             </td>
