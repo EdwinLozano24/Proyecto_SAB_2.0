@@ -40,13 +40,15 @@
                     </ul>
                 </div>
 
-                <!-- Guía de uso rápida -->
+                <!-- Documentación -->
                 <div class="content-card">
-                    <h2 class="card-title"><i class="fas fa-book-open"></i> Guía de Uso Rápida</h2>
-                    <p class="card-description">Descarga nuestro manual de usuario para conocer paso a paso cómo utilizar SAB.</p>
-                    <a href="" target="_blank" class="btn btn-primary">
-                        <i class="fas fa-download"></i> Descargar Manual
-                    </a>
+                    <h2 class="card-title"><i class="fas fa-book"></i> Documentación y Manuales</h2>
+                    <ul class="card-description">
+                        <li>📘 <a href="https://drive.google.com/drive/u/0/folders/1MuHPP3ZnmY7lxyoYofJd_OP-3XafH_qv" target="_blank">Manual Técnico</a></li>
+                        <li>👥 <a href="https://drive.google.com/drive/u/0/folders/1tpchxaIP_S-Btx8QAwGB2BK4Kazf7v7x" target="_blank">Manual de Usuario</a></li>
+                        <li>🎨 <a href="https://drive.google.com/drive/u/0/folders/1OrD2fm4jHsC-QgkYZOSwEvnOsobYKbeA" target="_blank">Manual de Identidad</a></li>
+                        <li>📂 <a href="https://drive.google.com/drive/u/0/folders/1uptmklbw6PxTrPKKNCrcvP7iV_lICXtt" target="_blank">Informe Final</a></li>
+                    </ul>
                 </div>
 
                 <!-- Canales de contacto -->
@@ -57,19 +59,6 @@
                         <i class="fas fa-envelope"></i> Contáctanos
                     </a>
                 </div>
-
-                <!-- Centro de documentación -->
-                <div class="content-card">
-                    <h2 class="card-title"><i class="fas fa-folder-open"></i> Centro de Documentación</h2>
-                    <p class="card-description">Próximamente encontrarás aquí:</p>
-                    <ul class="card-description">
-                        <li>📘 Manual Técnico</li>
-                        <li>👥 Manual de Usuario</li>
-                        <li>🎨 Manual de Identidad</li>
-                    </ul>
-                    <p class="card-description"><em>Estos documentos estarán disponibles una vez completados.</em></p>
-                </div>
-
             </section>
         </div>
     </main>
