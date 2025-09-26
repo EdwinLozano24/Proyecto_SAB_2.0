@@ -14,6 +14,10 @@
                     <tr>
                         <td align="center" style="padding:30px 20px; color:#329FAB; font-size:28px; font-weight:600;">
                             📅 ¡Tu cita fue agendada con éxito!
+                            <p><strong>Fecha:</strong> <?= htmlspecialchars($cita['fecha'] ?? 'No definida') ?></p>
+                            <p><strong>Hora:</strong> <?= htmlspecialchars($cita['hora_inicio'] ?? 'No definida') ?> - <?= htmlspecialchars($cita['hora_fin'] ?? '') ?></p>
+                            <p><strong>Especialista:</strong> <?= htmlspecialchars($cita['especialista'] ?? '') ?></p>
+                            <p><strong>Motivo:</strong> <?= htmlspecialchars($cita['motivo'] ?? '') ?></p>
                         </td>
                     </tr>
                 </table>
