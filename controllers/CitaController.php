@@ -342,7 +342,6 @@ class CitaController
                             'cita' => [
                                 'fecha'        => $data['cita_fecha'],
                                 'hora_inicio'  => $data['cita_hora_inicio'],
-                                'especialista' => $data['cita_especialista'],
                                 'motivo'       => $data['cita_motivo']
                             ],
                             'app_url' => $this->config['app_url']
@@ -470,7 +469,6 @@ class CitaController
                             'cita' => [
                                 'fecha'        => $data['cita_fecha'],
                                 'hora_inicio'  => $data['cita_hora_inicio'],
-                                'especialista' => $data['cita_especialista'],
                                 'motivo'       => $data['cita_motivo']
                             ],
                             'app_url' => $this->config['app_url']
